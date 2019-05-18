@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="web安全交流"/>
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="弦 博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://moon-zhou.github.io/2019/05/18/web安全交流/"/>
+
+
+<meta name="description" content="web安全交流 web常用攻击手段 waf的简介 实际的攻击/漏洞案例 其他  web常用攻击手段web端目前被报的常见安全攻击  sql注入 XSS CSRF SSRF 无限制的url  sql注入防御方法定义预编译的sql语句 XSS(Cross Site Scripting)XSS, 即为（Cross Site Scripting）, 中文名为跨站脚本, 是发生在目标用户的浏览器层面上的，当">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web安全交流">
+<meta property="og:url" content="https://moon-zhou.github.io/2019/05/18/web安全交流/index.html">
+<meta property="og:site_name" content="弦 博客">
+<meta property="og:description" content="web安全交流 web常用攻击手段 waf的简介 实际的攻击/漏洞案例 其他  web常用攻击手段web端目前被报的常见安全攻击  sql注入 XSS CSRF SSRF 无限制的url  sql注入防御方法定义预编译的sql语句 XSS(Cross Site Scripting)XSS, 即为（Cross Site Scripting）, 中文名为跨站脚本, 是发生在目标用户的浏览器层面上的，当">
+<meta property="og:image" content="e:/workFile/pic/20181113/2018-11-13_154745.png">
+<meta property="og:updated_time" content="2019-05-18T16:07:31.549Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="web安全交流">
+<meta name="twitter:description" content="web安全交流 web常用攻击手段 waf的简介 实际的攻击/漏洞案例 其他  web常用攻击手段web端目前被报的常见安全攻击  sql注入 XSS CSRF SSRF 无限制的url  sql注入防御方法定义预编译的sql语句 XSS(Cross Site Scripting)XSS, 即为（Cross Site Scripting）, 中文名为跨站脚本, 是发生在目标用户的浏览器层面上的，当">
+<meta name="twitter:image" content="e:/workFile/pic/20181113/2018-11-13_154745.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> web安全交流 - 弦 博客 </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">弦 博客</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          web安全交流
+        
+      </h1>
+
+      <time class="post-time">
+          5月 18 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="web安全交流"><a href="#web安全交流" class="headerlink" title="web安全交流"></a>web安全交流</h1><ul>
+<li>web常用攻击手段</li>
+<li>waf的简介</li>
+<li>实际的攻击/漏洞案例</li>
+<li>其他</li>
+</ul>
+<h3 id="web常用攻击手段"><a href="#web常用攻击手段" class="headerlink" title="web常用攻击手段"></a>web常用攻击手段</h3><p>web端目前被报的常见安全攻击</p>
+<ul>
+<li>sql注入</li>
+<li>XSS</li>
+<li>CSRF</li>
+<li>SSRF</li>
+<li>无限制的url</li>
+</ul>
+<h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><h4 id="防御方法"><a href="#防御方法" class="headerlink" title="防御方法"></a>防御方法</h4><pre><code>定义预编译的sql语句
+</code></pre><h2 id="XSS-Cross-Site-Scripting"><a href="#XSS-Cross-Site-Scripting" class="headerlink" title="XSS(Cross Site Scripting)"></a>XSS(Cross Site Scripting)</h2><p>XSS, 即为（Cross Site Scripting）, 中文名为跨站脚本, 是发生在目标用户的浏览器层面上的，当渲染DOM树的过程成发生了不在预期内执行的JS代码时，就发生了XSS攻击。<br>跨站脚本的重点不在‘跨站’上，而在于‘脚本’上。大多数XSS攻击的主要方式是嵌入一段远程或者第三方域上的JS代码。实际上是在目标网站的作用域下执行了这段js代码。  </p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>留言板(商品评价等)XSS：用户提交了一条包含XSS代码的留言到数据库。当目标用户查询留言时，那些留言的内容会从服务器解析之后加载出来。浏览器发现有XSS代码，就当做正常的HTML和JS解析执行。  </p>
+<h4 id="危害"><a href="#危害" class="headerlink" title="危害"></a>危害</h4><pre><code>通过document.cookie盗取cookie
+使用js或css破坏页面正常的结构与样式
+流量劫持（通过访问某段具有window.location.href定位到其他页面）
+利用可被攻击的域受到其他域信任的特点，以受信任来源的身份请求一些平时不允许的操作，如进行不当的投票活动。
+</code></pre><h4 id="防御方法-1"><a href="#防御方法-1" class="headerlink" title="防御方法"></a>防御方法</h4><pre><code>输入过滤、校验
+    输入验证（客户端）：前端JS过滤，如检测最大长度、是否只有合法字符、格式是否符合要求、数字是否在指定的范围内。缺点就是容易被修改掉。
+    数据消毒（服务器端filter拦截统一处理，如图一）：过滤敏感字符（可以和SQL注入的一同过滤），如&lt; &gt; javascript等。
+输出编码
+HttpOnly：攻击者通过XSS漏洞执行JS中的document.cookie方法来窃取用户的cookie信息。Web应用程序在Set-Cookie时将其属性设为HttpOnly即可避免Cookie被客户端JS存取，也可以保护用户的Cookie信息不被盗取
+尽量使用WAF
+</code></pre><p>图一<br><img src="E:/workFile/pic/20181113/2018-11-13_154745.png" alt="filter拦截统一处理"></p>
+<pre><code>@Component(&quot;specialCharacterFilter&quot;)
+public class SpecialCharacterFilter extends HttpServlet implements Filter {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpecialCharacterFilter.class);
+
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = 3092325909076672931L;
+
+    /**
+     *
+     */
+    protected FilterConfig config;
+
+    /**
+     * {@inheritDoc}
+     */
+    public void destroy() {
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) {
+        try {
+            if (BankSwitchSCMConfig.get(&quot;XSSSWITCH&quot;).equals(&quot;1&quot;)) {
+                HttpServletRequest request = (HttpServletRequest) req;
+                @SuppressWarnings({ &quot;rawtypes&quot;, &quot;unchecked&quot; })
+                HashMap&lt;String, String[]&gt; m = new HashMap(request.getParameterMap());
+                HashMap&lt;String, String[]&gt; mm = new HashMap&lt;String, String[]&gt;();
+                if (m.size() &gt; 0 &amp;&amp; processParameters(m, mm)) {
+                    ParameterRequestWrapper wrapRequest = new ParameterRequestWrapper(request, mm);
+                    chain.doFilter(wrapRequest, res);
+                } else {
+                    chain.doFilter(req, res);
+                }
+            } else {
+                chain.doFilter(req, res);
+            }
+        } catch (Exception e) {
+            LOGGER.info(&quot;过滤器异常:{}&quot;, e);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void init(FilterConfig arg0) throws ServletException {
+        this.config = arg0;
+    }
+
+    /**
+     * 功能描述: &lt;br&gt;
+     * 〈功能详细描述〉
+     *
+     * @param m
+     * @param mm
+     * @return
+     */
+    public boolean processParameters(HashMap&lt;String, String[]&gt; m, HashMap&lt;String, String[]&gt; mm) {
+        Iterator&lt;Map.Entry&lt;String, String[]&gt;&gt; iterator = m.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry&lt;String, String[]&gt; entry = iterator.next();
+            String key = entry.getKey();
+            String[] values = entry.getValue();
+            int len = values.length;
+            for (int i = 0; i &lt; len; i++) {
+                if (null != values[i]) {
+                    values[i] = values[i].trim();
+                    // 分号|小于号|大于号|单引号
+                    values[i] = values[i].replaceAll(&quot;;&quot;, &quot;&amp;#46;&quot;);
+                    values[i] = values[i].replaceAll(&quot;&lt;&quot;, &quot;&amp;#60;&quot;);
+                    values[i] = values[i].replaceAll(&quot;&gt;&quot;, &quot;&amp;#62;&quot;);
+                    values[i] = values[i].replaceAll(&quot;&apos;&quot;, &quot;&amp;#39;&quot;);
+                    values[i] = values[i].replaceAll(&quot;\\(&quot;, &quot;&amp;#40;&quot;);
+                    values[i] = values[i].replaceAll(&quot;\\)&quot;, &quot;&amp;#41;&quot;);
+                }
+            }
+            mm.put(key, values);
+        }
+        return true;
+    }
+
+}
+</code></pre><h2 id="CSRF（跨站伪造请求-Cross—Site-Request-Forgery）"><a href="#CSRF（跨站伪造请求-Cross—Site-Request-Forgery）" class="headerlink" title="CSRF（跨站伪造请求 Cross—Site Request Forgery）"></a>CSRF（跨站伪造请求 Cross—Site Request Forgery）</h2><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><ol>
+<li>用户C打开浏览器，访问受信任网站A，输入用户名和密码请求登录网站A</li>
+<li>在用户信息通过验证后，网站A产生Cookie信息并返回给浏览器，此时用户登录网站A成功，可以正常发送请求到网站A</li>
+<li>用户未退出网站A之前，在同一浏览器中，打开一个TAB页访问网站B（这个过程可使用XSS配合，将用户引导到B网站-钓鱼网站）</li>
+<li>网站B接收到用户请求后，返回一些攻击性代码，并发出一个请求要求访问第三方站点A</li>
+<li>浏览器在接收到这些攻击性代码后，根据网站B的请求，在用户不知情的情况下携带Cookie信息（通过XSS获取用户cookie信息），向网站A发出请求。网站A并不知道该请求其实是由B发起的，所以会根据用户C的Cookie信息以C的权限处理该请求，导致来自网站B的恶意代码被执行<h4 id="检测方法"><a href="#检测方法" class="headerlink" title="检测方法"></a>检测方法</h4>抓包后去除referer重放请求，能正常请求则有可能csrf<br><a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=29275234" target="_blank" rel="external">重放示例</a><h4 id="本质原因"><a href="#本质原因" class="headerlink" title="本质原因"></a>本质原因</h4>CSRF攻击是源于Web的隐式身份验证机制！Web的身份验证机制虽然可以保证一个请求是来自于某个用户的浏览器，但却无法保证该请求是用户批准发送的。CSRF攻击的一般是由服务端解决。<h4 id="防御方法-2"><a href="#防御方法-2" class="headerlink" title="防御方法"></a>防御方法</h4>该攻击能够成功有两个要点：</li>
+<li>构造请求的参数都是可控的</li>
+<li>网站没有验证请求的来源</li>
+</ol>
+<p>因此防御csrf也可以从这两个方面入手</p>
+<ol>
+<li>请求中增加token，token的不可控可以使得请求失败（可以提取公共组件）</li>
+<li>限制请求来源referer（不妥，可伪造，目前门户只是做了这个校验）<blockquote>
+<p>Referer 的值是由浏览器提供的，虽然 HTTP 协议上有明确的要求，但是每个浏览器对于 Referer 的具体实现可能有差别，并不能保证浏览器自身没有安全漏洞。使用验证 Referer 值的方法，就是把安全性都依赖于第三方（即浏览器）来保障，从理论上来讲，这样并不安全。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="SSRF-服务器端请求伪造-Server-Side-Request-Forgery"><a href="#SSRF-服务器端请求伪造-Server-Side-Request-Forgery" class="headerlink" title="SSRF(服务器端请求伪造 Server-Side Request Forgery)"></a>SSRF(服务器端请求伪造 Server-Side Request Forgery)</h2><p>利用漏洞伪造服务器端发起请求，从而突破客户端获取不到数据限制。<br>是一种<strong>由攻击者构造形成由服务端发起请求</strong>的一个安全漏洞。<br>利用一个可以发起网络请求的服务，当作跳板来攻击其他服务，最常见的例子是通过web接口请求受保护网络内的资源。<br>通常SSRF被用来扫描内网网络、攻击内网或者本地应用程序、读取本地文件等。</p>
+<h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>SSRF 形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能但没有对目标地址做过滤与限制。当目标地址为服务端内网地址时，就会获取到内网的消息，从而进行服务器请求伪造攻击。<br>比如从指定URL地址获取网页文本内容，加载指定地址的图片，下载、翻译、识图等功能。<br>例如wooyun-2016-0198176。有道翻译对输入链接没有限制，可以直通内网。正常的流程是用户输入一个链接，然后针对这个链接进行翻译，但是如果输入的是该网站内网的一个链接，并且没有针对输入进行过滤的话，就会将内网的信息给展示出来。</p>
+<h4 id="常见漏洞常见"><a href="#常见漏洞常见" class="headerlink" title="常见漏洞常见"></a>常见漏洞常见</h4><ol>
+<li>分享：通过URL地址分享网页内容</li>
+<li>转码服务</li>
+<li>在线翻译</li>
+<li><strong>图片加载与下载</strong>：通过URL地址加载或下载图片</li>
+<li>图片、文章收藏功能</li>
+<li>未公开的api实现以及其他调用URL的功能</li>
+<li>从URL关键字中寻找</li>
+</ol>
+<h2 id="WAF介绍"><a href="#WAF介绍" class="headerlink" title="WAF介绍"></a>WAF介绍</h2><blockquote>
+<p>云谛Web应用防火墙（Web Application Firewall, 简称 WAF）主要用于保障业务的正常运转。WAF可以防御注入(args，headers，cookie)、<strong>跨站脚本（XSS）</strong>、木马上传等OWASP常见攻击，并过滤海量恶意CC攻击。是应用软件的第一道防火墙，保护了网站资产的安全，网络服务的可用性。<br>在接入WAF后，即启用Web应用防火墙。启用之后，您网站所有的流量都会先经过Web应用防火墙，恶意攻击流量在Web应用防火墙上被检测过滤，而正常流量返回给源站IP，从而确保源站IP安全、稳定、可用。<br><a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=32267738" target="_blank" rel="external">参考链接</a></p>
+</blockquote>
+<h4 id="waf的功能"><a href="#waf的功能" class="headerlink" title="waf的功能"></a>waf的功能</h4><ol>
+<li>拦截非法请求。</li>
+<li>业务需要，暂时下线某个功能时，代码逻辑无法控制的时候，配置waf黑名单，拒绝请求。</li>
+<li>某个请求存在代码bug，功能不可用时，需要下线该功能。</li>
+</ol>
+<h4 id="waf的主要配置"><a href="#waf的主要配置" class="headerlink" title="waf的主要配置"></a>waf的主要配置</h4><ol>
+<li>限制单ip使用频率，不同环境次数的配置有不同的转换系数，具体环境配置时咨询waf平台。</li>
+<li>黑名单配置（功能2/3可使用该配置）</li>
+<li>根据攻击特点配置拦截，比如相同的UA</li>
+<li>根据攻击参数进行拦截，比如pcToken，这个我们无法配置，需要waf平台帮忙配置。</li>
+</ol>
+<p>以上都需要waf平台帮忙进行分析请求的共性，来指导我们进行相关过滤规则的配置。</p>
+<h2 id="实际案例"><a href="#实际案例" class="headerlink" title="实际案例"></a>实际案例</h2><h4 id="攻击案例"><a href="#攻击案例" class="headerlink" title="攻击案例"></a>攻击案例</h4><ol>
+<li>未登录情况下，找回支付密码时，发送验证码之前，使用的是数字验证码（固定验证方式），被机器识别，大量调用发送短信验证码端口。<a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=32178290" target="_blank" rel="external">wiki记录</a></li>
+<li>pptv拉新安全问题。<a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=31939624" target="_blank" rel="external">wiki记录</a></li>
+<li>passport短信登录获取验证码攻击问题<a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=33122065" target="_blank" rel="external">。wiki记录</a></li>
+<li>登录合规改造（防重放）</li>
+<li><a href="http://secadmin.cnsuning.com/ssrc-admin/showLeakDetail.do?id=3779" target="_blank" rel="external">任意url跳转</a></li>
+</ol>
+<h4 id="安全应急中心提的安全问题单"><a href="#安全应急中心提的安全问题单" class="headerlink" title="安全应急中心提的安全问题单"></a>安全应急中心提的安全问题单</h4><ol>
+<li><a href="http://secadmin.cnsuning.com/ssrc-admin/showLeakDetail.do?id=3771" target="_blank" rel="external">反射型XSS</a></li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h4 id="漏洞靶场"><a href="#漏洞靶场" class="headerlink" title="漏洞靶场"></a>漏洞靶场</h4><p><a href="https://vulhub.org/#/docs/" target="_blank" rel="external">vulhub</a></p>
+<h4 id="提升网站"><a href="#提升网站" class="headerlink" title="提升网站"></a>提升网站</h4><p><a href="https://www.anquanquan.info/" target="_blank" rel="external">安全圈</a></p>
+<h4 id="安全开发"><a href="#安全开发" class="headerlink" title="安全开发"></a>安全开发</h4><ol>
+<li>门户敏感功能未监控到位，尤其是未登录状态下的功能。</li>
+<li>敏感功能可接入风控</li>
+<li>正确使用GET,POST和Cookie（csrf）。GET常用在查看，列举，展示等不需要改变资源属性的时候；POST常用在下达订单，改变一个资源的属性或者做其他一些事情。</li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/05/18/代码规范第二期 backup/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">代码规范第二期 backup</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2019/05/18/git学习/">
+        <span class="next-text nav-default">git学习</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">moon zhou.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

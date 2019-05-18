@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="git学习"/>
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="弦 博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://moon-zhou.github.io/2019/05/18/git学习/"/>
+
+
+<meta name="description" content="文件状态（未进行commit操作之前，存在三种状态） Untracked files Changes not staged for commit Changes to be committed    Untracked files  新增/删除的文件（除了新增和删除实际的动作，还包括修改文件名）。通常是某些文件放到Git工作目录中，但又不能提交它们，比如保存了数据库密码的配置文件，编译文件，IDE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git学习">
+<meta property="og:url" content="https://moon-zhou.github.io/2019/05/18/git学习/index.html">
+<meta property="og:site_name" content="弦 博客">
+<meta property="og:description" content="文件状态（未进行commit操作之前，存在三种状态） Untracked files Changes not staged for commit Changes to be committed    Untracked files  新增/删除的文件（除了新增和删除实际的动作，还包括修改文件名）。通常是某些文件放到Git工作目录中，但又不能提交它们，比如保存了数据库密码的配置文件，编译文件，IDE">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/65527f948351fb585d8a5ada37ad9f98/xmlnote/AD735CEA073042FBA2B7772D7D88106D/30514">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/65527f948351fb585d8a5ada37ad9f98/xmlnote/B0A40DE21C8E4FB79D659FE937C0FB09/30520">
+<meta property="og:updated_time" content="2019-05-18T16:07:29.734Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git学习">
+<meta name="twitter:description" content="文件状态（未进行commit操作之前，存在三种状态） Untracked files Changes not staged for commit Changes to be committed    Untracked files  新增/删除的文件（除了新增和删除实际的动作，还包括修改文件名）。通常是某些文件放到Git工作目录中，但又不能提交它们，比如保存了数据库密码的配置文件，编译文件，IDE">
+<meta name="twitter:image" content="https://note.youdao.com/yws/public/resource/65527f948351fb585d8a5ada37ad9f98/xmlnote/AD735CEA073042FBA2B7772D7D88106D/30514">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> git学习 - 弦 博客 </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">弦 博客</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          git学习
+        
+      </h1>
+
+      <time class="post-time">
+          5月 18 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h4 id="文件状态（未进行commit操作之前，存在三种状态）"><a href="#文件状态（未进行commit操作之前，存在三种状态）" class="headerlink" title="文件状态（未进行commit操作之前，存在三种状态）"></a>文件状态（未进行commit操作之前，存在三种状态）</h4><ul>
+<li>Untracked files</li>
+<li>Changes not staged for commit</li>
+<li>Changes to be committed</li>
+<li></li>
+</ul>
+<ol>
+<li><p>Untracked files</p>
+<blockquote>
+<p>新增/删除的文件（除了新增和删除实际的动作，还包括修改文件名）。通常是某些文件放到Git工作目录中，但又不能提交它们，比如保存了数据库密码的配置文件，编译文件，IDE生成的文件等。如果是需要提交的文件，则使用git add进行添加，将文件包含到待提交清单中（暂存区）。</p>
+</blockquote>
+<ul>
+<li><p>删除这里的文件</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># 删除 untracked files</div><div class="line">git clean -f</div><div class="line"> </div><div class="line"># 连 untracked 的目录也一起删掉</div><div class="line">git clean -fd</div><div class="line"> </div><div class="line"># 连 gitignore 的untrack 文件/目录也一起删掉 （慎用，一般这个是用来删掉编译出来的 .o之类的文件用的）</div><div class="line">git clean -xfd</div><div class="line"> </div><div class="line"># 在用上述 git clean 前，墙裂建议加上 -n 参数来先看看会删掉哪些文件，防止重要文件被误删</div><div class="line">git clean -nxfd</div><div class="line">git clean -nf</div><div class="line">git clean -nfd</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加.gitignore</p>
+<ul>
+<li>#为注释</li>
+<li>可以使用shell所使用的正则表达式来进行模式匹配</li>
+<li>匹配模式最后跟”/“说明要忽略的是目录</li>
+<li>使用！取反（例如目录中包含  test.a，并且gitignore文件中包含  *.[oa]，如果在文件中加入 ！test.a   表明忽略除test.a文件以外的后缀名为.a或者.o的文件）</li>
+</ul>
+</li>
+<li>回退：git reset –hard <commit_id></commit_id></li>
+</ul>
+</li>
+<li>Changes not staged for commit<blockquote>
+<p>修改的文件，但是还没有放入暂存区域，也就是没生成快照。（git add放入暂存区）</p>
+</blockquote>
+</li>
+<li>Changes to be committed<blockquote>
+<p>在暂存区域生成了快照，等待被提交。通过“git rm –cached README.txt”命令，可以将文件状态还原为未暂存状态，即回到“Untracked files”文件状态。</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="图示"><a href="#图示" class="headerlink" title="图示"></a>图示</h4><p><img src="https://note.youdao.com/yws/public/resource/65527f948351fb585d8a5ada37ad9f98/xmlnote/AD735CEA073042FBA2B7772D7D88106D/30514" alt="image"></p>
+<p><img src="https://note.youdao.com/yws/public/resource/65527f948351fb585d8a5ada37ad9f98/xmlnote/B0A40DE21C8E4FB79D659FE937C0FB09/30520" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">graph LR</div><div class="line">工作区-Workspace--&gt;暂存区-IndexStage</div><div class="line">暂存区-IndexStage--&gt;本地仓库-Repository</div><div class="line">本地仓库-Repository--&gt;远程仓库-Remote</div><div class="line">本地仓库-Repository--&gt;工作区-Workspace</div><div class="line">远程仓库-Remote--&gt;本地仓库-Repository</div><div class="line">远程仓库-Remote--&gt;工作区-Workspace</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>工作区-Workspace–&gt;暂存区-IndexStage</td>
+<td>add</td>
+</tr>
+<tr>
+<td>暂存区-IndexStage–&gt;本地仓库-Repository</td>
+<td>commit</td>
+</tr>
+<tr>
+<td>本地仓库-Repository–&gt;远程仓库-Remote</td>
+<td>push</td>
+</tr>
+<tr>
+<td>本地仓库-Repository–&gt;工作区-Workspace</td>
+<td>checkout</td>
+</tr>
+<tr>
+<td>远程仓库-Remote–&gt;本地仓库-Repository</td>
+<td>clone</td>
+</tr>
+<tr>
+<td>远程仓库-Remote–&gt;工作区-Workspace</td>
+<td>pull(fetch/merge)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ol>
+<li><strong>只有暂存区域的文件（即：文件状态为“Changes to be committed”）才会被提交，提交到本地仓库。</strong></li>
+<li>如果不想通过暂存区而直接提交，可以使用git commit -a命令，这个命令可以将所以已经跟踪过的文件暂存起来一并提交，而不用git add。（<strong>未跟踪的不行</strong>）提交时注意添加说明git commit -a -m “Add a description”</li>
+<li>git add既可以用来跟踪新的文件（新增、删除），亦可以将已经跟踪的文件添加到暂存区（修改）。暂存区是下一次提交的文件，因此git add也可以理解为将此文件作为下次提交的文件。</li>
+<li></li>
+</ol>
+<h4 id="重要概念"><a href="#重要概念" class="headerlink" title="重要概念"></a>重要概念</h4><ol>
+<li>远程跟踪分支：“远程的”标记名称（如 :origin）+ “/“ + 远程仓库里分支的真正名称（“远程名称”是一个代码仓库别名，和本地目录或URL是一个含义，你可以通过”==git remote==”命令自由定义额外的“远程名称”。但“git clone”命令==默认==使用的是“origin”这个名称。） <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git branch -r</div><div class="line">origin/Dev_Br_20190528</div><div class="line">origin/HEAD -&gt; origin/master</div><div class="line">origin/Hot_Br_20190513</div><div class="line">origin/Hot_Br_20190514</div><div class="line">origin/master</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="命令使用"><a href="#命令使用" class="headerlink" title="命令使用"></a>命令使用</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git fetch</td>
+<td>从远端的源仓库更新到本地的代码仓库，执行完命令还不会立即将下载的文件合并到你当前工作目录里，你需要执行一个“合并（merge）”操作：git merge origin/master</td>
+</tr>
+<tr>
+<td>git rebase</td>
+<td><a href="https://www.cnblogs.com/kidsitcn/p/5339382.html" target="_blank" rel="external">https://www.cnblogs.com/kidsitcn/p/5339382.html</a> 【==待整理TODO==】</td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/05/18/web安全交流/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">web安全交流</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2019/05/18/git小技巧之一/">
+        <span class="next-text nav-default">git小技巧之一</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">moon zhou.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

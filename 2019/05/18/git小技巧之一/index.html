@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="git小技巧之一"/>
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="弦 博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://moon-zhou.github.io/2019/05/18/git小技巧之一/"/>
+
+
+<meta name="description" content="Git Log的进阶使用 Git查看日志，单独使用git log来操作，每一个commit信息太多，干扰信息又太多，而且各种分支的合并也看不到。优化如下： git log –graph –pretty=format:’%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset’ –abbr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git小技巧之一">
+<meta property="og:url" content="https://moon-zhou.github.io/2019/05/18/git小技巧之一/index.html">
+<meta property="og:site_name" content="弦 博客">
+<meta property="og:description" content="Git Log的进阶使用 Git查看日志，单独使用git log来操作，每一个commit信息太多，干扰信息又太多，而且各种分支的合并也看不到。优化如下： git log –graph –pretty=format:’%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset’ –abbr">
+<meta property="og:updated_time" content="2019-05-18T16:07:48.280Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git小技巧之一">
+<meta name="twitter:description" content="Git Log的进阶使用 Git查看日志，单独使用git log来操作，每一个commit信息太多，干扰信息又太多，而且各种分支的合并也看不到。优化如下： git log –graph –pretty=format:’%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset’ –abbr">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> git小技巧之一 - 弦 博客 </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">弦 博客</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          git小技巧之一
+        
+      </h1>
+
+      <time class="post-time">
+          5月 18 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h4 id="Git-Log的进阶使用"><a href="#Git-Log的进阶使用" class="headerlink" title="Git Log的进阶使用"></a>Git Log的进阶使用</h4><ol>
+<li>Git查看日志，单独使用git log来操作，每一个commit信息太多，干扰信息又太多，而且各种分支的合并也看不到。优化如下：<blockquote>
+<p>git log –graph –pretty=format:’%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative</p>
+</blockquote>
+</li>
+<li><p>别名的使用：alias</p>
+<blockquote>
+<p>git config –global alias.ck checkout<br>git config –global alias.br branch<br>git config –global alias.cm commit<br>git config –global alias.st status</p>
+</blockquote>
+<p> 配置之后，原来的git checkout直接使用git ck即可。==alias.xx==点后面的xx就代表了我们设置的别名。<br> 结合别名的特性，我们可以优化第一点里的log以提高上述代码的效率。配置如下：  </p>
+<blockquote>
+<p>git config –global alias.lg “log –graph –pretty=format:’%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative”</p>
+</blockquote>
+</li>
+<li><p>常用技巧<br> 功能 | 快捷键<br> —|—<br> 复制 | ctrl + insert<br> 粘贴 | shift + insert<br> 看日志 | 回车-查看更多，q-退出查看<br> merge后commit | linux模式：”i”进入编辑模式，”ESC”退出编辑模式，”:” + “wq”退出并保存</p>
+</li>
+<li><p>组合命令<br> 原始命令 | 组合命令<br> —|—<br> git add<br> git commit | git commit -a -m</p>
+</li>
+</ol>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/05/18/git学习/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">git学习</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2019/05/18/git小技巧之二/">
+        <span class="next-text nav-default">git小技巧之二</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">moon zhou.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

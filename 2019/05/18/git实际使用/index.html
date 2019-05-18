@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="git实际使用"/>
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="弦 博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://moon-zhou.github.io/2019/05/18/git实际使用/"/>
+
+
+<meta name="description" content="配置 Git 查看当前用户（global）配置信息：git config –global –list   修改配置信息：git config –global user.name 17080118git config –global user.email “17080118@cnsuning.com” 删除配置：git config –global –unset  XXX  查看 已commit但是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git实际使用">
+<meta property="og:url" content="https://moon-zhou.github.io/2019/05/18/git实际使用/index.html">
+<meta property="og:site_name" content="弦 博客">
+<meta property="og:description" content="配置 Git 查看当前用户（global）配置信息：git config –global –list   修改配置信息：git config –global user.name 17080118git config –global user.email “17080118@cnsuning.com” 删除配置：git config –global –unset  XXX  查看 已commit但是">
+<meta property="og:updated_time" content="2019-05-18T16:08:16.789Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git实际使用">
+<meta name="twitter:description" content="配置 Git 查看当前用户（global）配置信息：git config –global –list   修改配置信息：git config –global user.name 17080118git config –global user.email “17080118@cnsuning.com” 删除配置：git config –global –unset  XXX  查看 已commit但是">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> git实际使用 - 弦 博客 </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">弦 博客</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          git实际使用
+        
+      </h1>
+
+      <time class="post-time">
+          5月 18 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h4 id="配置-Git"><a href="#配置-Git" class="headerlink" title="配置 Git"></a>配置 Git</h4><ol>
+<li>查看当前用户（global）配置信息：git config –global –list  </li>
+<li>修改配置信息：git config –global user.name 17080118<br>git config –global user.email “17080118@cnsuning.com”</li>
+<li>删除配置：git config –global –unset  XXX</li>
+</ol>
+<h4 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h4><ol>
+<li>已commit但是未push的状态查看<ul>
+<li>git status #只能查看未传送提交的次数</li>
+<li>git cherry -v #只能查看未传送提交的描述/说明</li>
+<li>git log master ^origin/master #则可以查看未传送提交的详细信息</li>
+</ul>
+</li>
+</ol>
+<h4 id="代码提交步骤"><a href="#代码提交步骤" class="headerlink" title="代码提交步骤"></a>代码提交步骤</h4><ol>
+<li>git add . #提交未跟踪、修改和删除文件</li>
+<li>git commit -m ‘commit message’</li>
+<li>git push origin remoteBranchXXXX</li>
+<li></li>
+</ol>
+<h4 id="后悔药系列"><a href="#后悔药系列" class="headerlink" title="后悔药系列"></a>后悔药系列</h4><ol>
+<li>本地commit之后，发现提交log填写错误，通过以下操作进行回退：<ul>
+<li>git commit –amend</li>
+<li>按下字母键 c（此时进入编辑状态），可以开始修改注释信息了</li>
+<li>修改完成之后，按下Esc (退出编辑状态)； 接着连按两次大写字母Z，保存好退出</li>
+</ul>
+</li>
+<li>代码回退<ul>
+<li>git reset –hard commit_id #退到 指定commit的sha码</li>
+<li>git reset –hard HEAD^ #回退到上个版本</li>
+<li>git reset –hard HEAD~3 #回退到前3次提交之前，以此类推，回退到n次提交之前</li>
+<li><strong>以上做完，需要强推到远程</strong>：git push origin HEAD –force</li>
+<li><strong>==强推需要注意，当前分支不能是保护分支==</strong></li>
+</ul>
+</li>
+<li>git add之后，发现添加错了文件，使用git reset进行回退<ul>
+<li>git reset HEAD 如果后面什么都不跟的话 就是上一次add 里面的全部撤销了 </li>
+<li>git reset HEAD XXX/XXX/XXX.java 就是对某个文件进行撤销了</li>
+</ul>
+</li>
+</ol>
+<h4 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h4><ol>
+<li>代码库确认<br>git remote -v</li>
+<li>查看分支与远程分支追踪状态<br>git branch -vv</li>
+<li>展示代码库下远程所有分支<br>git branch -a</li>
+<li>查看本地的git分支<br>git branch</li>
+<li>查看所有远程分支<br>git branch -r</li>
+<li>本地分支切换<br>git checkout branchNameXXX</li>
+<li><strong>删除远程分支</strong><br>git push origin –delete remoteBranchName</li>
+<li>删除本地分支<br>git branch -d 不能在当前分支（如在master分支使用该命令，删除其他分支）</li>
+</ol>
+<h4 id="实际操作案例"><a href="#实际操作案例" class="headerlink" title="实际操作案例"></a>实际操作案例</h4><blockquote>
+<p>一个迭代版本之后，旧分支合并master，同时删除旧分支，同时拉了新分支，如何进行操作，保持本地分支与远程分支的一致性。  </p>
+<ol>
+<li>查看远程分支：git branch -r</li>
+<li>查看本地分支：git branch</li>
+<li>或者使用git branch -a，查看本地和远程所有分支，比较出本地仓库和远程仓库的分支差异之后。进行如下操作。</li>
+<li>获取远程仓库的新分支以及删除远程仓库已删除的分支:git fetch -p</li>
+<li>获取远程新拉的分支（创建新分支并立即切换到新分支）：git checkout -b 或者 git checkout -b 本地分支名 origin/远程分支名 newBranchNameXXXX</li>
+<li>拉取远程新拉分支的代码：git pull origin newBranchNameXXXX<br>或者将本地分支与远程分支关联后直接pull： git branch –set-upstream-to=origin/RemoteBranch  LocalBranch</li>
+<li>因为已经发布，删除本地之前版本分支：git branch -D oldBranchNameXXX # 该命令不能在当前分支上删除当前分支，-D和-d有区别</li>
+<li>其中5和6可以使用==git checkout -b localBranchName origin/remoteBranchName==(在本地新建分支，并自动切换到该本地分支。<br>采用此种方法建立的本地分支会和远程分支建立映射关系)。同理也可以使用==git fetch origin remoteBranchName:localBranchName==（使用该方式会在本地新建分支，但是不会切换到该本地分支，需要手动checkout切换。<br>采用此种方法建立的本地分支不会和远程分支建立映射关系。）+==git branch -u origin/remoteBranchName==（将当前分支映射到远程的指定分支，注意切换到当前分支；<strong>本地分支和远程分支建立映射时，两个名字不一定要一样</strong>）</li>
+</ol>
+<p>不同分支之间进行合并：dev分支为公共的开发版本分支，ft分支为各自的编码分支，ft分支push之后，如何合并到dev分支，步骤如下：</p>
+<ol>
+<li>切换到dev分支：git checkout devBranch</li>
+<li>拉取dev分支代码：git pull</li>
+<li>将ft分支合并到dev分支：git merge  ftBranch</li>
+<li>解决冲突：&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记冲突，删除不需要的部分即可。</li>
+<li>解决冲突之后，重新commit-push。<br> demo说明： <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A-----C----E (&quot;stable&quot;)</div><div class="line">  \</div><div class="line">   B-----D-----F (&quot;new-idea&quot;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<pre><code>* git checkout stable   # Change to work on the branch &quot;stable&quot;
+* git merge new-idea    # Merge in &quot;new-idea&quot;
+* 做完上述两步得到如下结果：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A-----C----E----G (&quot;stable&quot;)</div><div class="line"> \             /</div><div class="line">  B-----D-----F (&quot;new-idea&quot;)</div></pre></td></tr></table></figure>
+
+* 要是你继续在“new idea” 和“stable”分支提交, 会得到：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A-----C----E----G---H (&quot;stable&quot;)</div><div class="line"> \             /</div><div class="line">  B-----D-----F----I (&quot;new-idea&quot;)</div></pre></td></tr></table></figure>
+
+* 因此现在A, B, C, D, E, F, G 和 H 属于 “stable”，而A, B, D, F 和 I 属于 “new-idea”。
+</code></pre><blockquote>
+<p>切换分支后获取更新时的意外情况：先checkout切换分支，再pull</p>
+<ol>
+<li>可能出现错误：Git pull - Please move or remove them before you can merge</li>
+</ol>
+<p>如果多人提交时，别人先提交，自己本地修改了代码(相同的文件行)，然后pull时，会报error: Your local changes to the following files would be overwritten by merge:</p>
+<ol>
+<li>如果你想保留刚才本地修改的代码，并把git服务器上的代码pull到本地（本地刚才修改的代码将会被暂时封存起来）<ul>
+<li>git stash</li>
+<li>git pull origin master</li>
+<li>git stash pop</li>
+</ul>
+</li>
+<li>如果你想完全地覆盖本地的代码，只保留服务器端代码，则直接回退到上一个版本，再进行pull<ul>
+<li>git reset –hard</li>
+<li>git pull origin master</li>
+</ul>
+</li>
+<li>如果没有冲突，先pull后push之后，代码的提交分支就会看上去很乱，不是一条干净的直线。pull完之后rebase再提交即可把分叉的提交变成一条直线。<ul>
+<li>git pull</li>
+<li>git rebase</li>
+<li>git push</li>
+</ul>
+</li>
+</ol>
+<p>如果只在一条主分支上开发，忽然意识到这可能不太合适，需要一个在一个开发分支进行相关修改，步骤如下：</p>
+<ol>
+<li>主分支 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">last version from another repository</div><div class="line">     |</div><div class="line">     v</div><div class="line"> M---N-----O----P---Q (&quot;master&quot;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<ol>
+<li>把变更后的OPQ拆到新分支上 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">git branch dubious-experiment</div><div class="line"></div><div class="line">  M---N-----O----P---Q (&quot;master&quot; and &quot;dubious-experiment&quot;)</div><div class="line"></div><div class="line">  git checkout master</div><div class="line"></div><div class="line">  # Be careful with this next command: make sure &quot;git status&quot; is</div><div class="line">  # clean, you&apos;re definitely on &quot;master&quot; and the</div><div class="line">  # &quot;dubious-experiment&quot; branch has the commits you were working</div><div class="line">  # on first...</div><div class="line"></div><div class="line">  git reset --hard &lt;SHA1sum of commit N&gt;</div><div class="line"></div><div class="line">       (&quot;master&quot;)</div><div class="line">  M---N-------------O----P---Q (&quot;dubious-experiment&quot;)</div><div class="line"></div><div class="line">  git pull # Or something that updates &quot;master&quot; from</div><div class="line">           # somewhere else...</div><div class="line"></div><div class="line">  M--N----R---S (&quot;master&quot;)</div><div class="line">      \</div><div class="line">       O---P---Q (&quot;dubious-experiment&quot;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/3be4029ce854" target="_blank" rel="external">https://www.jianshu.com/p/3be4029ce854</a><br><a href="https://www.oschina.net/translate/git-fetch-and-merge?cmp" target="_blank" rel="external">https://www.oschina.net/translate/git-fetch-and-merge?cmp</a><br><a href="https://www.cnblogs.com/flying_bat/p/3408634.html" target="_blank" rel="external">https://www.cnblogs.com/flying_bat/p/3408634.html</a></p>
+</blockquote>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/05/18/git小技巧之二/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">git小技巧之二</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/06/27/hello-world/">
+        <span class="next-text nav-default">Hello World</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">moon zhou.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

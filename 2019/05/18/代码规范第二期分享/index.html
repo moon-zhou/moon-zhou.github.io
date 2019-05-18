@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="代码规范第二期"/>
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="弦 博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://moon-zhou.github.io/2019/05/18/代码规范第二期分享/"/>
+
+
+<meta name="description" content="代码规范第二期code style 编程到底是什么样的一种活动       将需求明确到机器可以执行的细节程度,就是编程要做的事,而这种规范或者说约束,正是代码。 态度:你是专业的程序员,不要做不专业的事。经理维护进度和需求,警察维护治安,清洁工维护卫生状况,你则要维护代码。 你能分辨代码好坏,并不代表你能写出好代码。 代码大部分时候是用来维护的，而不是用来实现功能的。 在代码阅读过程中人们说脏话">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码规范第二期">
+<meta property="og:url" content="https://moon-zhou.github.io/2019/05/18/代码规范第二期分享/index.html">
+<meta property="og:site_name" content="弦 博客">
+<meta property="og:description" content="代码规范第二期code style 编程到底是什么样的一种活动       将需求明确到机器可以执行的细节程度,就是编程要做的事,而这种规范或者说约束,正是代码。 态度:你是专业的程序员,不要做不专业的事。经理维护进度和需求,警察维护治安,清洁工维护卫生状况,你则要维护代码。 你能分辨代码好坏,并不代表你能写出好代码。 代码大部分时候是用来维护的，而不是用来实现功能的。 在代码阅读过程中人们说脏话">
+<meta property="og:updated_time" content="2019-05-18T16:09:06.264Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="代码规范第二期">
+<meta name="twitter:description" content="代码规范第二期code style 编程到底是什么样的一种活动       将需求明确到机器可以执行的细节程度,就是编程要做的事,而这种规范或者说约束,正是代码。 态度:你是专业的程序员,不要做不专业的事。经理维护进度和需求,警察维护治安,清洁工维护卫生状况,你则要维护代码。 你能分辨代码好坏,并不代表你能写出好代码。 代码大部分时候是用来维护的，而不是用来实现功能的。 在代码阅读过程中人们说脏话">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 代码规范第二期 - 弦 博客 </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">弦 博客</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          代码规范第二期
+        
+      </h1>
+
+      <time class="post-time">
+          5月 18 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="代码规范第二期"><a href="#代码规范第二期" class="headerlink" title="代码规范第二期"></a>代码规范第二期</h1><h2 id="code-style"><a href="#code-style" class="headerlink" title="code style"></a>code style</h2><ol>
+<li><p>编程到底是什么样的一种活动    </p>
+<blockquote>
+<ul>
+<li>将需求明确到机器可以执行的细节程度,就是编程要做的事,而这种规范或者说约束,正是代码。</li>
+<li>态度:你是专业的程序员,不要做不专业的事。经理维护进度和需求,警察维护治安,清洁工维护卫生状况,你则要维护代码。</li>
+<li>你能分辨代码好坏,并不代表你能写出好代码。</li>
+<li>代码大部分时候是用来维护的，而不是用来实现功能的。</li>
+<li>在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。<br>– <em>clean code</em></li>
+</ul>
+</blockquote>
+</li>
+<li><p>小原则</p>
+<ul>
+<li>定义你自己的代码阅读等级范围<br>  明确下经常读你代码的人他们的水平在什么程度，这样我们就可以明确我们的Clean 究竟要Clean到什么程度。</li>
+<li>多读同事的代码或者开源代码（以人为镜）。</li>
+</ul>
+</li>
+<li><p>编码规则及案例</p>
+<ul>
+<li>面向接口编程，使用接口声明<br>  不推荐方式：<br>  ArrayList<string> list = new ArrayList<string>();<br>  推荐方式：<br>  List<string> list = new ArrayList<string>();</string></string></string></string></li>
+<li>DB、IO操作等需要使用结束close()的对象必须在try-catch-finally 的finally中close()，如果有多个对象需要close()，需要<strong>分别</strong>对每个对象的close()方法进行try-catch，防止一个对象关闭失败其他对象都未关闭<br>`<br>  try {<pre><code>//业务处理
+</code></pre>  } catch (Exception e) {<pre><code>//异常处理
+</code></pre>  } finally {<pre><code>//资源关闭处理
+</code></pre>  }<br>`</li>
+<li>注释会骗人（当注释和代码实际的实现出现偏差时，代码才是唯一）</li>
+<li>大量字符串的相加等处理应该使用StringBuilder 或StringBuffer，并且预设容量值。<br>  大量：一般指5次“+=”以上或者在循环中进行字符串+=操作。<br>  容量值：构造器会创建一个默认大小(通常是16)的字符数组。在使用中，如果超出这个大小，就会重新分配内存，每次自然递增(OldNum * 2) +2 个，创建一个更大的数组，并将原先的数组复制过来，再丢弃旧的数组。<br>  注意：多线程并发使用StringBuffer，局部变量单线程使用StringBuilder。</li>
+<li>在使用正则表达式时，利用好其预编译功能，可以有效加快正则匹配速度。<br>说明：不要在方法体内定义：Pattern pattern = Pattern.compile(规则);<br>`<br>  public static String filterHTMLTagInStyle(String htmlStr) {<pre><code>String reg_html=&quot;regex&quot;;
+Pattern pattern= Pattern.compile(reg_html,Pattern.CASE_INSENSITIVE);
+Matcher matcher=pattern.matcher(htmlStr);
+htmlStr=matcher.replaceAll(&quot;&quot;); //过滤html标签
+return htmlStr;
+</code></pre>  }<br>`</li>
+<li>接口类中的方法和属性不要加任何修饰符号（public 也不要加，默认），保持代码的简洁性，并加上有效的Javadoc注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量。</li>
+<li>用户敏感数据禁止直接展示，必须对展示数据脱敏（隐位规则统一处理）。同时门户系统，对隐私信息的传输，也需要进行加密（现阶段是非对称加密）。传输的方式使用post方式，禁止get方式（安全扫描会报安全漏洞）。</li>
+<li>用户请求传入的任何参数必须做有效性验证。</li>
+<li>使用entrySet遍历Map类集合KV，而不是keySet方式进行遍历<br>说明：keySet其实是遍历了2次，一次是转为Iterator对象，另一次是从hashMap中取出key所对应的value。而entrySet只是遍历了一次就把key和value都放到了entry中，效率更高。如果是JDK8，使用Map.foreach方法。</li>
+<li>命名  <ol>
+<li>如果使用到了设计模式，建议在类名中体现出具体模式,有利于阅读者快速理解架构设计思想。<br> 正例：public class OrderFactory;</li>
+<li>枚举类名建议带上Enum后缀，枚举成员名称需要全大写，单词间用下划线隔开。<br> 说明：枚举其实就是特殊的常量类，且构造方法被默认强制是私有。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="生产问题-刚刚出炉的热乎bug"><a href="#生产问题-刚刚出炉的热乎bug" class="headerlink" title="生产问题(刚刚出炉的热乎bug)"></a>生产问题(刚刚出炉的热乎bug)</h2><h4 id="不发布的情况下，产生的bug系列"><a href="#不发布的情况下，产生的bug系列" class="headerlink" title="不发布的情况下，产生的bug系列"></a>不发布的情况下，产生的bug系列</h4><ol>
+<li>上线但运行4个月无反馈的bug<br><a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=33621924" target="_blank" rel="external">http://wiki.cnsuning.com/pages/viewpage.action?pageId=33621924</a></li>
+<li>跟随系统一起交接过来的bug<br><a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=33622386" target="_blank" rel="external">http://wiki.cnsuning.com/pages/viewpage.action?pageId=33622386</a></li>
+<li>系统njs升级涉及代码bug<br><a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=33621010" target="_blank" rel="external">http://wiki.cnsuning.com/pages/viewpage.action?pageId=33621010</a></li>
+</ol>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
+<li>code review<br>从目前小组全员review来看，效果不是很好。可以考虑迁移git之后，从代码提交时就进行code review。</li>
+<li>终极解决方案：人（唯心） ==》 <strong>Later Is Never</strong><br>表象行为：“稍后再….”，稍后再抽个方法，稍后再重命名，稍后再重构，稍后再验证这个场景等等。<br>这个时候就要各位小心，往往稍后再XXX是没有稍后的。</li>
+</ol>
+<blockquote>
+<p>你还得练,孩子,还得练(共勉)</p>
+</blockquote>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2019/05/18/代码规范第二期 backup/">
+        <span class="next-text nav-default">代码规范第二期 backup</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">moon zhou.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
