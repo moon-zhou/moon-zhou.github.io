@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="代码规范第二期 backup"/>
+        <meta property="og:title" content="傻瓜式学Vue-01搭建环境、初始化项目"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>代码规范第二期 backup - 弦 博客</title>
+    <title>傻瓜式学Vue-01搭建环境、初始化项目 - 弦 博客</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -124,8 +124,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">代码规范第二期 backup</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-05-18</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">傻瓜式学Vue-01搭建环境、初始化项目</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-06-02</p>
         </div>
     </div>
 
@@ -145,29 +145,60 @@
                     
 
                     <!-- Main Post Content -->
-                    <h1 id="代码规范第二期"><a href="#代码规范第二期" class="headerlink" title="代码规范第二期"></a>代码规范第二期</h1><h2 id="code-style-规范"><a href="#code-style-规范" class="headerlink" title="code style 规范"></a>code style 规范</h2><ol>
-<li>形而上，但是的确很重要也很实用的原则<ul>
-<li>定义你自己的代码阅读等级范围</li>
-<li>方法视角：先实现基本方法，之后再在方法内抽取进行重构</li>
-<li>接口/类视角：有多个待实现的方法，最后一个方法实现之后，再进行重构</li>
-<li>大的视角来看，我们需要遵循原则，但是代码很多时候是运行在具体的场景里。因此写合适的代码，</li>
-</ul>
-</li>
-<li>细节上的注意点<ul>
-<li>注释会骗人（代码才是唯一）</li>
-<li></li>
-</ul>
-</li>
+                    <h4 id="学前准备"><a href="#学前准备" class="headerlink" title="学前准备"></a>学前准备</h4><ol>
+<li>了解node</li>
+<li>了解win下环境变量的概念，命令行的基本操作</li>
 </ol>
-<h2 id="生产问题-刚刚出炉的热乎bug"><a href="#生产问题-刚刚出炉的热乎bug" class="headerlink" title="生产问题(刚刚出炉的热乎bug)"></a>生产问题(刚刚出炉的热乎bug)</h2><h4 id="不发布的情况下，产生的bug系列"><a href="#不发布的情况下，产生的bug系列" class="headerlink" title="不发布的情况下，产生的bug系列"></a>不发布的情况下，产生的bug系列</h4><ol>
-<li>上线但运行4个月无反馈的bug<br><a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=33621924" target="_blank" rel="external">http://wiki.cnsuning.com/pages/viewpage.action?pageId=33621924</a></li>
-<li>跟随系统一起交接过来的bug<br><a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=33622386" target="_blank" rel="external">http://wiki.cnsuning.com/pages/viewpage.action?pageId=33622386</a></li>
-<li>系统njs升级涉及代码bug<br><a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=33621010" target="_blank" rel="external">http://wiki.cnsuning.com/pages/viewpage.action?pageId=33621010</a></li>
-</ol>
-<h2 id="自我升级"><a href="#自我升级" class="headerlink" title="自我升级"></a>自我升级</h2><p>终极解决方案（唯心）：人 ==》 <strong>Later Is Never</strong><br>表象行为：“稍后再….”，稍后再抽个方法，稍后再重命名，稍后再重构，稍后再验证这个场景等等。<br>这个时候就要各位小心，往往稍后再XXX是没有稍后的。</p>
-<blockquote>
-<p>你还得练,孩子,还得练(共勉)</p>
+<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ol>
+<li>安装node，下载地址<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a><blockquote>
+<p>傻瓜式安装，注意安装目录，尽量不要在c盘。注意版本最好选10，需要升级的下载覆盖原有安装即可。</p>
 </blockquote>
+</li>
+<li>确认安装完成<blockquote>
+<p>node -v</p>
+</blockquote>
+</li>
+<li>配置npm的全局模块的存放路径以及cache的路径，防止安装在c盘，使用npm config ls查看配置是否生效。<blockquote>
+<p>配置文件D:\DevProgram\nodejs\node_modules\npm\npmrc，添加配置如下：<br>prefix=D:\DevProgram\nodejs\node_global<br>cache=D:\DevProgram\nodejs\node_cache<br>或者使用命令<br>npm config set cache “D:\vueProject\nodejs\node_cache”<br>npm config set prefix “D:\vueProject\nodejs\node_global”</p>
+</blockquote>
+</li>
+<li>安装淘宝npm镜像<blockquote>
+<p>由于npm是国外的，使用起来比较慢，我们这里使用淘宝的cnpm镜像来安装vue.<br>淘宝的cnpm命令管理工具可以代替默认的npm管理工具。<br> 安装命令：npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a><br> 配置环境变量，将上面prefix的目录配置到path，完成即可使用cnpm替代npm命令</p>
+</blockquote>
+</li>
+<li>安装webpack<blockquote>
+<p>cnpm install webpack -g</p>
+</blockquote>
+</li>
+<li>安装vue<blockquote>
+<p>cnpm install vue -g</p>
+</blockquote>
+</li>
+<li>安装全局vue-cli脚手架<blockquote>
+<p>cnpm install –global vue-cli或者cnpm install vue -g<br>验证：输入vue，出来vue的信息，及说明安装成功</p>
+</blockquote>
+</li>
+<li>新项目的创建<ul>
+<li>vue init webpack my-project-first</li>
+<li>进入my-project-first文件夹</li>
+<li>cnpm install</li>
+<li>cnpm run dev</li>
+<li>访问<a href="http://localhost:8080/#/" target="_blank" rel="external">http://localhost:8080/#/</a></li>
+<li>打包：cnpm run build</li>
+</ul>
+</li>
+<li>安装IDE<blockquote>
+<p>VSCode &amp; WebStorm</p>
+</blockquote>
+</li>
+<li>导入创建的文件夹</li>
+<li>目录结构介绍：或有些微不同 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">├── README.md            项目介绍</div><div class="line">├── index.html           入口页面</div><div class="line">├── build              构建脚本目录</div><div class="line">│  ├── build-server.js         运行本地构建服务器，可以访问构建后的页面</div><div class="line">│  ├── build.js            生产环境构建脚本</div><div class="line">│  ├── dev-client.js          开发服务器热重载脚本，主要用来实现开发阶段的页面自动刷新</div><div class="line">│  ├── dev-server.js          运行本地开发服务器</div><div class="line">│  ├── utils.js            构建相关工具方法</div><div class="line">│  ├── webpack.base.conf.js      wabpack基础配置</div><div class="line">│  ├── webpack.dev.conf.js       wabpack开发环境配置</div><div class="line">│  └── webpack.prod.conf.js      wabpack生产环境配置</div><div class="line">├── config             项目配置</div><div class="line">│  ├── dev.env.js           开发环境变量</div><div class="line">│  ├── index.js            项目配置文件</div><div class="line">│  ├── prod.env.js           生产环境变量</div><div class="line">│  └── test.env.js           测试环境变量</div><div class="line">├── mock              mock数据目录</div><div class="line">│  └── hello.js</div><div class="line">├── package.json          npm包配置文件，里面定义了项目的npm脚本，依赖包等信息</div><div class="line">├── src               源码目录  </div><div class="line">│  ├── main.js             入口js文件</div><div class="line">│  ├── app.vue             根组件</div><div class="line">│  ├── components           公共组件目录</div><div class="line">│  │  └── title.vue</div><div class="line">│  ├── assets             资源目录，这里的资源会被wabpack构建</div><div class="line">│  │  └── images</div><div class="line">│  │    └── logo.png</div><div class="line">│  ├── routes             前端路由</div><div class="line">│  │  └── index.js</div><div class="line">│  ├── store              应用级数据（state）</div><div class="line">│  │  └── index.js</div><div class="line">│  └── views              页面目录</div><div class="line">│    ├── hello.vue</div><div class="line">│    └── notfound.vue</div><div class="line">├── static             纯静态资源，不会被wabpack构建。</div><div class="line">└── test              测试文件目录（unit&amp;e2e）</div><div class="line">  └── unit              单元测试</div><div class="line">    ├── index.js            入口脚本</div><div class="line">    ├── karma.conf.js          karma配置文件</div><div class="line">    └── specs              单测case目录</div><div class="line">      └── Hello.spec.js</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="严重参考"><a href="#严重参考" class="headerlink" title="严重参考"></a>严重参考</h4><ol>
+<li><a href="https://www.jianshu.com/p/0c6678671635" target="_blank" rel="external">https://www.jianshu.com/p/0c6678671635</a></li>
+<li><a href="https://www.cnblogs.com/zhaomeizi/p/8483597.html" target="_blank" rel="external">https://www.cnblogs.com/zhaomeizi/p/8483597.html</a></li>
+</ol>
 
                     
                     <!-- Tags Bottom -->
