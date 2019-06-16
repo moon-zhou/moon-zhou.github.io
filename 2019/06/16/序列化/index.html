@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="never stop">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="moon zhou">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="序列化"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="never stop" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="弦 博客"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>序列化 - 弦 博客</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="弦 博客">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="弦 博客">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/tags" 
+                    title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/categories" 
+                    title="Categories">
+                    Categories
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/about.html" 
+                    title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contact.html" 
+                    title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">序列化</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-06-16</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+
+                    <!-- Main Post Content -->
+                    <h4 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h4><blockquote>
+<p>个人会员wap系统，新增实名申诉降级流程，开发过程中，涉及选择已实名账号，上传证件等多步骤操作，后端一开始就要缓存实名用户的信息，缓存的地方为session。因为我们需要进行会话保持，从而我们使用了公司的snf-web-session组件，其底层实现是将缓存在session里的数据缓存在redis中，而不是web容器里。但是在我们实际的场景里，缓存塞值的时候是没有问题，但是在取值的时候，始终是null。</p>
+</blockquote>
+<h4 id="猜测原因"><a href="#猜测原因" class="headerlink" title="猜测原因"></a>猜测原因</h4><ol>
+<li>HttpRequest只能在controller层使用，不能在更下层使用。[修改后发现问题没有解决]</li>
+<li>是否是塞值的时候有异常，断点调试时无法复现，加入try-catch后未发现异常。</li>
+<li>发现缓存的抽象类没有实现序列化接口，猜测需要进行序列化。修改后功能正常。</li>
+</ol>
+<h4 id="什么是序列化"><a href="#什么是序列化" class="headerlink" title="什么是序列化"></a>什么是序列化</h4><ul>
+<li>官方解释：将对象的状态信息转换为可以存储或传输的形式的过程</li>
+<li>简言之：了保存在内存中的各种实例对象的状态（也就是实例变量，不是方法），并且可以把保存的对象状态再读出来（也可以理解为不同jvm之间共享实例对象的一种解决方案）</li>
+</ul>
+<h4 id="为什么序列化"><a href="#为什么序列化" class="headerlink" title="为什么序列化"></a>为什么序列化</h4><ol>
+<li>当你想把的内存中的对象状态保存到一个文件中或者数据库中时候</li>
+<li>当你想用套接字在网络上传送对象的时候</li>
+<li>当你想通过RMI/rpc调用传输对象的时候</li>
+</ol>
+<h4 id="如何进行序列化"><a href="#如何进行序列化" class="headerlink" title="如何进行序列化"></a>如何进行序列化</h4><ol>
+<li>Java里的序列化<blockquote>
+<p>Serializable是Java提供的一个序列化接口，它是一个空接口，专门为对象提供标准的序列化跟反序列化操作</p>
+</blockquote>
+</li>
+<li>继承关系的序列化<ul>
+<li>父类实现Serializable时，子类被序列化，父类也会被序列化。</li>
+<li>父类没有实现Serializable时，子类被序列化，父类不会被序列化</li>
+</ul>
+</li>
+<li><p>引用关系的序列化</p>
+<ul>
+<li>如果对一个实现了Serializable的类进行序列化操作，则同时对它的引用类进行序列化操作。如果引用类没有实现Serializable接口，JVM会抛出java.io.NotSerializableExeception:此时对Person类进行序列化操作，则会同时对Tool类进行序列化操作。若Tool类没有实现Serializable接口，则会抛出异常。  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class Person implements Serializable&#123;</div><div class="line">    private String name;</div><div class="line">    private Tool tool = new Tool();</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Tool implements Serializable&#123;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>特殊字段（敏感数据等）不需要进行序列化：使用transient进行修饰</p>
+</li>
+<li>序列化标识ID：serialVersionUID<ul>
+<li>当你序列化的时候这个UID会被写入文件,当反序列话的时候会去读取这个ID,并与反序列化的类中的UID对比,如果相同,那么反序列化就成功,如果不同,反序列化就会失败。如果设置了UID，即使字段发生==结构变化==，也会反序列化成功。所以手动指定UID,主要就是在类结构发生变化时,减少反序列化失败的几率(如果类发生了==非常规的结构变化==,比如类名变化,成员变量的类型变化,就算是指定了UID,反序列化也会失败)</li>
+<li>当你不指定UID的时候,系统会根据类的结构生成相应的hash值赋值给UID,但是当你的类的结构发生变化,比如增加一个字段或者减少一个字段的时候,UID就会发生变化,那么反序列话的时候两个类的UID就不一样了,就会反序列化失败</li>
+</ul>
+</li>
+<li>序列化与反序列化<ul>
+<li>写入文件和读取文件：ObjectOutputStream-writeObject，ObjectInputStream-readObject</li>
+</ul>
+</li>
+<li><p>自定义序列化策略</p>
+<ul>
+<li><p>定制序列化策略：Java提供了一套有效的机制，允许在序列化和反序列化时，使用定制的方法进行相应的处理。当传输双方协定好序列化策略后，只需要在需要传输的序列化类中添加一组方法来实现这组策略，在序列化时会自动调用这些规定好的方法进行序列化和反序列化。（策略的实现及底层含义：分别是将特定的对象写入到输出流中以及从输入流中恢复特定的对象，通过这==两个方法==，用户即可实现自定义的序列化。<strong>当在实现Serializable接口的类中写了上面两个方法之后，序列化或反序列化该类时则会通过反射来调用这两个方法，从而实现自定义序列化。</strong>）示例如下：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">private void writeObject(ObjectOutputStream out) throws IOException &#123;</div><div class="line">        out.defaultWriteObject();</div><div class="line">        out.writeInt(age);// customize</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException &#123;</div><div class="line">        in.defaultReadObject();</div><div class="line">        age = in.readInt(); // customize</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Externalizable</p>
+<ul>
+<li>该关键字序列化过程会调用类的无参构造函数-public，去创建一个新的对象，然后再将被保存对象的字段的值分别填充到新对象中</li>
+<li>序列化的细节需要由开发者去完成，实现writeExternal()与readExternal()方法</li>
+</ul>
+</li>
+<li>限制序列化对象的数量：通过反序列化获取实例，则单例模式会失效。解决方案：可以让我们在序列化和反序列化时，可以根据自己的需要，写入或读取指定的实例。使用这种机制，需要在实现Serializable接口的类中添加两个方法：<ul>
+<li>　private Object readResolve() 　　//如果用户在序列化类中添加了该方法，则在进行反序列化时，使用该方法返回的对象，作为反序列化对象。</li>
+<li>private Object writeReplace() 　　//如果用户在序列化类中添加了该方法，则在进行序列化时，序列化该类返回的对象。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Singleton implements Serializable &#123;</div><div class="line"></div><div class="line">    private volatile static Singleton mInstance;</div><div class="line">    private Singleton() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static Singleton getInstance() &#123;</div><div class="line">        if (mInstance == null) &#123;</div><div class="line">            synchronized (Singleton.class) &#123;</div><div class="line">                if (mInstance == null) &#123;</div><div class="line">                    mInstance = new Singleton();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return mInstance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    private Object readResolve() &#123;</div><div class="line">        return getInstance();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    private Object writeReplace() &#123;</div><div class="line">        return getInstance();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><ol>
+<li>通过intent传递过去的对象是经过了序列化与反序列化的,虽然传送的对象和接收的对象内容相同,但是是不同的对象,他们的引用是不同的</li>
+<li>静态变量及方法是不会经过序列化的,所以跨进程通信的时候静态变量是传送不过去的<ul>
+<li>静态变量。因为静态变量属于类的属性，并不属于某个具体实例，因此在序列化的时候无须进行序列化，反序列化时，可以直接获取类的静态成员引用。</li>
+<li>方法。方法只是一系列的操作集合，方法不会依赖对象，不会因为对象的不同，而操作不同，反序列化时，也可以从类中直接获取方法信息。</li>
+</ul>
+</li>
+</ol>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="moon zhou">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>近期文章</h3>
+    
+        <p>
+            <a href="/2019/06/16/序列化/">序列化</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/02/傻瓜式学Vue-01搭建环境、初始化项目/">傻瓜式学Vue-01搭建环境、初始化项目</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/02/傻瓜式学Vue-02一步一步小demo/">傻瓜式学Vue-02一步一步小demo</a>
+        </p>
+    
+        <p>
+            <a href="/2019/05/18/代码规范第二期 backup/">代码规范第二期 backup</a>
+        </p>
+    
+        <p>
+            <a href="/2019/05/18/代码规范第二期分享/">代码规范第二期</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
+                            <i class="fa fa-500px"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Untitled. All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
