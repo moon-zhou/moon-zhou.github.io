@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="git小技巧之一"/>
+        <meta property="og:title" content="弦 博客"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="website" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>git小技巧之一 - 弦 博客</title>
+    <title>page - 归档：2019 - 弦 博客</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -72,6 +72,8 @@
 <body>
 
 <!-- Main Content -->
+
+
 <!-- Banner -->
 <!-- Banner -->
 <div class="w-100 bg-1 ph5-ns ph3 text-light">
@@ -124,109 +126,180 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">git小技巧之一</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-05-18</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">2019</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns"></p>
         </div>
     </div>
 
     <!-- Icon -->
     <div class="relative w-100 mw8 center white dn dn-m db-ns">
-        <i class="header-icon fa fa-file-text-o"></i>
+        <i class="header-icon fa fa-folder-open"></i>
     </div>
 </div>
 
-<!-- Content -->
 <div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
     <div class="content">
         <div class="mw8 center">
-            <div class="cf">
-                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
-                    <!-- Tags Vertical -->
-                    
-
-                    <!-- Main Post Content -->
-                    <h4 id="Git-Log的进阶使用"><a href="#Git-Log的进阶使用" class="headerlink" title="Git Log的进阶使用"></a>Git Log的进阶使用</h4><ol>
-<li>Git查看日志，单独使用git log来操作，每一个commit信息太多，干扰信息又太多，而且各种分支的合并也看不到。优化如下：<blockquote>
-<p>git log –graph –pretty=format:’%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative</p>
-</blockquote>
-</li>
-<li><p>别名的使用：alias</p>
-<blockquote>
-<p>git config –global alias.ck checkout<br>git config –global alias.br branch<br>git config –global alias.cm commit<br>git config –global alias.st status</p>
-</blockquote>
-<p> 配置之后，原来的git checkout直接使用git ck即可。==alias.xx==点后面的xx就代表了我们设置的别名。<br> 结合别名的特性，我们可以优化第一点里的log以提高上述代码的效率。配置如下：  </p>
-<blockquote>
-<p>git config –global alias.lg “log –graph –pretty=format:’%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative”</p>
-</blockquote>
-</li>
-<li><p>常用技巧<br> 功能 | 快捷键<br> —|—<br> 复制 | ctrl + insert<br> 粘贴 | shift + insert<br> 看日志 | 回车-查看更多，q-退出查看<br> merge后commit | linux模式：”i”进入编辑模式，”ESC”退出编辑模式，”:” + “wq”退出并保存</p>
-</li>
-<li><p>组合命令<br> 原始命令 | 组合命令<br> —|—<br> git add<br> git commit | git commit -a -m</p>
-</li>
-</ol>
-
-                    
-                    <!-- Tags Bottom -->
-                    
-
-                    <!-- Comments -->
-                    
-
-
-
-                </div>
-                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
-                    
-                    <hr class="dn-l mw4 black-50 mt5" />
-                    
-                    <!-- Widget 1: About -->
-                    <div class="mt5 mt0-l">
-    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
-        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
-            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="moon zhou">
+            
+                <a href="/2019/05/18/代码规范第二期 backup/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
+        <div class="dtc v-mid w-20 black-50">
+            
+                <span class="f4 fw3 lh-copy">May 2019</span> 
+            
         </div>
-        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
-            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
+        <div class="dtc v-mid w-80 black-70">
+            <span class="f4 fw3 lh-copy">代码规范第二期 backup<span>
         </div>
-    </article>
-</div>
-
-                    <hr class="dn-l mw4 black-50 mt5" />
-                    
-                    <!-- Widget 2: Categories -->
-                    
-
-                    <!-- Widget 3: Recent Posts -->
-                    <div class="mt5 tc tl-l">
-    <h3>近期文章</h3>
-    
-        <p>
-            <a href="/2019/06/16/序列化/">序列化</a>
-        </p>
-    
-        <p>
-            <a href="/2019/06/02/傻瓜式学Vue-01搭建环境、初始化项目/">傻瓜式学Vue-01搭建环境、初始化项目</a>
-        </p>
-    
-        <p>
-            <a href="/2019/06/02/傻瓜式学Vue-02一步一步小demo/">傻瓜式学Vue-02一步一步小demo</a>
-        </p>
-    
-        <p>
-            <a href="/2019/05/18/代码规范第二期 backup/">代码规范第二期 backup</a>
-        </p>
-    
-        <p>
-            <a href="/2019/05/18/代码规范第二期分享/">代码规范第二期</a>
-        </p>
-    
-</div>
-                </div>
-            </div>
+    </div>
+</a>
+            
+                <a href="/2017/06/27/hello-world/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
+        <div class="dtc v-mid w-20 black-50">
+            
+                <span class="f4 fw3 lh-copy">Jun 2017</span> 
+            
+        </div>
+        <div class="dtc v-mid w-80 black-70">
+            <span class="f4 fw3 lh-copy">Hello World<span>
+        </div>
+    </div>
+</a>
+            
+                <a href="/2019/05/18/代码规范第二期分享/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
+        <div class="dtc v-mid w-20 black-50">
+            
+                <span class="f4 fw3 lh-copy">May 2019</span> 
+            
+        </div>
+        <div class="dtc v-mid w-80 black-70">
+            <span class="f4 fw3 lh-copy">代码规范第二期<span>
+        </div>
+    </div>
+</a>
+            
+                <a href="/2019/06/02/傻瓜式学Vue-01搭建环境、初始化项目/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
+        <div class="dtc v-mid w-20 black-50">
+            
+                <span class="f4 fw3 lh-copy">Jun 2019</span> 
+            
+        </div>
+        <div class="dtc v-mid w-80 black-70">
+            <span class="f4 fw3 lh-copy">傻瓜式学Vue-01搭建环境、初始化项目<span>
+        </div>
+    </div>
+</a>
+            
+                <a href="/2019/05/18/web安全交流/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
+        <div class="dtc v-mid w-20 black-50">
+            
+                <span class="f4 fw3 lh-copy">May 2019</span> 
+            
+        </div>
+        <div class="dtc v-mid w-80 black-70">
+            <span class="f4 fw3 lh-copy">web安全交流<span>
+        </div>
+    </div>
+</a>
+            
+                <a href="/2019/06/02/傻瓜式学Vue-02一步一步小demo/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
+        <div class="dtc v-mid w-20 black-50">
+            
+                <span class="f4 fw3 lh-copy">Jun 2019</span> 
+            
+        </div>
+        <div class="dtc v-mid w-80 black-70">
+            <span class="f4 fw3 lh-copy">傻瓜式学Vue-02一步一步小demo<span>
+        </div>
+    </div>
+</a>
+            
+                <a href="/2019/06/16/序列化/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
+        <div class="dtc v-mid w-20 black-50">
+            
+                <span class="f4 fw3 lh-copy">Jun 2019</span> 
+            
+        </div>
+        <div class="dtc v-mid w-80 black-70">
+            <span class="f4 fw3 lh-copy">序列化<span>
+        </div>
+    </div>
+</a>
+            
+                <a href="/2019/06/23/Git学习-小白不能忍之一/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
+        <div class="dtc v-mid w-20 black-50">
+            
+                <span class="f4 fw3 lh-copy">Jun 2019</span> 
+            
+        </div>
+        <div class="dtc v-mid w-80 black-70">
+            <span class="f4 fw3 lh-copy">Git学习-小白不能忍之一<span>
+        </div>
+    </div>
+</a>
+            
+                <a href="/2019/06/23/Git学习-小白不能忍之三/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
+        <div class="dtc v-mid w-20 black-50">
+            
+                <span class="f4 fw3 lh-copy">Jun 2019</span> 
+            
+        </div>
+        <div class="dtc v-mid w-80 black-70">
+            <span class="f4 fw3 lh-copy">Git学习-小白不能忍之三<span>
+        </div>
+    </div>
+</a>
+            
+                <a href="/2019/06/23/Git学习-小白不能忍之二/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
+        <div class="dtc v-mid w-20 black-50">
+            
+                <span class="f4 fw3 lh-copy">Jun 2019</span> 
+            
+        </div>
+        <div class="dtc v-mid w-80 black-70">
+            <span class="f4 fw3 lh-copy">Git学习-小白不能忍之二<span>
+        </div>
+    </div>
+</a>
+            
+                <a href="/2019/06/23/Git学习-小白实操/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
+        <div class="dtc v-mid w-20 black-50">
+            
+                <span class="f4 fw3 lh-copy">Jun 2019</span> 
+            
+        </div>
+        <div class="dtc v-mid w-80 black-70">
+            <span class="f4 fw3 lh-copy">Git学习-小白实操<span>
+        </div>
+    </div>
+</a>
+            
+                <a href="/2019/06/23/Git学习-小白学理论/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
+        <div class="dtc v-mid w-20 black-50">
+            
+                <span class="f4 fw3 lh-copy">Jun 2019</span> 
+            
+        </div>
+        <div class="dtc v-mid w-80 black-70">
+            <span class="f4 fw3 lh-copy">Git学习-小白学理论<span>
+        </div>
+    </div>
+</a>
+            
         </div>
     </div>
 </div>
-
 
 <!-- Footer -->
 <div class="bg-1 ph2 ph5-ns pv5">

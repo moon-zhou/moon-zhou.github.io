@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="弦 博客"/>
+        <meta property="og:title" content="Git学习-小白不能忍之二"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>归档：2017/6 - 弦 博客</title>
+    <title>Git学习-小白不能忍之二 - 弦 博客</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -72,8 +72,6 @@
 <body>
 
 <!-- Main Content -->
-
-
 <!-- Banner -->
 <!-- Banner -->
 <div class="w-100 bg-1 ph5-ns ph3 text-light">
@@ -126,180 +124,148 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">2017/6</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns"></p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Git学习-小白不能忍之二</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-06-23</p>
         </div>
     </div>
 
     <!-- Icon -->
     <div class="relative w-100 mw8 center white dn dn-m db-ns">
-        <i class="header-icon fa fa-folder-open"></i>
+        <i class="header-icon fa fa-file-text-o"></i>
     </div>
 </div>
 
+<!-- Content -->
 <div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
     <div class="content">
         <div class="mw8 center">
-            
-                <a href="/2019/05/18/代码规范第二期 backup/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">May 2019</span> 
-            
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+
+                    <!-- Main Post Content -->
+                    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
+<p>代码在idea里，会被自动编译，生成很多编译代码及IDE配置文件，在git目录下总是提示需要提交，<strong>不能忍</strong></p>
+</blockquote>
+<h4 id="git在idea里的使用"><a href="#git在idea里的使用" class="headerlink" title="git在idea里的使用"></a>git在idea里的使用</h4><h5 id="安装gitignore"><a href="#安装gitignore" class="headerlink" title="安装gitignore"></a>安装gitignore</h5><ol>
+<li>在线安装<blockquote>
+<p>File–settings–Plugins–Browse Repositories</p>
+</blockquote>
+</li>
+<li>离线安装<ul>
+<li>下载地址：<a href="https://plugins.jetbrains.com/plugin/7495--ignore" target="_blank" rel="external">https://plugins.jetbrains.com/plugin/7495--ignore</a></li>
+<li>File–settings–Plugins–Install plugin from disk</li>
+<li></li>
+</ul>
+</li>
+<li>新增.gitignore文件<ul>
+<li>new–.ignore file–.gitignore file(Git)</li>
+<li>创建完成，添加忽略git跟踪的文件</li>
+<li></li>
+</ul>
+</li>
+</ol>
+<h4 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h4><ol>
+<li>Git Pull Failed: Authentication failed for ‘<a href="http://git.cnsuning.com/eppsmiaw/eppsmiaw_git.git/" target="_blank" rel="external">http://git.cnsuning.com/eppsmiaw/eppsmiaw_git.git/</a>‘<ul>
+<li>处理方式一：控制面板-凭据管理器-普通凭据，找到git:<a href="http://git.cnsuning.com的配置，修改用户名密码" target="_blank" rel="external">http://git.cnsuning.com的配置，修改用户名密码</a></li>
+<li>如果第一步不生效，清空idea保存的账号密码：File–Settings–Appearance&amp;Behavior–System Settings–Password(清空设置或者不保存即可)</li>
+<li></li>
+</ul>
+</li>
+<li>多分支切换时提示（git checkout branchName）：Your branch and ‘origin/Hot_Br_20190513’ have diverged,and have 181 and 7 different commits each, respectively. (use “git pull” to merge the remote branch into yours)<ul>
+<li><a href="https://stackoverflow.com/questions/32630379/git-your-branch-and-origin-somebranch-have-diverged-how-to-throw-away-local" target="_blank" rel="external">解决方案</a>：You will have to reset to that remote branch in order to reset your local branch to it.<ul>
+<li>git fetch origin</li>
+<li>git reset –hard origin/remoteBranchName</li>
+</ul>
+</li>
+<li>问题原因：<ul>
+<li>本地工作区里的代码提交进度与远程仓库的进度不一致</li>
+</ul>
+</li>
+<li><a href="http://serebrov.github.io/html/2012-02-13-git-branches-have-diverged.html" target="_blank" rel="external">另外的解决方案</a></li>
+<li></li>
+</ul>
+</li>
+<li>Git出现冲突error: Your local changes to the following files would be overwritten by merge: xxx/xxx/xxx Please, commit your changes or stash them before you can merge. Aborting<ul>
+<li>出现这个问题的原因是其他人修改了xxx并提交到版本库中去了，而你本地也修改了xxx，这时候你进行git pull操作就好出现冲突了。</li>
+<li>解决方案：通过git stash将工作区恢复到上次提交的内容，同时备份本地所做的修改<ul>
+<li>git stash</li>
+<li>git pull</li>
+<li>git stash pop</li>
+</ul>
+</li>
+<li>辅助命令<ul>
+<li>git stash list: 显示Git栈内的所有备份，可以利用这个列表来决定从那个地方恢复。</li>
+<li>git stash clear: 清空Git栈。此时使用gitg等图形化工具会发现，原来stash的哪些节点都消失了。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="moon zhou">
         </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">代码规范第二期 backup<span>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
         </div>
-    </div>
-</a>
-            
-                <a href="/2017/06/27/hello-world/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">Jun 2017</span> 
-            
-        </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">Hello World<span>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/05/18/代码规范第二期分享/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">May 2019</span> 
-            
-        </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">代码规范第二期<span>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/06/02/傻瓜式学Vue-01搭建环境、初始化项目/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">Jun 2019</span> 
-            
-        </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">傻瓜式学Vue-01搭建环境、初始化项目<span>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/05/18/web安全交流/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">May 2019</span> 
-            
-        </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">web安全交流<span>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/06/02/傻瓜式学Vue-02一步一步小demo/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">Jun 2019</span> 
-            
-        </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">傻瓜式学Vue-02一步一步小demo<span>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/06/16/序列化/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">Jun 2019</span> 
-            
-        </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">序列化<span>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/06/23/Git学习-小白不能忍之一/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">Jun 2019</span> 
-            
-        </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">Git学习-小白不能忍之一<span>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/06/23/Git学习-小白不能忍之三/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">Jun 2019</span> 
-            
-        </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">Git学习-小白不能忍之三<span>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/06/23/Git学习-小白不能忍之二/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">Jun 2019</span> 
-            
-        </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">Git学习-小白不能忍之二<span>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/06/23/Git学习-小白实操/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">Jun 2019</span> 
-            
-        </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">Git学习-小白实操<span>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/06/23/Git学习-小白学理论/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">Jun 2019</span> 
-            
-        </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">Git学习-小白学理论<span>
-        </div>
-    </div>
-</a>
-            
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>近期文章</h3>
+    
+        <p>
+            <a href="/2019/06/23/Git学习-小白学理论/">Git学习-小白学理论</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/23/Git学习-小白实操/">Git学习-小白实操</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/23/Git学习-小白不能忍之二/">Git学习-小白不能忍之二</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/23/Git学习-小白不能忍之三/">Git学习-小白不能忍之三</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/23/Git学习-小白不能忍之一/">Git学习-小白不能忍之一</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 
 <!-- Footer -->
 <div class="bg-1 ph2 ph5-ns pv5">

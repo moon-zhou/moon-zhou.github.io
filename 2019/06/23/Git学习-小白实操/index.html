@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="git实际使用"/>
+        <meta property="og:title" content="Git学习-小白实操"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>git实际使用 - 弦 博客</title>
+    <title>Git学习-小白实操 - 弦 博客</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -124,8 +124,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">git实际使用</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-05-18</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Git学习-小白实操</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-06-23</p>
         </div>
     </div>
 
@@ -168,7 +168,7 @@
 <li>本地commit之后，发现提交log填写错误，通过以下操作进行回退：<ul>
 <li>git commit –amend</li>
 <li>按下字母键 c（此时进入编辑状态），可以开始修改注释信息了</li>
-<li>修改完成之后，按下Esc (退出编辑状态)； 接着连按两次大写字母Z，保存好退出</li>
+<li>修改完成之后，按下Esc (退出编辑状态)； 接着连按两次大写字母Z，保存好退出（wq）</li>
 </ul>
 </li>
 <li>代码回退<ul>
@@ -182,6 +182,11 @@
 <li>git add之后，发现添加错了文件，使用git reset进行回退<ul>
 <li>git reset HEAD 如果后面什么都不跟的话 就是上一次add 里面的全部撤销了 </li>
 <li>git reset HEAD XXX/XXX/XXX.java 就是对某个文件进行撤销了</li>
+</ul>
+</li>
+<li>修改了文件，但又不想add，想以远程分支为准。<ul>
+<li>git checkout . # 撤销对所有已修改但未提交的文件的修改，但不包括新增的文件</li>
+<li>git checkout filename     # 撤销对指定文件的修改，filename为文件名</li>
 </ul>
 </li>
 </ol>
@@ -301,23 +306,23 @@
     <h3>近期文章</h3>
     
         <p>
-            <a href="/2019/06/16/序列化/">序列化</a>
+            <a href="/2019/06/23/Git学习-小白学理论/">Git学习-小白学理论</a>
         </p>
     
         <p>
-            <a href="/2019/06/02/傻瓜式学Vue-01搭建环境、初始化项目/">傻瓜式学Vue-01搭建环境、初始化项目</a>
+            <a href="/2019/06/23/Git学习-小白实操/">Git学习-小白实操</a>
         </p>
     
         <p>
-            <a href="/2019/06/02/傻瓜式学Vue-02一步一步小demo/">傻瓜式学Vue-02一步一步小demo</a>
+            <a href="/2019/06/23/Git学习-小白不能忍之二/">Git学习-小白不能忍之二</a>
         </p>
     
         <p>
-            <a href="/2019/05/18/代码规范第二期 backup/">代码规范第二期 backup</a>
+            <a href="/2019/06/23/Git学习-小白不能忍之三/">Git学习-小白不能忍之三</a>
         </p>
     
         <p>
-            <a href="/2019/05/18/代码规范第二期分享/">代码规范第二期</a>
+            <a href="/2019/06/23/Git学习-小白不能忍之一/">Git学习-小白不能忍之一</a>
         </p>
     
 </div>
