@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="never stop">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="moon zhou">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="SpringBoot + VUE系统搭建"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="never stop" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="弦 博客"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>SpringBoot + VUE系统搭建 - 弦 博客</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="弦 博客">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="弦 博客">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/tags" 
+                    title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/categories" 
+                    title="Categories">
+                    Categories
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/about.html" 
+                    title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contact.html" 
+                    title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">SpringBoot + VUE系统搭建</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-06-30</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+
+                    <!-- Main Post Content -->
+                    <h4 id="学前准备"><a href="#学前准备" class="headerlink" title="学前准备"></a>学前准备</h4><ol>
+<li>有java web开发经验，熟悉MVC开发</li>
+<li>了解前端页面编写</li>
+<li>了解前后端数据交互</li>
+</ol>
+<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
+<p>新项目开始，搭建后台系统，采用伪前后端分离（前端代码剥离，但最终依然需要加入到后端系统，通过后端容器进行发布）</p>
+</blockquote>
+<h4 id="目标拆分"><a href="#目标拆分" class="headerlink" title="目标拆分"></a>目标拆分</h4><ol>
+<li>后端系统搭建-SpringBoot<ol>
+<li>新建SpringBoot项目</li>
+<li>配置多模块<ul>
+<li>各模块设计可参考github demo各模块README说明</li>
+</ul>
+</li>
+<li>各模块引入相关jar包</li>
+<li>明确各模块依赖</li>
+<li>配置打包环境</li>
+<li>启动</li>
+<li>功能测试<ul>
+<li>编写Controller，测试Controller层（ajax-json接口）</li>
+<li>编写Service，测试Controller-Service</li>
+<li>编写dao层，引入ORM框架（mybatis），测试Controller-Service-service</li>
+<li>测试约定的application.yml配置</li>
+<li>测试自定义yml配置</li>
+<li>接入Freemarker，测试Controller页面跳转</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>前端系统搭建-VUE<ol>
+<li>环境搭建及初始化==参考傻瓜式学VUE系列==</li>
+<li>固定数据测试<ol>
+<li>使用Element-UI，通过固定数据加载，初始化列表组件</li>
+<li>打包，集成至后端系统，通过Controller进行测试</li>
+</ol>
+</li>
+<li>动态数据测试<ol>
+<li>调用后端固定接口，按返回数据初始化列表组件</li>
+<li>打包，集成至后端系统，通过Controller加载页面，通过前端调用后端接口的数据来初始化组件</li>
+<li></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="小白踩坑"><a href="#小白踩坑" class="headerlink" title="小白踩坑"></a>小白踩坑</h4><ol>
+<li>初始创建为非maven项目，后续多模块无法依赖是，idea里右键选择Add Framework Support，选择maven即可。</li>
+<li>入口main函数上加上@EnableAutoConfiguration，这样各个依赖的module里的注解才能正常被spring识别，加入spring上下文中进行管理。</li>
+<li>注意各个包的定义，最终打包的文件，入口函数要在最外面，否则即使加了自动配置注解，也无法扫描到包外的spring注解类。</li>
+<li>java.sql.SQLException: The server time zone value：数据库连接加上serverTimezone=GMT，eg.jdbc:mysql://localhost:3306/member?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT<blockquote>
+<p>该异常不同版本的springboot不一定都会出现，2.1.6出现单2.0.2没有该异常</p>
+</blockquote>
+</li>
+<li>持久层接口类加入spring上下文进行管理<ul>
+<li>接口类上加Mapper注解，类似service类上加Service注解</li>
+<li>main类上加MapperScan注解，扫描持久层接口类所在的包，eg.@MapperScan(“org.moonzhou.backend.base.dao”)</li>
+</ul>
+</li>
+<li><p>自定义yml时无法被自动识别问题</p>
+<ul>
+<li><p>@PropertySource该注解老版本支持，1.0.4之后该属性就取消了</p>
+<blockquote>
+<p>2.0.0官方解释：YAML files cannot be loaded by using the @PropertySource annotation. So, in the case that you need to load values that way, you need to use a properties file.  </p>
+</blockquote>
+</li>
+<li><p>使用@Configuration-@Bean，通过代码将自定义的yml文件加入spring上下文管理里，通过@Value或者@ConfigurationProperties来进行配合使用</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="小白不能忍"><a href="#小白不能忍" class="headerlink" title="小白不能忍"></a>小白不能忍</h4><ol>
+<li>创建的配置文件为properties文件，代码最终都是人看的，yml配置跟易于开发人员进行阅读，本人建议使用yml格式进行配置。该配置需要注意：<ul>
+<li>冒号之后需要空一格，再写配置值</li>
+</ul>
+</li>
+<li>必须要有自定义配置的配置文件，尽量根据功能不同抽取出不同的配置文件。至少自定义的配置与框架类配置进行抽离。</li>
+</ol>
+<h4 id="抽象代码示例"><a href="#抽象代码示例" class="headerlink" title="抽象代码示例"></a>抽象代码示例</h4><ol>
+<li>github地址：<a href="https://github.com/moon-zhou/SpringBoot_Backend_Modules.git" target="_blank" rel="external">https://github.com/moon-zhou/SpringBoot_Backend_Modules.git</a></li>
+<li>本地启动：<a href="http://localhost:8881/backend-base/hello/test.do" target="_blank" rel="external">http://localhost:8881/backend-base/hello/test.do</a></li>
+</ol>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="moon zhou">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>近期文章</h3>
+    
+        <p>
+            <a href="/2019/06/30/SpringBoot + VUE系统搭建/">SpringBoot + VUE系统搭建</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/30/github新增代码库实操/">github新增代码库实操</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/23/Git学习-小白不能忍之一/">Git学习-小白不能忍之一</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/23/Git学习-小白学理论/">Git学习-小白学理论</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/23/Git学习-小白实操/">Git学习-小白实操</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
+                            <i class="fa fa-500px"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Untitled. All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
