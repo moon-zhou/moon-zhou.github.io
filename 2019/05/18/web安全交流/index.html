@@ -264,7 +264,7 @@ public class SpecialCharacterFilter extends HttpServlet implements Filter {
 <li>在用户信息通过验证后，网站A产生Cookie信息并返回给浏览器，此时用户登录网站A成功，可以正常发送请求到网站A</li>
 <li>用户未退出网站A之前，在同一浏览器中，打开一个TAB页访问网站B（这个过程可使用XSS配合，将用户引导到B网站-钓鱼网站）</li>
 <li>网站B接收到用户请求后，返回一些攻击性代码，并发出一个请求要求访问第三方站点A</li>
-<li>浏览器在接收到这些攻击性代码后，根据网站B的请求，在用户不知情的情况下携带Cookie信息（通过XSS获取用户cookie信息），向网站A发出请求。网站A并不知道该请求其实是由B发起的，所以会根据用户C的Cookie信息以C的权限处理该请求，导致来自网站B的恶意代码被执行<h4 id="检测方法"><a href="#检测方法" class="headerlink" title="检测方法"></a>检测方法</h4>抓包后去除referer重放请求，能正常请求则有可能csrf<br><a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=29275234" target="_blank" rel="external">重放示例</a><h4 id="本质原因"><a href="#本质原因" class="headerlink" title="本质原因"></a>本质原因</h4>CSRF攻击是源于Web的隐式身份验证机制！Web的身份验证机制虽然可以保证一个请求是来自于某个用户的浏览器，但却无法保证该请求是用户批准发送的。CSRF攻击的一般是由服务端解决。<h4 id="防御方法-2"><a href="#防御方法-2" class="headerlink" title="防御方法"></a>防御方法</h4>该攻击能够成功有两个要点：</li>
+<li>浏览器在接收到这些攻击性代码后，根据网站B的请求，在用户不知情的情况下携带Cookie信息（通过XSS获取用户cookie信息），向网站A发出请求。网站A并不知道该请求其实是由B发起的，所以会根据用户C的Cookie信息以C的权限处理该请求，导致来自网站B的恶意代码被执行<h4 id="检测方法"><a href="#检测方法" class="headerlink" title="检测方法"></a>检测方法</h4>抓包后去除referer重放请求，能正常请求则有可能csrf<br><a href="http://wiki.cnXXX.com/pages/viewpage.action?pageId=29275234" target="_blank" rel="external">重放示例</a><h4 id="本质原因"><a href="#本质原因" class="headerlink" title="本质原因"></a>本质原因</h4>CSRF攻击是源于Web的隐式身份验证机制！Web的身份验证机制虽然可以保证一个请求是来自于某个用户的浏览器，但却无法保证该请求是用户批准发送的。CSRF攻击的一般是由服务端解决。<h4 id="防御方法-2"><a href="#防御方法-2" class="headerlink" title="防御方法"></a>防御方法</h4>该攻击能够成功有两个要点：</li>
 <li>构造请求的参数都是可控的</li>
 <li>网站没有验证请求的来源</li>
 </ol>
@@ -288,7 +288,7 @@ public class SpecialCharacterFilter extends HttpServlet implements Filter {
 <li>从URL关键字中寻找</li>
 </ol>
 <h2 id="WAF介绍"><a href="#WAF介绍" class="headerlink" title="WAF介绍"></a>WAF介绍</h2><blockquote>
-<p>云谛Web应用防火墙（Web Application Firewall, 简称 WAF）主要用于保障业务的正常运转。WAF可以防御注入(args，headers，cookie)、<strong>跨站脚本（XSS）</strong>、木马上传等OWASP常见攻击，并过滤海量恶意CC攻击。是应用软件的第一道防火墙，保护了网站资产的安全，网络服务的可用性。<br>在接入WAF后，即启用Web应用防火墙。启用之后，您网站所有的流量都会先经过Web应用防火墙，恶意攻击流量在Web应用防火墙上被检测过滤，而正常流量返回给源站IP，从而确保源站IP安全、稳定、可用。<br><a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=32267738" target="_blank" rel="external">参考链接</a></p>
+<p>云谛Web应用防火墙（Web Application Firewall, 简称 WAF）主要用于保障业务的正常运转。WAF可以防御注入(args，headers，cookie)、<strong>跨站脚本（XSS）</strong>、木马上传等OWASP常见攻击，并过滤海量恶意CC攻击。是应用软件的第一道防火墙，保护了网站资产的安全，网络服务的可用性。<br>在接入WAF后，即启用Web应用防火墙。启用之后，您网站所有的流量都会先经过Web应用防火墙，恶意攻击流量在Web应用防火墙上被检测过滤，而正常流量返回给源站IP，从而确保源站IP安全、稳定、可用。<br><a href="http://wiki.cnXXX.com/pages/viewpage.action?pageId=32267738" target="_blank" rel="external">参考链接</a></p>
 </blockquote>
 <h4 id="waf的功能"><a href="#waf的功能" class="headerlink" title="waf的功能"></a>waf的功能</h4><ol>
 <li>拦截非法请求。</li>
@@ -303,14 +303,14 @@ public class SpecialCharacterFilter extends HttpServlet implements Filter {
 </ol>
 <p>以上都需要waf平台帮忙进行分析请求的共性，来指导我们进行相关过滤规则的配置。</p>
 <h2 id="实际案例"><a href="#实际案例" class="headerlink" title="实际案例"></a>实际案例</h2><h4 id="攻击案例"><a href="#攻击案例" class="headerlink" title="攻击案例"></a>攻击案例</h4><ol>
-<li>未登录情况下，找回支付密码时，发送验证码之前，使用的是数字验证码（固定验证方式），被机器识别，大量调用发送短信验证码端口。<a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=32178290" target="_blank" rel="external">wiki记录</a></li>
-<li>pptv拉新安全问题。<a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=31939624" target="_blank" rel="external">wiki记录</a></li>
-<li>passport短信登录获取验证码攻击问题<a href="http://wiki.cnsuning.com/pages/viewpage.action?pageId=33122065" target="_blank" rel="external">。wiki记录</a></li>
+<li>未登录情况下，找回支付密码时，发送验证码之前，使用的是数字验证码（固定验证方式），被机器识别，大量调用发送短信验证码端口。<a href="http://wiki.cnXXX.com/pages/viewpage.action?pageId=32178290" target="_blank" rel="external">wiki记录</a></li>
+<li>pptv拉新安全问题。<a href="http://wiki.cnXXX.com/pages/viewpage.action?pageId=31939624" target="_blank" rel="external">wiki记录</a></li>
+<li>passport短信登录获取验证码攻击问题<a href="http://wiki.cnXXX.com/pages/viewpage.action?pageId=33122065" target="_blank" rel="external">。wiki记录</a></li>
 <li>登录合规改造（防重放）</li>
-<li><a href="http://secadmin.cnsuning.com/ssrc-admin/showLeakDetail.do?id=3779" target="_blank" rel="external">任意url跳转</a></li>
+<li><a href="http://secadmin.cnXXX.com/ssrc-admin/showLeakDetail.do?id=3779" target="_blank" rel="external">任意url跳转</a></li>
 </ol>
 <h4 id="安全应急中心提的安全问题单"><a href="#安全应急中心提的安全问题单" class="headerlink" title="安全应急中心提的安全问题单"></a>安全应急中心提的安全问题单</h4><ol>
-<li><a href="http://secadmin.cnsuning.com/ssrc-admin/showLeakDetail.do?id=3771" target="_blank" rel="external">反射型XSS</a></li>
+<li><a href="http://secadmin.cnXXX.com/ssrc-admin/showLeakDetail.do?id=3771" target="_blank" rel="external">反射型XSS</a></li>
 </ol>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h4 id="漏洞靶场"><a href="#漏洞靶场" class="headerlink" title="漏洞靶场"></a>漏洞靶场</h4><p><a href="https://vulhub.org/#/docs/" target="_blank" rel="external">vulhub</a></p>
 <h4 id="提升网站"><a href="#提升网站" class="headerlink" title="提升网站"></a>提升网站</h4><p><a href="https://www.anquanquan.info/" target="_blank" rel="external">安全圈</a></p>
