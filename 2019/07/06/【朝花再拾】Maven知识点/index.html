@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="never stop">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="moon zhou">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="【朝花再拾】Maven知识点"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="never stop" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="弦 博客"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>【朝花再拾】Maven知识点 - 弦 博客</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="弦 博客">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="弦 博客">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/tags" 
+                    title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/categories" 
+                    title="Categories">
+                    Categories
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/about.html" 
+                    title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contact.html" 
+                    title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">【朝花再拾】Maven知识点</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-07-06</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+
+                    <!-- Main Post Content -->
+                    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
+<p>最近搭建SB系统时，是基于maven的project，常年没有搭建，有些知识点已经遗忘，在这个过程中，把相关东西一点点拾起来。</p>
+</blockquote>
+<h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><ol>
+<li>基本知识点：modules、parent、groupId、artifactId、version</li>
+<li><p>DepencyManagement与单纯的Dependencies</p>
+<ol>
+<li><p>DepencyManagement</p>
+<blockquote>
+<p>由于是基于多模块进行的搭建，因此不同模块之间对第三方依赖的使用就需要进行规范，防止不同的模块对同一第三方依赖使用的版本不同，造成测试和发布的结果不一致问题。</p>
+</blockquote>
+<ul>
+<li>父pom通过DepencyManagement-dependencies-dependency（groupId-artifactId-version）控制依赖以及版本</li>
+<li>子module里pom通过dependencies-dependency（groupId-artifactId）直接使用，而不需要指定具体的版本号，直接依赖父pom的版本配置</li>
+<li>父pom里还可以对version进行统一的配置提取管理，将依赖的version抽取到properties，定义变量，这样第三方依赖也被放到一起，更易于依赖版本的管理</li>
+</ul>
+</li>
+<li><p>单纯的Dependencies</p>
+<blockquote>
+<p>相对于dependencyManagement，所有生命在dependencies里的依赖都会自动引入，并默认被所有的子项目继承</p>
+</blockquote>
+</li>
+<li><p>区别</p>
+<ul>
+<li>dependencies即使在子模块中不写该依赖项，那么子模块仍然会从父项目中继承该依赖项（全部继承）</li>
+<li>dependencyManagement里只是声明依赖，并不实现引入，因此子模块需要显示的声明需要用的依赖。如果不在子模块中声明依赖，是不会从父项目中继承下来的；只有在子模块中写了该依赖项，并且没有指定具体版本，才会从父项目中继承该项，并且version和scope都读取自父pom;另外如果子模块中指定了版本号，那么会使用子模块中指定的jar版本。（==当然一般不建议子模块里指定version==）</li>
+</ul>
+</li>
+<li>总结</li>
+</ol>
+<ul>
+<li>dependencies中的jar直接加到项目中，管理的是依赖关系（如果有父pom,子pom,则子pom中只能被动接受父类的版本）；</li>
+<li>dependencyManagement主要管理版本，对于子类继承同一个父类是很有用的，集中管理依赖版本不添加依赖关系，对于其中定义的版本，子pom不一定要继承父pom所定义的版本。</li>
+</ul>
+</li>
+<li><p>scope</p>
+<blockquote>
+<p>dependency里引入scope，主要管理依赖的部署。配置值及使用如下:</p>
+</blockquote>
+<ol>
+<li>概念<ul>
+<li>compile：缺省值，适用于所有阶段，会随着项目一起发布。</li>
+<li>provided：类似compile，期望JDK、容器或使用者会提供这个依赖。如servlet.jar。</li>
+<li>runtime：只在运行时使用，如JDBC驱动，适用运行和测试阶段。 </li>
+<li>test：只在测试时使用，用于编译和运行测试代码。不会随项目发布。 </li>
+<li>system：类似provided，需要显式提供包含依赖的jar，Maven不会在Repository中查找它。</li>
+</ul>
+</li>
+<li><p>详解</p>
+<ul>
+<li><p>compile （编译范围）</p>
+<blockquote>
+<p> compile是默认的范围；如果没有提供一个范围，那该依赖的范围就是编译范围。编译范围依赖在所有的classpath 中可用，同时它们也会被打包。</p>
+</blockquote>
+</li>
+<li><p>provided （已提供范围）</p>
+<blockquote>
+<p>provided 依赖只有在当JDK 或者一个容器已提供该依赖之后才使用。例如， 如果你开发了一个web 应用，你可能在编译 classpath 中需要可用的Servlet API 来编译一个servlet，但是你不会想要在打包好的WAR 中包含这个Servlet API；这个Servlet API JAR 由你的应用服务器或者servlet 容器提供。已提供范围的依赖在编译classpath （不是运行时）可用。它们不是传递性的，也不会被打包。</p>
+</blockquote>
+</li>
+<li><p>runtime （运行时范围）</p>
+<blockquote>
+<p>runtime 依赖在运行和测试系统的时候需要，但在编译的时候不需要。比如，你可能在编译的时候只需要JDBC API JAR，而只有在运行的时候才需要JDBC</p>
+</blockquote>
+</li>
+<li><p>test （测试范围）</p>
+<blockquote>
+<p>test范围依赖在一般的编译和运行时都不需要，它们只有在测试编译和测试运行阶段可用。</p>
+</blockquote>
+</li>
+<li><p>system （系统范围）</p>
+<blockquote>
+<p>system范围依赖与provided 类似，但是你必须显式的提供一个对于本地系统中JAR 文件的路径。这么做是为了允许基于本地对象编译，而这些对象是系统类库的一部分。这样的构件应该是一直可用的，Maven 也不会在仓库中去寻找它。如果你将一个依赖范围设置成系统范围，你必须同时提供一个 systemPath 元素。注意该范围是不推荐使用的（你应该一直尽量去从公共或定制的 Maven 仓库中引用依赖）。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>packaging</p>
+<ul>
+<li>默认是jar类型</li>
+<li>pom：父类型都为pom类型</li>
+<li>jar：内部调用或者是作服务使用</li>
+<li>war：需要部署的项目</li>
+</ul>
+</li>
+<li><p>profiles：配合打包时，针对不同的环境取不同的配置。</p>
+<ul>
+<li>每个profile都有唯一的id，也包含properties属性。id定义不同环境，properties设置变量。结合打包时build使用。</li>
+<li><p>示例：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;profiles&gt;</div><div class="line">    &lt;profile&gt;</div><div class="line">        &lt;id&gt;sit&lt;/id&gt;</div><div class="line">        &lt;properties&gt;</div><div class="line">            &lt;envName&gt;sit&lt;/envName&gt;</div><div class="line">        &lt;/properties&gt;</div><div class="line">    &lt;/profile&gt;</div><div class="line">    &lt;profile&gt;</div><div class="line">        &lt;id&gt;pre&lt;/id&gt;</div><div class="line">        &lt;properties&gt;</div><div class="line">            &lt;envName&gt;pre&lt;/envName&gt;</div><div class="line">        &lt;/properties&gt;</div><div class="line">    &lt;/profile&gt;</div><div class="line">    &lt;profile&gt;</div><div class="line">        &lt;id&gt;uat&lt;/id&gt;</div><div class="line">        &lt;properties&gt;</div><div class="line">            &lt;envName&gt;uat&lt;/envName&gt;</div><div class="line">        &lt;/properties&gt;</div><div class="line">    &lt;/profile&gt;</div><div class="line">    &lt;profile&gt;</div><div class="line">        &lt;id&gt;prd&lt;/id&gt;</div><div class="line">        &lt;properties&gt;</div><div class="line">            &lt;envName&gt;prd&lt;/envName&gt;</div><div class="line">        &lt;/properties&gt;</div><div class="line">    &lt;/profile&gt;</div><div class="line">&lt;/profiles&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>扩展：springboot也为我们提供了针对不同环境的打包方式，此处暂不进行示例演示。</p>
+</li>
+</ul>
+</li>
+<li><p>build </p>
+<ul>
+<li>分类<ol>
+<li>project Build：project 的直接子元素（子模块pom里）</li>
+<li>profile Build：profile的直接子元素（直观上就是父pom里，与profile配合使用）</li>
+</ol>
+</li>
+<li>相关配置<ul>
+<li>resources-resource-filtering： true/false，表示为这个resource，filter是否激活</li>
+<li>pluginManagement:pluginManagement的配置和plugins的配置是一样的，只是用于继承，使得可以在孩子pom中使用。类比DepencyManagement</li>
+</ul>
+</li>
+<li>其他配置暂时不做详解。</li>
+<li>示例：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">   &lt;build&gt;</div><div class="line">	&lt;finalName&gt;backend-base-$&#123;maven.build.timestamp&#125;&lt;/finalName&gt;</div><div class="line">	&lt;resources&gt;</div><div class="line">		&lt;resource&gt;</div><div class="line">			&lt;directory&gt;$&#123;project.basedir&#125;/src/main/resources&lt;/directory&gt;</div><div class="line">			&lt;filtering&gt;true&lt;/filtering&gt;</div><div class="line">		&lt;/resource&gt;</div><div class="line">		&lt;resource&gt;</div><div class="line">			&lt;directory&gt;$&#123;project.basedir&#125;/src/main/resources/config/$&#123;envName&#125;/&lt;/directory&gt;</div><div class="line">			&lt;filtering&gt;true&lt;/filtering&gt;</div><div class="line">		&lt;/resource&gt;</div><div class="line">	&lt;/resources&gt;</div><div class="line">	&lt;pluginManagement&gt;</div><div class="line">		&lt;plugins&gt;</div><div class="line">			&lt;plugin&gt;</div><div class="line">				&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">				&lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</div><div class="line">				&lt;configuration&gt;</div><div class="line">					&lt;source&gt;$&#123;java.version&#125;&lt;/source&gt;</div><div class="line">					&lt;target&gt;$&#123;java.version&#125;&lt;/target&gt;</div><div class="line">					&lt;encoding&gt;UTF-8&lt;/encoding&gt;</div><div class="line">				&lt;/configuration&gt;</div><div class="line">			&lt;/plugin&gt;</div><div class="line">			&lt;plugin&gt;</div><div class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</div><div class="line">				&lt;configuration&gt;</div><div class="line">					&lt;mainClass&gt;org.moonzhou.backend.base.BackendBaseWebApplication&lt;/mainClass&gt;</div><div class="line">					&lt;fork&gt;true&lt;/fork&gt;</div><div class="line">				&lt;/configuration&gt;</div><div class="line">			&lt;/plugin&gt;</div><div class="line">			&lt;plugin&gt;</div><div class="line">				&lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;</div><div class="line">				&lt;artifactId&gt;mybatis-generator-maven-plugin&lt;/artifactId&gt;</div><div class="line">				&lt;version&gt;1.3.2&lt;/version&gt;</div><div class="line">			&lt;/plugin&gt;</div><div class="line">		&lt;/plugins&gt;</div><div class="line">	&lt;/pluginManagement&gt;</div><div class="line">&lt;/build&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;!--子模块--&gt;</div><div class="line">   &lt;build&gt;</div><div class="line">       &lt;plugins&gt;</div><div class="line">           &lt;plugin&gt;</div><div class="line">               &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">               &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</div><div class="line">           &lt;/plugin&gt;</div><div class="line">       &lt;/plugins&gt;</div><div class="line">   &lt;/build&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>常用命令</p>
+<ul>
+<li>mvn compile 编译,将Java 源程序编译成 class 字节码文件。</li>
+<li>mvn test 测试，并生成测试报告</li>
+<li>mvn clean 将以前编译得到的旧的 class 字节码文件删除</li>
+<li>mvn pakage 打包,动态 web工程打 war包，Java工程打 jar 包</li>
+<li>mvn install 将项目生成 jar 包放在仓库中，以便别的模块调用</li>
+</ul>
+</li>
+</ol>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="moon zhou">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>近期文章</h3>
+    
+        <p>
+            <a href="/2019/07/06/【朝花再拾】Maven知识点/">【朝花再拾】Maven知识点</a>
+        </p>
+    
+        <p>
+            <a href="/2019/07/06/【小白踩坑】SpringBoot + VUE搭建过程发布问题整理/">【小白踩坑】SpringBoot + VUE搭建过程发布问题整理</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/30/SpringBoot + VUE系统搭建/">SpringBoot + VUE系统搭建</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/30/github新增代码库实操/">github新增代码库实操</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/23/Git学习-小白不能忍之三/">Git学习-小白不能忍之三</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
+                            <i class="fa fa-500px"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Untitled. All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="傻瓜式学Vue-01搭建环境、初始化项目"/>
+        <meta property="og:title" content="【小白踩坑】SpringBoot + VUE搭建过程发布问题整理"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>傻瓜式学Vue-01搭建环境、初始化项目 - 弦 博客</title>
+    <title>【小白踩坑】SpringBoot + VUE搭建过程发布问题整理 - 弦 博客</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -124,8 +124,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">傻瓜式学Vue-01搭建环境、初始化项目</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-06-02</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">【小白踩坑】SpringBoot + VUE搭建过程发布问题整理</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-07-06</p>
         </div>
     </div>
 
@@ -145,59 +145,60 @@
                     
 
                     <!-- Main Post Content -->
-                    <h4 id="学前准备"><a href="#学前准备" class="headerlink" title="学前准备"></a>学前准备</h4><ol>
-<li>了解node</li>
-<li>了解win下环境变量的概念，命令行的基本操作</li>
-</ol>
-<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ol>
-<li>安装node，下载地址<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a><blockquote>
-<p>傻瓜式安装，注意安装目录，尽量不要在c盘。注意版本最好选10，需要升级的下载覆盖原有安装即可。</p>
+                    <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
+<p>从本场地环境搭建，启动，到发布服务器，时刻都可能存在着各种问题。雁过留痕，以此记录。</p>
+</blockquote>
+<h4 id="后台搭建问题"><a href="#后台搭建问题" class="headerlink" title="后台搭建问题"></a>后台搭建问题</h4><ol>
+<li>本地环境搭建启动问题总结链接记录：<a href="http://note.youdao.com/noteshare?id=48090d7749c8306a0adb5a77a8c66b0f&amp;sub=EF23A9DE231D48AE89C495B3AAF4BEB0" target="_blank" rel="external">请戳我</a><blockquote>
+<p>因为图床域名被收回，超链接为文本笔记，非md文档。</p>
 </blockquote>
 </li>
-<li>确认安装完成<blockquote>
-<p>node -v</p>
-</blockquote>
+<li><p>发布到服务器上，出现了两个问题（前提是本地可以正常启动，web容器使用的是jboss）</p>
+<ol>
+<li><p>服务器压根无法启动<br> 因为本地可以启动，服务器上的web容器却无法启动，猜测是web容器相关配置，查找资料，需添加如下配置：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;</div><div class="line">    &lt;scope&gt;provided&lt;/scope&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
 </li>
-<li>配置npm的全局模块的存放路径以及cache的路径，防止安装在c盘，使用npm config ls查看配置是否生效。<blockquote>
-<p>配置文件D:\DevProgram\nodejs\node_modules\npm\npmrc，添加配置如下：<br>prefix=D:\DevProgram\nodejs\node_global<br>cache=D:\DevProgram\nodejs\node_cache<br>或者使用命令<br>npm config set cache “D:\vueProject\nodejs\node_cache”<br>npm config set prefix “D:\vueProject\nodejs\node_global”</p>
-</blockquote>
+<li><p>服务器正常启动，但controller却无法访问，ajax请求及页面跳转都无法正常返回，显示404。<br> 因为请求都无法返回，猜测是controller都未被注册到spring上下文里面，查找相关资料，找到如下解决方案：继承SpringBootServletInitializer，重写configure方法</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@SpringBootApplication</div><div class="line">@MapperScan(&quot;com.suning.epp.member.fmsms.admin.dao&quot;)</div><div class="line">@ImportResource(locations = &#123;&quot;classpath*:config/sfops-ws-client.xml&quot;&#125;)</div><div class="line">public class FmsmsAdminWebApplication extends SpringBootServletInitializer &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) &#123;</div><div class="line">        return application.sources(FmsmsAdminWebApplication.class);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        SpringApplication.run(FmsmsAdminWebApplication.class, args);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li>安装淘宝npm镜像<blockquote>
-<p>由于npm是国外的，使用起来比较慢，我们这里使用淘宝的cnpm镜像来安装vue.<br>淘宝的cnpm命令管理工具可以代替默认的npm管理工具。<br> 安装命令：npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a><br> 配置环境变量，将上面prefix的目录配置到path，完成即可使用cnpm替代npm命令</p>
-</blockquote>
+<li><p>ajax请求正常，跳转ftl页面出现404</p>
+<ul>
+<li><p>确认是否引入了freemarker依赖</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">      &lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;spring-boot-starter-freemarker&lt;/artifactId&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
 </li>
-<li>安装webpack<blockquote>
-<p>cnpm install webpack -g</p>
-</blockquote>
+<li><p>确认templates目录是否编译到classes下，如果是resources目录下回自动编译，如果是自定义目录下，需要手动设置该目录为resources</p>
 </li>
-<li>安装vue<blockquote>
-<p>cnpm install vue -g</p>
-</blockquote>
-</li>
-<li>安装全局vue-cli脚手架<blockquote>
-<p>cnpm install –global vue-cli或者cnpm install vue -g<br>验证：输入vue，出来vue的信息，及说明安装成功</p>
-</blockquote>
-</li>
-<li>新项目的创建<ul>
-<li>vue init webpack my-project-first</li>
-<li>进入my-project-first文件夹</li>
-<li>cnpm install</li>
-<li>cnpm run dev</li>
-<li>访问<a href="http://localhost:8080/#/" target="_blank" rel="external">http://localhost:8080/#/</a></li>
-<li>打包：cnpm run build</li>
+<li>确认配置文件，尤其是template-loader-path</li>
 </ul>
 </li>
-<li>安装IDE<blockquote>
-<p>VSCode &amp; WebStorm</p>
-</blockquote>
-</li>
-<li>导入创建的文件夹</li>
-<li>目录结构介绍：或有些微不同 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">├── README.md            项目介绍</div><div class="line">├── index.html           入口页面</div><div class="line">├── build              构建脚本目录</div><div class="line">│  ├── build-server.js         运行本地构建服务器，可以访问构建后的页面</div><div class="line">│  ├── build.js            生产环境构建脚本</div><div class="line">│  ├── dev-client.js          开发服务器热重载脚本，主要用来实现开发阶段的页面自动刷新</div><div class="line">│  ├── dev-server.js          运行本地开发服务器</div><div class="line">│  ├── utils.js            构建相关工具方法</div><div class="line">│  ├── webpack.base.conf.js      wabpack基础配置</div><div class="line">│  ├── webpack.dev.conf.js       wabpack开发环境配置</div><div class="line">│  └── webpack.prod.conf.js      wabpack生产环境配置</div><div class="line">├── config             项目配置</div><div class="line">│  ├── dev.env.js           开发环境变量</div><div class="line">│  ├── index.js            项目配置文件</div><div class="line">│  ├── prod.env.js           生产环境变量</div><div class="line">│  └── test.env.js           测试环境变量</div><div class="line">├── mock              mock数据目录</div><div class="line">│  └── hello.js</div><div class="line">├── package.json          npm包配置文件，里面定义了项目的npm脚本，依赖包等信息</div><div class="line">├── src               源码目录  </div><div class="line">│  ├── main.js             入口js文件</div><div class="line">│  ├── app.vue             根组件</div><div class="line">│  ├── components           公共组件目录</div><div class="line">│  │  └── title.vue</div><div class="line">│  ├── assets             资源目录，这里的资源会被wabpack构建</div><div class="line">│  │  └── images</div><div class="line">│  │    └── logo.png</div><div class="line">│  ├── routes             前端路由</div><div class="line">│  │  └── index.js</div><div class="line">│  ├── store              应用级数据（state）</div><div class="line">│  │  └── index.js</div><div class="line">│  └── views              页面目录</div><div class="line">│    ├── hello.vue</div><div class="line">│    └── notfound.vue</div><div class="line">├── static             纯静态资源，不会被wabpack构建。</div><div class="line">└── test              测试文件目录（unit&amp;e2e）</div><div class="line">  └── unit              单元测试</div><div class="line">    ├── index.js            入口脚本</div><div class="line">    ├── karma.conf.js          karma配置文件</div><div class="line">    └── specs              单测case目录</div><div class="line">      └── Hello.spec.js</div></pre></td></tr></table></figure>
+<li>页面跳转也正常，但是资源文件（js/css）404<ul>
+<li>确认static-locations配置</li>
+</ul>
 </li>
 </ol>
-<h4 id="严重参考"><a href="#严重参考" class="headerlink" title="严重参考"></a>严重参考</h4><ol>
-<li><a href="https://www.jianshu.com/p/0c6678671635" target="_blank" rel="external">https://www.jianshu.com/p/0c6678671635</a></li>
-<li><a href="https://www.cnblogs.com/zhaomeizi/p/8483597.html" target="_blank" rel="external">https://www.cnblogs.com/zhaomeizi/p/8483597.html</a></li>
+</li>
+</ol>
+<h4 id="前端页面搭建问题"><a href="#前端页面搭建问题" class="headerlink" title="前端页面搭建问题"></a>前端页面搭建问题</h4><ol>
+<li>因为把原先创建的vue工程复制到别的文件夹，导致无法再次build（npm 项目，在安装依赖node_modules的时候，会记录当前的文件路径。当路径更改，就无法正常启动。）<ul>
+<li>删除原有的node_modules</li>
+<li>使用npm install</li>
+<li>install过程可能出现npm ERR! code: ‘EPERM’ (权限问题 errro permit)：npm cache clean –force</li>
+<li>多次执行npm install，依然报错，且执行npm run dev，报‘webpack-dev-server’不是内部或外部命令错误，但是小伙伴新搭建的却没有这类问题，猜测可能和npm有关，更新至最新版：npm install -g npm</li>
+<li>再次执行npm install，正常，出现 run <code>npm audit fix</code> to fix them, or <code>npm audit</code> for details可忽略</li>
+<li>npm run dev测试正常</li>
+</ul>
+</li>
+<li>配置完prefix之后npm无法使用，参考【傻瓜式学Vue-01搭建环境、初始化项目】第三步，建议目录不要配置到node的安装目录【TODO】<ul>
+<li>删除C:\Users{账户}\下的.npmrc文件</li>
+</ul>
+</li>
+<li>跳转到ftl页面，但是js/css始终404，查看相关位置的文件都正常<ol>
+<li>源文件里点击js/css可以进入相关页面</li>
+<li>浏览器F12，发现相关脚本文件的地址都正常，上下文根都正常（eg.<a href="http://localhost:8881/XXXX/assets/css/hello/app.9df0c078c59382db011d74ed17465dad.css）" target="_blank" rel="external">http://localhost:8881/XXXX/assets/css/hello/app.9df0c078c59382db011d74ed17465dad.css）</a></li>
+<li>此时猜测问题应该在配置上，网上查找相关配置，修改完访问正常。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Spring:</div><div class="line"> resources:</div><div class="line">    static-locations: classpath:/</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
 </ol>
 
                     

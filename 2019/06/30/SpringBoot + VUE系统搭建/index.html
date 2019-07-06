@@ -222,6 +222,16 @@
 </ul>
 </li>
 <li>必须要有自定义配置的配置文件，尽量根据功能不同抽取出不同的配置文件。至少自定义的配置与框架类配置进行抽离。</li>
+<li><p>http请求默认后缀配置</p>
+<ul>
+<li><p>配置yml（也可以通过代码）</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">spring:</div><div class="line">    mvc:</div><div class="line">      pathmatch:</div><div class="line">          use-suffix-pattern: false</div><div class="line">          use-registered-suffix-pattern: true</div><div class="line">      contentnegotiation:</div><div class="line">          favor-path-extension: false</div></pre></td></tr></table></figure>
+</li>
+<li><p>代码修改，添加到main类中</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 设置匹配.do后缀的请求</div><div class="line"> *</div><div class="line"> * @param dispatcherServlet</div><div class="line"> * @return</div><div class="line"> */</div><div class="line">@Bean</div><div class="line">public ServletRegistrationBean servletRegistrationBean(DispatcherServlet dispatcherServlet) &#123;</div><div class="line">    ServletRegistrationBean bean = new ServletRegistrationBean(dispatcherServlet);</div><div class="line">    bean.addUrlMappings(&quot;*.do&quot;);</div><div class="line">    return bean;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 </ol>
 <h4 id="抽象代码示例"><a href="#抽象代码示例" class="headerlink" title="抽象代码示例"></a>抽象代码示例</h4><ol>
 <li>github地址：<a href="https://github.com/moon-zhou/SpringBoot_Backend_Modules.git" target="_blank" rel="external">https://github.com/moon-zhou/SpringBoot_Backend_Modules.git</a></li>
@@ -264,6 +274,14 @@
     <h3>近期文章</h3>
     
         <p>
+            <a href="/2019/07/06/【朝花再拾】Maven知识点/">【朝花再拾】Maven知识点</a>
+        </p>
+    
+        <p>
+            <a href="/2019/07/06/【小白踩坑】SpringBoot + VUE搭建过程发布问题整理/">【小白踩坑】SpringBoot + VUE搭建过程发布问题整理</a>
+        </p>
+    
+        <p>
             <a href="/2019/06/30/SpringBoot + VUE系统搭建/">SpringBoot + VUE系统搭建</a>
         </p>
     
@@ -272,15 +290,7 @@
         </p>
     
         <p>
-            <a href="/2019/06/23/Git学习-小白不能忍之一/">Git学习-小白不能忍之一</a>
-        </p>
-    
-        <p>
-            <a href="/2019/06/23/Git学习-小白学理论/">Git学习-小白学理论</a>
-        </p>
-    
-        <p>
-            <a href="/2019/06/23/Git学习-小白实操/">Git学习-小白实操</a>
+            <a href="/2019/06/23/Git学习-小白不能忍之三/">Git学习-小白不能忍之三</a>
         </p>
     
 </div>
