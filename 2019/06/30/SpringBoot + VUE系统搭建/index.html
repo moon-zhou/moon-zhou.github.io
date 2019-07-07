@@ -230,6 +230,47 @@
 <li><p>代码修改，添加到main类中</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 设置匹配.do后缀的请求</div><div class="line"> *</div><div class="line"> * @param dispatcherServlet</div><div class="line"> * @return</div><div class="line"> */</div><div class="line">@Bean</div><div class="line">public ServletRegistrationBean servletRegistrationBean(DispatcherServlet dispatcherServlet) &#123;</div><div class="line">    ServletRegistrationBean bean = new ServletRegistrationBean(dispatcherServlet);</div><div class="line">    bean.addUrlMappings(&quot;*.do&quot;);</div><div class="line">    return bean;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
+<li><p>导致问题：静态资源都无法正常访问-404</p>
+</li>
+<li>退而求其次，抽取公共后缀，手动加在RequestMapping的value后面</li>
+</ul>
+</li>
+<li><p>配置热启动</p>
+<ul>
+<li><p>父pom添加依赖</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">   &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</div><div class="line">   &lt;optional&gt;true&lt;/optional&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果想让模板页面也生效，需要修改相关模板缓存未false（这一步改为true也生效了，实操时各自看）</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">spring.thymeleaf.cache=false</div><div class="line">spring.freemarker.cache=false</div><div class="line">spring.groovy.template.cache=false</div></pre></td></tr></table></figure>
+</li>
+<li><p>yml配置，按需配置(<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html" target="_blank" rel="external">https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html</a>)</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 热启动</div><div class="line">devtools:</div><div class="line">    restart:</div><div class="line">        enabled: true</div><div class="line">        additional-paths: src/main/java</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置idea</p>
+<ol>
+<li>快捷键Ctrl+Alt+S打开设置(File-&gt;settings)，在Build，Execotion，Deployment-&gt;Compiler-&gt;勾选Build Project automatically项</li>
+<li>快捷键Ctrl + Shift + Alt + /，选择Registry，勾选 Compiler autoMake allow when app running</li>
+</ol>
+</li>
+<li>上述配置结束，重启应用，当改动代码时，观察控制台输出，你会发现Spring Boot已经检测到了文件变化，并重新启动。</li>
+</ul>
+</li>
+<li><p>配置Druid数据源(<a href="https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter" target="_blank" rel="external">https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter</a>)</p>
+<ul>
+<li><p>添加依赖</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">      &lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;com.alibaba&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;</div><div class="line">	&lt;version&gt;1.1.18&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改yml数据源配置</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">spring:</div><div class="line">    datasource: </div><div class="line">        type: com.alibaba.druid.pool.DruidDataSource</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加监控配置</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">spring:</div><div class="line">    datasource: </div><div class="line">        druid:</div><div class="line">          web-stat-filter:</div><div class="line">            enabled: true</div><div class="line">            url-pattern: /*</div><div class="line">            web-stat-filter.exclusions: .js,.gif,.jpg,.png,.css,.ico,/druid/*</div><div class="line">          stat-view-servlet:</div><div class="line">            enabled: true</div><div class="line">            url-pattern: /druid/*</div><div class="line">            login-username: druid</div><div class="line">            login-password: druid123</div></pre></td></tr></table></figure>
+</li>
+<li><p>监控测试</p>
+<blockquote>
+<p><a href="http://localhost:8881/backend-base/druid/index.html" target="_blank" rel="external">http://localhost:8881/backend-base/druid/index.html</a></p>
+</blockquote>
+</li>
 </ul>
 </li>
 </ol>
