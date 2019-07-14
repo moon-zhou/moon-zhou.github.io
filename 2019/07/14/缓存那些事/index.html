@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Hello World"/>
+        <meta property="og:title" content="缓存那些事"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Hello World - 弦 博客</title>
+    <title>缓存那些事 - 弦 博客</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -124,8 +124,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">Hello World</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2017-06-27</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">缓存那些事</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-07-14</p>
         </div>
     </div>
 
@@ -145,15 +145,63 @@
                     
 
                     <!-- Main Post Content -->
-                    <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+                    <h4 id="缓存那些事"><a href="#缓存那些事" class="headerlink" title="缓存那些事"></a>缓存那些事</h4><ol>
+<li><p>缓存穿透</p>
+<blockquote>
+<p>请求去查询一条压根儿数据库中根本就不存在的数据，也就是缓存和数据库都查询不到这条数据，但是请求每次都会打到数据库上面去。</p>
+</blockquote>
+<ul>
+<li>带来的风险：黑客会对你的系统进行攻击，拿一个不存在的id 去查询数据，会产生大量的请求到数据库去查询。可能会导致你的数据库由于压力过大而宕掉。</li>
+<li>解决办法：<ol>
+<li>缓存空值：这些key对应的值设置为null或者空对象丢到缓存里面(过期时间)</li>
+<li>BloomFilter：查询缓存之前先过下布隆过滤器，有再去走CACHE–DB（False is always false, True is maybe true.）</li>
+</ol>
+</li>
+<li>总结：<ol>
+<li>key异常多、请求重复率比较低的数据，我们就没有必要进行缓存，使用BloomFilter。</li>
+<li>空数据的key有限的，重复率比较高的，使用缓存空值。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>缓存击穿</p>
+<blockquote>
+<p>在平常高并发的系统中，大量的请求同时查询一个 key 时，此时这个key正好失效了，就会导致大量的请求都打到数据库上面去。</p>
+</blockquote>
+<ul>
+<li>解决方案：<ol>
+<li>一般这种场景缓存的是公共资源，所以可以查库的操作可以加上互斥锁（分布式锁）。（查库的大操作里，再进行一次查缓存，防止大量请求没有获取到缓存时，都竞争这把锁排队，而第一个竞争到锁的线程查询完库之后又进行塞缓存，后续进程再查库之前时判断已查库就不需要进行真正的查库操作）（或者使用tryLock，失败重新进入，就不需要进行查库时也进行一次查缓存）（==同时需要注意不同key查询之间要互不影响==）。</li>
+<li>热点数据不过期</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>缓存雪崩</p>
+<blockquote>
+<p>当某一时刻发生大规模的缓存失效的情况，比如你的缓存服务宕机了，会有大量的请求进来直接打到DB上面。</p>
+</blockquote>
+<ul>
+<li>解决方案<ol>
+<li>事前：使用集群缓存，保证缓存服务的高可用；参考第五点（过期时间不同）</li>
+<li>事中：本地缓存 + 限流降级（ehcache + Hystrix）</li>
+<li>事后：开启缓存持久化，尽快恢复集群（一旦重启，就能从磁盘上自动加载数据恢复内存中的数据。）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>总结<br> <img src="https://user-gold-cdn.xitu.io/2019/3/27/169bb265aa52e948?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="架构设计图"></p>
+</li>
+<li><p>热点数据失效</p>
+<blockquote>
+<p>在设置缓存的时候，一般会给缓存设置一个失效时间，过了这个时间，缓存就失效了。对于一些热点的数据来说，当缓存失效以后会存在大量的请求过来，然后打到数据库去，从而可能导致数据库崩溃的情况。</p>
+</blockquote>
+<p> 解决方案：</p>
+<ol>
+<li>设置不同的失效时间：在一个基础的时间上加上或者减去一个范围内的随机值（避免这些热点的数据集中失效）</li>
+<li></li>
+</ol>
+</li>
+</ol>
 
                     
                     <!-- Tags Bottom -->
