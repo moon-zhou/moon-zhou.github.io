@@ -156,9 +156,9 @@
 </ol>
 </li>
 <li>进行低版本排包<ol>
-<li>使用的idea（eclipse类似）</li>
+<li>使用的idea（eclipse类似，dependency hierarchy视图）</li>
 <li>多模块工程里，确认明确引入jar包的module</li>
-<li>在该module下，打开依赖jar包视图：Ctrl+Alt+Shift+U或者打开Maven–&gt;Show Dependency，</li>
+<li>在该module下，打开依赖jar包视图：Ctrl+Alt+Shift+U或者打开View–&gt;Tool Windows–&gt;Maven Projects–&gt;Show Dependency，或者pom.xml右键Diagram–&gt;show dependency</li>
 <li>Ctrl+F查找jar包，确认该module下jar版本是否正常</li>
 <li>确认该module下jar包是正常的，100%确认有其他jar包也依赖了spring的jms，逐个排查每一个module。重复第三第四步。</li>
 <li>最后找到在相关module的依赖视图里找到了该jar的上游依赖</li>
@@ -170,6 +170,9 @@
 <h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><ol>
 <li>重新maven构建整个项目，在最后的war里确认最终的jar包版本，正常</li>
 <li>重新发布，验证相关功能正常</li>
+</ol>
+<h4 id="意外"><a href="#意外" class="headerlink" title="意外"></a>意外</h4><ol>
+<li>社区版是没有show dependency，使用mvn dependency:tree，查看各jar的依赖关系。</li>
 </ol>
 
                     
