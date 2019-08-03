@@ -162,7 +162,8 @@
 <li>Ctrl+F查找jar包，确认该module下jar版本是否正常</li>
 <li>确认该module下jar包是正常的，100%确认有其他jar包也依赖了spring的jms，逐个排查每一个module。重复第三第四步。</li>
 <li>最后找到在相关module的依赖视图里找到了该jar的上游依赖</li>
-<li>在上游依赖的jar包里spring的jms排掉即可</li>
+<li>在上游依赖的jar包里spring的jms排掉即可 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;exclusions&gt;</div><div class="line">    &lt;exclusion&gt;</div><div class="line">        &lt;groupId&gt;&lt;/groupId&gt;</div><div class="line">        &lt;artifactId&gt;&lt;/artifactId&gt;</div><div class="line">    &lt;/exclusion&gt;</div><div class="line">&lt;/exclusions&gt;</div></pre></td></tr></table></figure>
+</li>
 </ol>
 </li>
 </ol>
