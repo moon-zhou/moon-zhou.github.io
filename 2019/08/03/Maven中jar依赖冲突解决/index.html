@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Git学习-小白不能忍之一"/>
+        <meta property="og:title" content="Maven中jar依赖冲突解决"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Git学习-小白不能忍之一 - 弦 博客</title>
+    <title>Maven中jar依赖冲突解决 - 弦 博客</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -124,8 +124,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">Git学习-小白不能忍之一</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-06-23</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Maven中jar依赖冲突解决</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-08-03</p>
         </div>
     </div>
 
@@ -145,27 +145,30 @@
                     
 
                     <!-- Main Post Content -->
-                    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>git 命令过长，记忆以及输入时不够快捷，<strong>不能忍</strong></p>
-</blockquote>
-<h4 id="Git-Log的进阶使用"><a href="#Git-Log的进阶使用" class="headerlink" title="Git Log的进阶使用"></a>Git Log的进阶使用</h4><ol>
-<li>Git查看日志，单独使用git log来操作，每一个commit信息太多，干扰信息又太多，而且各种分支的合并也看不到。优化如下：<blockquote>
-<p>git log –graph –pretty=format:’%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative</p>
-</blockquote>
+                    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>最近开了一个新系统开发，其中需要有个定时推送的业务，调用推送系统给手机推送相关消息。再接入推送系统的时候始终无法成功。
+</code></pre><h4 id="分析与解决"><a href="#分析与解决" class="headerlink" title="分析与解决"></a>分析与解决</h4><ol>
+<li>推送系统以消息队列的方式对外提供服务（公司内部基于spring的jms开发的消息队列中间件），接入队列的过程中，提示始终无法创建队列的连接。</li>
+<li>反馈相关错误给中间件系统，反馈是查下相关jar的版本。</li>
+<li>排查过程中，发现依赖的消息队列的jar包有两个，一个时低版本，一个是高版本，初步怀疑是jar包冲突。</li>
+<li>确认jar包冲突<ol>
+<li>下载maven构建的工程，确认最终打包里的依赖jar包版本，发现版本是较低的那个</li>
+<li>从现有接入成功的项目工程里，发现是依赖的高版本jar包，99%确认</li>
+</ol>
 </li>
-<li><p>别名的使用：alias</p>
-<blockquote>
-<p>git config –global alias.ck checkout<br>git config –global alias.br branch<br>git config –global alias.cm commit<br>git config –global alias.st status</p>
-</blockquote>
-<p> 配置之后，原来的git checkout直接使用git ck即可。==alias.xx==点后面的xx就代表了我们设置的别名。<br> 结合别名的特性，我们可以优化第一点里的log以提高上述代码的效率。配置如下：  </p>
-<blockquote>
-<p>git config –global alias.lg “log –graph –pretty=format:’%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative”</p>
-</blockquote>
+<li>进行低版本排包<ol>
+<li>使用的idea（eclipse类似）</li>
+<li>多模块工程里，确认明确引入jar包的module</li>
+<li>在该module下，打开依赖jar包视图：Ctrl+Alt+Shift+U或者打开Maven–&gt;Show Dependency，</li>
+<li>Ctrl+F查找jar包，确认该module下jar版本是否正常</li>
+<li>确认该module下jar包是正常的，100%确认有其他jar包也依赖了spring的jms，逐个排查每一个module。重复第三第四步。</li>
+<li>最后找到在相关module的依赖视图里找到了该jar的上游依赖</li>
+<li>在上游依赖的jar包里spring的jms排掉即可</li>
+</ol>
 </li>
-<li><p>常用技巧<br> 功能 | 快捷键<br> —|—<br> 复制 | ctrl + insert<br> 粘贴 | shift + insert<br> 看日志 | 回车-查看更多，q-退出查看<br> merge后commit | linux模式：”i”进入编辑模式，”ESC”退出编辑模式，”:” + “wq”退出并保存</p>
-</li>
-<li><p>组合命令<br> 原始命令 | 组合命令<br> —|—<br> git add<br> git commit | git commit -a -m 也可以简写为 git commit -am</p>
-</li>
+</ol>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><ol>
+<li>重新maven构建整个项目，在最后的war里确认最终的jar包版本，正常</li>
+<li>重新发布，验证相关功能正常</li>
 </ol>
 
                     
