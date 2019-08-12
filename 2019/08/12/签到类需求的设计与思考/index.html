@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="代码规范第二期 backup"/>
+        <meta property="og:title" content="签到类需求的设计与思考"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>代码规范第二期 backup - 弦 博客</title>
+    <title>签到类需求的设计与思考 - 弦 博客</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -124,8 +124,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">代码规范第二期 backup</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-05-18</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">签到类需求的设计与思考</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-08-12</p>
         </div>
     </div>
 
@@ -145,29 +145,130 @@
                     
 
                     <!-- Main Post Content -->
-                    <h1 id="代码规范第二期"><a href="#代码规范第二期" class="headerlink" title="代码规范第二期"></a>代码规范第二期</h1><h2 id="code-style-规范"><a href="#code-style-规范" class="headerlink" title="code style 规范"></a>code style 规范</h2><ol>
-<li>形而上，但是的确很重要也很实用的原则<ul>
-<li>定义你自己的代码阅读等级范围</li>
-<li>方法视角：先实现基本方法，之后再在方法内抽取进行重构</li>
-<li>接口/类视角：有多个待实现的方法，最后一个方法实现之后，再进行重构</li>
-<li>大的视角来看，我们需要遵循原则，但是代码很多时候是运行在具体的场景里。因此写合适的代码，</li>
+                    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>6月底，所在会员研发中心接到原始需求，需要针对特定的频道开发签到功能。
+基本要求：
+    1. 各频道签到页面可以动态配置
+    2. 各频道签到规则可不一致
+    3. 签到有每日奖品及累计奖品发放
+    4. 周期内可以通过补签卡进行补签
+    5. 补签和签到效果一致，发放对应奖品
+</code></pre><h4 id="前期需求的讨论"><a href="#前期需求的讨论" class="headerlink" title="前期需求的讨论"></a>前期需求的讨论</h4><ol>
+<li>动态配置页面的实现<ul>
+<li>了解现有的内容配置系统，看是否满足要求</li>
+<li>确认现有内容管理不能完全满足，内容系统制管理内容</li>
+<li>需要一个布局系统，整合内容管理的展示</li>
 </ul>
 </li>
-<li>细节上的注意点<ul>
-<li>注释会骗人（代码才是唯一）</li>
-<li></li>
+<li>签到奖励是通过谁来发送（功能落到哪个系统）<ul>
+<li>签到数据在签到系统</li>
+<li>rpc调用任务平台发送签到奖励和补签奖励</li>
+</ul>
+</li>
+<li>补签卡的发放和使用<ul>
+<li>完成相关任务，不是直接调用券系统进行发放，而是通过任务平台–》礼包系统–》券系统</li>
+</ul>
+</li>
+<li>补签用卡<ul>
+<li>直接调用券系统</li>
 </ul>
 </li>
 </ol>
-<h2 id="生产问题-刚刚出炉的热乎bug"><a href="#生产问题-刚刚出炉的热乎bug" class="headerlink" title="生产问题(刚刚出炉的热乎bug)"></a>生产问题(刚刚出炉的热乎bug)</h2><h4 id="不发布的情况下，产生的bug系列"><a href="#不发布的情况下，产生的bug系列" class="headerlink" title="不发布的情况下，产生的bug系列"></a>不发布的情况下，产生的bug系列</h4><ol>
-<li>上线但运行4个月无反馈的bug<br><a href="http://wiki.cnXXX.com/pages/viewpage.action?pageId=33621924" target="_blank" rel="external">http://wiki.cnXXX.com/pages/viewpage.action?pageId=33621924</a></li>
-<li>跟随系统一起交接过来的bug<br><a href="http://wiki.cnXXX.com/pages/viewpage.action?pageId=33622386" target="_blank" rel="external">http://wiki.cnXXX.com/pages/viewpage.action?pageId=33622386</a></li>
-<li>系统njs升级涉及代码bug<br><a href="http://wiki.cnXXX.com/pages/viewpage.action?pageId=33621010" target="_blank" rel="external">http://wiki.cnXXX.com/pages/viewpage.action?pageId=33621010</a></li>
+<h4 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h4><ol>
+<li>后台配置管理系统<ul>
+<li>布局管理（和内容管理系统有关）</li>
+<li>独立的文案配置（本质上也可以放到内容管理系统，但产品认为配置的任务文案，方便统一查看）</li>
+<li>签到信息的查询和导出</li>
+<li>补偿数据的查询</li>
+<li>分布式job的实现：用户配置推送信息的job（上一篇全表扫描），补偿数据的job</li>
+</ul>
+</li>
+<li>服务系统的设计<ul>
+<li>开放签到等相关接口的rpc服务</li>
+<li>rpc接口不局限于用户操作业务相关的，还包含job服务相关接口</li>
+</ul>
+</li>
+<li>通过网关进行包装<ul>
+<li>rpc只能是系统内网之间的通信服务，外部小程序或者H5只能通过http进行访问，需要金融网关对其进行一层包装，将rpc接口转换为http接口。</li>
+</ul>
+</li>
 </ol>
-<h2 id="自我升级"><a href="#自我升级" class="headerlink" title="自我升级"></a>自我升级</h2><p>终极解决方案（唯心）：人 ==》 <strong>Later Is Never</strong><br>表象行为：“稍后再….”，稍后再抽个方法，稍后再重命名，稍后再重构，稍后再验证这个场景等等。<br>这个时候就要各位小心，往往稍后再XXX是没有稍后的。</p>
-<blockquote>
-<p>你还得练,孩子,还得练(共勉)</p>
-</blockquote>
+<h4 id="后端系统功能"><a href="#后端系统功能" class="headerlink" title="后端系统功能"></a>后端系统功能</h4><ol>
+<li>整体采用springboot，包含两个代码库：springboot、vue</li>
+<li>vue代码库的最终打包文件放到springboot里</li>
+<li>搭建过程可参考之前springboot+vue环境搭建</li>
+<li>正常业务：频道管理，页面布局管理，以及补偿数据查询</li>
+<li>job入口：用户推送消息job，签到失败补偿job（配置的到分布式任务平台，周期性调用）</li>
+</ol>
+<h4 id="服务端系统功能"><a href="#服务端系统功能" class="headerlink" title="服务端系统功能"></a>服务端系统功能</h4><ol>
+<li>签到类接口<ul>
+<li>查询签到信息接口（签到周期，每个用户展示的周期根据其实际签到进行计算，展示的不一定一样）</li>
+<li>签到接口</li>
+<li>不前接口</li>
+</ul>
+</li>
+<li>页面数据展示类接口<ul>
+<li>页面布局内容查询接口</li>
+<li>轮播数据即可欧</li>
+</ul>
+</li>
+<li>用户配置类接口<ul>
+<li>查询定时提醒配置</li>
+<li>修改定时提醒配置</li>
+</ul>
+</li>
+<li>job类服务接口<ul>
+<li>用户推送接口（后端系统调用该接口，再调用下游推送系统）</li>
+</ul>
+</li>
+</ol>
+<h4 id="核心重大决策"><a href="#核心重大决策" class="headerlink" title="核心重大决策"></a>核心重大决策</h4><ol>
+<li>签到接口<ul>
+<li>本签到系统数据落库成功，签到成功，</li>
+<li>下游任务平台接口调用失败/超时的情况下，调用时的参数落补偿表，后台进行手动/job补偿。</li>
+<li>任务平台的接口是幂等的，相同的参数调用不会频繁发送签到奖励。</li>
+<li>任务平台调用风控时，如果认为是有风险的，即使补偿也无法成功，该情况只能等用户反馈后，由下游礼包等奖励系统，直接手动补偿。</li>
+</ul>
+</li>
+<li>补签接口<ul>
+<li>连续补签时，任务平台没有批量接口</li>
+<li>业务上有系统，即签到系统，多线程批量调用，默认每一次单独补签为成功，调用超时/失败，补偿表进行处理</li>
+<li>补签时是不会出现风控拦截的，因为补签卡发放时已经过了一到风控，能发送补签卡可定不会被拦截补签</li>
+</ul>
+</li>
+<li>用户消息推送<ul>
+<li>定时全表扫描（上一篇一次全表扫描XXXX）</li>
+<li>筛选符合条件的数据</li>
+<li>调用服务端接口进行推送（服务端调下游）</li>
+</ul>
+</li>
+<li>签到规则<ul>
+<li>会员中心<ol>
+<li>周期7天内，从未签过，打开时当天即为第一天</li>
+<li>连续签7天即为满签</li>
+<li>一旦有一天未签，重新从第一天开始签到</li>
+</ol>
+</li>
+<li>理财<ol>
+<li>周期7天内，从未签过，打开时当天即为第一天</li>
+<li>七天之内均可签到，如有遗漏，在第七天结束之前均可以进行补签</li>
+<li>前天周后，开始新的一轮，如果新一轮一直不签到，则每次打开，当天即为第一天</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="后期优化"><a href="#后期优化" class="headerlink" title="后期优化"></a>后期优化</h4><ol>
+<li>job–》补偿次数可以优化为动态配置，否则达到补偿次数的数据一直占据着数据库的最前面，无法补偿。</li>
+<li>补偿数据如果一直无法补偿，可以考虑再创建一个无法补偿的表存储，避免补偿表做过多的无用数据扫描</li>
+<li>签到规则的提取，现在是if-else写死，后期可以抽取规则，根据条件注入，调用不同的规则实现</li>
+<li>分析各层日志，接入紫金大盘进行接口调用量，成功率的统计分析</li>
+<li>网关上接口的调用量和返回监控，是否需要配置上流控及返回文案</li>
+<li>rsf接口关注tp99，耗时成功率等情况</li>
+</ol>
+<h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><ol>
+<li>业务上的需求和最终实现上可能是矛盾的，需要进行互相的妥协。比如连续补签并发调用下游系统的相关决策。</li>
+<li>保证数据的最终一致性</li>
+</ol>
 
                     
                     <!-- Tags Bottom -->
