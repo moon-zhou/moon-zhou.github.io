@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="【小白踩坑】SpringBoot + VUE搭建过程发布问题整理"/>
+        <meta property="og:title" content="sb2.0统一错误页面"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>【小白踩坑】SpringBoot + VUE搭建过程发布问题整理 - 弦 博客</title>
+    <title>sb2.0统一错误页面 - 弦 博客</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -124,8 +124,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">【小白踩坑】SpringBoot + VUE搭建过程发布问题整理</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-07-06</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">sb2.0统一错误页面</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-08-13</p>
         </div>
     </div>
 
@@ -145,59 +145,19 @@
                     
 
                     <!-- Main Post Content -->
-                    <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
-<p>从本场地环境搭建，启动，到发布服务器，时刻都可能存在着各种问题。雁过留痕，以此记录。</p>
+                    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>调试mybatis-plus分页时，500错误，直接显示了原有的报错页。
+</code></pre><h4 id="实操步骤"><a href="#实操步骤" class="headerlink" title="实操步骤"></a>实操步骤</h4><ol>
+<li><p>重写错误跳转</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">@Configuration</div><div class="line">public class ErrorConfigurar &#123;</div><div class="line">    /**</div><div class="line">     * SpringBoot2.0以上版本WebServerFactoryCustomizer代替之前版本的EmbeddedWebServerFactoryCustomizerAutoConfiguration</div><div class="line">     *</div><div class="line">     * @return</div><div class="line">     */</div><div class="line"></div><div class="line">    //@Bean必须加上</div><div class="line">    @Bean</div><div class="line">    public WebServerFactoryCustomizer&lt;ConfigurableWebServerFactory&gt; webServerFactoryCustomizer() &#123;</div><div class="line">        //第二种写法：java8 lambda写法</div><div class="line">        return (factory -&gt; &#123;</div><div class="line">            ErrorPage errorPage404 = new ErrorPage(HttpStatus.NOT_FOUND, &quot;/error.do&quot;);</div><div class="line">            ErrorPage errorPage500 = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, &quot;/error.do&quot;);</div><div class="line">            factory.addErrorPages(errorPage404, errorPage500);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>自定义错误跳转（普通controller，用于给第一步跳转）</p>
+<blockquote>
+<p><a href="https://github.com/moon-zhou/SpringBoot_Backend_Modules/blob/master/backend-base-web/src/main/java/org/moonzhou/backend/base/web/controller/MyErrorController.java" target="_blank" rel="external">https://github.com/moon-zhou/SpringBoot_Backend_Modules/blob/master/backend-base-web/src/main/java/org/moonzhou/backend/base/web/controller/MyErrorController.java</a></p>
 </blockquote>
-<h4 id="后台搭建问题"><a href="#后台搭建问题" class="headerlink" title="后台搭建问题"></a>后台搭建问题</h4><ol>
-<li>本地环境搭建启动问题总结链接记录：<a href="http://note.youdao.com/noteshare?id=48090d7749c8306a0adb5a77a8c66b0f&amp;sub=EF23A9DE231D48AE89C495B3AAF4BEB0" target="_blank" rel="external">请戳我</a><blockquote>
-<p>因为图床域名被收回，超链接为文本笔记，非md文档。</p>
+</li>
+<li>编写第二步里的相关页面<blockquote>
+<p><a href="https://github.com/moon-zhou/SpringBoot_Backend_Modules/tree/master/backend-base-war/src/main/webapp/templates/error" target="_blank" rel="external">https://github.com/moon-zhou/SpringBoot_Backend_Modules/tree/master/backend-base-war/src/main/webapp/templates/error</a></p>
 </blockquote>
-</li>
-<li><p>发布到服务器上，出现了两个问题（前提是本地可以正常启动，web容器使用的是jboss）</p>
-<ol>
-<li><p>服务器压根无法启动<br> 因为本地可以启动，服务器上的web容器却无法启动，猜测是web容器相关配置，查找资料，需添加如下配置：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;</div><div class="line">    &lt;scope&gt;provided&lt;/scope&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>服务器正常启动，但controller却无法访问，ajax请求及页面跳转都无法正常返回，显示404。<br> 因为请求都无法返回，猜测是controller都未被注册到spring上下文里面，查找相关资料，找到如下解决方案：继承SpringBootServletInitializer，重写configure方法</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@SpringBootApplication</div><div class="line">@MapperScan(&quot;com.suning.epp.member.fmsms.admin.dao&quot;)</div><div class="line">@ImportResource(locations = &#123;&quot;classpath*:config/sfops-ws-client.xml&quot;&#125;)</div><div class="line">public class FmsmsAdminWebApplication extends SpringBootServletInitializer &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) &#123;</div><div class="line">        return application.sources(FmsmsAdminWebApplication.class);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        SpringApplication.run(FmsmsAdminWebApplication.class, args);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>ajax请求正常，跳转ftl页面出现404</p>
-<ul>
-<li><p>确认是否引入了freemarker依赖</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">      &lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;spring-boot-starter-freemarker&lt;/artifactId&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>确认templates目录是否编译到classes下，如果是resources目录下回自动编译，如果是自定义目录下，需要手动设置该目录为resources</p>
-</li>
-<li>确认配置文件，尤其是template-loader-path</li>
-</ul>
-</li>
-<li>页面跳转也正常，但是资源文件（js/css）404<ul>
-<li>确认static-locations配置</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<h4 id="前端页面搭建问题"><a href="#前端页面搭建问题" class="headerlink" title="前端页面搭建问题"></a>前端页面搭建问题</h4><ol>
-<li>因为把原先创建的vue工程复制到别的文件夹，导致无法再次build（npm 项目，在安装依赖node_modules的时候，会记录当前的文件路径。当路径更改，就无法正常启动。）<ul>
-<li>删除原有的node_modules</li>
-<li>使用npm install</li>
-<li>install过程可能出现npm ERR! code: ‘EPERM’ (权限问题 errro permit)：npm cache clean –force</li>
-<li>多次执行npm install，依然报错，且执行npm run dev，报‘webpack-dev-server’不是内部或外部命令错误，但是小伙伴新搭建的却没有这类问题，猜测可能和npm有关，更新至最新版：npm install -g npm</li>
-<li>再次执行npm install，正常，出现 run <code>npm audit fix</code> to fix them, or <code>npm audit</code> for details可忽略</li>
-<li>npm run dev测试正常</li>
-</ul>
-</li>
-<li>配置完prefix之后npm无法使用，参考【傻瓜式学Vue-01搭建环境、初始化项目】第三步，建议目录不要配置到node的安装目录【TODO】<ul>
-<li>删除C:\Users{账户}\下的.npmrc文件</li>
-</ul>
-</li>
-<li>跳转到ftl页面，但是js/css始终404，查看相关位置的文件都正常<ol>
-<li>源文件里点击js/css可以进入相关页面</li>
-<li>浏览器F12，发现相关脚本文件的地址都正常，上下文根都正常（eg.<a href="http://localhost:8881/XXXX/assets/css/hello/app.9df0c078c59382db011d74ed17465dad.css）" target="_blank" rel="external">http://localhost:8881/XXXX/assets/css/hello/app.9df0c078c59382db011d74ed17465dad.css）</a></li>
-<li>此时猜测问题应该在配置上，网上查找相关配置，修改完访问正常。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Spring:</div><div class="line"> resources:</div><div class="line">    static-locations: classpath:/</div></pre></td></tr></table></figure>
-</li>
-</ol>
 </li>
 </ol>
 
