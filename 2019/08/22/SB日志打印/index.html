@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="never stop">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="moon zhou">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="SB日志打印"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="never stop" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="弦 博客"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>SB日志打印 - 弦 博客</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="弦 博客">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="弦 博客">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/tags" 
+                    title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/categories" 
+                    title="Categories">
+                    Categories
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/about.html" 
+                    title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contact.html" 
+                    title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">SB日志打印</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-08-22</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+
+                    <!-- Main Post Content -->
+                    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>1. 为方便问题定位，每一次请求最好可以通过唯一的标识来串起每一个单独打印的日志
+2. 正常的业务需求在sb框架里进行各业务逻辑层的拆分，传统的mvc分层，以及义务自定义的一些分层处理。因此公共的各层出入参需要打印且脱敏。
+</code></pre><h4 id="请求日志连接方案"><a href="#请求日志连接方案" class="headerlink" title="请求日志连接方案"></a>请求日志连接方案</h4><ol>
+<li>针对每一个controller请求，请求进入之前，设置唯一随机值，请求结束，删除该随机值。</li>
+<li>使用logback提供的MDC扩展，设置每一次请求的invokeNo（“线程号”）</li>
+<li>每一次通过logger.info输出日志的时候，都带上这个随机值。</li>
+</ol>
+<h5 id="show-your-myHub"><a href="#show-your-myHub" class="headerlink" title="show your myHub"></a>show your myHub</h5><ol>
+<li>sb里实现拦截器HandlerInterceptor，设置线程号<blockquote>
+<p><a href="https://github.com/moon-zhou/SpringBoot_Backend_Modules/blob/master/backend-base-web/src/main/java/org/moonzhou/backend/base/web/interceptor/CommonInterceptor.java" target="_blank" rel="external">https://github.com/moon-zhou/SpringBoot_Backend_Modules/blob/master/backend-base-web/src/main/java/org/moonzhou/backend/base/web/interceptor/CommonInterceptor.java</a></p>
+</blockquote>
+</li>
+<li>sb注册上拦截器<blockquote>
+<p><a href="https://github.com/moon-zhou/SpringBoot_Backend_Modules/blob/master/backend-base-web/src/main/java/org/moonzhou/backend/base/web/config/WebMvcConfig.java" target="_blank" rel="external">https://github.com/moon-zhou/SpringBoot_Backend_Modules/blob/master/backend-base-web/src/main/java/org/moonzhou/backend/base/web/config/WebMvcConfig.java</a></p>
+</blockquote>
+</li>
+<li><p>配置logback，日志输出格式里添加上线程号的参数</p>
+<blockquote>
+<p><a href="https://github.com/moon-zhou/SpringBoot_Backend_Modules/blob/master/backend-base-war/src/main/resources/logback-spring.xml" target="_blank" rel="external">https://github.com/moon-zhou/SpringBoot_Backend_Modules/blob/master/backend-base-war/src/main/resources/logback-spring.xml</a></p>
+</blockquote>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[%X&#123;invokeNo&#125;]</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="分层日志打印方案"><a href="#分层日志打印方案" class="headerlink" title="分层日志打印方案"></a>分层日志打印方案</h4><ol>
+<li><p>统一的各层拦截，标准日志输出</p>
+<ol>
+<li><p>利用aop，针对各层特定的路径配置环绕通知</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 切入点描述 这个是controller包的切入点</div><div class="line"> */</div><div class="line">@Pointcut(&quot;execution(public * org.moonzhou.backend.base.web.controller..*.*(..))&quot;)</div><div class="line">public void controllerLog() &#123;</div><div class="line">&#125;//签名，可以理解成这个切入点的一个名称</div><div class="line"></div><div class="line">/**</div><div class="line"> * 环绕增强，相当于MethodInterceptor</div><div class="line"> * 环绕controller</div><div class="line"> */</div><div class="line">@Around(&quot;controllerLog()&quot;)</div><div class="line">public Object aroundController(ProceedingJoinPoint joinPoint) throws Throwable &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>logback里配置分层日志的loggerName</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;logger name=&quot;ControllerLogger&quot; level=&quot;$&#123;monitor.log.level&#125;&quot; additivity=&quot;false&quot;&gt;</div><div class="line">    &lt;appender-ref ref=&quot;CONTROLLER_APPENDER&quot; /&gt;</div><div class="line">&lt;/logger&gt;</div><div class="line"></div><div class="line">private static final Logger SERVICE_LOGGER = LoggerFactory.getLogger(&quot;ControllerLogger&quot;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>脱敏输出出入参</p>
+</li>
+<li>详情见LogAspect.java和logback-spring.xml：<a href="https://github.com/moon-zhou/SpringBoot_Backend_Modules" target="_blank" rel="external">https://github.com/moon-zhou/SpringBoot_Backend_Modules</a></li>
+</ol>
+</li>
+<li><p>日志异步化    </p>
+<ul>
+<li>保持原有的append生成文件及backup规则</li>
+<li>再配置异步化append，依赖原有的append</li>
+<li>使用异步化的append</li>
+<li>异步日志打印时，日志格式里的class和method以及line是无法正常打印的<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 时间滚动输出 level为 ERROR 日志 --&gt;</div><div class="line">&lt;appender name=&quot;ERROR_FILE_APPENDER&quot; class=&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;&gt;</div><div class="line">    &lt;!-- 正在记录的日志文件的路径及文件名 --&gt;</div><div class="line">    &lt;file&gt;$&#123;log.path&#125;/log_error.log&lt;/file&gt;</div><div class="line">    &lt;!--日志文件输出格式--&gt;</div><div class="line">    &lt;encoder&gt;</div><div class="line">        &lt;pattern&gt;%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [%thread] [%class] [%method] [%line] [%X&#123;invokeNo&#125;] %-5level %logger&#123;50&#125; - %msg%n&lt;/pattern&gt;</div><div class="line">        &lt;charset&gt;UTF-8&lt;/charset&gt; &lt;!-- 此处设置字符集 --&gt;</div><div class="line">    &lt;/encoder&gt;</div><div class="line">    &lt;!-- 日志记录器的滚动策略，按日期，按大小记录 --&gt;</div><div class="line">    &lt;rollingPolicy class=&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;&gt;</div><div class="line">        &lt;fileNamePattern&gt;$&#123;log.path&#125;/error/log-error-%d&#123;yyyy-MM-dd&#125;.%i.log&lt;/fileNamePattern&gt;</div><div class="line">        &lt;timeBasedFileNamingAndTriggeringPolicy class=&quot;ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP&quot;&gt;</div><div class="line">            &lt;maxFileSize&gt;100MB&lt;/maxFileSize&gt;constants</div><div class="line">        &lt;/timeBasedFileNamingAndTriggeringPolicy&gt;</div><div class="line">        &lt;!--日志文件保留天数--&gt;</div><div class="line">        &lt;maxHistory&gt;15&lt;/maxHistory&gt;</div><div class="line">    &lt;/rollingPolicy&gt;</div><div class="line">    &lt;!-- 此日志文件只记录ERROR级别的 --&gt;</div><div class="line">    &lt;filter class=&quot;ch.qos.logback.classic.filter.LevelFilter&quot;&gt;</div><div class="line">        &lt;level&gt;ERROR&lt;/level&gt;</div><div class="line">        &lt;onMatch&gt;ACCEPT&lt;/onMatch&gt;</div><div class="line">        &lt;onMismatch&gt;DENY&lt;/onMismatch&gt;</div><div class="line">    &lt;/filter&gt;</div><div class="line">&lt;/appender&gt;</div><div class="line"></div><div class="line">&lt;!-- error日志异步化 --&gt;</div><div class="line">&lt;appender name=&quot;ERROR_ASYNC_FILE_APPENDER&quot; class=&quot;ch.qos.logback.classic.AsyncAppender&quot;&gt;</div><div class="line">    &lt;!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 --&gt;</div><div class="line">    &lt;discardingThreshold&gt;0&lt;/discardingThreshold&gt;</div><div class="line">    &lt;!-- 更改默认的队列的深度,该值会影响性能.默认值为256 --&gt;</div><div class="line">    &lt;queueSize&gt;10240&lt;/queueSize&gt;</div><div class="line">    &lt;!-- 添加附加的appender,最多只能添加一个 --&gt;</div><div class="line">    &lt;appender-ref ref=&quot;ERROR_FILE_APPENDER&quot; /&gt;</div><div class="line">&lt;/appender&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>自定义注解，针对某些方法，灵活的添加日志</p>
+<ol>
+<li>自定义日志注解</li>
+<li>编写aop拦截类，将自定义注解作为切点条件，拦截规则里，针对切点做实际的日志输出处理</li>
+<li>使用method log annotation，放到具体的类上进行测试。</li>
+<li>详情见MethodLog及AnnotationLogAspect：<a href="https://github.com/moon-zhou/SpringBoot_Backend_Modules" target="_blank" rel="external">https://github.com/moon-zhou/SpringBoot_Backend_Modules</a></li>
+<li>问题：如果方法上已经被aop增强调用了，则该方法下再去调用的方法，加上自定义日志注解是不会生效<a href="https://blog.csdn.net/java_OnTheWay_kouhao/article/details/88964857" target="_blank" rel="external">（类似问题）</a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 测试注解日志请求</div><div class="line"> * controller上直接使用MethodLog是始终都会生效的</div><div class="line"> * http://localhost:8881/backend-base/hello/testAnnotationLog.do</div><div class="line"> * @return</div><div class="line"> */</div><div class="line">@MethodLog(operationType = &quot;testType&quot;, operationName = &quot;testUser&quot;, description = &quot;测试注解日志&quot;)</div><div class="line">@RequestMapping(&quot;/testAnnotationLog&quot; + SystemConstants.REQUEST_SUFFIX)</div><div class="line">@ResponseBody</div><div class="line">public BaseDto testAnnotationLog() &#123;</div><div class="line">    </div><div class="line">    // 这个使用的是spring上下文里的对象去调用initReturn方法，所以initReturn方法上的methodLog注解会被AnnotationLogAspect的规则拦截</div><div class="line">    return BeanUtil.getBean(this.getClass()).initReturn();</div><div class="line">    </div><div class="line">    // 此处调用方法，已经被拦截处理过，即被动态代理拦截了，再直接调用别的方法，是通过代理对象调用的，方法是不会被增强的，即initReturn方法上注解不会生效</div><div class="line">    //        return initReturn();</div><div class="line">&#125;</div><div class="line">    </div><div class="line">/**</div><div class="line"> * 测试注解日志打印</div><div class="line"> * @return</div><div class="line"> */</div><div class="line">@MethodLog(operationType = &quot;init&quot;, operationName = &quot;testUser&quot;, description = &quot;初始化controller返回值&quot;)</div><div class="line">public BaseDto initReturn() &#123;</div><div class="line">    return new BaseDto();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="moon zhou">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>近期文章</h3>
+    
+        <p>
+            <a href="/2019/08/22/SB日志打印/">SB日志打印</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/">【奇技淫巧】SB里数据层的拓展及小技巧</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/13/sb2.0统一错误页面/">sb2.0统一错误页面</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/13/sb里正确使用logback的姿势/">sb里正确使用logback的姿势</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/12/签到类需求的设计与思考/">签到类需求的设计与思考</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
+                            <i class="fa fa-500px"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Untitled. All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
