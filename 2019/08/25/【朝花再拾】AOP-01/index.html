@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="never stop">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="moon zhou">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="【朝花再拾】AOP-01"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="never stop" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="弦 博客"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>【朝花再拾】AOP-01 - 弦 博客</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="弦 博客">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="弦 博客">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/tags" 
+                    title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/categories" 
+                    title="Categories">
+                    Categories
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/about.html" 
+                    title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contact.html" 
+                    title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">【朝花再拾】AOP-01</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-08-25</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+
+                    <!-- Main Post Content -->
+                    <p>如果无法正确查看流程图， 点击<a href="http://note.youdao.com/noteshare?id=674742c3e3cdcccb64aef4a7b1838964&amp;sub=BA3E38DF582B4838AB7ADB48EF813E97" target="_blank" rel="external">传送门</a></p>
+<hr>
+<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>最近在重新整理spring知识结构，从Springboot入手，在自定日志打印时，使用aop进行的处理。(详情见上一篇日志)
+同时最近项目组招聘小伙伴时，问到过spring aop的相关问题。
+因此觉得有必要由浅入深，把以前学习的落到文档上，方便自己的回顾，也便于传播。
+</code></pre><h4 id="AOP编程思考"><a href="#AOP编程思考" class="headerlink" title="AOP编程思考"></a>AOP编程思考</h4><ol>
+<li>通常使用java进行面向对象编程时，代码的执行都是按照时间序列纵向展开的（运行）：以方法调用作为基本执行单位展开的，将方法调用作为一个连接点，由连接点串起来的程序执行流程就是整个程序的执行过程。（每个方法运行时都会创建一个栈帧）</li>
+<li>aop与传统编程思维不同，它将每一个方法调用，即连接点作为编程的入口，针对方法进行编程。从执行的逻辑上来看，相当于在之前纵向的按照时间轴执行的程序横向切入。相当于将之前的程序横向切割成若干的面，即Aspect.每个面被称为切面。</li>
+<li>AOP本质上是针对方法调用的编程思路。</li>
+</ol>
+<h4 id="AOP的产生"><a href="#AOP的产生" class="headerlink" title="AOP的产生"></a>AOP的产生</h4><p>方法的鉴权，打印方法的运行时间，传统的数据库操作方法（获取链接-&gt;执行sql-&gt;获取结果-&gt;提交事务-&gt;获取结果），这些场景里，需要针对方法做一些共性的操作，因此与aop编程思想十分契合。利用aop抽取方法的共性操作，方法本身无需关注，只需要关注自身的业务逻辑。</p>
+<h4 id="AOP的实现方式"><a href="#AOP的实现方式" class="headerlink" title="AOP的实现方式"></a>AOP的实现方式</h4><ol>
+<li>静态代理：aspect</li>
+<li>动态代理：JDK/cglib/Javassist/ASM</li>
+</ol>
+<p>图解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">graph LR</div><div class="line">调用方--&gt;代理对象</div><div class="line">代理对象--&gt; 调用方</div><div class="line">代理对象--&gt;目标执行方法</div><div class="line">目标执行方法--&gt;代理对象</div></pre></td></tr></table></figure>
+<h5 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h5><ol>
+<li>含义<blockquote>
+<p>代理类通过实现与目标对象相同的接口，并在类中维护一个代理对象。通过构造器塞入目标对象，赋值给代理对象，进而执行代理对象实现的接口方法，并实现前拦截，后拦截等所需的业务功能。</p>
+</blockquote>
+</li>
+<li>优点：可以做到不对目标对象进行修改的前提下，对目标对象进行功能的扩展和拦截。(代理类的扩展本身就是业务逻辑的扩展，无需解耦或者某种程度说已经解耦)</li>
+<li>缺点：因为代理对象，需要实现与目标对象一样的接口，会导致代理类十分繁多，不易维护，同时一旦接口增加方法，则目标对象和代理类都需要维护。</li>
+<li>show github:<ul>
+<li><a href="https://github.com/moon-zhou/advanced-java/tree/master/src/main/java/org/moonzhou/proxy/staticproxy" target="_blank" rel="external">实现</a></li>
+<li><a href="https://github.com/moon-zhou/advanced-java/tree/master/src/test/java/org/moonzhou/proxy/staticproxy" target="_blank" rel="external">测试</a></li>
+</ul>
+</li>
+</ol>
+<h5 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h5><ol>
+<li>因为静态代理可能会产生代理类的“爆炸”，是不是有什么方案可以不要写太多的代理类，因而引出动态代理：<blockquote>
+<p>框架不会去修改字节码，而是在内存中临时为方法生成一个AOP对象，这个AOP对象包含了目标对象的全部方法，并且在特定的切点做了增强处理，并回调原对象的方法。</p>
+</blockquote>
+</li>
+</ol>
+<h6 id="JDK方式"><a href="#JDK方式" class="headerlink" title="JDK方式"></a>JDK方式</h6><ol>
+<li>在jdk1.3以后，jdk跟我们提供了一个API java.lang.reflect.InvocationHandler的类， 这个类可以让我们在JVM调用某个类的方法时动态的为些方法做些什么事。<ol>
+<li>版本1<ul>
+<li>思想：将目标执行的对象传入代理对象中，通过反射机制来执行目标对象的方法</li>
+<li><a href="https://github.com/moon-zhou/advanced-java/blob/master/src/main/java/org/moonzhou/proxy/dynamicproxy/jdkproxy/BizDynamicProxyV1.java" target="_blank" rel="external">实现</a></li>
+<li><a href="https://github.com/moon-zhou/advanced-java/blob/master/src/test/java/org/moonzhou/proxy/dynamicproxy/BizDynamicProxyTest.java" target="_blank" rel="external">测试</a></li>
+</ul>
+</li>
+<li>版本2<ul>
+<li>思想：版本1里，代理时需要做的业务，在代理对象里完成的。因此需要将代理时的业务与代理本身进行解耦</li>
+<li><a href="https://github.com/moon-zhou/advanced-java/blob/master/src/main/java/org/moonzhou/proxy/dynamicproxy/jdkproxy/BizDynamicProxyV2.java" target="_blank" rel="external">实现</a></li>
+<li><a href="https://github.com/moon-zhou/advanced-java/blob/master/src/test/java/org/moonzhou/proxy/dynamicproxy/BizDynamicProxyTest.java" target="_blank" rel="external">测试</a></li>
+</ul>
+</li>
+<li>缺点：在实际开发中，可能需要对没有实现接口的类（普通类）增强，用JDK动态代理的方式就没法实现。<h6 id="cglib"><a href="#cglib" class="headerlink" title="cglib"></a>cglib</h6></li>
+</ol>
+</li>
+<li>介绍<ul>
+<li>cglib是一个<a href="https://github.com/cglib/cglib" target="_blank" rel="external">开源库</a></li>
+<li>在运行期扩展Java类与实现Java接口(Hibernate用它来实现ersistent Object 持久化对象的字节码的动态生成、Spring AOP框架)</li>
+<li>CGLIB包的底层是通过使用一个小而快的字节码处理框架ASM，来转换字节码并生成新的类。</li>
+</ul>
+</li>
+<li><p>使用步骤</p>
+<ol>
+<li>通过cglib动态代理获取代理对象Enhancer过程（类比Proxy）</li>
+<li>设置业务逻辑处理类</li>
+<li>设置回调对象，即执行intercept方法（拦截）</li>
+<li>创建代理对象，与业务类相同，直接运行代理类的业务逻辑处理方法</li>
+<li><p>V1版本核心：<a href="https://github.com/moon-zhou/advanced-java/tree/master/src/main/java/org/moonzhou/proxy/dynamicproxy/cglibproxy/v1" target="_blank" rel="external">详情</a>/<a href="https://github.com/moon-zhou/advanced-java/blob/master/src/test/java/org/moonzhou/proxy/dynamicproxy/cglibproxy/CglibProxyTest.java" target="_blank" rel="external">测试</a></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * sub：cglib生成的代理对象</div><div class="line"> * method：被代理对象方法</div><div class="line"> * args：方法入参</div><div class="line"> * methodProxy: 代理方法</div><div class="line"> */</div><div class="line">@Override</div><div class="line">public Object intercept(Object sub, Method method, Object[] args, MethodProxy methodProxy) throws Throwable &#123;</div><div class="line">    // 可优化，见V2</div><div class="line">    System.out.println(&quot;cglib proxy before method...&quot;);</div><div class="line">    </div><div class="line">    Object result = methodProxy.invokeSuper(sub, args);</div><div class="line">    </div><div class="line">    // 可优化，见V2</div><div class="line">    System.out.println(&quot;cglib proxy after method...&quot;);</div><div class="line">    </div><div class="line">    return result;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">@Test</div><div class="line">public void testRun() &#123;</div><div class="line">    // 代理类class文件存入本地磁盘方便我们反编译查看源码</div><div class="line">    Properties sourceCodePath = new Properties();</div><div class="line">    sourceCodePath.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, &quot;E:\\TestCode\\cglib\\v1&quot;);</div><div class="line">    System.setProperties(sourceCodePath);</div><div class="line">    </div><div class="line">    // 通过cglib动态代理获取代理对象过程(类比JDK动态代理里的Proxy，但Enhancer更强大，既可以代理接口，也可以代理普通类，但不能拦截final方法)</div><div class="line">    Enhancer enhancer = new Enhancer();</div><div class="line">    </div><div class="line">    // 设置enhancer对象的父类，即业务类(需要被代理的类)</div><div class="line">    enhancer.setSuperclass(CommonBiz.class);</div><div class="line">    </div><div class="line">    // 设置enhancer的回调对象</div><div class="line">    enhancer.setCallback(new CglibProxyV1());</div><div class="line">    </div><div class="line">    // 创建代理对象</div><div class="line">    CommonBiz commonBizProxy = (CommonBiz) enhancer.create();</div><div class="line">    </div><div class="line">    // 通过代理对象调用目标方法</div><div class="line">    commonBizProxy.execute();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>与jdk动态代理的第一个版本类似，代理的处理业务逻辑需要与代理本身解耦，因此引出第二个版本</p>
+<ol>
+<li>业务处理和代理处理逻辑都动态传入</li>
+<li>intercept拦截处理业务逻辑，处理之前/之后的部分通过反射，先处理代理业务</li>
+<li>核心代码：<a href="">详情</a>/测试 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * sub：cglib生成的代理对象</div><div class="line"> * method：被代理对象方法</div><div class="line"> * args：方法入参</div><div class="line"> * methodProxy: 代理方法</div><div class="line"> */</div><div class="line">@Override</div><div class="line">public Object intercept(Object sub, Method method, Object[] args, MethodProxy methodProxy) throws Throwable &#123;</div><div class="line">    before(method);</div><div class="line">        </div><div class="line">    Object result;</div><div class="line">    try &#123;</div><div class="line">        result = methodProxy.invokeSuper(sub, args);</div><div class="line">    &#125; finally &#123;</div><div class="line">        after(method);</div><div class="line">    &#125;</div><div class="line">        </div><div class="line">    return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ol>
+<li><a href="https://blog.csdn.net/weianluo/article/details/81607134" target="_blank" rel="external">https://blog.csdn.net/weianluo/article/details/81607134</a></li>
+<li><a href="https://www.cnblogs.com/qf123/p/8671479.html" target="_blank" rel="external">https://www.cnblogs.com/qf123/p/8671479.html</a></li>
+<li><a href="https://blog.csdn.net/yhl_jxy/article/details/80633194" target="_blank" rel="external">https://blog.csdn.net/yhl_jxy/article/details/80633194</a></li>
+</ol>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="moon zhou">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>近期文章</h3>
+    
+        <p>
+            <a href="/2019/08/25/【朝花再拾】AOP-01/">【朝花再拾】AOP-01</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/22/SB日志打印/">SB日志打印</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/">【奇技淫巧】SB里数据层的拓展及小技巧</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/13/sb2.0统一错误页面/">sb2.0统一错误页面</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/13/sb里正确使用logback的姿势/">sb里正确使用logback的姿势</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
+                            <i class="fa fa-500px"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Untitled. All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
