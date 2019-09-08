@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>github新增代码库实操 | 弦 博客</title>
+  <title>Hexo添加标记和分类 | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="git创建新的代码库 登录github 找到”new repository”">
+  <meta name="description" content="背景 云笔记目录下的文章都放在根目录下，数量已经达到不太好维护的程度，统一做了目录的划分 个人博客里的内容也需要进行对应的分类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github新增代码库实操">
-<meta property="og:url" content="https://moon-zhou.github.io/2019/06/23/github新增代码库实操/index.html">
+<meta property="og:title" content="Hexo添加标记和分类">
+<meta property="og:url" content="https://moon-zhou.github.io/2019/05/18/Hexo添加标记和分类/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="git创建新的代码库 登录github 找到”new repository”">
+<meta property="og:description" content="背景 云笔记目录下的文章都放在根目录下，数量已经达到不太好维护的程度，统一做了目录的划分 个人博客里的内容也需要进行对应的分类">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-08T07:52:26.805Z">
+<meta property="og:updated_time" content="2019-09-08T13:52:20.868Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="github新增代码库实操">
-<meta name="twitter:description" content="git创建新的代码库 登录github 找到”new repository”">
+<meta name="twitter:title" content="Hexo添加标记和分类">
+<meta name="twitter:description" content="背景 云笔记目录下的文章都放在根目录下，数量已经达到不太好维护的程度，统一做了目录的划分 个人博客里的内容也需要进行对应的分类">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -182,22 +182,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-github新增代码库实操" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Hexo添加标记和分类" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      github新增代码库实操
+      Hexo添加标记和分类
     </h1>
   
 
 
   
   
-<a href="/2019/06/23/github新增代码库实操/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
+<a href="/2019/05/18/Hexo添加标记和分类/" class="archive-article-date">
+        <time datetime="2019-05-18T13:49:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-18</time>
 </a>
 
   
@@ -210,7 +210,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">239字</span>
+      <span class="post-count">959字</span>
     </span>
   </span>
 
@@ -219,7 +219,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">4分</span>
     </span>
   </span>
 </div>
@@ -230,28 +230,83 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="git创建新的代码库"><a href="#git创建新的代码库" class="headerlink" title="git创建新的代码库"></a>git创建新的代码库</h4><ol>
-<li>登录github</li>
-<li>找到”new repository”</li>
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
+<li>云笔记目录下的文章都放在根目录下，数量已经达到不太好维护的程度，统一做了目录的划分</li>
+<li>个人博客里的内容也需要进行对应的分类</li>
 </ol>
 <a id="more"></a>
 
-<h4 id="本地操作"><a href="#本地操作" class="headerlink" title="本地操作"></a>本地操作</h4><ol>
-<li>创建git目录：进入目录，git init</li>
-<li>将所有文件添加到本地工作区：git add .</li>
-<li>提交到本地库：git commit -m 提交说明</li>
-<li>添加本地和远程仓库的关联：git remote add localRepositoryName remoteRepositoryUrl【示例：git remote add my-project-first <a href="https://github.com/moon-zhou/VueDemo.git】" target="_blank" rel="noopener">https://github.com/moon-zhou/VueDemo.git】</a></li>
-<li>第一次不需要pull，直接push，需要设置upstream，后面就直接push，git push –set-upstream my-project-first master</li>
-<li></li>
+<h4 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a>选择主题</h4><ol>
+<li>登录hexo官网<a href="https://hexo.io/themes/" target="_blank" rel="noopener">主题库</a></li>
+<li>之前使用的是Anodyne，从设计风格上，本次选择了Yilia-plus</li>
+<li>离线下载或者clone到hexo目录下的themes文件夹下</li>
+<li>修改项目目录下_config.yml的主题(hexo\_config.yml,注意yml配置文件，冒号后有空格) <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: yilia-plus</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
-<h4 id="后悔药系列"><a href="#后悔药系列" class="headerlink" title="后悔药系列"></a>后悔药系列</h4><ol>
-<li>如果github上传时，设置的提交人名称有误<ol>
-<li>删除上一次提交，如果就一次提交，或者只有一个作者，因为换机器导致提交用户错误的，直接删除代码库，重新新建github代码库</li>
-<li>本地删除git管理文件：rm -rf .git</li>
-<li>修改本地的git用户名：git config –global user.name，==详情参考Git学习实操==</li>
-<li>重新参考”本地操作”，重新走一遍</li>
+<h4 id="主题基本配置"><a href="#主题基本配置" class="headerlink" title="主题基本配置"></a>主题基本配置</h4><ol>
+<li>进入主题文件夹，打开主题下的_config.yml(hexo\themes\yilia-plus\_config.yml)</li>
+<li>根据主题下的README，按步骤自定义配置，本次核心修改category配置 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  主页: /</span><br><span class="line">  文章: /archives</span><br><span class="line">  分类: /categories</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="添加category配置"><a href="#添加category配置" class="headerlink" title="添加category配置"></a>添加category配置</h4><ol>
+<li><p>创建“分类”选项(hexo项目根目录)</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第一步执行完，会在项目目录下\source\categories文件夹下生产index.md文档，对该配置文档进行编辑(必须编辑在front matter里，即双—之间，尤其设置type)</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2017-12-02 21:01:24</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>确认项目目录下_config.yml里的category目录配置</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">category_dir: categories</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改每一个项目目录下source_posts里的每一个md文档（博客文章），在front matter里添加分类categories</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Git学习-小白不能忍之二</span><br><span class="line">date: 2019-06-23 17:23:34</span><br><span class="line">categories: </span><br><span class="line">	- Git</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新生成静态网站博文，并验证</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证时发现，发布文件夹hexo\public\categories里已经有相关配置了，但是category页面是个空白。（Anodyne主题就不会有该问题，所以每一主题都已自己的一套配置项，每次切换都需要根据README进行一次对应的配置修改）</p>
+</li>
+<li><p>需要重新编辑\source\categories下index.md，添加layout配置</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2017-12-02 21:01:24</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">layout: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义layout</p>
+<ol>
+<li><p>主题\themes\yilia-plus\layout目录下新建categories.ejs，自带的categorie.ejs无法正常使用（报错）</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;article class=&quot;article article-type-post show&quot;&gt;</span><br><span class="line">  &lt;header class=&quot;article-header&quot; style=&quot;border-bottom: 1px solid #ccc&quot;&gt;</span><br><span class="line">  &lt;h1 class=&quot;article-title&quot; itemprop=&quot;name&quot;&gt;</span><br><span class="line">    &lt;%= page.title %&gt;</span><br><span class="line">  &lt;/h1&gt;</span><br><span class="line">  &lt;/header&gt;</span><br><span class="line"></span><br><span class="line">  &lt;% if (site.categories.length)&#123; %&gt;</span><br><span class="line">  &lt;div class=&quot;category-all-page&quot;&gt;</span><br><span class="line">    &lt;h2&gt;共计&amp;nbsp;&lt;%= site.categories.length %&gt;&amp;nbsp;个分类&lt;/h2&gt;</span><br><span class="line">    &lt;%- list_categories(site.categories, &#123;</span><br><span class="line">      show_count: true,</span><br><span class="line">      class: &apos;category-list-item&apos;,</span><br><span class="line">      style: &apos;list&apos;,</span><br><span class="line">      depth: 2,</span><br><span class="line">      separator: &apos;&apos;</span><br><span class="line">    &#125;) %&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;% &#125; %&gt;</span><br><span class="line">&lt;/article&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>主题themes\yilia-plus\source-src\css目录下创建categories.scss样式文件</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">.category-all-page &#123;</span><br><span class="line">  margin: 30px 40px 30px 40px;</span><br><span class="line">  position: relative;</span><br><span class="line">  min-height: 70vh;</span><br><span class="line"></span><br><span class="line">  h2&#123;</span><br><span class="line">    margin: 20px 0;</span><br><span class="line">  &#125;</span><br><span class="line">  .category-all-title &#123; text-align: center; &#125;</span><br><span class="line"></span><br><span class="line">  .category-all &#123; margin-top: 20px; &#125;</span><br><span class="line"></span><br><span class="line">  .category-list &#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">    list-style: none;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .category-list-item-list-item&#123;</span><br><span class="line">    margin: 10px 15px;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .category-list-item-list-count&#123;</span><br><span class="line">    color: grey;</span><br><span class="line">    &amp;:before &#123;</span><br><span class="line">      display: inline;</span><br><span class="line">      content: &quot; (&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;:after &#123;</span><br><span class="line">      display: inline;</span><br><span class="line">      content: &quot;) &quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .category-list-item &#123; margin: 10px 10px; &#125;</span><br><span class="line"></span><br><span class="line">  .category-list-count &#123;</span><br><span class="line">    color: grey;</span><br><span class="line">    &amp;:before &#123;</span><br><span class="line">      display: inline;</span><br><span class="line">      content: &quot; (&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;:after &#123;</span><br><span class="line">      display: inline;</span><br><span class="line">      content: &quot;) &quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .category-list-child &#123; padding-left: 10px; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在主题themes\yilia-plus\source-src\css目录下main.scss文件里，引入该scss文件（在同一目录）</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;./categories&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>js文件会实时生效，但是scss文件需要进行重新编译</p>
+<ol>
+<li>进入主题目录themes\yilia-plus执行npm install</li>
+<li>生成目标文件npm run dist</li>
+<li>如果安装很慢，请进行镜像设置；如果安装出错，请uninstall之后重试</li>
 </ol>
 </li>
+</ol>
+</li>
+<li><p>配置完成后，重新生成网站内容，验证正常</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>tags配置类似</p>
+</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li><p>该主题需要自定义layout及样式</p>
+</li>
+<li><p>不同的主题，配置差异很大，需要根据README逐个配置</p>
+</li>
+<li><p>source下目录结构</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">├─categories</span><br><span class="line">│  └──index.md</span><br><span class="line">├─tags</span><br><span class="line">│  └──index.md</span><br><span class="line">└─_posts</span><br><span class="line">   └──***.md</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>public下目录结构</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">├─archives</span><br><span class="line">│  └─***</span><br><span class="line">├─categories</span><br><span class="line">│  └─***</span><br><span class="line">└─tags</span><br><span class="line">   └─***</span><br></pre></td></tr></table></figure></li>
 </ol>
 
     
@@ -299,7 +354,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://moon-zhou.github.io/2019/06/23/github新增代码库实操/" title="github新增代码库实操" target="_blank">https://moon-zhou.github.io/2019/06/23/github新增代码库实操/</a>
+          <a href="https://moon-zhou.github.io/2019/05/18/Hexo添加标记和分类/" title="Hexo添加标记和分类" target="_blank">https://moon-zhou.github.io/2019/05/18/Hexo添加标记和分类/</a>
         </li>
         <li>
           <strong>版权声明： </strong>
@@ -319,7 +374,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        			<a href="/categories/HEXO//" class="article-tag-list-link color5">HEXO</a>
         		</li>
       		
 		</ul>
@@ -374,7 +429,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/06/23/github新增代码库实操/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/05/18/Hexo添加标记和分类/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -389,18 +444,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/06/23/Git学习-小白不能忍之三/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/18/代码规范第二期分享/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Git学习-小白不能忍之三
+          代码规范第二期
         
       </div>
     </a>
   
   
-    <a href="/2019/06/23/Git学习-小白实操/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Git学习-小白实操</div>
+    <a href="/2017/06/27/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -427,7 +482,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#git创建新的代码库"><span class="toc-number">1.</span> <span class="toc-text">git创建新的代码库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地操作"><span class="toc-number">2.</span> <span class="toc-text">本地操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后悔药系列"><span class="toc-number">3.</span> <span class="toc-text">后悔药系列</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择主题"><span class="toc-number">2.</span> <span class="toc-text">选择主题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#主题基本配置"><span class="toc-number">3.</span> <span class="toc-text">主题基本配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加category配置"><span class="toc-number">4.</span> <span class="toc-text">添加category配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
