@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="弦 博客">
 <meta property="og:description" content="如果页面样式有缺，点击传送门  背景 日常如何保证系统能够健康的运行，必不可少的就是实时的系统监控及告警。日常的服务接口成功率和耗时监控，还有一个就是系统异常数/种类，异常的影响级别等维度的监控。为此公司每月必须对系统产生的异常进行分析、治理。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-08T07:51:30.687Z">
+<meta property="og:updated_time" content="2019-09-08T14:11:46.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="日常问题汇总-一">
 <meta name="twitter:description" content="如果页面样式有缺，点击传送门  背景 日常如何保证系统能够健康的运行，必不可少的就是实时的系统监控及告警。日常的服务接口成功率和耗时监控，还有一个就是系统异常数/种类，异常的影响级别等维度的监控。为此公司每月必须对系统产生的异常进行分析、治理。">
@@ -210,7 +210,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.8k字</span>
+      <span class="post-count">2k字</span>
     </span>
   </span>
 
@@ -219,7 +219,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">6分</span>
+      <span class="post-count">7分</span>
     </span>
   </span>
 </div>
@@ -282,7 +282,17 @@
 </li>
 </ol>
 <h5 id="治理注意点"><a href="#治理注意点" class="headerlink" title="治理注意点"></a>治理注意点</h5><ol>
-<li>尽量不要使用LinkedBlockingQueue，这是无界队列，并发量突发时，可能会因为链队列的不停扩大，导致OOM，不仅当前的服务不可用，也使得这台机器的其他服务也因此跪了，如果tps高持续时间较长，down一台机器，压力就需要被其他机器分担，很容易导致整个集群挂了。所以ArrayBlockingQueue不需要修改，超过容量时，也仅仅是本服务丢掉了部分数据未进行推送。</li>
+<li><p>使用LinkedBlockingQueue，必须设置其队列大小，否则默认为Integer.MAX_VALUE，并发量突增时，可能会因为链队列的不停扩大，导致OOM，不仅当前的服务不可用，也使得这台机器的其他服务也因此跪了，如果tps高持续时间较长，down一台机器，压力就需要被其他机器分担，很容易导致整个集群挂了。所以ArrayBlockingQueue不需要修改，超过容量时，也仅仅是本服务丢掉了部分数据未进行推送。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public LinkedBlockingQueue() &#123;</span><br><span class="line">    this(Integer.MAX_VALUE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关于LinkedBlockingQueue和ArrayBlockingQueue</p>
+<ol>
+<li>数据结构：ArrayBlockingQueue采用的是数组作为数据存储容器，LinkedBlockingQueue采用的则是以Node节点作为连接对象的链表。</li>
+<li>ArrayBlockingQueue实现的队列中的锁是没有分离的，即添加操作和移除操作采用的同一个ReenterLock锁，而LinkedBlockingQueue实现的队列中的锁是分离的，其添加采用的是putLock，移除采用的则是takeLock，这样能大大提高队列的吞吐量，也意味着在高并发的情况下生产者和消费者可以并行地操作队列中的数据，以此来提高整个队列的并发性能。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/** Current number of elements */</span><br><span class="line">private final AtomicInteger count = new AtomicInteger();</span><br><span class="line"></span><br><span class="line">/** Lock held by take, poll, etc */</span><br><span class="line">private final ReentrantLock takeLock = new ReentrantLock();</span><br><span class="line">    </span><br><span class="line">/** Wait queue for waiting takes */</span><br><span class="line">private final Condition notEmpty = takeLock.newCondition();</span><br><span class="line">    </span><br><span class="line">/** Lock held by put, offer, etc */</span><br><span class="line">private final ReentrantLock putLock = new ReentrantLock();</span><br><span class="line">    </span><br><span class="line">/** Wait queue for waiting puts */</span><br><span class="line">private final Condition notFull = putLock.newCondition();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
 </ol>
 <h5 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h5><blockquote>
 <p>最近正在体系化多线程的相关技术，线程池也在里面，后续会逐步整理出来。</p>
