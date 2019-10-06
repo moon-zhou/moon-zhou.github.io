@@ -187,6 +187,195 @@
             
 
   
+    <article id="post-Git commit &amp; comment" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/10/02/Git commit & comment/">Git学习-小白实操</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/10/02/Git commit & comment/" class="archive-article-date">
+        <time datetime="2019-10-02T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-02</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>无论是最近的新项目还是持续迭代的老系统，提交的comment啥样的都有，各有千秋，但都无法准确的反应出当前的提交内容。
+甚至连作者选中其中一条在不看内容的情况下，都无法准确描述这次提交的内容。
+有责任心一点会用文字详细描述本次提交内容，但是没有固定的格式语法。
+更有甚者只是描述下代码相关的功能，比如“xxxxx功能提交”，所以一个版本下来，所有的提交只有这一个描述。
+见过最极端的就是直接写了个“代码提交”。
+还有的一个功能写完一个类就commit一次，造成提交历史里净是他的提交记录，而且同时修改同一个类时，又总是造成与别人的冲突。</code></pre>
+    
+    <a class="article-more-a" href="/2019/10/02/Git commit & comment/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Git/工程质量//" class="article-tag-list-link color5">工程质量</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/10/02/Git commit & comment/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-日常问题汇总-2019.09.25" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/25/日常问题汇总-2019.09.25/">日常问题汇总-2019.09.24</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/25/日常问题汇总-2019.09.25/" class="archive-article-date">
+        <time datetime="2019-09-25T12:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-25</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
+<li>有用户反馈签到提醒没有收到。</li>
+<li>异常治理时发现，有一个一类异常SQLException（扣个人分），引起关注，需要进行深入分析和治理掉。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2019-09-25 10:05:05,766 INFO  [stdout] (pool-4-thread-1) ; uncategorized SQLException; SQL state [null]; error code [0]; Transaction cannot proceed STATUS_ROLLEDBACK; nested exception is java.sql.SQLException: Transaction cannot proceed STATUS_ROLLEDBACK</span><br><span class="line"></span><br><span class="line">2019-09-25 10:05:05,766 INFO  [stdout] (pool-4-thread-1) ### Error querying database.  Cause: java.sql.SQLException: Transaction cannot proceed STATUS_ROLLEDBACK</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a" href="/2019/09/25/日常问题汇总-2019.09.25/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/问题记录//" class="article-tag-list-link color5">问题记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/25/日常问题汇总-2019.09.25/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-日常问题汇总-2019.09.24" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -900,185 +1089,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2019/08/25/【朝花再拾】AOP-01/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SB日志打印" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/22/SB日志打印/">SB日志打印</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/08/22/SB日志打印/" class="archive-article-date">
-        <time datetime="2019-08-22T15:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-22</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>1. 为方便问题定位，每一次请求最好可以通过唯一的标识来串起每一个单独打印的日志
-2. 正常的业务需求在sb框架里进行各业务逻辑层的拆分，传统的mvc分层，以及义务自定义的一些分层处理。因此公共的各层出入参需要打印且脱敏。</code></pre>
-    
-    <a class="article-more-a" href="/2019/08/22/SB日志打印/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/22/SB日志打印/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【奇技淫巧】SB里数据层的拓展及小技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/">【奇技淫巧】SB里数据层的拓展及小技巧</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/" class="archive-article-date">
-        <time datetime="2019-08-13T08:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>JavaWeb里，基础的不复杂的业务系统，ORM框架通常都是直接使用。本文介绍数据层的扩展和小技巧。</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/">展开全文 >></a>
     </p>
     
 
