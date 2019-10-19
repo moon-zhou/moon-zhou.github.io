@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>Git学习-小白实操 | 弦 博客</title>
+  <title>Github回滚提交历史 | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="背景无论是最近的新项目还是持续迭代的老系统，提交的comment啥样的都有，各有千秋，但都无法准确的反应出当前的提交内容。 甚至连作者选中其中一条在不看内容的情况下，都无法准确描述这次提交的内容。 有责任心一点会用文字详细描述本次提交内容，但是没有固定的格式语法。 更有甚者只是描述下代码相关的功能，比如“xxxxx功能提交”，所以一个版本下来，所有的提交只有这一个描述。 见过最极端的就是直接写了个">
+  <meta name="description" content="背景 公司使用git上传代码时，用户名和email使用的是工号和公司邮箱 周末使用公司电脑编写充电项目时，使用git提交代码到github上，未修改用户名和邮箱信息 公司会根据工号和邮箱，爬github信息，防止内部代码上传 因此错误上传代码后，需要及时回滚掉提交记录  解决方案回滚到错误提交前的记录，重新提交错误的文件 github找到需要回滚到某一次的hashcode，之后的提交文件需要备份">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git学习-小白实操">
-<meta property="og:url" content="https://moon-zhou.github.io/2019/10/02/Git commit & comment/index.html">
+<meta property="og:title" content="Github回滚提交历史">
+<meta property="og:url" content="https://moon-zhou.github.io/2019/10/19/Github回滚提交历史/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="背景无论是最近的新项目还是持续迭代的老系统，提交的comment啥样的都有，各有千秋，但都无法准确的反应出当前的提交内容。 甚至连作者选中其中一条在不看内容的情况下，都无法准确描述这次提交的内容。 有责任心一点会用文字详细描述本次提交内容，但是没有固定的格式语法。 更有甚者只是描述下代码相关的功能，比如“xxxxx功能提交”，所以一个版本下来，所有的提交只有这一个描述。 见过最极端的就是直接写了个">
+<meta property="og:description" content="背景 公司使用git上传代码时，用户名和email使用的是工号和公司邮箱 周末使用公司电脑编写充电项目时，使用git提交代码到github上，未修改用户名和邮箱信息 公司会根据工号和邮箱，爬github信息，防止内部代码上传 因此错误上传代码后，需要及时回滚掉提交记录  解决方案回滚到错误提交前的记录，重新提交错误的文件 github找到需要回滚到某一次的hashcode，之后的提交文件需要备份">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-06T11:30:56.999Z">
+<meta property="og:updated_time" content="2019-10-19T14:20:09.119Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git学习-小白实操">
-<meta name="twitter:description" content="背景无论是最近的新项目还是持续迭代的老系统，提交的comment啥样的都有，各有千秋，但都无法准确的反应出当前的提交内容。 甚至连作者选中其中一条在不看内容的情况下，都无法准确描述这次提交的内容。 有责任心一点会用文字详细描述本次提交内容，但是没有固定的格式语法。 更有甚者只是描述下代码相关的功能，比如“xxxxx功能提交”，所以一个版本下来，所有的提交只有这一个描述。 见过最极端的就是直接写了个">
+<meta name="twitter:title" content="Github回滚提交历史">
+<meta name="twitter:description" content="背景 公司使用git上传代码时，用户名和email使用的是工号和公司邮箱 周末使用公司电脑编写充电项目时，使用git提交代码到github上，未修改用户名和邮箱信息 公司会根据工号和邮箱，爬github信息，防止内部代码上传 因此错误上传代码后，需要及时回滚掉提交记录  解决方案回滚到错误提交前的记录，重新提交错误的文件 github找到需要回滚到某一次的hashcode，之后的提交文件需要备份">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -182,22 +182,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Git commit &amp; comment" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Github回滚提交历史" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      Git学习-小白实操
+      Github回滚提交历史
     </h1>
   
 
 
   
   
-<a href="/2019/10/02/Git commit & comment/" class="archive-article-date">
-        <time datetime="2019-10-02T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-02</time>
+<a href="/2019/10/19/Github回滚提交历史/" class="archive-article-date">
+        <time datetime="2019-10-19T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-19</time>
 </a>
 
   
@@ -210,7 +210,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1k字</span>
+      <span class="post-count">229字</span>
     </span>
   </span>
 
@@ -219,7 +219,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">3分</span>
+      <span class="post-count">1分</span>
     </span>
   </span>
 </div>
@@ -230,90 +230,19 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>无论是最近的新项目还是持续迭代的老系统，提交的comment啥样的都有，各有千秋，但都无法准确的反应出当前的提交内容。
-甚至连作者选中其中一条在不看内容的情况下，都无法准确描述这次提交的内容。
-有责任心一点会用文字详细描述本次提交内容，但是没有固定的格式语法。
-更有甚者只是描述下代码相关的功能，比如“xxxxx功能提交”，所以一个版本下来，所有的提交只有这一个描述。
-见过最极端的就是直接写了个“代码提交”。
-还有的一个功能写完一个类就commit一次，造成提交历史里净是他的提交记录，而且同时修改同一个类时，又总是造成与别人的冲突。</code></pre><a id="more"></a>
-
-<h4 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h4><ol>
-<li><p>包括三个部分：header，body 和 footer。其中，header 是必需的，body 和 footer 可以省略。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</span><br><span class="line">&lt;BLANK LINE&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;BLANK LINE&gt;</span><br><span class="line">&lt;footer&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不管是哪一个部分，任何一行都不得超过72个字符（或100个字符）。这是为了避免自动换行影响美观。</p>
-<h5 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h5><p> 包括三个字段：type（必需）、scope（可选）和subject（必需）</p>
-</li>
-<li><p>type：用于说明 commit 的类别，只允许使用下面7个标识。如果type为feat和fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）由你决定，要不要放入 Change log，建议是不要。</p>
-<ul>
-<li>feat：新功能（feature）</li>
-<li>fix：修补bug</li>
-<li>docs：文档（documentation）</li>
-<li>style： 格式（不影响代码运行的变动）</li>
-<li>refactor：重构（即不是新增功能，也不是修改bug的代码变动）</li>
-<li>test：增加测试</li>
-<li>chore：构建过程或辅助工具的变动</li>
-</ul>
-</li>
-<li><p>scope：scope用于说明 commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同。</p>
-</li>
-<li><p>subject：commit 目的的简短描述，不超过50个字符。</p>
-<ul>
-<li>以动词开头，使用第一人称现在时，比如change，而不是changed或changes</li>
-<li>第一个字母小写</li>
-<li>结尾不加句号（.）<h5 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h5>对本次 commit 的详细描述，可以分成多行。</li>
-</ul>
-</li>
-<li><p>注意点</p>
-<ul>
-<li>使用第一人称现在时，比如使用change而不是changed或changes。</li>
-<li>永远别忘了第2行是空行</li>
-<li>应该说明代码变动的动机，以及与以前行为的对比。<h5 id="Footer"><a href="#Footer" class="headerlink" title="Footer"></a>Footer</h5>Footer 部分只用于以下两种情况</li>
-</ul>
-</li>
-<li><p>不兼容变动</p>
-<blockquote>
-<p>如果当前代码与上一个版本不兼容，则 Footer 部分以BREAKING CHANGE开头，后面是对变动的描述、以及变动理由和迁移方法。</p>
-</blockquote>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">BREAKING CHANGE: isolate scope bindings definition has changed.</span><br><span class="line"></span><br><span class="line">To migrate the code follow the example below:</span><br><span class="line"></span><br><span class="line">Before:</span><br><span class="line"></span><br><span class="line">scope: &#123;</span><br><span class="line">  myAttr: &apos;attribute&apos;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">After:</span><br><span class="line"></span><br><span class="line">scope: &#123;</span><br><span class="line">  myAttr: &apos;@&apos;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">The removed `inject` wasn&apos;t generaly useful for directives so there should be no code using it.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关闭 Issue</p>
-<blockquote>
-<p>如果当前 commit 针对某个issue，那么可以在 Footer 部分关闭这个 issue 。</p>
-</blockquote>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Closes #234</span><br></pre></td></tr></table></figure>
-
-</li>
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
+<li>公司使用git上传代码时，用户名和email使用的是工号和公司邮箱</li>
+<li>周末使用公司电脑编写充电项目时，使用git提交代码到github上，未修改用户名和邮箱信息</li>
+<li>公司会根据工号和邮箱，爬github信息，防止内部代码上传</li>
+<li>因此错误上传代码后，需要及时回滚掉提交记录</li>
 </ol>
-<h5 id="Revert"><a href="#Revert" class="headerlink" title="Revert"></a>Revert</h5><pre><code>还有一种特殊情况，如果当前 commit 用于撤销以前的 commit。</code></pre><ol>
-<li>必须以revert:开头，后面跟着被撤销 Commit 的 Header。</li>
-<li>Body部分的格式是固定的，必须写成This reverts commit hashcode.，其中的hash是被撤销 commit 的 SHA 标识符。</li>
-<li>如果当前 commit 与被撤销的 commit，在同一个发布（release）里面，那么它们都不会出现在 Change log 里面。如果两者在不同的发布，那么当前 commit，会出现在 Change log 的Reverts小标题下面。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">revert: feat(pencil): add &apos;graphiteWidth&apos; option</span><br><span class="line"></span><br><span class="line">This reverts commit 667ecc1654a317a13331b17617d973392f415f02.</span><br></pre></td></tr></table></figure>
-
-
-</li>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><h5 id="回滚到错误提交前的记录，重新提交错误的文件"><a href="#回滚到错误提交前的记录，重新提交错误的文件" class="headerlink" title="回滚到错误提交前的记录，重新提交错误的文件"></a>回滚到错误提交前的记录，重新提交错误的文件</h5><ol>
+<li>github找到需要回滚到某一次的hashcode，之后的提交文件需要备份</li>
+<li>使用git reset –hard hashCode回使本地仓库回滚到这次的提交</li>
+<li>git push origin HEAD –force，将这次的提交强制推到远程仓库，同步提交记录</li>
+<li>将备份的文件或者修改后的文件重新提交</li>
 </ol>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
-<li><p>可读性好，清晰，不必深入看代码即可了解当前commit的作用</p>
-</li>
-<li><p>为Code Review做准备</p>
-</li>
-<li><p>方便跟踪工程历史（问题引入确认）</p>
-</li>
-<li><p>让其他的开发者在运行 git blame 的时候想跪谢</p>
-</li>
-<li><p>提高项目的整体质量，提高个人工程素质</p>
-</li>
-<li><p>可以过滤某些commit（比如文档改动），便于快速查找信息</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --grep feature</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>可以直接从commit生成Change log</p>
-</li>
-</ol>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ol>
-<li><a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html</a></li>
-</ol>
-
+<h5 id="删除整个远程仓库，重新创建，提交"><a href="#删除整个远程仓库，重新创建，提交" class="headerlink" title="删除整个远程仓库，重新创建，提交"></a>删除整个远程仓库，重新创建，提交</h5>
     
 
     
@@ -359,7 +288,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://moon-zhou.github.io/2019/10/02/Git commit &amp; comment/" title="Git学习-小白实操" target="_blank">https://moon-zhou.github.io/2019/10/02/Git commit &amp; comment/</a>
+          <a href="https://moon-zhou.github.io/2019/10/19/Github回滚提交历史/" title="Github回滚提交历史" target="_blank">https://moon-zhou.github.io/2019/10/19/Github回滚提交历史/</a>
         </li>
         <li>
           <strong>版权声明： </strong>
@@ -380,10 +309,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git/工程质量//" class="article-tag-list-link color5">工程质量</a>
         		</li>
       		
 		</ul>
@@ -438,7 +363,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/10/02/Git commit & comment/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/10/19/Github回滚提交历史/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -453,18 +378,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/10/19/Github回滚提交历史/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/10/19/Java之接口默认方法/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Github回滚提交历史
+          Java之接口默认方法
         
       </div>
     </a>
   
   
-    <a href="/2019/09/25/日常问题汇总-2019.09.25/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">日常问题汇总-2019.09.24</div>
+    <a href="/2019/10/02/Git commit & comment/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git学习-小白实操</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -491,7 +416,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#规范"><span class="toc-number">2.</span> <span class="toc-text">规范</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Header"><span class="toc-number">2.1.</span> <span class="toc-text">Header</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Body"><span class="toc-number">2.2.</span> <span class="toc-text">Body</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Footer"><span class="toc-number">2.3.</span> <span class="toc-text">Footer</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Revert"><span class="toc-number">2.4.</span> <span class="toc-text">Revert</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#优点"><span class="toc-number">3.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决方案"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#回滚到错误提交前的记录，重新提交错误的文件"><span class="toc-number">2.1.</span> <span class="toc-text">回滚到错误提交前的记录，重新提交错误的文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除整个远程仓库，重新创建，提交"><span class="toc-number">2.2.</span> <span class="toc-text">删除整个远程仓库，重新创建，提交</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
