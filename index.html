@@ -187,6 +187,191 @@
             
 
   
+    <article id="post-SpringMvc之SimpleUrlHandlerMapping" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/11/04/SpringMvc之SimpleUrlHandlerMapping/">SpringMvc之SimpleUrlHandlerMapping</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/11/04/SpringMvc之SimpleUrlHandlerMapping/" class="archive-article-date">
+        <time datetime="2019-11-04T12:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
+<li>因为最近签到系统的需求基本没有迭代，因此正式进入passport的学习和开发。</li>
+<li>passport的基本架构为：客户端jar包（接入方使用），以及服务端war包。服务端对外提供http接口（公网），rpc接口（内网）。</li>
+<li>负责的登录功能，wap和pc都是通过http接口进行的交互，因此先梳理http接口相关技术点。</li>
+<li>按照现有经验，应该是使用注解式的方法开放出controller层的对外http接口，寻找良久，虽然找到入口代码，但是并未找到映射路径，最后发现使用的是SimpleUrlHandlerMapping。</li>
+</ol>
+    
+    <a class="article-more-a" href="/2019/11/04/SpringMvc之SimpleUrlHandlerMapping/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/代码考古//" class="article-tag-list-link color5">代码考古</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/11/04/SpringMvc之SimpleUrlHandlerMapping/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-安全问题汇总-2019.11.04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/11/04/安全问题汇总-2019.11.04/">安全问题汇总-2019.11.04</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/11/04/安全问题汇总-2019.11.04/" class="archive-article-date">
+        <time datetime="2019-11-04T09:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>最近公司外部白帽子频繁提交跳转链接相关的漏洞。</code></pre><h4 id="问题1：url跳转"><a href="#问题1：url跳转" class="headerlink" title="问题1：url跳转"></a>问题1：url跳转</h4><h5 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h5><pre><code>从我司域名直接跳转到外部域名，可能会被第三方非法网站利用。</code></pre><h5 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h5><ol>
+<li>原先也对请求的url参数做了校验，但是使用的是PathMatcher::AntPathMatcher，该方法按路径进行匹配存在bug，以下非法路径依然可以被匹配 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配规则：http*://*.FIRST_DOMAIN.com/**	</span><br><span class="line">访问路径：https://www.baidu.com?enterpriseportal.FIRST_DOMAIN.com/sfbmp/index.htm</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+    
+    <a class="article-more-a" href="/2019/11/04/安全问题汇总-2019.11.04/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/问题记录//" class="article-tag-list-link color5">问题记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/11/04/安全问题汇总-2019.11.04/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-算法与数据结构-2019.10.27" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -908,194 +1093,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2019/09/22/HashMap源码1/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HashMap初始化容量设置思考" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/09/21/HashMap初始化容量设置思考/">HashMap初始化容量设置思考</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/09/21/HashMap初始化容量设置思考/" class="archive-article-date">
-        <time datetime="2019-09-21T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-21</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><pre><code>当我们使用HashMap(int initialCapacity)来初始化容量的时候，jdk会默认帮我们计算一个相对合理的值当做初始容量。但是这个值并没有参考loadFactor的值。
-
-也就是说，如果我们设置的默认值是7，经过Jdk处理之后，会被设置成8，但是，这个HashMap在元素个数达到 8*0.75 = 6的时候就会进行一次扩容，这明显是我们不希望见到的。
-
-如果我们通过expectedSize / 0.75F + 1.0F计算，7/0.75 + 1 = 10 ,10经过Jdk处理之后，会被设置成16，这就大大的减少了扩容的几率。
-
-当HashMap内部维护的哈希表的容量达到75%时（默认情况下），会触发rehash，而rehash的过程是比较耗费时间的。所以初始化容量要设置成expectedSize/0.75 + 1的话，可以有效的减少冲突也可以减小误差。【+1为取上整】
-
-所以，我可以认为，当我们明确知道HashMap中元素的个数的时候，把默认容量设置成expectedSize / 0.75F + 1.0F 是一个在性能上相对好的选择，但是，同时也会牺牲些内存。</code></pre>
-    
-    <a class="article-more-a" href="/2019/09/21/HashMap初始化容量设置思考/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/源码//" class="article-tag-list-link color3">源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/09/21/HashMap初始化容量设置思考/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-日常问题汇总-二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/09/16/日常问题汇总-二/">日常问题汇总-二</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/09/16/日常问题汇总-二/" class="archive-article-date">
-        <time datetime="2019-09-16T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
-<li>某系统需要针对访问参数做安全性验证</li>
-<li>底层抽象公共校验方法时，使用正则验证实现</li>
-<li>正则加载过程逻辑发生了错误</li>
-</ol>
-    
-    <a class="article-more-a" href="/2019/09/16/日常问题汇总-二/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/问题记录//" class="article-tag-list-link color5">问题记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/09/16/日常问题汇总-二/">展开全文 >></a>
     </p>
     
 

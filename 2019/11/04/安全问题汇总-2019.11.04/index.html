@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>【朝花再拾】Maven知识点 | 弦 博客</title>
+  <title>安全问题汇总-2019.11.04 | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="背景 最近搭建SB系统时，是基于maven的project，常年没有搭建，有些知识点已经遗忘，在这个过程中，把相关东西一点点拾起来。">
+  <meta name="description" content="背景最近公司外部白帽子频繁提交跳转链接相关的漏洞。问题1：url跳转描述从我司域名直接跳转到外部域名，可能会被第三方非法网站利用。漏洞分析 原先也对请求的url参数做了校验，但是使用的是PathMatcher::AntPathMatcher，该方法按路径进行匹配存在bug，以下非法路径依然可以被匹配 12匹配规则：http*://*.FIRST_DOMAIN.com/**	访问路径：https:/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【朝花再拾】Maven知识点">
-<meta property="og:url" content="https://moon-zhou.github.io/2019/07/06/【朝花再拾】Maven知识点/index.html">
+<meta property="og:title" content="安全问题汇总-2019.11.04">
+<meta property="og:url" content="https://moon-zhou.github.io/2019/11/04/安全问题汇总-2019.11.04/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="背景 最近搭建SB系统时，是基于maven的project，常年没有搭建，有些知识点已经遗忘，在这个过程中，把相关东西一点点拾起来。">
+<meta property="og:description" content="背景最近公司外部白帽子频繁提交跳转链接相关的漏洞。问题1：url跳转描述从我司域名直接跳转到外部域名，可能会被第三方非法网站利用。漏洞分析 原先也对请求的url参数做了校验，但是使用的是PathMatcher::AntPathMatcher，该方法按路径进行匹配存在bug，以下非法路径依然可以被匹配 12匹配规则：http*://*.FIRST_DOMAIN.com/**	访问路径：https:/">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-08T07:52:36.878Z">
+<meta property="og:updated_time" content="2019-11-05T14:17:41.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【朝花再拾】Maven知识点">
-<meta name="twitter:description" content="背景 最近搭建SB系统时，是基于maven的project，常年没有搭建，有些知识点已经遗忘，在这个过程中，把相关东西一点点拾起来。">
+<meta name="twitter:title" content="安全问题汇总-2019.11.04">
+<meta name="twitter:description" content="背景最近公司外部白帽子频繁提交跳转链接相关的漏洞。问题1：url跳转描述从我司域名直接跳转到外部域名，可能会被第三方非法网站利用。漏洞分析 原先也对请求的url参数做了校验，但是使用的是PathMatcher::AntPathMatcher，该方法按路径进行匹配存在bug，以下非法路径依然可以被匹配 12匹配规则：http*://*.FIRST_DOMAIN.com/**	访问路径：https:/">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -182,22 +182,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-【朝花再拾】Maven知识点" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-安全问题汇总-2019.11.04" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      【朝花再拾】Maven知识点
+      安全问题汇总-2019.11.04
     </h1>
   
 
 
   
   
-<a href="/2019/07/06/【朝花再拾】Maven知识点/" class="archive-article-date">
-        <time datetime="2019-07-06T15:15:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
+<a href="/2019/11/04/安全问题汇总-2019.11.04/" class="archive-article-date">
+        <time datetime="2019-11-04T09:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-04</time>
 </a>
 
   
@@ -210,7 +210,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.9k字</span>
+      <span class="post-count">722字</span>
     </span>
   </span>
 
@@ -219,7 +219,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">7分</span>
+      <span class="post-count">3分</span>
     </span>
   </span>
 </div>
@@ -230,136 +230,28 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>最近搭建SB系统时，是基于maven的project，常年没有搭建，有些知识点已经遗忘，在这个过程中，把相关东西一点点拾起来。</p>
-</blockquote>
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>最近公司外部白帽子频繁提交跳转链接相关的漏洞。</code></pre><h4 id="问题1：url跳转"><a href="#问题1：url跳转" class="headerlink" title="问题1：url跳转"></a>问题1：url跳转</h4><h5 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h5><pre><code>从我司域名直接跳转到外部域名，可能会被第三方非法网站利用。</code></pre><h5 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h5><ol>
+<li>原先也对请求的url参数做了校验，但是使用的是PathMatcher::AntPathMatcher，该方法按路径进行匹配存在bug，以下非法路径依然可以被匹配 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配规则：http*://*.FIRST_DOMAIN.com/**	</span><br><span class="line">访问路径：https://www.baidu.com?enterpriseportal.FIRST_DOMAIN.com/sfbmp/index.htm</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
 <a id="more"></a>
 
-<h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><ol>
-<li><p>基本知识点：modules、parent、groupId、artifactId、version</p>
-</li>
-<li><p>DepencyManagement与单纯的Dependencies</p>
-<ol>
-<li><p>DepencyManagement</p>
-<blockquote>
-<p>由于是基于多模块进行的搭建，因此不同模块之间对第三方依赖的使用就需要进行规范，防止不同的模块对同一第三方依赖使用的版本不同，造成测试和发布的结果不一致问题。</p>
-</blockquote>
-<ul>
-<li>父pom通过DepencyManagement-dependencies-dependency（groupId-artifactId-version）控制依赖以及版本</li>
-<li>子module里pom通过dependencies-dependency（groupId-artifactId）直接使用，而不需要指定具体的版本号，直接依赖父pom的版本配置</li>
-<li>父pom里还可以对version进行统一的配置提取管理，将依赖的version抽取到properties，定义变量，这样第三方依赖也被放到一起，更易于依赖版本的管理</li>
-</ul>
-</li>
-<li><p>单纯的Dependencies</p>
-<blockquote>
-<p>相对于dependencyManagement，所有生命在dependencies里的依赖都会自动引入，并默认被所有的子项目继承</p>
-</blockquote>
-</li>
-<li><p>区别</p>
-<ul>
-<li>dependencies即使在子模块中不写该依赖项，那么子模块仍然会从父项目中继承该依赖项（全部继承）</li>
-<li>dependencyManagement里只是声明依赖，并不实现引入，因此子模块需要显示的声明需要用的依赖。如果不在子模块中声明依赖，是不会从父项目中继承下来的；只有在子模块中写了该依赖项，并且没有指定具体版本，才会从父项目中继承该项，并且version和scope都读取自父pom;另外如果子模块中指定了版本号，那么会使用子模块中指定的jar版本。（==当然一般不建议子模块里指定version==）</li>
-</ul>
-</li>
-<li><p>总结</p>
-</li>
+<h5 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h5><ol>
+<li>跳转链接做一级域名的白名单校验</li>
+<li>白名单放在分布式配置中心，可实时动态修改</li>
 </ol>
-<ul>
-<li>dependencies中的jar直接加到项目中，管理的是依赖关系（如果有父pom,子pom,则子pom中只能被动接受父类的版本）；</li>
-<li>dependencyManagement主要管理版本，对于子类继承同一个父类是很有用的，集中管理依赖版本不添加依赖关系，对于其中定义的版本，子pom不一定要继承父pom所定义的版本。</li>
-</ul>
-</li>
-<li><p>scope</p>
-<blockquote>
-<p>dependency里引入scope，主要管理依赖的部署。配置值及使用如下:</p>
-</blockquote>
-<ol>
-<li><p>概念</p>
-<ul>
-<li>compile：缺省值，适用于所有阶段，会随着项目一起发布。</li>
-<li>provided：类似compile，期望JDK、容器或使用者会提供这个依赖。如servlet.jar。</li>
-<li>runtime：只在运行时使用，如JDBC驱动，适用运行和测试阶段。 </li>
-<li>test：只在测试时使用，用于编译和运行测试代码。不会随项目发布。 </li>
-<li>system：类似provided，需要显式提供包含依赖的jar，Maven不会在Repository中查找它。</li>
-</ul>
-</li>
-<li><p>详解</p>
-<ul>
-<li><p>compile （编译范围）</p>
-<blockquote>
-<p> compile是默认的范围；如果没有提供一个范围，那该依赖的范围就是编译范围。编译范围依赖在所有的classpath 中可用，同时它们也会被打包。</p>
-</blockquote>
-</li>
-<li><p>provided （已提供范围）</p>
-<blockquote>
-<p>provided 依赖只有在当JDK 或者一个容器已提供该依赖之后才使用。例如， 如果你开发了一个web 应用，你可能在编译 classpath 中需要可用的Servlet API 来编译一个servlet，但是你不会想要在打包好的WAR 中包含这个Servlet API；这个Servlet API JAR 由你的应用服务器或者servlet 容器提供。已提供范围的依赖在编译classpath （不是运行时）可用。它们不是传递性的，也不会被打包。</p>
-</blockquote>
-</li>
-<li><p>runtime （运行时范围）</p>
-<blockquote>
-<p>runtime 依赖在运行和测试系统的时候需要，但在编译的时候不需要。比如，你可能在编译的时候只需要JDBC API JAR，而只有在运行的时候才需要JDBC</p>
-</blockquote>
-</li>
-<li><p>test （测试范围）</p>
-<blockquote>
-<p>test范围依赖在一般的编译和运行时都不需要，它们只有在测试编译和测试运行阶段可用。</p>
-</blockquote>
-</li>
-<li><p>system （系统范围）</p>
-<blockquote>
-<p>system范围依赖与provided 类似，但是你必须显式的提供一个对于本地系统中JAR 文件的路径。这么做是为了允许基于本地对象编译，而这些对象是系统类库的一部分。这样的构件应该是一直可用的，Maven 也不会在仓库中去寻找它。如果你将一个依赖范围设置成系统范围，你必须同时提供一个 systemPath 元素。注意该范围是不推荐使用的（你应该一直尽量去从公共或定制的 Maven 仓库中引用依赖）。</p>
-</blockquote>
-</li>
-</ul>
-</li>
+<h5 id="核心校验"><a href="#核心校验" class="headerlink" title="核心校验"></a>核心校验</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public static boolean matchDomain(String urlString) &#123;</span><br><span class="line">    if (StringUtils.isEmpty(urlString)) &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    String domain = getToplevelDomain(urlString);</span><br><span class="line"></span><br><span class="line">    // 可以配置到分布式配置中心，实时修改</span><br><span class="line">    String permitUrlDomains = &quot;.snxiaojinshi.com,.cnsuning.com,.suning.com,.financesn.com,yifubao.com,.snjijin.com,.sncfc.com.cn,.snisc.cn&quot;;</span><br><span class="line">    String[] domainArr = permitUrlDomains.split(&quot;,&quot;);</span><br><span class="line"></span><br><span class="line">    for (String d : domainArr) &#123;</span><br><span class="line">        if (domain.endsWith(d)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 获取顶级域名</span><br><span class="line"> */</span><br><span class="line">private static String getToplevelDomain(String urlString) &#123;</span><br><span class="line">    </span><br><span class="line">    /*</span><br><span class="line">     * 分布式配置中心配置：</span><br><span class="line">     * (?i)^https?://(?:[\\w-]+\\.)*((?!com)\\w*\\.(?:(com\\.)?cn|com|tv|net)[.\\w]*)[\\/]*</span><br><span class="line">     */</span><br><span class="line">    String pattern = &quot;(?i)^https?://(?:[\\\\w-]+\\\\.)*((?!com)\\\\w*\\\\.(?:(com\\\\.)?cn|com|tv|net)[.\\\\w]*)[\\\\/]*&quot;;</span><br><span class="line">    </span><br><span class="line">    Pattern p = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);</span><br><span class="line">    Matcher matcher = p.matcher(urlString);</span><br><span class="line">    String urls = &quot;&quot;;</span><br><span class="line">    while (matcher.find()) &#123;</span><br><span class="line">        return &quot;.&quot; + matcher.group(1);</span><br><span class="line">    &#125;</span><br><span class="line">    return urls;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="问题2：url-Xss"><a href="#问题2：url-Xss" class="headerlink" title="问题2：url Xss"></a>问题2：url Xss</h4><h5 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h5><pre><code>跳转链接参数在url请求时，存在反射型XSS
+
+aHR0cHM6Ly9tcGF5LnN1bmluZy5jb20vZXB3bS9yZWdpc3QvZG9SZWdpc3RJbml0Lmh0bT9iYWNrVXJsPWh0dHBzJTNBJTJGJTJGcGxwbHBzLnN1bmluZy5jb20lMkZwbHBscHMlMkZlbnRyeSUyRmVudHJ5Lmh0bWwlMjctKHM9d2luZG93KS0odD1zLnRvcCktKHRbJTI3YWwlMjclMmIlMjdlcnQlMjddKSgxKS0lMjcmb25seVJlZ2lzdD0xIw==</code></pre><h5 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h5><pre><code>跳转链接里存在非法字符，通过字符串拼接的方法，可以组织成可执行的js脚本</code></pre><h5 id="修复-1"><a href="#修复-1" class="headerlink" title="修复"></a>修复</h5><ol>
+<li>因为入参是url，且不会持久化，仅缓存用于跳转，直接对入参做字符合法性校验</li>
+<li>合法性规则配置在分布式配置中心，可动态修改</li>
+<li>和第一个问题一样，也需要保持授信域名</li>
 </ol>
-</li>
-<li><p>packaging</p>
-<ul>
-<li>默认是jar类型</li>
-<li>pom：父类型都为pom类型</li>
-<li>jar：内部调用或者是作服务使用</li>
-<li>war：需要部署的项目</li>
-</ul>
-</li>
-<li><p>profiles：配合打包时，针对不同的环境取不同的配置。</p>
-<ul>
-<li><p>每个profile都有唯一的id，也包含properties属性。id定义不同环境，properties设置变量。结合打包时build使用。</p>
-</li>
-<li><p>示例：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;profiles&gt;</span><br><span class="line">    &lt;profile&gt;</span><br><span class="line">        &lt;id&gt;sit&lt;/id&gt;</span><br><span class="line">        &lt;properties&gt;</span><br><span class="line">            &lt;envName&gt;sit&lt;/envName&gt;</span><br><span class="line">        &lt;/properties&gt;</span><br><span class="line">    &lt;/profile&gt;</span><br><span class="line">    &lt;profile&gt;</span><br><span class="line">        &lt;id&gt;pre&lt;/id&gt;</span><br><span class="line">        &lt;properties&gt;</span><br><span class="line">            &lt;envName&gt;pre&lt;/envName&gt;</span><br><span class="line">        &lt;/properties&gt;</span><br><span class="line">    &lt;/profile&gt;</span><br><span class="line">    &lt;profile&gt;</span><br><span class="line">        &lt;id&gt;uat&lt;/id&gt;</span><br><span class="line">        &lt;properties&gt;</span><br><span class="line">            &lt;envName&gt;uat&lt;/envName&gt;</span><br><span class="line">        &lt;/properties&gt;</span><br><span class="line">    &lt;/profile&gt;</span><br><span class="line">    &lt;profile&gt;</span><br><span class="line">        &lt;id&gt;prd&lt;/id&gt;</span><br><span class="line">        &lt;properties&gt;</span><br><span class="line">            &lt;envName&gt;prd&lt;/envName&gt;</span><br><span class="line">        &lt;/properties&gt;</span><br><span class="line">    &lt;/profile&gt;</span><br><span class="line">&lt;/profiles&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扩展：springboot也为我们提供了针对不同环境的打包方式，此处暂不进行示例演示。</p>
-</li>
-</ul>
-</li>
-<li><p>build </p>
-<ul>
-<li>分类<ol>
-<li>project Build：project 的直接子元素（子模块pom里）</li>
-<li>profile Build：profile的直接子元素（直观上就是父pom里，与profile配合使用）</li>
-</ol>
-</li>
-<li>相关配置<ul>
-<li>resources-resource-filtering： true/false，表示为这个resource，filter是否激活</li>
-<li>pluginManagement:pluginManagement的配置和plugins的配置是一样的，只是用于继承，使得可以在孩子pom中使用。类比DepencyManagement</li>
-</ul>
-</li>
-<li>其他配置暂时不做详解。</li>
-<li>示例：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">   &lt;build&gt;</span><br><span class="line">	&lt;finalName&gt;backend-base-$&#123;maven.build.timestamp&#125;&lt;/finalName&gt;</span><br><span class="line">	&lt;resources&gt;</span><br><span class="line">		&lt;resource&gt;</span><br><span class="line">			&lt;directory&gt;$&#123;project.basedir&#125;/src/main/resources&lt;/directory&gt;</span><br><span class="line">			&lt;filtering&gt;true&lt;/filtering&gt;</span><br><span class="line">		&lt;/resource&gt;</span><br><span class="line">		&lt;resource&gt;</span><br><span class="line">			&lt;directory&gt;$&#123;project.basedir&#125;/src/main/resources/config/$&#123;envName&#125;/&lt;/directory&gt;</span><br><span class="line">			&lt;filtering&gt;true&lt;/filtering&gt;</span><br><span class="line">		&lt;/resource&gt;</span><br><span class="line">	&lt;/resources&gt;</span><br><span class="line">	&lt;pluginManagement&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</span><br><span class="line">				&lt;configuration&gt;</span><br><span class="line">					&lt;source&gt;$&#123;java.version&#125;&lt;/source&gt;</span><br><span class="line">					&lt;target&gt;$&#123;java.version&#125;&lt;/target&gt;</span><br><span class="line">					&lt;encoding&gt;UTF-8&lt;/encoding&gt;</span><br><span class="line">				&lt;/configuration&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">				&lt;configuration&gt;</span><br><span class="line">					&lt;mainClass&gt;org.moonzhou.backend.base.BackendBaseWebApplication&lt;/mainClass&gt;</span><br><span class="line">					&lt;fork&gt;true&lt;/fork&gt;</span><br><span class="line">				&lt;/configuration&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;mybatis-generator-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">				&lt;version&gt;1.3.2&lt;/version&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/pluginManagement&gt;</span><br><span class="line">&lt;/build&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;!--子模块--&gt;</span><br><span class="line">   &lt;build&gt;</span><br><span class="line">       &lt;plugins&gt;</span><br><span class="line">           &lt;plugin&gt;</span><br><span class="line">               &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">               &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">           &lt;/plugin&gt;</span><br><span class="line">       &lt;/plugins&gt;</span><br><span class="line">   &lt;/build&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>常用命令</p>
-<ul>
-<li>mvn compile 编译,将Java 源程序编译成 class 字节码文件。</li>
-<li>mvn test 测试，并生成测试报告</li>
-<li>mvn clean 将以前编译得到的旧的 class 字节码文件删除</li>
-<li>mvn pakage 打包,动态 web工程打 war包，Java工程打 jar 包</li>
-<li>mvn install 将项目生成 jar 包放在仓库中，以便别的模块调用</li>
-</ul>
-</li>
-</ol>
+<h5 id="核心校验-1"><a href="#核心校验-1" class="headerlink" title="核心校验"></a>核心校验</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 获取请求的backUrl</span><br><span class="line"> * 入参：request.getQueryString()</span><br><span class="line"> */</span><br><span class="line">public static String getBackUrl(String requestQuery) &#123;</span><br><span class="line">    String backUrl = &quot;&quot;;</span><br><span class="line">    String p = requestQuery;</span><br><span class="line"></span><br><span class="line">    if (p != null) &#123;</span><br><span class="line">        if (p.indexOf(SessionKey.BACK_URL) != -1) &#123;</span><br><span class="line">            if (!(p.substring(p.indexOf(SessionKey.BACK_URL) + (SessionKey.BACK_URL.length())).startsWith(&quot;=&quot;))) &#123;</span><br><span class="line">                return backUrl;</span><br><span class="line">            &#125;</span><br><span class="line">            backUrl = p.substring(p.indexOf(SessionKey.BACK_URL) + (SessionKey.BACK_URL.length() + 1));</span><br><span class="line">            String prefix = &quot;http&quot;;</span><br><span class="line">            if (!backUrl.startsWith(prefix)) &#123;</span><br><span class="line">                int index = backUrl.indexOf(prefix);</span><br><span class="line">                if (index &gt; 0) &#123;</span><br><span class="line">                    backUrl = backUrl.substring(index);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (backUrl.indexOf(&apos;?&apos;) == -1 &amp;&amp; backUrl.indexOf(&apos;&amp;&apos;) != -1) &#123;// 判断URL是否存在&amp;，但不存在?的情况</span><br><span class="line">            backUrl = backUrl.substring(0, backUrl.indexOf(&apos;&amp;&apos;));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return backUrl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static boolean isIncludeIllegalCharacter(String urlString) &#123;</span><br><span class="line"></span><br><span class="line">    Set&lt;String&gt; illegalDomains = getConfigillegalDomains();</span><br><span class="line"></span><br><span class="line">    for (String illegalCharacter : illegalDomains) &#123;</span><br><span class="line"></span><br><span class="line">        urlString = urlString.replace(&quot;http://&quot;, &quot;&quot;);</span><br><span class="line">        urlString = urlString.replace(&quot;https://&quot;, &quot;&quot;);</span><br><span class="line">        if (urlString.contains(illegalCharacter)) &#123;</span><br><span class="line"></span><br><span class="line">            return true; // 非法</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 获取动态配置非法字符</span><br><span class="line"> */</span><br><span class="line">private static Set&lt;String&gt; getConfigillegalDomains() &#123;</span><br><span class="line">    Set&lt;String&gt; illegalDomains = new LinkedHashSet&lt;String&gt;();</span><br><span class="line">    </span><br><span class="line">    // 肺部是配置中心配置：@,#,/,\,?,%40,%0a,%20%0a,%22,(,)</span><br><span class="line">    String illegalDomainStr = SystemSCMConfig.get(&quot;illegalDomains&quot;);</span><br><span class="line"></span><br><span class="line">    String[] trustDomain = illegalDomainStr.split(&quot;,&quot;);</span><br><span class="line">    for (String temp : trustDomain) &#123;</span><br><span class="line">        if (StringUtils.isNotBlank(temp)) &#123;</span><br><span class="line">            illegalDomains.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return illegalDomains;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
     
 
@@ -406,7 +298,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://moon-zhou.github.io/2019/07/06/【朝花再拾】Maven知识点/" title="【朝花再拾】Maven知识点" target="_blank">https://moon-zhou.github.io/2019/07/06/【朝花再拾】Maven知识点/</a>
+          <a href="https://moon-zhou.github.io/2019/11/04/安全问题汇总-2019.11.04/" title="安全问题汇总-2019.11.04" target="_blank">https://moon-zhou.github.io/2019/11/04/安全问题汇总-2019.11.04/</a>
         </li>
         <li>
           <strong>版权声明： </strong>
@@ -426,7 +318,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Maven//" class="article-tag-list-link color1">Maven</a>
+        			<a href="/categories/问题记录//" class="article-tag-list-link color5">问题记录</a>
         		</li>
       		
 		</ul>
@@ -481,7 +373,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/07/06/【朝花再拾】Maven知识点/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/11/04/安全问题汇总-2019.11.04/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -496,18 +388,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/07/06/【小白踩坑】SpringBoot + VUE搭建过程发布问题整理/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/04/SpringMvc之SimpleUrlHandlerMapping/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          【小白踩坑】SpringBoot + VUE搭建过程发布问题整理
+          SpringMvc之SimpleUrlHandlerMapping
         
       </div>
     </a>
   
   
-    <a href="/2019/06/30/SpringBoot + VUE系统搭建/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SpringBoot + VUE系统搭建</div>
+    <a href="/2019/10/27/算法与数据结构-2019.10.27/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">算法与数据结构-2019.10.27</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -534,7 +426,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#知识点"><span class="toc-number">2.</span> <span class="toc-text">知识点</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题1：url跳转"><span class="toc-number">2.</span> <span class="toc-text">问题1：url跳转</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#描述"><span class="toc-number">2.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#漏洞分析"><span class="toc-number">2.2.</span> <span class="toc-text">漏洞分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#修复"><span class="toc-number">2.3.</span> <span class="toc-text">修复</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#核心校验"><span class="toc-number">2.4.</span> <span class="toc-text">核心校验</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题2：url-Xss"><span class="toc-number">3.</span> <span class="toc-text">问题2：url Xss</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#描述-1"><span class="toc-number">3.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#问题分析"><span class="toc-number">3.2.</span> <span class="toc-text">问题分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#修复-1"><span class="toc-number">3.3.</span> <span class="toc-text">修复</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#核心校验-1"><span class="toc-number">3.4.</span> <span class="toc-text">核心校验</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
