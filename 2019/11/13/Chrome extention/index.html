@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>sb2.0统一错误页面 | 弦 博客</title>
+  <title>Chrome extention | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="背景调试mybatis-plus分页时，500错误，直接显示了原有的报错页。">
+  <meta name="description" content="背景请假处理相关事宜，回来尚早，登录github查看下关注的项目，提示chrome版本过低，因此做了相关升级。 升级过程，删除了历史数据，因此chrom插件都需要重新安装。 记录下开发来说比较常用的extention plugin。 因为vpn速度太慢，因此记录离线安装方式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sb2.0统一错误页面">
-<meta property="og:url" content="https://moon-zhou.github.io/2019/08/13/sb2.0统一错误页面/index.html">
+<meta property="og:title" content="Chrome extention">
+<meta property="og:url" content="https://moon-zhou.github.io/2019/11/13/Chrome extention/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="背景调试mybatis-plus分页时，500错误，直接显示了原有的报错页。">
+<meta property="og:description" content="背景请假处理相关事宜，回来尚早，登录github查看下关注的项目，提示chrome版本过低，因此做了相关升级。 升级过程，删除了历史数据，因此chrom插件都需要重新安装。 记录下开发来说比较常用的extention plugin。 因为vpn速度太慢，因此记录离线安装方式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-08T07:52:06.597Z">
+<meta property="og:updated_time" content="2019-11-13T12:18:33.805Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sb2.0统一错误页面">
-<meta name="twitter:description" content="背景调试mybatis-plus分页时，500错误，直接显示了原有的报错页。">
+<meta name="twitter:title" content="Chrome extention">
+<meta name="twitter:description" content="背景请假处理相关事宜，回来尚早，登录github查看下关注的项目，提示chrome版本过低，因此做了相关升级。 升级过程，删除了历史数据，因此chrom插件都需要重新安装。 记录下开发来说比较常用的extention plugin。 因为vpn速度太慢，因此记录离线安装方式">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -182,22 +182,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-sb2.0统一错误页面" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Chrome extention" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      sb2.0统一错误页面
+      Chrome extention
     </h1>
   
 
 
   
   
-<a href="/2019/08/13/sb2.0统一错误页面/" class="archive-article-date">
-        <time datetime="2019-08-13T08:43:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
+<a href="/2019/11/13/Chrome extention/" class="archive-article-date">
+        <time datetime="2019-11-13T12:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-13</time>
 </a>
 
   
@@ -210,7 +210,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">172字</span>
+      <span class="post-count">314字</span>
     </span>
   </span>
 
@@ -230,24 +230,45 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>调试mybatis-plus分页时，500错误，直接显示了原有的报错页。</code></pre><a id="more"></a>
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>请假处理相关事宜，回来尚早，登录github查看下关注的项目，提示chrome版本过低，因此做了相关升级。
+升级过程，删除了历史数据，因此chrom插件都需要重新安装。
+记录下开发来说比较常用的extention plugin。
+因为vpn速度太慢，因此记录离线安装方式</code></pre><a id="more"></a>
 
-<h4 id="实操步骤"><a href="#实操步骤" class="headerlink" title="实操步骤"></a>实操步骤</h4><ol>
-<li><p>重写错误跳转</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class ErrorConfigurar &#123;</span><br><span class="line">    /**</span><br><span class="line">     * SpringBoot2.0以上版本WebServerFactoryCustomizer代替之前版本的EmbeddedWebServerFactoryCustomizerAutoConfiguration</span><br><span class="line">     *</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line"></span><br><span class="line">    //@Bean必须加上</span><br><span class="line">    @Bean</span><br><span class="line">    public WebServerFactoryCustomizer&lt;ConfigurableWebServerFactory&gt; webServerFactoryCustomizer() &#123;</span><br><span class="line">        //第二种写法：java8 lambda写法</span><br><span class="line">        return (factory -&gt; &#123;</span><br><span class="line">            ErrorPage errorPage404 = new ErrorPage(HttpStatus.NOT_FOUND, &quot;/error.do&quot;);</span><br><span class="line">            ErrorPage errorPage500 = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, &quot;/error.do&quot;);</span><br><span class="line">            factory.addErrorPages(errorPage404, errorPage500);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>掘金</td>
+<td>github/博客园以及掘金等技术社区的热门文章、项目推送</td>
+</tr>
+<tr>
+<td>Octotree</td>
+<td>github项目目录内容左侧目录树导航</td>
+</tr>
+</tbody></table>
+<h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><ol>
+<li>掘金<ol>
+<li><a href="https://juejin.im/extension/" target="_blank" rel="noopener">下载地址</a>，下载crx文件</li>
+<li>打开谷歌浏览器–扩展程序</li>
+<li>将crx文件直接拖进去即可</li>
+<li>打开一个新tab页，即可看见推送内容</li>
+</ol>
 </li>
-<li><p>自定义错误跳转（普通controller，用于给第一步跳转）</p>
-<blockquote>
-<p><a href="https://github.com/moon-zhou/SpringBoot_Backend_Modules/blob/master/backend-base-web/src/main/java/org/moonzhou/backend/base/web/controller/MyErrorController.java" target="_blank" rel="noopener">https://github.com/moon-zhou/SpringBoot_Backend_Modules/blob/master/backend-base-web/src/main/java/org/moonzhou/backend/base/web/controller/MyErrorController.java</a></p>
-</blockquote>
-</li>
-<li><p>编写第二步里的相关页面</p>
-<blockquote>
-<p><a href="https://github.com/moon-zhou/SpringBoot_Backend_Modules/tree/master/backend-base-war/src/main/webapp/templates/error" target="_blank" rel="noopener">https://github.com/moon-zhou/SpringBoot_Backend_Modules/tree/master/backend-base-war/src/main/webapp/templates/error</a></p>
-</blockquote>
+<li>Octotree<ol>
+<li><a href="https://github.com/ovity/octotree/tree/master/dist" target="_blank" rel="noopener">下载地址</a>，下载对应浏览器zip文件（crx没有安装成功）</li>
+<li>将zip文件解压</li>
+<li>打开谷歌浏览器–扩展程序–加载已解压的扩展程序</li>
+<li>选择解压的文件夹即可</li>
+<li>打开一个github project，左侧会出现树形结构目录（类IDE结构）</li>
+</ol>
 </li>
 </ol>
-
+<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><pre><code>最新版的chrome浏览器crx插件格式有变化，如果老版本的插件不一定能安装。后续其他插件在同步更新。</code></pre>
     
 
     
@@ -293,7 +314,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://moon-zhou.github.io/2019/08/13/sb2.0统一错误页面/" title="sb2.0统一错误页面" target="_blank">https://moon-zhou.github.io/2019/08/13/sb2.0统一错误页面/</a>
+          <a href="https://moon-zhou.github.io/2019/11/13/Chrome extention/" title="Chrome extention" target="_blank">https://moon-zhou.github.io/2019/11/13/Chrome extention/</a>
         </li>
         <li>
           <strong>版权声明： </strong>
@@ -313,7 +334,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
+        			<a href="/categories/工具效能//" class="article-tag-list-link color5">工具效能</a>
         		</li>
       		
 		</ul>
@@ -368,7 +389,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/08/13/sb2.0统一错误页面/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/11/13/Chrome extention/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -383,18 +404,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/08/13/【反思录】19年7月的一点思考/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          【反思录】19年7月的一点思考
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/13/Maven中jar依赖冲突解决/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Maven中jar依赖冲突解决</div>
+    <a href="/2019/11/08/CDN/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CDN</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -421,7 +433,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实操步骤"><span class="toc-number">2.</span> <span class="toc-text">实操步骤</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插件"><span class="toc-number">2.</span> <span class="toc-text">插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装步骤"><span class="toc-number">3.</span> <span class="toc-text">安装步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点"><span class="toc-number">4.</span> <span class="toc-text">注意点</span></a></li></ol>
                     </div>
                 </span>
             </div>
