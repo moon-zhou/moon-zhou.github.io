@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>Git学习-小白不能忍之三 | 弦 博客</title>
+  <title>【反思录】最近开发的一点思考  2019-11-26 | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="背景 使用git命令pull/push代码时，总是需要输入用户名密码  频繁输入–》不能忍 是否可以保存账密不需要每次都输入  解决方案 git config –global credential.helper store 执行上述命令后，第一次pull或push需要输入用户名和密码，之后就不用再输入了。">
+  <meta name="description" content="最近做的工作，与以往有些不同，总觉得要总结写什么，但又不知道从哪个点来入手。刚好要整理开发周报，就从最近这一个月的周报内容开始。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git学习-小白不能忍之三">
-<meta property="og:url" content="https://moon-zhou.github.io/2019/06/23/Git学习-小白不能忍之三/index.html">
+<meta property="og:title" content="【反思录】最近开发的一点思考  2019-11-26">
+<meta property="og:url" content="https://moon-zhou.github.io/2019/11/26/【反思录】最近开发的一点思考  2019-11-26/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="背景 使用git命令pull/push代码时，总是需要输入用户名密码  频繁输入–》不能忍 是否可以保存账密不需要每次都输入  解决方案 git config –global credential.helper store 执行上述命令后，第一次pull或push需要输入用户名和密码，之后就不用再输入了。">
+<meta property="og:description" content="最近做的工作，与以往有些不同，总觉得要总结写什么，但又不知道从哪个点来入手。刚好要整理开发周报，就从最近这一个月的周报内容开始。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-08T07:52:19.790Z">
+<meta property="og:updated_time" content="2019-11-26T14:40:55.764Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git学习-小白不能忍之三">
-<meta name="twitter:description" content="背景 使用git命令pull/push代码时，总是需要输入用户名密码  频繁输入–》不能忍 是否可以保存账密不需要每次都输入  解决方案 git config –global credential.helper store 执行上述命令后，第一次pull或push需要输入用户名和密码，之后就不用再输入了。">
+<meta name="twitter:title" content="【反思录】最近开发的一点思考  2019-11-26">
+<meta name="twitter:description" content="最近做的工作，与以往有些不同，总觉得要总结写什么，但又不知道从哪个点来入手。刚好要整理开发周报，就从最近这一个月的周报内容开始。">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -182,22 +182,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Git学习-小白不能忍之三" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-【反思录】最近开发的一点思考  2019-11-26" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      Git学习-小白不能忍之三
+      【反思录】最近开发的一点思考  2019-11-26
     </h1>
   
 
 
   
   
-<a href="/2019/06/23/Git学习-小白不能忍之三/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
+<a href="/2019/11/26/【反思录】最近开发的一点思考  2019-11-26/" class="archive-article-date">
+        <time datetime="2019-11-26T08:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-26</time>
 </a>
 
   
@@ -210,7 +210,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">86字</span>
+      <span class="post-count">1.5k字</span>
     </span>
   </span>
 
@@ -219,7 +219,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">5分</span>
     </span>
   </span>
 </div>
@@ -230,16 +230,36 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>使用git命令pull/push代码时，总是需要输入用户名密码</p>
-</blockquote>
-<h4 id="频繁输入–》不能忍"><a href="#频繁输入–》不能忍" class="headerlink" title="频繁输入–》不能忍"></a>频繁输入–》不能忍</h4><blockquote>
-<p>是否可以保存账密不需要每次都输入</p>
-</blockquote>
-<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ol>
-<li>git config –global credential.helper store</li>
-<li>执行上述命令后，第一次pull或push需要输入用户名和密码，之后就不用再输入了。</li>
+    <p>最近做的工作，与以往有些不同，总觉得要总结写什么，但又不知道从哪个点来入手。刚好要整理开发周报，就从最近这一个月的周报内容开始。</p>
+<a id="more"></a>
+
+<p>目前负责的系统主要包含会员pc，会员wap，门户passport以及签到相关的系统。最近的角色更多的是个“自由人”，没有安排到具体的迭代版本里。总结这几周的工作内容，主要包含：</p>
+<ul>
+<li>环境问题（机器下线，jdk升级，外网环境搭建）</li>
+<li>生产问题分析（超时、客诉问题）</li>
+<li>业务需求确认（登出合规改造）</li>
+<li>配合小伙伴解决各类问题（静态资源多活搭建，代码提交，codereview）</li>
+<li>迭代版本进度与质量控制</li>
+<li>部分需求变更内容的开发</li>
+</ul>
+<p>最近的工作重点偏向“打杂”类，更多的是配合小伙伴，解决迭代版本中的各种问题，保障小伙伴无障碍进行版本的迭代开发。其中，环境相关问题处理占比很大。<br>说到开发环境的问题处理，已经半自动化了，更多的时候，你需要了解的是软件系统的整体架构，各个部分的职责，整体过程中请求的分发。正所谓成也萧何败萧何，公司内的架构标准一直在变更。比如老的系统里，使用的IHS+WAS的架构，现有的系统使用的是NGINX+JBOSS。你的各个环境（dev/sit/pst/pre/xgpre）得与时俱进吧，那就各个环境来一套吧。那么老的机器得下线吧，那就接着来吧。为了简化各个系统的操作流程，降低运维的难度，所以有了运维管理平台。但是系统架构的越来越复杂，运维管理平台也越来越多，导致很多流程只能从现在出发，一个个流转，最后却无法完成下去，还得来线下运维手工操作。就比如：</p>
+<ol>
+<li>下线灾备环境的redis机器时，原以为私有云服务平台可以销毁，提示不支持该流程。就去运维管理平台，发现也无法操作。最后到缓存服务平台下线。下线时，提示架构不对，原来的两台机器不是主从关系，还得先进行主从配置，同时配置哨兵，变成“现阶段”的标准架构，再升级redis版本，升级过程还需要提交审批流程。最后完成升级后才能进行升级。</li>
+<li>下线was机器，提示绑定了vip需要删除。删除又只支持主机组方式，服务器方式还只能线下邮件通知操作。邮件通知后还得运维晚上删除vip，成功删除之后，再进行即系销毁。</li>
 </ol>
+<p>我就是想销毁个机器，你给我一通操作，一通引导。在万千操作方法里，找到其中唯一一条成功的路，复杂，风险大。本身是自动化运维，随着各个运维平台的专一化，出现功能交叉的地方，功能遗漏的地方，功能变更的地方，只能一个一个把坑踩过去。而且这类环境架构技术知识是没有统一的宣讲，布道的。所以推崇体系小团队开发的理念，就好导致每一个团队都需要踩一次坑。<br>其实类比到我们业务系统里的业务也是一样的，随着系统业务的膨胀，其中各个开放出去的功能，如何保持每次变更的兼容性与稳定性，功能的可扩展性，都是一个严峻的问题。<br>其中还会随着组织架构调整而来的系统交接，人员更替等，必然导致业务功能的复杂性越来越大，软件的“熵”也就越来越大，到处都是“腐烂”的味道。而当“熵”达到一定的程度之后，你就会逐渐遗忘，主观上降低“熵”的值。尤其是系统在经过几次交接之后，很多功能都被遗忘，除了生产问题，没有任何其他方法能够证明其重要性。<br>因此，如果不下线，那就在制造代码过程中，要少的引入“腐败”的东西。同时还要适时的进行重构，但就目前而言，小伙伴很多时候，都没有达到这种水平，都缺失一种对代码的追求。都是完成任务式的coding。</p>
+<p>另一个方面就是系统交互时的一些也无需求讨论。从业务上来说，我们属于服务中台，偏向业务基础业务服务的开发，和客户端的交互更多。很多时候，业务讨论的时候，客户端更多的时候都只是从他们的角度思考问题，态度还强硬的不行。e.g.</p>
+<ol>
+<li>你必须给我这个接口或者实现方式。</li>
+<li>我们目前没有这种实现或服务，后续会增加，目前你们自己先进行实现。</li>
+</ol>
+<p>有什么意义呢？？后面几个版本出了问题，还不是打你们自己的脸吗？e.g.</p>
+<ol>
+<li>签到系统首签规则非要签到系统自己判断，不在任务平台处理，结果呢？普通签到任务平台做的隐形操作，在首签场景没做，还不是要签到系统来擦屁股吗？</li>
+<li>冻结账户非要只回传ticket，还要我们拼接好回传，真的是***，就这个规则，迟早是一个坑。</li>
+</ol>
+<p>屁股决定大脑，思考方式太局限，稍微站在别人角度思考的意向都没有。看到的越多，发现固步自封的人还真不少。所以自己也要更加的小心，小心自己的思维方式，小心被带着走。</p>
+<p>你，需要影响一些人，改变一些人，觉醒一些人。同时，还需要寻找一些人，一些合适的人。</p>
 
     
 
@@ -286,7 +306,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://moon-zhou.github.io/2019/06/23/Git学习-小白不能忍之三/" title="Git学习-小白不能忍之三" target="_blank">https://moon-zhou.github.io/2019/06/23/Git学习-小白不能忍之三/</a>
+          <a href="https://moon-zhou.github.io/2019/11/26/【反思录】最近开发的一点思考  2019-11-26/" title="【反思录】最近开发的一点思考  2019-11-26" target="_blank">https://moon-zhou.github.io/2019/11/26/【反思录】最近开发的一点思考  2019-11-26/</a>
         </li>
         <li>
           <strong>版权声明： </strong>
@@ -306,7 +326,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        			<a href="/categories/总结反思录//" class="article-tag-list-link color1">总结反思录</a>
         		</li>
       		
 		</ul>
@@ -361,7 +381,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/06/23/Git学习-小白不能忍之三/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/11/26/【反思录】最近开发的一点思考  2019-11-26/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -376,18 +396,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/06/23/github新增代码库实操/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          github新增代码库实操
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/23/Git学习-小白学理论/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Git学习-小白学理论</div>
+    <a href="/2019/11/21/日常问题汇总-2019.11.21/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">日常问题汇总-2019.11.21</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -414,7 +425,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#频繁输入–》不能忍"><span class="toc-number">2.</span> <span class="toc-text">频繁输入–》不能忍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决方案"><span class="toc-number">3.</span> <span class="toc-text">解决方案</span></a></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>

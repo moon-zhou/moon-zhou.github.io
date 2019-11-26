@@ -187,6 +187,97 @@
             
 
   
+    <article id="post-Hexo添加标记和分类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/08/Hexo添加标记和分类/">Hexo添加标记和分类</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/08/Hexo添加标记和分类/" class="archive-article-date">
+        <time datetime="2019-09-08T13:49:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
+<li>云笔记目录下的文章都放在根目录下，数量已经达到不太好维护的程度，统一做了目录的划分</li>
+<li>个人博客里的内容也需要进行对应的分类</li>
+</ol>
+    
+    <a class="article-more-a" href="/2019/09/08/Hexo添加标记和分类/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/HEXO//" class="article-tag-list-link color5">HEXO</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/08/Hexo添加标记和分类/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-日常问题汇总-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -972,102 +1063,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2019/08/12/签到类需求的设计与思考/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-一次全表扫描关于分布式id的总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/04/一次全表扫描关于分布式id的总结/">一次全表扫描关于分布式id的总结</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/08/04/一次全表扫描关于分布式id的总结/" class="archive-article-date">
-        <time datetime="2019-08-04T12:43:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>最近需要对某一个做了分表的数据，进行全表扫描做数据筛选后进行消息推送。</code></pre><h4 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h4><ol>
-<li>全表扫描时的筛选条件是什么</li>
-<li>如何保证全表批量扫描时，每一批的数据量大致相同</li>
-<li>确保可以全表扫描，没有数据的遗漏</li>
-</ol>
-    
-    <a class="article-more-a" href="/2019/08/04/一次全表扫描关于分布式id的总结/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式//" class="article-tag-list-link color4">分布式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式/方案设计//" class="article-tag-list-link color5">方案设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/04/一次全表扫描关于分布式id的总结/">展开全文 >></a>
     </p>
     
 
