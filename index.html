@@ -187,6 +187,94 @@
             
 
   
+    <article id="post-快速失败(fail-fast)和安全失败(fail-safe)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/12/20/快速失败(fail-fast)和安全失败(fail-safe)/">快速失败(fail-fast)和安全失败(fail-safe)</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/12/20/快速失败(fail-fast)和安全失败(fail-safe)/" class="archive-article-date">
+        <time datetime="2019-12-20T12:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>临时安排面试，看了下JDK源码，以及比较火的《吊打面试官》系列-ConcurrentHashMap &amp; Hashtable，里面提到了fail-safe概念，需要深入了解下。</code></pre>
+    
+    <a class="article-more-a" href="/2019/12/20/快速失败(fail-fast)和安全失败(fail-safe)/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/12/20/快速失败(fail-fast)和安全失败(fail-safe)/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-策略模式-Strategy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -978,107 +1066,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2019/11/08/CDN/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring之属性注入之一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/11/07/Spring之属性注入之一/">Spring之属性注入之一</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/11/07/Spring之属性注入之一/" class="archive-article-date">
-        <time datetime="2019-11-07T12:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>继续深扒passport代码</code></pre><h4 id="属性注入"><a href="#属性注入" class="headerlink" title="属性注入"></a>属性注入</h4><ol>
-<li><p>xml配置bean</p>
-</li>
-<li><p>属性使用p:name-ref=”name”配置</p>
-</li>
-<li><p>属性为基本类型的格式： p:属性名=属性值</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p:name=&quot;Lily&quot;   或者   p:port=&quot;$&#123;redis.port&#125;&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>属性为引用类型的格式：p:属性名-ref=属性值（属性值为spring上下文里的变量）</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p:name-ref=&quot;name&quot;  或者   p:pool-config-ref=&quot;poolConfig&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>依赖的类属性必须为xxx-ref之前的xxx，且必须有setXxx方法</p>
-</li>
-</ol>
-    
-    <a class="article-more-a" href="/2019/11/07/Spring之属性注入之一/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/代码考古//" class="article-tag-list-link color5">代码考古</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/11/07/Spring之属性注入之一/">展开全文 >></a>
     </p>
     
 

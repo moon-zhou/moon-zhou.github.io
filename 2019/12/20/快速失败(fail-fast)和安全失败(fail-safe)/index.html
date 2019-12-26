@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>Git学习-小白不能忍之三 | 弦 博客</title>
+  <title>快速失败(fail-fast)和安全失败(fail-safe) | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="背景 使用git命令pull/push代码时，总是需要输入用户名密码  频繁输入–》不能忍 是否可以保存账密不需要每次都输入  解决方案 git config –global credential.helper store 执行上述命令后，第一次pull或push需要输入用户名和密码，之后就不用再输入了。">
+  <meta name="description" content="背景临时安排面试，看了下JDK源码，以及比较火的《吊打面试官》系列-ConcurrentHashMap &amp;amp; Hashtable，里面提到了fail-safe概念，需要深入了解下。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git学习-小白不能忍之三">
-<meta property="og:url" content="https://moon-zhou.github.io/2019/06/23/Git学习-小白不能忍之三/index.html">
+<meta property="og:title" content="快速失败(fail-fast)和安全失败(fail-safe)">
+<meta property="og:url" content="https://moon-zhou.github.io/2019/12/20/快速失败(fail-fast)和安全失败(fail-safe)/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="背景 使用git命令pull/push代码时，总是需要输入用户名密码  频繁输入–》不能忍 是否可以保存账密不需要每次都输入  解决方案 git config –global credential.helper store 执行上述命令后，第一次pull或push需要输入用户名和密码，之后就不用再输入了。">
+<meta property="og:description" content="背景临时安排面试，看了下JDK源码，以及比较火的《吊打面试官》系列-ConcurrentHashMap &amp;amp; Hashtable，里面提到了fail-safe概念，需要深入了解下。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-08T07:52:19.790Z">
+<meta property="og:updated_time" content="2019-12-26T09:51:11.456Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git学习-小白不能忍之三">
-<meta name="twitter:description" content="背景 使用git命令pull/push代码时，总是需要输入用户名密码  频繁输入–》不能忍 是否可以保存账密不需要每次都输入  解决方案 git config –global credential.helper store 执行上述命令后，第一次pull或push需要输入用户名和密码，之后就不用再输入了。">
+<meta name="twitter:title" content="快速失败(fail-fast)和安全失败(fail-safe)">
+<meta name="twitter:description" content="背景临时安排面试，看了下JDK源码，以及比较火的《吊打面试官》系列-ConcurrentHashMap &amp;amp; Hashtable，里面提到了fail-safe概念，需要深入了解下。">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -182,22 +182,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Git学习-小白不能忍之三" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-快速失败(fail-fast)和安全失败(fail-safe)" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      Git学习-小白不能忍之三
+      快速失败(fail-fast)和安全失败(fail-safe)
     </h1>
   
 
 
   
   
-<a href="/2019/06/23/Git学习-小白不能忍之三/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
+<a href="/2019/12/20/快速失败(fail-fast)和安全失败(fail-safe)/" class="archive-article-date">
+        <time datetime="2019-12-20T12:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
 </a>
 
   
@@ -210,7 +210,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">86字</span>
+      <span class="post-count">1.5k字</span>
     </span>
   </span>
 
@@ -219,7 +219,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">6分</span>
     </span>
   </span>
 </div>
@@ -230,15 +230,56 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>使用git命令pull/push代码时，总是需要输入用户名密码</p>
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>临时安排面试，看了下JDK源码，以及比较火的《吊打面试官》系列-ConcurrentHashMap &amp; Hashtable，里面提到了fail-safe概念，需要深入了解下。</code></pre><a id="more"></a>
+
+<h4 id="快速失败-fail-fast"><a href="#快速失败-fail-fast" class="headerlink" title="快速失败(fail-fast)"></a>快速失败(fail-fast)</h4><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><ol>
+<li>一种系统设计方法</li>
+<li>维基百科解释<blockquote>
+<p>在系统设计中，一个 fail-fast 的系统可以通过特定的接口快速报告系统中任何潜在的故障。fail-fast 系统在发现故障时不会尝试继续运行系统，而会立即停止当前的操作。在进行一个操作时，会在多个检查点检查系统的状态，所以出现故障可以被尽早发现。fail-fast 模块的职责就是检查是否有故障，发现故障后会尽快通知上层系统来处理故障。</p>
 </blockquote>
-<h4 id="频繁输入–》不能忍"><a href="#频繁输入–》不能忍" class="headerlink" title="频繁输入–》不能忍"></a>频繁输入–》不能忍</h4><blockquote>
-<p>是否可以保存账密不需要每次都输入</p>
+</li>
+</ol>
+<h5 id="In-Java"><a href="#In-Java" class="headerlink" title="In Java"></a>In Java</h5><blockquote>
+<p>在用迭代器(iterator)遍历一个集合对象时，如果遍历过程中对集合对象的内容进行了修改（增加、删除、修改），则会抛出Concurrent Modification Exception，终止遍历。</p>
 </blockquote>
-<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ol>
-<li>git config –global credential.helper store</li>
-<li>执行上述命令后，第一次pull或push需要输入用户名和密码，之后就不用再输入了。</li>
+<h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><ol>
+<li>迭代器在遍历时直接访问集合中的内容，并且在遍历过程中使用一个 modCount 变量。集合在被遍历期间如果内容发生变化，就会改变modCount的值。每当迭代器使用hashNext()/next()遍历下一个元素之前，都会检测modCount变量是否为expectedmodCount值，是的话就返回遍历；否则抛出异常，终止遍历。</li>
+<li>HashMap里示例 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public final void forEach(Consumer&lt;? super Map.Entry&lt;K,V&gt;&gt; action) &#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab;</span><br><span class="line">    if (action == null)</span><br><span class="line">        throw new NullPointerException();</span><br><span class="line">    if (size &gt; 0 &amp;&amp; (tab = table) != null) &#123;</span><br><span class="line">        // 先获取当前的modCount值</span><br><span class="line">        int mc = modCount;</span><br><span class="line">        for (int i = 0; i &lt; tab.length; ++i) &#123;</span><br><span class="line">            for (Node&lt;K,V&gt; e = tab[i]; e != null; e = e.next)</span><br><span class="line">                action.accept(e);</span><br><span class="line">        &#125;</span><br><span class="line">        // 遍历完确认是否发生变化</span><br><span class="line">        if (modCount != mc)</span><br><span class="line">            throw new ConcurrentModificationException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void clear() &#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab;</span><br><span class="line">    // 修改该值，同理以下方法也有该操作 putVal，remove--》removeNode，computeIfAbsent...</span><br><span class="line">    modCount++;</span><br><span class="line">    if ((tab = table) != null &amp;&amp; size &gt; 0) &#123;</span><br><span class="line">        size = 0;</span><br><span class="line">        for (int i = 0; i &lt; tab.length; ++i)</span><br><span class="line">            tab[i] = null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h5 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h5><ol>
+<li>这里异常的抛出条件是检测到 modCount！=expectedmodCount 这个条件。如果集合发生变化时修改modCount值刚好又设置为了expectedmodCount值，则异常不会抛出。因此，不能依赖于这个异常是否抛出而进行并发操作的编程，这个异常只建议用于检测并发修改的bug。</li>
+<li><strong>fail-fast虽然可以规避，但不建议那样操作。</strong></li>
+</ol>
+<h5 id="联想"><a href="#联想" class="headerlink" title="联想"></a>联想</h5><ol>
+<li>与注意点里类似的还有equals方法和hashCode()的关系，equals方法比对出两个值相对，那么hashCode()必然相对，反之则不一定成功</li>
+<li>CAS（比较交换）简单版本里，，如果交换期间，比对的值发生了多次变换，最后变灰期望的值，那么依然会发生交换，但是严格来说，是不能够进行交换的，这种例外的情况与注意点如出一辙。</li>
+</ol>
+<h5 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h5><pre><code>java.util包下的集合类都是快速失败的，不能在多线程下发生并发修改（迭代过程中被修改）</code></pre><h5 id="code"><a href="#code" class="headerlink" title="code"></a>code</h5><ol>
+<li><a href="https://github.com/moon-zhou/advanced-java/blob/master/src/main/java/org/moonzhou/jdksource/FailFastDemo.java" target="_blank" rel="noopener">My Hub</a></li>
+<li>重点关注==注意点==里提到的情况部分</li>
+</ol>
+<h4 id="安全失败-fail-safe"><a href="#安全失败-fail-safe" class="headerlink" title="安全失败(fail-safe)"></a>安全失败(fail-safe)</h4><h5 id="体现"><a href="#体现" class="headerlink" title="体现"></a>体现</h5><blockquote>
+<p>在遍历容器时，即使容器的元素被修改，不会报异常，也不会停止遍历元素。</p>
+</blockquote>
+<h5 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h5><ol>
+<li><p>采用安全失败机制的集合容器，在遍历时不是直接在集合内容上访问的，而是先复制原有集合内容，在拷贝的集合上进行遍历。(基于拷贝内容的优点是避免了Concurrent Modification Exception，但同样地，迭代器并不能访问到修改后的内容，即：迭代器遍历的是开始遍历那一刻拿到的集合拷贝，在遍历期间原集合发生的修改迭代器是不知道的。)</p>
+</li>
+<li><p>ConcurrentHashMap示例</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Returns a &#123;@link Set&#125; view of the mappings contained in this map.</span><br><span class="line"> * [这里] The set is backed by the map,so changes to the map are</span><br><span class="line"> * reflected in the set, and vice-versa.  The set supports element</span><br><span class="line"> * removal, which removes the corresponding mapping from the map,</span><br><span class="line"> * via the &#123;@code Iterator.remove&#125;, &#123;@code Set.remove&#125;,</span><br><span class="line"> * &#123;@code removeAll&#125;, &#123;@code retainAll&#125;, and &#123;@code clear&#125;</span><br><span class="line"> * operations.</span><br><span class="line"> *</span><br><span class="line"> * &lt;p&gt;The view&apos;s iterators and spliterators are</span><br><span class="line"> * &lt;a href=&quot;package-summary.html#Weakly&quot;&gt;&lt;i&gt;weakly consistent&lt;/i&gt;&lt;/a&gt;.</span><br><span class="line"> *</span><br><span class="line"> * &lt;p&gt;The view&apos;s &#123;@code spliterator&#125; reports &#123;@link Spliterator#CONCURRENT&#125;,</span><br><span class="line"> * &#123;@link Spliterator#DISTINCT&#125;, and &#123;@link Spliterator#NONNULL&#125;.</span><br><span class="line"> *</span><br><span class="line"> * @return the set view</span><br><span class="line"> */</span><br><span class="line">public Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet() &#123;</span><br><span class="line">    EntrySetView&lt;K,V&gt; es;</span><br><span class="line">    return (es = entrySet) != null ? es : (entrySet = new EntrySetView&lt;K,V&gt;(this));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * A view of a ConcurrentHashMap as a &#123;@link Set&#125; of (key, value)</span><br><span class="line"> * entries.  This class cannot be directly instantiated. See</span><br><span class="line"> * &#123;@link #entrySet()&#125;.</span><br><span class="line"> */</span><br><span class="line">static final class EntrySetView&lt;K,V&gt; extends CollectionView&lt;K,V,Map.Entry&lt;K,V&gt;&gt;</span><br><span class="line">    implements Set&lt;Map.Entry&lt;K,V&gt;&gt;, java.io.Serializable &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Base class for views.</span><br><span class="line"> */</span><br><span class="line">abstract static class CollectionView&lt;K,V,E&gt;</span><br><span class="line">    implements Collection&lt;E&gt;, java.io.Serializable &#123;</span><br><span class="line">    private static final long serialVersionUID = 7249069246763182397L;</span><br><span class="line">    final ConcurrentHashMap&lt;K,V&gt; map;</span><br><span class="line">    CollectionView(ConcurrentHashMap&lt;K,V&gt; map)  &#123; this.map = map; &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Returns the map backing this view.</span><br><span class="line">     *</span><br><span class="line">     * @return the map backing this view</span><br><span class="line">     */</span><br><span class="line">    public ConcurrentHashMap&lt;K,V&gt; getMap() &#123; return map; &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CopyOnWriteArrayList示例</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * &#123;@inheritDoc&#125;</span><br><span class="line"> *</span><br><span class="line"> * &lt;p&gt;The returned iterator provides a snapshot of the state of the list</span><br><span class="line"> * when the iterator was constructed. No synchronization is needed while</span><br><span class="line"> * traversing the iterator. The iterator does &lt;em&gt;NOT&lt;/em&gt; support the</span><br><span class="line"> * &#123;@code remove&#125;, &#123;@code set&#125; or &#123;@code add&#125; methods.</span><br><span class="line"> */</span><br><span class="line">public ListIterator&lt;E&gt; listIterator() &#123;</span><br><span class="line">    return new COWIterator&lt;E&gt;(getArray(), 0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static final class COWIterator&lt;E&gt; implements ListIterator&lt;E&gt; &#123;</span><br><span class="line">    /** Snapshot of the array */</span><br><span class="line">    private final Object[] snapshot;</span><br><span class="line">    /** Index of element to be returned by subsequent call to next.  */</span><br><span class="line">    private int cursor;</span><br><span class="line"></span><br><span class="line">    private COWIterator(Object[] elements, int initialCursor) &#123;</span><br><span class="line">        cursor = initialCursor;</span><br><span class="line">        snapshot = elements;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h5 id="场景-1"><a href="#场景-1" class="headerlink" title="场景"></a>场景</h5><pre><code>java.util.concurrent包下的容器都是安全失败，可以在多线程下并发使用，并发修改。</code></pre><h5 id="code-1"><a href="#code-1" class="headerlink" title="code"></a>code</h5><p><a href="https://github.com/moon-zhou/advanced-java/blob/master/src/main/java/org/moonzhou/jdksource/FailSafeDemo.java" target="_blank" rel="noopener">My Hub</a></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ol>
+<li><a href="https://www.cnblogs.com/yonyong/p/9323244.html" target="_blank" rel="noopener">https://www.cnblogs.com/yonyong/p/9323244.html</a></li>
+<li><a href="https://blog.csdn.net/Kato_op/article/details/80356618" target="_blank" rel="noopener">https://blog.csdn.net/Kato_op/article/details/80356618</a></li>
+<li><a href="https://juejin.im/post/5dfdd73ee51d45580359a651" target="_blank" rel="noopener">https://juejin.im/post/5dfdd73ee51d45580359a651</a></li>
+<li><a href="https://juejin.im/post/5dd72dcee51d4535424fc2eb" target="_blank" rel="noopener">https://juejin.im/post/5dd72dcee51d4535424fc2eb</a></li>
 </ol>
 
     
@@ -286,7 +327,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://moon-zhou.github.io/2019/06/23/Git学习-小白不能忍之三/" title="Git学习-小白不能忍之三" target="_blank">https://moon-zhou.github.io/2019/06/23/Git学习-小白不能忍之三/</a>
+          <a href="https://moon-zhou.github.io/2019/12/20/快速失败(fail-fast)和安全失败(fail-safe)/" title="快速失败(fail-fast)和安全失败(fail-safe)" target="_blank">https://moon-zhou.github.io/2019/12/20/快速失败(fail-fast)和安全失败(fail-safe)/</a>
         </li>
         <li>
           <strong>版权声明： </strong>
@@ -306,7 +347,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
         		</li>
       		
 		</ul>
@@ -361,7 +402,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/06/23/Git学习-小白不能忍之三/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/12/20/快速失败(fail-fast)和安全失败(fail-safe)/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -376,18 +417,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/06/23/Git学习-小白实操/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Git学习-小白实操
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/23/Git学习-小白学理论/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Git学习-小白学理论</div>
+    <a href="/2019/12/14/策略模式-Strategy/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">策略模式-Strategy</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -414,7 +446,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#频繁输入–》不能忍"><span class="toc-number">2.</span> <span class="toc-text">频繁输入–》不能忍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决方案"><span class="toc-number">3.</span> <span class="toc-text">解决方案</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#快速失败-fail-fast"><span class="toc-number">2.</span> <span class="toc-text">快速失败(fail-fast)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#概念"><span class="toc-number">2.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#In-Java"><span class="toc-number">2.2.</span> <span class="toc-text">In Java</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#原理"><span class="toc-number">2.3.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注意点"><span class="toc-number">2.4.</span> <span class="toc-text">注意点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#联想"><span class="toc-number">2.5.</span> <span class="toc-text">联想</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#场景"><span class="toc-number">2.6.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#code"><span class="toc-number">2.7.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安全失败-fail-safe"><span class="toc-number">3.</span> <span class="toc-text">安全失败(fail-safe)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#体现"><span class="toc-number">3.1.</span> <span class="toc-text">体现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#原理-1"><span class="toc-number">3.2.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#场景-1"><span class="toc-number">3.3.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#code-1"><span class="toc-number">3.4.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
                     </div>
                 </span>
             </div>
