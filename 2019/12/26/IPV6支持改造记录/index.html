@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>sb2.0统一错误页面 | 弦 博客</title>
+  <title>IPV6支持改造记录 | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="背景调试mybatis-plus分页时，500错误，直接显示了原有的报错页。">
+  <meta name="description" content="背景 某天，发现B乎上有个提示是“支持IPV6”。灵光一闪，心底一身呵呵，未来的某一天啊~ 2019.12月了，各种合规检查又来了。其中一项就是支持IPV6，作为PC门户，理所当然的需要进行升级。 重点工作复盘，反思。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sb2.0统一错误页面">
-<meta property="og:url" content="https://moon-zhou.github.io/2019/08/13/sb2.0统一错误页面/index.html">
+<meta property="og:title" content="IPV6支持改造记录">
+<meta property="og:url" content="https://moon-zhou.github.io/2019/12/26/IPV6支持改造记录/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="背景调试mybatis-plus分页时，500错误，直接显示了原有的报错页。">
+<meta property="og:description" content="背景 某天，发现B乎上有个提示是“支持IPV6”。灵光一闪，心底一身呵呵，未来的某一天啊~ 2019.12月了，各种合规检查又来了。其中一项就是支持IPV6，作为PC门户，理所当然的需要进行升级。 重点工作复盘，反思。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-08T07:52:06.597Z">
+<meta property="og:updated_time" content="2019-12-26T12:44:56.475Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sb2.0统一错误页面">
-<meta name="twitter:description" content="背景调试mybatis-plus分页时，500错误，直接显示了原有的报错页。">
+<meta name="twitter:title" content="IPV6支持改造记录">
+<meta name="twitter:description" content="背景 某天，发现B乎上有个提示是“支持IPV6”。灵光一闪，心底一身呵呵，未来的某一天啊~ 2019.12月了，各种合规检查又来了。其中一项就是支持IPV6，作为PC门户，理所当然的需要进行升级。 重点工作复盘，反思。">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -182,22 +182,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-sb2.0统一错误页面" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-IPV6支持改造记录" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      sb2.0统一错误页面
+      IPV6支持改造记录
     </h1>
   
 
 
   
   
-<a href="/2019/08/13/sb2.0统一错误页面/" class="archive-article-date">
-        <time datetime="2019-08-13T08:43:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
+<a href="/2019/12/26/IPV6支持改造记录/" class="archive-article-date">
+        <time datetime="2019-12-26T12:00:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-26</time>
 </a>
 
   
@@ -210,7 +210,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">172字</span>
+      <span class="post-count">1.1k字</span>
     </span>
   </span>
 
@@ -219,7 +219,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">3分</span>
     </span>
   </span>
 </div>
@@ -230,23 +230,58 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>调试mybatis-plus分页时，500错误，直接显示了原有的报错页。</code></pre><a id="more"></a>
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
+<li>某天，发现B乎上有个提示是“支持IPV6”。灵光一闪，心底一身呵呵，未来的某一天啊~</li>
+<li>2019.12月了，各种合规检查又来了。其中一项就是支持IPV6，作为PC门户，理所当然的需要进行升级。</li>
+<li>重点工作复盘，反思。</li>
+</ol>
+<a id="more"></a>
 
-<h4 id="实操步骤"><a href="#实操步骤" class="headerlink" title="实操步骤"></a>实操步骤</h4><ol>
-<li><p>重写错误跳转</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class ErrorConfigurar &#123;</span><br><span class="line">    /**</span><br><span class="line">     * SpringBoot2.0以上版本WebServerFactoryCustomizer代替之前版本的EmbeddedWebServerFactoryCustomizerAutoConfiguration</span><br><span class="line">     *</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line"></span><br><span class="line">    //@Bean必须加上</span><br><span class="line">    @Bean</span><br><span class="line">    public WebServerFactoryCustomizer&lt;ConfigurableWebServerFactory&gt; webServerFactoryCustomizer() &#123;</span><br><span class="line">        //第二种写法：java8 lambda写法</span><br><span class="line">        return (factory -&gt; &#123;</span><br><span class="line">            ErrorPage errorPage404 = new ErrorPage(HttpStatus.NOT_FOUND, &quot;/error.do&quot;);</span><br><span class="line">            ErrorPage errorPage500 = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, &quot;/error.do&quot;);</span><br><span class="line">            factory.addErrorPages(errorPage404, errorPage500);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h4><p>鉴于公司的整套域名访问机制，有必要做一个简述，即浏览器访问一个域名，在我们服务系统里是如何进行解析，最后到你提供服务端机器上的。</p>
+<ol>
+<li>浏览器输入域名、访问。e.g. <a href="https://ema.suning.com" target="_blank" rel="noopener">https://ema.suning.com</a>  <a href="https://paypassport.suning.com" target="_blank" rel="noopener">https://paypassport.suning.com</a></li>
+<li>DNS等等</li>
+<li>我司CDN</li>
+<li>我司负载均衡VIP</li>
+<li>我司网络防火墙WAF</li>
+<li>具体系统的反向代理服务器，e.g.nginx</li>
+<li>WEB容器，e.g.Jboss</li>
+</ol>
+<h4 id="升级步骤"><a href="#升级步骤" class="headerlink" title="升级步骤"></a>升级步骤</h4><ol>
+<li>排查CDN接入情况，V6必须支持CDN（业务系统提工单，CDN部门实施）</li>
+<li>排查门户系统以及下游直接关联的业务系统（调用下游RPC接口），其实PC只是个web，任何业务都是需要相关系统提供服务的。<ul>
+<li>梳理业务场景（用于改造验证、回归）</li>
+<li>梳理调用接口（尤其关注有ip作为参数传递的接口），下游确定相关系统ip如果从V4变成了V6是否能够支持（尤其是对ip做了持久化的，字段长度是否需要进行更新）</li>
+<li>梳理页面前端组件依赖（js组件也是通过域名访问的，组件域名都挂在各自系统下，而V6是根据域名来进行改造升级的，所以提供的组件也需要确认同步支持IPV6）(==这一步是遗漏的，而且灰度期间没有发现，全网支持时才发现==)</li>
+</ul>
 </li>
-<li><p>自定义错误跳转（普通controller，用于给第一步跳转）</p>
-<blockquote>
-<p><a href="https://github.com/moon-zhou/SpringBoot_Backend_Modules/blob/master/backend-base-web/src/main/java/org/moonzhou/backend/base/web/controller/MyErrorController.java" target="_blank" rel="noopener">https://github.com/moon-zhou/SpringBoot_Backend_Modules/blob/master/backend-base-web/src/main/java/org/moonzhou/backend/base/web/controller/MyErrorController.java</a></p>
-</blockquote>
+<li>根据组件支持也业务支持的梳理，开始着手测试环境改造，测试</li>
+<li>生产进行灰度（江苏电信，江苏移动）</li>
+<li>生产全网支持IPV6</li>
+</ol>
+<h4 id="改造细节"><a href="#改造细节" class="headerlink" title="改造细节"></a>改造细节</h4><ol>
+<li>本来改造的域名是PC实名系统，ema.suning.com，但是该域名受限访问，所以单点登录系统paypassport.suning.com也需要改造。又因为使用了公用的静态资源服务器，所以静态资源域名也需要支持respay.suning.com</li>
+<li>ema.suning.com为结果CDN，但是paypassport.suning.com和respay.suning.com接过CDN，因此实施的方式还不一样（工单和线下邮件找CDN部门实施）</li>
+<li>IPV6网络的搭建，构建测试的环境</li>
+<li>ema.suning.com的测试环境本来只能内网访问，但是搭建的V6网络属于外网，所以需要重新申请机器配额，搭建一套新的外网可访问的测试环境</li>
+<li>业务梳理和确认相对来说比较耗时，尤其是调用链比较长的业务，跨越的系统较多，确认过程比较漫长</li>
+<li>页面文案说明改造，某个地方文案显示“支持IPV6”</li>
+<li>生产进行灰度（江苏电信，江苏移动）<ul>
+<li>验证V4以及V6下业务是否正常</li>
+<li>监控日志是否都正常</li>
+</ul>
 </li>
-<li><p>编写第二步里的相关页面</p>
-<blockquote>
-<p><a href="https://github.com/moon-zhou/SpringBoot_Backend_Modules/tree/master/backend-base-war/src/main/webapp/templates/error" target="_blank" rel="noopener">https://github.com/moon-zhou/SpringBoot_Backend_Modules/tree/master/backend-base-war/src/main/webapp/templates/error</a></p>
-</blockquote>
+<li>生产全网支持IPV6<ul>
+<li>验证V4以及V6下业务是否正常</li>
+<li>监控日志是否都正常</li>
+<li>通过拨测平台，验证全国范围内网络IP支持情况</li>
+</ul>
 </li>
 </ol>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>全网时发现访问受限链接到登录页时，登录方式无法加载。进一步定位发现依赖的外部js组件，其域名在V6下不支持，导致功能不可用。进一步分析发现该js会被缓存，如果有缓存，是可以正常登录的。这也是生产灰度时没发现的原因。但是测试环境一直没有出现该问题，还需要关注下。(12.27再进行确认)</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>V6支持，其实在8月份进行过一次排查改造，但是当时并没有安排验证，上线。所以这一次临时的安排，也是之前准备的充分，更多的是搭建环境和影响确认。</p>
+<p>灰度到上线时间太短，目的性和任务性太强。开发作为实施角色，进度的话语权太弱，如果长此以往，对于团队的成长是不健康的。适时的说“不”，给出专业的建议。</p>
+<p>Be Professional~~!</p>
 
     
 
@@ -293,7 +328,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://moon-zhou.github.io/2019/08/13/sb2.0统一错误页面/" title="sb2.0统一错误页面" target="_blank">https://moon-zhou.github.io/2019/08/13/sb2.0统一错误页面/</a>
+          <a href="https://moon-zhou.github.io/2019/12/26/IPV6支持改造记录/" title="IPV6支持改造记录" target="_blank">https://moon-zhou.github.io/2019/12/26/IPV6支持改造记录/</a>
         </li>
         <li>
           <strong>版权声明： </strong>
@@ -313,7 +348,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
+        			<a href="/categories/日常工作//" class="article-tag-list-link color5">日常工作</a>
         		</li>
       		
 		</ul>
@@ -368,7 +403,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/08/13/sb2.0统一错误页面/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/12/26/IPV6支持改造记录/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -383,18 +418,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/08/13/【反思录】19年7月的一点思考/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          【反思录】19年7月的一点思考
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/13/Maven中jar依赖冲突解决/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Maven中jar依赖冲突解决</div>
+    <a href="/2019/12/20/快速失败(fail-fast)和安全失败(fail-safe)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">快速失败(fail-fast)和安全失败(fail-safe)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -421,7 +447,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实操步骤"><span class="toc-number">2.</span> <span class="toc-text">实操步骤</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#预备知识"><span class="toc-number">2.</span> <span class="toc-text">预备知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#升级步骤"><span class="toc-number">3.</span> <span class="toc-text">升级步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#改造细节"><span class="toc-number">4.</span> <span class="toc-text">改造细节</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题"><span class="toc-number">5.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
