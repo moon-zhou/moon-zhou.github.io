@@ -6,20 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>Archives: 2019 | 弦 博客</title>
+  <title>模板模式-Template Method | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="never stop">
-<meta property="og:type" content="website">
-<meta property="og:title" content="弦 博客">
-<meta property="og:url" content="https://moon-zhou.github.io/archives/2019/page/5/index.html">
+  <meta name="description" content="背景 刷设计模式 现有系统里多处使用到，特此总结  概念 官方：模板模式（Template Method Pattern），又可叫模板方法，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。 方言：模板方法里定义具体的操作流程或步骤，其中部分或者全部延迟到子类进行实现。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模板模式-Template Method">
+<meta property="og:url" content="https://moon-zhou.github.io/2019/12/29/模板模式-Template Method/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="never stop">
+<meta property="og:description" content="背景 刷设计模式 现有系统里多处使用到，特此总结  概念 官方：模板模式（Template Method Pattern），又可叫模板方法，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。 方言：模板方法里定义具体的操作流程或步骤，其中部分或者全部延迟到子类进行实现。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-29T13:20:39.353Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦 博客">
-<meta name="twitter:description" content="never stop">
+<meta name="twitter:title" content="模板模式-Template Method">
+<meta name="twitter:description" content="背景 刷设计模式 现有系统里多处使用到，特此总结  概念 官方：模板模式（Template Method Pattern），又可叫模板方法，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。 方言：模板方法里定义具体的操作流程或步骤，其中部分或者全部延迟到子类进行实现。">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -181,468 +182,323 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-模板模式-Template Method" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/07/06/【小白踩坑】SpringBoot + VUE搭建过程发布问题整理/" class="archive-article-date">
-        <time datetime="2019-07-06T15:15:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/07/06/【小白踩坑】SpringBoot + VUE搭建过程发布问题整理/">【小白踩坑】SpringBoot + VUE搭建过程发布问题整理</a>
-	
+    <h1 class="article-title" itemprop="name">
+      模板模式-Template Method
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
+  
+  
+<a href="/2019/12/29/模板模式-Template Method/" class="archive-article-date">
+        <time datetime="2019-12-29T13:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.2k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">4分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
+<li>刷设计模式</li>
+<li>现有系统里多处使用到，特此总结</li>
+</ol>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ol>
+<li>官方：模板模式（Template Method Pattern），又可叫模板方法，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。</li>
+<li>方言：模板方法里定义具体的操作流程或步骤，其中部分或者全部延迟到子类进行实现。</li>
+</ol>
+<a id="more"></a>
+
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ol>
+<li>行为型模式</li>
+<li>基于继承的代码复用技术</li>
+<li>包含模板方法(template method)和基本方法(primitive method)，基本方法一般用final/private修饰，保证其不会被子类修改，模板方法使用protected/abstract修饰，表面其可以/需要在子类里进行实现。<ul>
+<li>模板方法(template method)<ul>
+<li>一个模板方法是定义在抽象类中的，把基本操作方法组合在一起形成一个总算法或一个总行为的方法。</li>
+<li>一个抽象类可以有任意多个模板方法，而不限于一个。每一个模板方法都可以调用任意多个具体方法。</li>
+</ul>
+</li>
+<li>基本方法(primitive method)<ul>
+<li>抽象方法(Abstract Method)<ul>
+<li>一个抽象方法由抽象类声明，由具体子类实现。在Java语言里抽象方法以abstract关键字标示。</li>
+</ul>
+</li>
+<li>具体方法(Concrete Method)<ul>
+<li>一个具体方法由抽象类声明并实现，而子类并不实现或置换。</li>
+</ul>
+</li>
+<li>钩子方法(Hook Method)<ul>
+<li>一个钩子方法由抽象类声明并实现，而子类会加以扩展。通常抽象类给出的实现是一个空实现，作为方法的默认实现。(Do nothing hook)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h4><ol>
+<li>抽象模板(Abstract Template)<ul>
+<li>定义了一个或多个抽象操作，以便让子类实现。这些抽象操作叫做基本操作，它们是一个顶级逻辑的组成步骤。(父抽象类里的抽象方法)</li>
+<li>定义并实现了一个模板方法。这个模板方法一般是一个具体方法，它给出了一个顶级逻辑的骨架，而逻辑的组成步骤在相应的抽象操作中，推迟到子类实现。顶级逻辑也有可能调用一些具体方法。（父抽象类里的模板方法）</li>
+</ul>
+</li>
+<li>具体模板(Concrete Template)<ul>
+<li>实现父类所定义的一个或多个抽象方法，它们是一个顶级逻辑的组成步骤。（子类实现的抽象方法）</li>
+<li>每一个抽象模板角色都可以有任意多个具体模板角色与之对应，而每一个具体模板角色都可以给出这些抽象方法（也就是顶级逻辑的组成步骤）的不同实现，从而使得顶级逻辑的实现各不相同。</li>
+</ul>
+</li>
+</ol>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>封装不变部分（提取到父类），扩展可变部分（子类实现）</li>
+<li>行为由父类控制，具体实现交给子类</li>
+</ol>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>功能/场景的增多，必然会带来抽象类的管理和扩展问题（基于继承的复用共性，e.g.策略模式）</li>
+</ol>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><ol>
+<li>有多个子类共有的方法，且逻辑相同。</li>
+<li>方言：多个场景，整体的业务逻辑相同，但是针对不通的来源（场景），又有些微不同时，可以使用模板方法抽象整体的业务逻辑，具体的不同处，提取抽象方法，由各个来源子类来进行实现。</li>
+</ol>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><pre><code>为防止恶意操作，一般模板方法都加上 final 关键词。</code></pre><h4 id="实际使用"><a href="#实际使用" class="headerlink" title="实际使用"></a>实际使用</h4><ol>
+<li><p>JDK中使用</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">AbstractQueuedSynchronizer</span><br><span class="line"></span><br><span class="line">public final void acquire(int arg) &#123;</span><br><span class="line">    if (!tryAcquire(arg) &amp;&amp;</span><br><span class="line">        acquireQueued(addWaiter(Node.EXCLUSIVE), arg))</span><br><span class="line">        selfInterrupt();</span><br><span class="line">&#125;</span><br><span class="line">acquire()相当于模板方法，tryAcquire(arg)相当于基本方法。</span><br><span class="line">tryAcquire被多个子类实现</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JavaEE中使用</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">javax.servlet.http.HttpServlet</span><br><span class="line"></span><br><span class="line">protected void service(HttpServletRequest req, HttpServletResponse resp)</span><br><span class="line">throws ServletException, IOException</span><br><span class="line">&#123;</span><br><span class="line">    String method = req.getMethod();</span><br><span class="line"></span><br><span class="line">    if (method.equals(METHOD_GET)) &#123;</span><br><span class="line">        ...</span><br><span class="line">        doGet(req, resp);</span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">    &#125; else if (method.equals(METHOD_HEAD)) &#123;</span><br><span class="line">        ...</span><br><span class="line">        doHead(req, resp);</span><br><span class="line"></span><br><span class="line">    &#125; else if (method.equals(METHOD_POST)) &#123;</span><br><span class="line">        doPost(req, resp);</span><br><span class="line"></span><br><span class="line">    &#125; else if (method.equals(METHOD_PUT)) &#123;</span><br><span class="line">        doPut(req, resp);</span><br><span class="line"></span><br><span class="line">    &#125; else if (method.equals(METHOD_DELETE)) &#123;</span><br><span class="line">        doDelete(req, resp);</span><br><span class="line"></span><br><span class="line">    &#125; else if (method.equals(METHOD_OPTIONS)) &#123;</span><br><span class="line">        doOptions(req,resp);</span><br><span class="line"></span><br><span class="line">    &#125; else if (method.equals(METHOD_TRACE)) &#123;</span><br><span class="line">        doTrace(req,resp);</span><br><span class="line"></span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Spring中使用</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SpringWeb部分，还是遵循Servlet规范的，DispatcherServlet的父类FrameworkServlet就对doGet、doPost等模板方法进行了重写。</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="Talk-is-cheap-Show-my-hub"><a href="#Talk-is-cheap-Show-my-hub" class="headerlink" title="Talk is cheap, Show my hub"></a>Talk is cheap, Show my hub</h4><ol>
+<li><a href="https://github.com/moon-zhou/advanced-java/tree/master/src/main/java/org/moonzhou/designpatterns/behavioralmode/templatemethod/simpledemo" target="_blank" rel="noopener">基本模板</a></li>
+<li><a href="https://github.com/moon-zhou/advanced-java/tree/master/src/main/java/org/moonzhou/designpatterns/behavioralmode/templatemethod/elephantfridgeproblem" target="_blank" rel="noopener">把大象放进冰箱，拢共分几步</a></li>
+<li><a href="https://github.com/moon-zhou/advanced-java/tree/master/src/main/java/org/moonzhou/designpatterns/behavioralmode/templatemethod/programmingmaster" target="_blank" rel="noopener">How to be a programming master ?</a></li>
+</ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ol>
+<li><a href="https://github.com/get-set/get-designpatterns/tree/master/template-method" target="_blank" rel="noopener">https://github.com/get-set/get-designpatterns/tree/master/template-method</a></li>
+<li><a href="https://github.com/iluwatar/java-design-patterns/blob/master/template-method/src/main/java/com/iluwatar/templatemethod/SubtleMethod.java" target="_blank" rel="noopener">https://github.com/iluwatar/java-design-patterns/blob/master/template-method/src/main/java/com/iluwatar/templatemethod/SubtleMethod.java</a></li>
+<li><a href="https://www.cnblogs.com/betterboyz/p/9377881.htm" target="_blank" rel="noopener">https://www.cnblogs.com/betterboyz/p/9377881.htm</a></li>
+<li><a href="https://www.runoob.com/design-pattern/template-pattern.html" target="_blank" rel="noopener">https://www.runoob.com/design-pattern/template-pattern.html</a></li>
+<li><a href="https://blog.51cto.com/liukang/2048245" target="_blank" rel="noopener">https://blog.51cto.com/liukang/2048245</a></li>
+</ol>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          moon zhou
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://moon-zhou.github.io/2019/12/29/模板模式-Template Method/" title="模板模式-Template Method" target="_blank">https://moon-zhou.github.io/2019/12/29/模板模式-Template Method/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X/Vue//" class="article-tag-list-link color4">Vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X/Vue/问题记录//" class="article-tag-list-link color5">问题记录</a>
+        			<a href="/categories/设计模式//" class="article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/12/29/模板模式-Template Method/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/30/SpringBoot + VUE系统搭建/" class="archive-article-date">
-        <time datetime="2019-06-30T11:43:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-30</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/26/IPV6支持改造记录/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">IPV6支持改造记录</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/30/SpringBoot + VUE系统搭建/">SpringBoot + VUE系统搭建</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X/Vue//" class="article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#概念"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#特点"><span class="toc-number">3.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#角色"><span class="toc-number">4.</span> <span class="toc-text">角色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#优点"><span class="toc-number">5.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点"><span class="toc-number">6.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用场景"><span class="toc-number">7.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意事项"><span class="toc-number">8.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实际使用"><span class="toc-number">9.</span> <span class="toc-text">实际使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Talk-is-cheap-Show-my-hub"><span class="toc-number">10.</span> <span class="toc-text">Talk is cheap, Show my hub</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-number">11.</span> <span class="toc-text">参考</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/23/Git学习-小白学理论/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/23/Git学习-小白学理论/">Git学习-小白学理论</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/23/Git学习-小白不能忍之二/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/23/Git学习-小白不能忍之二/">Git学习-小白不能忍之二</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/23/Git学习-小白不能忍之三/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/23/Git学习-小白不能忍之三/">Git学习-小白不能忍之三</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/23/Git学习-小白实操/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/23/Git学习-小白实操/">Git学习-小白实操</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/23/Git学习-小白不能忍之一/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/23/Git学习-小白不能忍之一/">Git学习-小白不能忍之一</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/23/github新增代码库实操/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/23/github新增代码库实操/">github新增代码库实操</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/16/序列化/" class="archive-article-date">
-        <time datetime="2019-06-16T09:46:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/16/序列化/">序列化</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/02/傻瓜式学Vue-02一步一步小demo/" class="archive-article-date">
-        <time datetime="2019-06-02T14:25:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-02</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/02/傻瓜式学Vue-02一步一步小demo/">傻瓜式学Vue-02一步一步小demo</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Vue//" class="article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/page/4/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/3/">3</a><a class="page-number" href="/archives/2019/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/2019/page/6/">6</a><a class="extend next" rel="next" href="/archives/2019/page/6/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -671,8 +527,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
