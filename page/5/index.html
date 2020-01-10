@@ -187,7 +187,7 @@
             
 
   
-    <article id="post-【朝花再拾】Maven知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-缓存那些事" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -195,7 +195,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2019/07/06/【朝花再拾】Maven知识点/">【朝花再拾】Maven知识点</a>
+	  <a class="article-title" href="/2019/07/14/缓存那些事/">缓存那些事</a>
 	
     </h1>
   
@@ -203,8 +203,8 @@
 
   
   
-<a href="/2019/07/06/【朝花再拾】Maven知识点/" class="archive-article-date">
-        <time datetime="2019-07-06T15:15:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
+<a href="/2019/07/14/缓存那些事/" class="archive-article-date">
+        <time datetime="2019-07-14T12:29:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
 </a>
 
   
@@ -216,11 +216,28 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>最近搭建SB系统时，是基于maven的project，常年没有搭建，有些知识点已经遗忘，在这个过程中，把相关东西一点点拾起来。</p>
+    <h4 id="缓存那些事"><a href="#缓存那些事" class="headerlink" title="缓存那些事"></a>缓存那些事</h4><ol>
+<li><p>缓存穿透</p>
+<blockquote>
+<p>请求去查询一条压根儿数据库中根本就不存在的数据，也就是缓存和数据库都查询不到这条数据，但是请求每次都会打到数据库上面去。</p>
 </blockquote>
+<ul>
+<li>带来的风险：黑客会对你的系统进行攻击，拿一个不存在的id 去查询数据，会产生大量的请求到数据库去查询。可能会导致你的数据库由于压力过大而宕掉。</li>
+<li>解决办法：<ol>
+<li>缓存空值：这些key对应的值设置为null或者空对象丢到缓存里面(过期时间)</li>
+<li>BloomFilter：查询缓存之前先过下布隆过滤器，有再去走CACHE–DB（False is always false, True is maybe true.）</li>
+</ol>
+</li>
+<li>总结：<ol>
+<li>key异常多、请求重复率比较低的数据，我们就没有必要进行缓存，使用BloomFilter。</li>
+<li>空数据的key有限的，重复率比较高的，使用缓存空值。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
     
-    <a class="article-more-a" href="/2019/07/06/【朝花再拾】Maven知识点/#more">more >></a>
+    <a class="article-more-a" href="/2019/07/14/缓存那些事/#more">more >></a>
     
     
 
@@ -238,7 +255,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Maven//" class="article-tag-list-link color1">Maven</a>
+        			<a href="/categories/分布式//" class="article-tag-list-link color4">分布式</a>
         		</li>
       		
 		</ul>
@@ -247,7 +264,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2019/07/06/【朝花再拾】Maven知识点/">展开全文 >></a>
+      <a class="article-more-a" href="/2019/07/14/缓存那些事/">展开全文 >></a>
     </p>
     
 
@@ -375,6 +392,96 @@
 
 
   
+    <article id="post-【朝花再拾】Maven知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/07/06/【朝花再拾】Maven知识点/">【朝花再拾】Maven知识点</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/07/06/【朝花再拾】Maven知识点/" class="archive-article-date">
+        <time datetime="2019-07-06T15:15:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
+<p>最近搭建SB系统时，是基于maven的project，常年没有搭建，有些知识点已经遗忘，在这个过程中，把相关东西一点点拾起来。</p>
+</blockquote>
+    
+    <a class="article-more-a" href="/2019/07/06/【朝花再拾】Maven知识点/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Maven//" class="article-tag-list-link color1">Maven</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/07/06/【朝花再拾】Maven知识点/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SpringBoot + VUE系统搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -471,6 +578,189 @@
 
 
   
+    <article id="post-Git学习-小白学理论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/06/23/Git学习-小白学理论/">Git学习-小白学理论</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/06/23/Git学习-小白学理论/" class="archive-article-date">
+        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="文件状态（未进行commit操作之前，存在三种状态）"><a href="#文件状态（未进行commit操作之前，存在三种状态）" class="headerlink" title="文件状态（未进行commit操作之前，存在三种状态）"></a>文件状态（未进行commit操作之前，存在三种状态）</h4><ul>
+<li>Untracked files</li>
+<li>Changes not staged for commit</li>
+<li>Changes to be committed</li>
+</ul>
+    
+    <a class="article-more-a" href="/2019/06/23/Git学习-小白学理论/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/06/23/Git学习-小白学理论/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-github新增代码库实操" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/06/23/github新增代码库实操/">github新增代码库实操</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/06/23/github新增代码库实操/" class="archive-article-date">
+        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="git创建新的代码库"><a href="#git创建新的代码库" class="headerlink" title="git创建新的代码库"></a>git创建新的代码库</h4><ol>
+<li>登录github</li>
+<li>找到”new repository”</li>
+</ol>
+    
+    <a class="article-more-a" href="/2019/06/23/github新增代码库实操/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/06/23/github新增代码库实操/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Git学习-小白不能忍之二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -532,6 +822,102 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2019/06/23/Git学习-小白不能忍之二/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Git学习-小白不能忍之一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/06/23/Git学习-小白不能忍之一/">Git学习-小白不能忍之一</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/06/23/Git学习-小白不能忍之一/" class="archive-article-date">
+        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
+<p>git 命令过长，记忆以及输入时不够快捷，<strong>不能忍</strong></p>
+</blockquote>
+<h4 id="Git-Log的进阶使用"><a href="#Git-Log的进阶使用" class="headerlink" title="Git Log的进阶使用"></a>Git Log的进阶使用</h4><ol>
+<li>Git查看日志，单独使用git log来操作，每一个commit信息太多，干扰信息又太多，而且各种分支的合并也看不到。优化如下：<blockquote>
+<p>git log –graph –pretty=format:’%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative</p>
+</blockquote>
+</li>
+</ol>
+    
+    <a class="article-more-a" href="/2019/06/23/Git学习-小白不能忍之一/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/06/23/Git学习-小白不能忍之一/">展开全文 >></a>
     </p>
     
 
@@ -719,375 +1105,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2019/06/23/Git学习-小白实操/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git学习-小白不能忍之一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/06/23/Git学习-小白不能忍之一/">Git学习-小白不能忍之一</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/06/23/Git学习-小白不能忍之一/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>git 命令过长，记忆以及输入时不够快捷，<strong>不能忍</strong></p>
-</blockquote>
-<h4 id="Git-Log的进阶使用"><a href="#Git-Log的进阶使用" class="headerlink" title="Git Log的进阶使用"></a>Git Log的进阶使用</h4><ol>
-<li>Git查看日志，单独使用git log来操作，每一个commit信息太多，干扰信息又太多，而且各种分支的合并也看不到。优化如下：<blockquote>
-<p>git log –graph –pretty=format:’%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative</p>
-</blockquote>
-</li>
-</ol>
-    
-    <a class="article-more-a" href="/2019/06/23/Git学习-小白不能忍之一/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/23/Git学习-小白不能忍之一/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-github新增代码库实操" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/06/23/github新增代码库实操/">github新增代码库实操</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/06/23/github新增代码库实操/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="git创建新的代码库"><a href="#git创建新的代码库" class="headerlink" title="git创建新的代码库"></a>git创建新的代码库</h4><ol>
-<li>登录github</li>
-<li>找到”new repository”</li>
-</ol>
-    
-    <a class="article-more-a" href="/2019/06/23/github新增代码库实操/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/23/github新增代码库实操/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git学习-小白学理论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/06/23/Git学习-小白学理论/">Git学习-小白学理论</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/06/23/Git学习-小白学理论/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="文件状态（未进行commit操作之前，存在三种状态）"><a href="#文件状态（未进行commit操作之前，存在三种状态）" class="headerlink" title="文件状态（未进行commit操作之前，存在三种状态）"></a>文件状态（未进行commit操作之前，存在三种状态）</h4><ul>
-<li>Untracked files</li>
-<li>Changes not staged for commit</li>
-<li>Changes to be committed</li>
-</ul>
-    
-    <a class="article-more-a" href="/2019/06/23/Git学习-小白学理论/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/23/Git学习-小白学理论/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-序列化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/06/16/序列化/">序列化</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/06/16/序列化/" class="archive-article-date">
-        <time datetime="2019-06-16T09:46:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h4><blockquote>
-<p>个人会员wap系统，新增实名申诉降级流程，开发过程中，涉及选择已实名账号，上传证件等多步骤操作，后端一开始就要缓存实名用户的信息，缓存的地方为session。因为我们需要进行会话保持，从而我们使用了公司的snf-web-session组件，其底层实现是将缓存在session里的数据缓存在redis中，而不是web容器里。但是在我们实际的场景里，缓存塞值的时候是没有问题，但是在取值的时候，始终是null。</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2019/06/16/序列化/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/16/序列化/">展开全文 >></a>
     </p>
     
 
