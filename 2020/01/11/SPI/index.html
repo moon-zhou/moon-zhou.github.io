@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>Archives: 2019/8 | 弦 博客</title>
+  <title>Java之接口默认方法 | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="never stop">
-<meta property="og:type" content="website">
-<meta property="og:title" content="弦 博客">
-<meta property="og:url" content="https://moon-zhou.github.io/archives/2019/08/index.html">
+  <meta name="description" content="如果无法正确查看流程图， 点击传送门  背景 框架源码阅读（JDBC,Springboot以及DUBBO使用到） 博文推荐  相关概念 全称Service Provider Interface Java提供的一套用来被第三方实现或者扩展的API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java之接口默认方法">
+<meta property="og:url" content="https://moon-zhou.github.io/2020/01/11/SPI/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="never stop">
+<meta property="og:description" content="如果无法正确查看流程图， 点击传送门  背景 框架源码阅读（JDBC,Springboot以及DUBBO使用到） 博文推荐  相关概念 全称Service Provider Interface Java提供的一套用来被第三方实现或者扩展的API">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/2dca4c44cab913d55ed6e625c1320b99/xmlnote/5AF187D111AE4F2B9D63654A01124A31/39438">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/2dca4c44cab913d55ed6e625c1320b99/xmlnote/C398C83A320E42E8A1FE2787232ADEB8/39567">
+<meta property="og:updated_time" content="2020-01-12T12:41:55.174Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦 博客">
-<meta name="twitter:description" content="never stop">
+<meta name="twitter:title" content="Java之接口默认方法">
+<meta name="twitter:description" content="如果无法正确查看流程图， 点击传送门  背景 框架源码阅读（JDBC,Springboot以及DUBBO使用到） 博文推荐  相关概念 全称Service Provider Interface Java提供的一套用来被第三方实现或者扩展的API">
+<meta name="twitter:image" content="https://note.youdao.com/yws/public/resource/2dca4c44cab913d55ed6e625c1320b99/xmlnote/5AF187D111AE4F2B9D63654A01124A31/39438">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -181,42 +185,183 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-SPI" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/25/【朝花再拾】AOP-01/" class="archive-article-date">
-        <time datetime="2019-08-25T04:07:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-25</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/25/【朝花再拾】AOP-01/">【朝花再拾】AOP-01</a>
-	
+    <h1 class="article-title" itemprop="name">
+      Java之接口默认方法
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
+  
+  
+<a href="/2020/01/11/SPI/" class="archive-article-date">
+        <time datetime="2020-01-11T12:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-11</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">2k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">9分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>如果无法正确查看流程图， 点击<a href="http://note.youdao.com/noteshare?id=a9241fd31b47ec71c8657eef85e28121&sub=4F92886B780A4A7190C7029EE6E47372" target="_blank" rel="noopener">传送门</a></p>
+<hr>
+<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
+<li>框架源码阅读（JDBC,Springboot以及DUBBO使用到）</li>
+<li>博文推荐</li>
+</ol>
+<h4 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h4><ul>
+<li>全称Service Provider Interface</li>
+<li>Java提供的一套用来被第三方实现或者扩展的API</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h4><blockquote>
+<p>“基于接口的编程＋策略模式＋配置文件”组合实现的动态加载机制<br>为某个接口寻找服务实现的机制。<br>归根结底还是“解耦”。</p>
+</blockquote>
+<p><img src="https://note.youdao.com/yws/public/resource/2dca4c44cab913d55ed6e625c1320b99/xmlnote/5AF187D111AE4F2B9D63654A01124A31/39438" alt="机制，无法加载看下面流程图"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">调用方--&gt;标准服务接口</span><br><span class="line">标准服务接口--&gt;实现类A</span><br><span class="line">标准服务接口--&gt;实现类B</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><ol>
+<li>定义接口</li>
+<li>src/main/resource/META-INF/services目录下添加名为接口类路径的文件（无后缀，idea里copy接口的reference）</li>
+<li>对第一步的接口进行实现</li>
+<li>第二步新建的文件里添加实现类的类路径（reference）,</li>
+<li>使用的时候，使用相关类加载实现类</li>
+<li>详细见小Demo里代码</li>
+</ol>
+<h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><ol>
+<li><p>java.util.ServiceLoader（），核心是内部类抽象，关于遍历和实例化的部分均在内部类里实现，类比创建者模式里的Builder<br> <img src="https://note.youdao.com/yws/public/resource/2dca4c44cab913d55ed6e625c1320b99/xmlnote/C398C83A320E42E8A1FE2787232ADEB8/39567" alt="Mysql驱动配置"></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">类属性：</span><br><span class="line">//配置文件的路径</span><br><span class="line">private static final String PREFIX = &quot;META-INF/services/&quot;;</span><br><span class="line">//加载的服务类或接口</span><br><span class="line">private final Class&lt;S&gt; service;</span><br><span class="line">//已加载的服务类集合（缓存）</span><br><span class="line">private LinkedHashMap&lt;String,S&gt; providers = new LinkedHashMap&lt;&gt;();</span><br><span class="line">//类加载器</span><br><span class="line">private final ClassLoader loader;</span><br><span class="line">//内部类，真正加载服务类</span><br><span class="line">private LazyIterator lookupIterator;</span><br><span class="line"></span><br><span class="line">// 调用load方法实际是进行实例化的过程，最终掉的是私有构造方法</span><br><span class="line">public void reload() &#123;</span><br><span class="line">    providers.clear();</span><br><span class="line">    lookupIterator = new LazyIterator(service, loader);</span><br><span class="line">&#125;</span><br><span class="line">private ServiceLoader(Class&lt;S&gt; svc, ClassLoader cl) &#123;</span><br><span class="line">    service = Objects.requireNonNull(svc, &quot;Service interface cannot be null&quot;);</span><br><span class="line">    loader = (cl == null) ? ClassLoader.getSystemClassLoader() : cl;</span><br><span class="line">    acc = (System.getSecurityManager() != null) ? AccessController.getContext() : null;</span><br><span class="line">    reload();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 遍历实现类，实际都是通过重写java.util.Iterator的hasNext(),next(),remove()，最终还是调用到内部类LazyIterator进行实现的</span><br><span class="line">public Iterator&lt;S&gt; iterator() &#123;</span><br><span class="line">    return new Iterator&lt;S&gt;() &#123;</span><br><span class="line"></span><br><span class="line">        Iterator&lt;Map.Entry&lt;String,S&gt;&gt; knownProviders</span><br><span class="line">            = providers.entrySet().iterator();</span><br><span class="line"></span><br><span class="line">        public boolean hasNext() &#123;</span><br><span class="line">            if (knownProviders.hasNext())</span><br><span class="line">                return true;</span><br><span class="line">            // 调用内部类判断是否有下一个实现类</span><br><span class="line">            return lookupIterator.hasNext();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public S next() &#123;</span><br><span class="line">            if (knownProviders.hasNext())</span><br><span class="line">                return knownProviders.next().getValue();</span><br><span class="line">            // 调用内部类判断获取下一个实现类</span><br><span class="line">            return lookupIterator.next();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void remove() &#123;</span><br><span class="line">            throw new UnsupportedOperationException();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 内部内实现部分</span><br><span class="line">private class LazyIterator implements Iterator&lt;S&gt;&#123;</span><br><span class="line">    Class&lt;S&gt; service;</span><br><span class="line">    ClassLoader loader;</span><br><span class="line">    Enumeration&lt;URL&gt; configs = null;</span><br><span class="line">    Iterator&lt;String&gt; pending = null;</span><br><span class="line">    String nextName = null; </span><br><span class="line">    </span><br><span class="line">    // 遍历实现类判断</span><br><span class="line">    private boolean hasNextService() &#123;</span><br><span class="line">        //第二次调用的时候，已经解析完成了，直接返回</span><br><span class="line">        if (nextName != null) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        if (configs == null) &#123;</span><br><span class="line">            //META-INF/services/ 加上接口的全限定类名，就是文件服务类的文件</span><br><span class="line">            //META-INF/services/com.viewscenes.netsupervisor.spi.SPIService</span><br><span class="line">            String fullName = PREFIX + service.getName();</span><br><span class="line">            //将文件路径转成URL对象</span><br><span class="line">            configs = loader.getResources(fullName);</span><br><span class="line">        &#125;</span><br><span class="line">        while ((pending == null) || !pending.hasNext()) &#123;</span><br><span class="line">            //解析URL文件对象，读取内容，最后返回</span><br><span class="line">            pending = parse(service, configs.nextElement());</span><br><span class="line">        &#125;</span><br><span class="line">        //拿到第一个实现类的类名</span><br><span class="line">        nextName = pending.next();</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 创建实例，它通过反射的方式，创建实现类的实例并返回。</span><br><span class="line">    private S nextService() &#123;</span><br><span class="line">        //全限定类名</span><br><span class="line">        String cn = nextName;</span><br><span class="line">        nextName = null;</span><br><span class="line">        //创建类的Class对象</span><br><span class="line">        Class&lt;?&gt; c = Class.forName(cn, false, loader);</span><br><span class="line">        //通过newInstance实例化</span><br><span class="line">        S p = service.cast(c.newInstance());</span><br><span class="line">        //放入集合，本地缓存，返回实例</span><br><span class="line">        providers.put(cn, p);</span><br><span class="line">        return p; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sun.misc.Service</p>
+</li>
+</ol>
+<h4 id="实际应用场景"><a href="#实际应用场景" class="headerlink" title="实际应用场景"></a>实际应用场景</h4><blockquote>
+<p>调用者根据实际使用需要，启用、扩展、或者替换框架的实现策略  </p>
+<ol>
+<li>JDBC:JDBC标准主要提供一套api规范，第三方应用通过实现JDBC的接口并提供一个jar包给应用程序调用。如Mysql驱动，Oracle驱动等。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">基本使用，核心关注驱动的加载过程：</span><br><span class="line">String url = &quot;jdbc:mysql:consult?serverTimezone=UTC&quot;;</span><br><span class="line">String user = &quot;root&quot;;</span><br><span class="line">String password = &quot;root&quot;;</span><br><span class="line"></span><br><span class="line">// jdbc4.0之后可以不需要显示注册驱动，spi机制会自动找到相关的驱动实现</span><br><span class="line">Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</span><br><span class="line">Connection connection = DriverManager.getConnection(url, user, password);</span><br><span class="line"></span><br><span class="line">// java.sql.DriverManager静态块初始执行，其中使用spi机制加载jdbc具体实现</span><br><span class="line">/**</span><br><span class="line"> * Load the initial JDBC drivers by checking the System property</span><br><span class="line"> * jdbc.properties and then use the &#123;@code ServiceLoader&#125; mechanism</span><br><span class="line"> */</span><br><span class="line">static &#123;</span><br><span class="line">    // 静态代码块加载驱动</span><br><span class="line">    loadInitialDrivers();</span><br><span class="line">    println(&quot;JDBC DriverManager initialized&quot;);</span><br><span class="line">&#125;</span><br><span class="line">private static void loadInitialDrivers() &#123;</span><br><span class="line">    String drivers;</span><br><span class="line">    try &#123;</span><br><span class="line">        drivers = AccessController.doPrivileged(new PrivilegedAction&lt;String&gt;() &#123;</span><br><span class="line">            public String run() &#123;</span><br><span class="line">                return System.getProperty(&quot;jdbc.drivers&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; catch (Exception ex) &#123;</span><br><span class="line">        drivers = null;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 如果spi 存在将使用spi方式完成提供的Driver的加载</span><br><span class="line">    // If the driver is packaged as a Service Provider, load it.</span><br><span class="line">    // Get all the drivers through the classloader</span><br><span class="line">    // exposed as a java.sql.Driver.class service.</span><br><span class="line">    // ServiceLoader.load() replaces the sun.misc.Providers()</span><br><span class="line">    AccessController.doPrivileged(new PrivilegedAction&lt;Void&gt;() &#123;</span><br><span class="line">        public Void run() &#123;</span><br><span class="line"></span><br><span class="line">            // SPI加载驱动，Driver.class为jdbc规范，各厂商实现自己的驱动</span><br><span class="line">            ServiceLoader&lt;Driver&gt; loadedDrivers = ServiceLoader.load(Driver.class);</span><br><span class="line">            Iterator&lt;Driver&gt; driversIterator = loadedDrivers.iterator();</span><br><span class="line"></span><br><span class="line">            /* Load these drivers, so that they can be instantiated.</span><br><span class="line">             * It may be the case that the driver class may not be there</span><br><span class="line">             * i.e. there may be a packaged driver with the service class</span><br><span class="line">             * as implementation of java.sql.Driver but the actual class</span><br><span class="line">             * may be missing. In that case a java.util.ServiceConfigurationError</span><br><span class="line">             * will be thrown at runtime by the VM trying to locate</span><br><span class="line">             * and load the service.</span><br><span class="line">             *</span><br><span class="line">             * Adding a try catch block to catch those runtime errors</span><br><span class="line">             * if driver not available in classpath but it&apos;s</span><br><span class="line">             * packaged as service and that service is there in classpath.</span><br><span class="line">             */</span><br><span class="line">            try&#123;</span><br><span class="line">                while(driversIterator.hasNext()) &#123;</span><br><span class="line">                    // 加载并初始化实现类</span><br><span class="line">                    driversIterator.next();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch(Throwable t) &#123;</span><br><span class="line">            // Do nothing</span><br><span class="line">            &#125;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    println(&quot;DriverManager.initialize: jdbc.drivers = &quot; + drivers);</span><br><span class="line"></span><br><span class="line">    if (drivers == null || drivers.equals(&quot;&quot;)) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    String[] driversList = drivers.split(&quot;:&quot;);</span><br><span class="line">    println(&quot;number of Drivers:&quot; + driversList.length);</span><br><span class="line">    for (String aDriver : driversList) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            println(&quot;DriverManager.Initialize: loading &quot; + aDriver);</span><br><span class="line">            Class.forName(aDriver, true,</span><br><span class="line">                    ClassLoader.getSystemClassLoader());</span><br><span class="line">        &#125; catch (Exception ex) &#123;</span><br><span class="line">            println(&quot;DriverManager.Initialize: load failed: &quot; + ex);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">com.mysql.cj.jdbc.Driver</span><br><span class="line">// 实例化的时候，会加载静态代码块</span><br><span class="line">public class Driver extends NonRegisteringDriver implements java.sql.Driver &#123;</span><br><span class="line">    //</span><br><span class="line">    // Register ourselves with the DriverManager</span><br><span class="line">    //</span><br><span class="line">    static &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            // 调用jdbc规范里的manage，将当前driver注册进去</span><br><span class="line">            java.sql.DriverManager.registerDriver(new Driver());</span><br><span class="line">        &#125; catch (SQLException E) &#123;</span><br><span class="line">            throw new RuntimeException(&quot;Can&apos;t register driver!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">java.sql.DriverManager#registerDriver(java.sql.Driver, java.sql.DriverAction)</span><br><span class="line">// 将外部驱动添加到注册变量</span><br><span class="line">public static synchronized void registerDriver(java.sql.Driver driver,</span><br><span class="line">        DriverAction da)</span><br><span class="line">    throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    /* Register the driver if it has not already been added to our list */</span><br><span class="line">    if(driver != null) &#123;</span><br><span class="line">        registeredDrivers.addIfAbsent(new DriverInfo(driver, da));</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // This is for compatibility with the original DriverManager</span><br><span class="line">        throw new NullPointerException();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    println(&quot;registerDriver: &quot; + driver);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>使用Java SPI机制的优势是实现解耦，使得第三方服务模块的装配控制的逻辑与调用者的业务代码分离，而不是耦合在一起。应用程序可以根据实际业务情况启用框架扩展或替换框架组件。</li>
+<li>相比使用提供接口jar包，供第三方服务模块实现接口的方式，SPI的方式使得源框架，不必关心接口的实现类的路径，可以不用通过下面的方式获取接口实现类：<ul>
+<li>代码硬编码import 导入实现类</li>
+<li>指定类全路径反射获取：例如在JDBC4.0之前，JDBC中获取数据库驱动类需要通过Class.forName(“com.mysql.jdbc.Driver”)，类似语句先动态加载数据库相关的驱动，然后再进行获取连接等的操作</li>
+<li>第三方服务模块把接口实现类实例注册到指定地方，源框架从该处访问实例</li>
+</ul>
+</li>
+</ol>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>虽然ServiceLoader也算是使用的延迟加载，但是基本只能通过遍历全部获取，也就是接口的实现类全部加载并实例化一遍。如果你并不想用某些实现类，它也被加载并实例化了，这就造成了浪费。获取某个实现类的方式不够灵活，只能通过Iterator形式获取，不能根据某个参数来获取对应的实现类。</li>
+<li>多个并发多线程使用ServiceLoader类的实例是不安全的。</li>
+</ol>
+<h4 id="Talk-is-cheap-Show-my-hub"><a href="#Talk-is-cheap-Show-my-hub" class="headerlink" title="Talk is cheap, Show my hub"></a>Talk is cheap, Show my hub</h4><ol>
+<li><a href="https://github.com/moon-zhou/advanced-java/tree/master/src/main/java/org/moonzhou/advancedprogramming/spi/simpledemo" target="_blank" rel="noopener">小Demo</a></li>
+</ol>
+<h4 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h4><ol>
+<li>针对driver的扩展</li>
+<li>DUBBO里是SPI分析</li>
+<li>SLF4J里SPI分析</li>
+<li>Spring里SPI分析</li>
+</ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ol>
+<li><a href="https://www.jianshu.com/p/46b42f7f593c" target="_blank" rel="noopener">https://www.jianshu.com/p/46b42f7f593c</a></li>
+<li><a href="https://www.jianshu.com/p/3a3edbcd8f24" target="_blank" rel="noopener">https://www.jianshu.com/p/3a3edbcd8f24</a></li>
+<li><a href="https://blog.csdn.net/lemon89/article/details/79189475" target="_blank" rel="noopener">https://blog.csdn.net/lemon89/article/details/79189475</a></li>
+<li><a href="https://www.cnblogs.com/jy107600/p/11464985.html" target="_blank" rel="noopener">https://www.cnblogs.com/jy107600/p/11464985.html</a></li>
+</ol>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          moon zhou
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://moon-zhou.github.io/2020/01/11/SPI/" title="Java之接口默认方法" target="_blank">https://moon-zhou.github.io/2020/01/11/SPI/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -229,369 +374,118 @@
 	</div>
 
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2020/01/11/SPI/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/22/SB日志打印/" class="archive-article-date">
-        <time datetime="2019-08-22T15:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-22</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/10/跨域那些事/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">缓存那些事</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/22/SB日志打印/">SB日志打印</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#相关概念"><span class="toc-number">2.</span> <span class="toc-text">相关概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#机制"><span class="toc-number">3.</span> <span class="toc-text">机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用步骤"><span class="toc-number">4.</span> <span class="toc-text">使用步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#源码分析"><span class="toc-number">5.</span> <span class="toc-text">源码分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实际应用场景"><span class="toc-number">6.</span> <span class="toc-text">实际应用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#优点"><span class="toc-number">7.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#缺点"><span class="toc-number">7.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Talk-is-cheap-Show-my-hub"><span class="toc-number">8.</span> <span class="toc-text">Talk is cheap, Show my hub</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TODO"><span class="toc-number">9.</span> <span class="toc-text">TODO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-number">10.</span> <span class="toc-text">参考</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/" class="archive-article-date">
-        <time datetime="2019-08-13T08:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/">【奇技淫巧】SB里数据层的拓展及小技巧</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/13/【反思录】19年7月的一点思考/" class="archive-article-date">
-        <time datetime="2019-08-13T08:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/13/【反思录】19年7月的一点思考/">【反思录】19年7月的一点思考</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/总结反思录//" class="article-tag-list-link color1">总结反思录</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/13/Maven中jar依赖冲突解决/" class="archive-article-date">
-        <time datetime="2019-08-13T08:43:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/13/Maven中jar依赖冲突解决/">Maven中jar依赖冲突解决</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Maven//" class="article-tag-list-link color1">Maven</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Maven/问题记录//" class="article-tag-list-link color5">问题记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/13/sb2.0统一错误页面/" class="archive-article-date">
-        <time datetime="2019-08-13T08:43:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/13/sb2.0统一错误页面/">sb2.0统一错误页面</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/13/sb里正确使用logback的姿势/" class="archive-article-date">
-        <time datetime="2019-08-13T06:06:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/13/sb里正确使用logback的姿势/">sb里正确使用logback的姿势</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/12/签到类需求的设计与思考/" class="archive-article-date">
-        <time datetime="2019-08-12T15:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/12/签到类需求的设计与思考/">签到类需求的设计与思考</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/架构设计//" class="article-tag-list-link color5">架构设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/04/一次全表扫描关于分布式id的总结/" class="archive-article-date">
-        <time datetime="2019-08-04T12:43:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/04/一次全表扫描关于分布式id的总结/">一次全表扫描关于分布式id的总结</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式//" class="article-tag-list-link color4">分布式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式/方案设计//" class="article-tag-list-link color5">方案设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -620,8 +514,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
