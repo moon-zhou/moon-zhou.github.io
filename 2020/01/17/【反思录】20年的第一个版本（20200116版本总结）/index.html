@@ -6,20 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>Archives | 弦 博客</title>
+  <title>【反思录】20年的第一个版本（20200116版本总结） | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="never stop">
-<meta property="og:type" content="website">
-<meta property="og:title" content="弦 博客">
-<meta property="og:url" content="https://moon-zhou.github.io/archives/page/5/index.html">
+  <meta name="description" content="关于版本作为20年的第一个版本，开发的过程很是曲折，转测延期，功能无法上线，都发生了。作为版本迭代管理者，的确存在管理疏漏的地方。原因总结如下：  参与的开发任务占比过大，分心较多 临时插入很多其他任务，如TSL整改，IPV6整改配合等 需求变更频繁">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【反思录】20年的第一个版本（20200116版本总结）">
+<meta property="og:url" content="https://moon-zhou.github.io/2020/01/17/【反思录】20年的第一个版本（20200116版本总结）/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="never stop">
+<meta property="og:description" content="关于版本作为20年的第一个版本，开发的过程很是曲折，转测延期，功能无法上线，都发生了。作为版本迭代管理者，的确存在管理疏漏的地方。原因总结如下：  参与的开发任务占比过大，分心较多 临时插入很多其他任务，如TSL整改，IPV6整改配合等 需求变更频繁">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-18T12:06:38.014Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦 博客">
-<meta name="twitter:description" content="never stop">
+<meta name="twitter:title" content="【反思录】20年的第一个版本（20200116版本总结）">
+<meta name="twitter:description" content="关于版本作为20年的第一个版本，开发的过程很是曲折，转测延期，功能无法上线，都发生了。作为版本迭代管理者，的确存在管理疏漏的地方。原因总结如下：  参与的开发任务占比过大，分心较多 临时插入很多其他任务，如TSL整改，IPV6整改配合等 需求变更频繁">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -181,472 +182,270 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-【反思录】20年的第一个版本（20200116版本总结）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/12/签到类需求的设计与思考/" class="archive-article-date">
-        <time datetime="2019-08-12T15:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/12/签到类需求的设计与思考/">签到类需求的设计与思考</a>
-	
+    <h1 class="article-title" itemprop="name">
+      【反思录】20年的第一个版本（20200116版本总结）
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
+  
+  
+<a href="/2020/01/17/【反思录】20年的第一个版本（20200116版本总结）/" class="archive-article-date">
+        <time datetime="2020-01-17T02:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-17</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">740字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">2分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="关于版本"><a href="#关于版本" class="headerlink" title="关于版本"></a>关于版本</h4><p>作为20年的第一个版本，开发的过程很是曲折，转测延期，功能无法上线，都发生了。作为版本迭代管理者，的确存在管理疏漏的地方。原因总结如下：</p>
+<ol>
+<li>参与的开发任务占比过大，分心较多</li>
+<li>临时插入很多其他任务，如TSL整改，IPV6整改配合等</li>
+<li>需求变更频繁</li>
+</ol>
+<a id="more"></a>
+
+<p>后续版本关于如何避免本次发生的问题，也是针对上述原因做一一修正：</p>
+<ol>
+<li>基本不能作为开发的主力去参与功能的开发，后面基本上按照成慧，涛涛和铕强为核心点，分别承担pc/wap,paysso，签到/合规相关系统的核心功能开发，问题收集与分配。</li>
+<li>开发任务参与度降低，留出部分buffer防止外部配合操作的工作项。</li>
+<li>提高需求变更的门槛，以及这次操作继续保持（需求变更新增部分，但同时删掉部分需求）</li>
+</ol>
+<h4 id="关于开发工作"><a href="#关于开发工作" class="headerlink" title="关于开发工作"></a>关于开发工作</h4><p>开发是不需要具备“想象力”？个人观点：是需要具备“想象力”的，也可以说是“合理的猜测”。他是基于开发各自以往职业生涯经验的积累，在遇到问题时（bug异常分析，用研问题分析，源码分析）根据经验合理推导出问题分析方向及步骤，推进问题朝正确方向被处理。</p>
+<p>这很需要各自对于技术的积累，设计的思考。</p>
+<p>然而对于业务线的开发，是很容易被忽略的。整天泡在业务逻辑里，思考点完这个按钮往哪儿跳转。if-else，for，copy，done。很容易就满足于功能完成的现状，满满的“成就感”。</p>
+<p>个人认为，这就是为什么业务线的开发很容易达到瓶颈，局限性很大的原因。（业务线本身是一个很大的温水池，虽说除了中间件部门的技术要求高之外，其余的大部分都是业务线）</p>
+<p>所以，每一次的任务计划，我都会比实际工作量预留部分buffer出来，目的是希望大家优先把工作完成，再多思考现有代码的改进点，工作高质量完成之后再进行技术技能的提升。但从实际情况来看，效果并不是特别理想。虽然较以前发布成功率得到了保证，但是代码质量上，还有很大进步空间（目前还是一味的堆逻辑，done is done）。发布成功率也是因为相对的开发工作量少的原因。对比其他的小组，大家有兴趣可以看看他们每个迭代版本的工作量是多少（比我们多不少）。</p>
+<h4 id="关于期望"><a href="#关于期望" class="headerlink" title="关于期望"></a>关于期望</h4><p>“希望”大家 be better</p>
+<p>“引导”大家 be better</p>
+<p>“不强制”大家 be better</p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          moon zhou
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://moon-zhou.github.io/2020/01/17/【反思录】20年的第一个版本（20200116版本总结）/" title="【反思录】20年的第一个版本（20200116版本总结）" target="_blank">https://moon-zhou.github.io/2020/01/17/【反思录】20年的第一个版本（20200116版本总结）/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/架构设计//" class="article-tag-list-link color5">架构设计</a>
+        			<a href="/categories/总结反思录//" class="article-tag-list-link color1">总结反思录</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2020/01/17/【反思录】20年的第一个版本（20200116版本总结）/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/04/一次全表扫描关于分布式id的总结/" class="archive-article-date">
-        <time datetime="2019-08-04T12:43:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-04</time>
-</a>
 
+
+<nav id="article-nav">
+  
+    <a href="/2020/01/18/JDK升级/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JDK升级
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/11/SPI/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SPI</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/04/一次全表扫描关于分布式id的总结/">一次全表扫描关于分布式id的总结</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式//" class="article-tag-list-link color4">分布式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式/方案设计//" class="article-tag-list-link color5">方案设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#关于版本"><span class="toc-number">1.</span> <span class="toc-text">关于版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关于开发工作"><span class="toc-number">2.</span> <span class="toc-text">关于开发工作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关于期望"><span class="toc-number">3.</span> <span class="toc-text">关于期望</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/07/26/【Monkey Run】jquery 插件/" class="archive-article-date">
-        <time datetime="2019-07-26T11:58:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/07/26/【Monkey Run】jquery 插件/">【Monkey Run】jquery 插件</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/07/14/缓存那些事/" class="archive-article-date">
-        <time datetime="2019-07-14T12:29:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/07/14/缓存那些事/">缓存那些事</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式//" class="article-tag-list-link color4">分布式</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/07/06/【小白踩坑】SpringBoot + VUE搭建过程发布问题整理/" class="archive-article-date">
-        <time datetime="2019-07-06T15:15:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/07/06/【小白踩坑】SpringBoot + VUE搭建过程发布问题整理/">【小白踩坑】SpringBoot + VUE搭建过程发布问题整理</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X/Vue//" class="article-tag-list-link color4">Vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X/Vue/问题记录//" class="article-tag-list-link color5">问题记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/07/06/【朝花再拾】Maven知识点/" class="archive-article-date">
-        <time datetime="2019-07-06T15:15:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/07/06/【朝花再拾】Maven知识点/">【朝花再拾】Maven知识点</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Maven//" class="article-tag-list-link color1">Maven</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/30/SpringBoot + VUE系统搭建/" class="archive-article-date">
-        <time datetime="2019-06-30T11:43:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-30</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/30/SpringBoot + VUE系统搭建/">SpringBoot + VUE系统搭建</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X/Vue//" class="article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/23/Git学习-小白不能忍之一/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/23/Git学习-小白不能忍之一/">Git学习-小白不能忍之一</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/23/Git学习-小白不能忍之二/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/23/Git学习-小白不能忍之二/">Git学习-小白不能忍之二</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/23/Git学习-小白不能忍之三/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/23/Git学习-小白不能忍之三/">Git学习-小白不能忍之三</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/4/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/6/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -675,8 +474,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
