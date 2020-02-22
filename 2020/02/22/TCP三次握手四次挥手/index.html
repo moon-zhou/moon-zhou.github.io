@@ -6,21 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>模板模式-Template Method | 弦 博客</title>
+  <title>TCP三次握手四次挥手 | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="背景 刷设计模式 现有系统里多处使用到，特此总结  概念 官方：模板模式（Template Method Pattern），又可叫模板方法，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。 方言：模板方法里定义具体的操作流程或步骤，其中部分或者全部延迟到子类进行实现。">
+  <meta name="description" content="如果页面样式有缺，点击传送门  背景 基础技术栈知识 网络编程需要了解 rpc需要了解  三次握手思考为什么是三次握手？  次数上：2次太少？4次没必要？ 目的：确认客户端和服务端之间的通信能力没有问题（双方发送和接收消息）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="模板模式-Template Method">
-<meta property="og:url" content="https://moon-zhou.github.io/2019/12/29/模板模式-Template Method/index.html">
+<meta property="og:title" content="TCP三次握手四次挥手">
+<meta property="og:url" content="https://moon-zhou.github.io/2020/02/22/TCP三次握手四次挥手/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="背景 刷设计模式 现有系统里多处使用到，特此总结  概念 官方：模板模式（Template Method Pattern），又可叫模板方法，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。 方言：模板方法里定义具体的操作流程或步骤，其中部分或者全部延迟到子类进行实现。">
+<meta property="og:description" content="如果页面样式有缺，点击传送门  背景 基础技术栈知识 网络编程需要了解 rpc需要了解  三次握手思考为什么是三次握手？  次数上：2次太少？4次没必要？ 目的：确认客户端和服务端之间的通信能力没有问题（双方发送和接收消息）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-29T13:20:39.353Z">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/49482820b44d9ddccc2fc138aec0b527/xmlnote/DF289B2A343E47F2AB4A542D60B7F25A/39768">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/49482820b44d9ddccc2fc138aec0b527/xmlnote/5899C3EDCE0F44328A18442D7C8D35FA/39782">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/49482820b44d9ddccc2fc138aec0b527/xmlnote/EFBF6A308EFF44F7A9F9BE23ADAD7ED0/39845">
+<meta property="og:updated_time" content="2020-02-22T09:49:08.171Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="模板模式-Template Method">
-<meta name="twitter:description" content="背景 刷设计模式 现有系统里多处使用到，特此总结  概念 官方：模板模式（Template Method Pattern），又可叫模板方法，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。 方言：模板方法里定义具体的操作流程或步骤，其中部分或者全部延迟到子类进行实现。">
+<meta name="twitter:title" content="TCP三次握手四次挥手">
+<meta name="twitter:description" content="如果页面样式有缺，点击传送门  背景 基础技术栈知识 网络编程需要了解 rpc需要了解  三次握手思考为什么是三次握手？  次数上：2次太少？4次没必要？ 目的：确认客户端和服务端之间的通信能力没有问题（双方发送和接收消息）">
+<meta name="twitter:image" content="https://note.youdao.com/yws/public/resource/49482820b44d9ddccc2fc138aec0b527/xmlnote/DF289B2A343E47F2AB4A542D60B7F25A/39768">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -182,22 +186,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-模板模式-Template Method" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-TCP三次握手四次挥手" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      模板模式-Template Method
+      TCP三次握手四次挥手
     </h1>
   
 
 
   
   
-<a href="/2019/12/29/模板模式-Template Method/" class="archive-article-date">
-        <time datetime="2019-12-29T13:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
+<a href="/2020/02/22/TCP三次握手四次挥手/" class="archive-article-date">
+        <time datetime="2020-02-22T06:00:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
 </a>
 
   
@@ -210,7 +214,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.2k字</span>
+      <span class="post-count">1.5k字</span>
     </span>
   </span>
 
@@ -219,7 +223,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
+      <span class="post-count">5分</span>
     </span>
   </span>
 </div>
@@ -230,89 +234,72 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
-<li>刷设计模式</li>
-<li>现有系统里多处使用到，特此总结</li>
+    <p>如果页面样式有缺，点击<a href="http://note.youdao.com/noteshare?id=b96e1713d50bed606a43fb4e1694cdd2&sub=452045B2A1CA41C88D9F76204FA4B4BF" target="_blank" rel="noopener">传送门</a></p>
+<hr>
+<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
+<li>基础技术栈知识</li>
+<li>网络编程需要了解</li>
+<li>rpc需要了解</li>
 </ol>
-<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ol>
-<li>官方：模板模式（Template Method Pattern），又可叫模板方法，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。</li>
-<li>方言：模板方法里定义具体的操作流程或步骤，其中部分或者全部延迟到子类进行实现。</li>
-</ol>
+<h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><h5 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h5><p>为什么是三次握手？</p>
+<ul>
+<li>次数上：2次太少？4次没必要？</li>
+<li>目的：确认客户端和服务端之间的通信能力没有问题（双方发送和接收消息）</li>
+</ul>
 <a id="more"></a>
 
-<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ol>
-<li>行为型模式</li>
-<li>基于继承的代码复用技术</li>
-<li>包含模板方法(template method)和基本方法(primitive method)，基本方法一般用final/private修饰，保证其不会被子类修改，模板方法使用protected/abstract修饰，表面其可以/需要在子类里进行实现。<ul>
-<li>模板方法(template method)<ul>
-<li>一个模板方法是定义在抽象类中的，把基本操作方法组合在一起形成一个总算法或一个总行为的方法。</li>
-<li>一个抽象类可以有任意多个模板方法，而不限于一个。每一个模板方法都可以调用任意多个具体方法。</li>
-</ul>
+<h5 id="步骤分解"><a href="#步骤分解" class="headerlink" title="步骤分解"></a>步骤分解</h5><ol>
+<li>第一次握手：客户端向服务端发送数据包（syn），目的是为了确认客户端发送消息的能力（服务端接收到，说明能力ok）</li>
+<li>第二次握手：服务端向客户端发送消息（ack+syn），告诉客户端，你发的消息我收到了，目的是验证服务端的数据发送能力（当然这一步产生了，也就验证了客户端的发送能力和服务端的接收能力是没有问题的）</li>
+<li>第三次握手：客户端向服务端发送消息（ack），反馈你发送给我的消息我收到了（第二次握手时），因为客户端已经验证了服务端的数据接收和发送能力了，所以客户端此时认为可以建立连接，进入established。当服务端接收到此消息时，也确认了客户单的数据发送和接收能力，认为可以建立里数据传输的链接，也进入established。这一步的目的是服务端验证客户端的数据发送能力ok。</li>
+</ol>
+<h5 id="步骤解读"><a href="#步骤解读" class="headerlink" title="步骤解读"></a>步骤解读</h5><ol>
+<li>第一次握手，确认了==客户端的数据发送==能力ok（服务端的角度，也就是数据送达到服务端）</li>
+<li>第二次握手，确认了==服务端的数据接收和发送==能力ok（客户端的角度，也就是反馈数据送达客户端）</li>
+<li>第三步握手，确认了==客户端的数据接收==能力ok（服务端的角度，也就是建立连接的数据到达服务端，确认后，服务端确认可以与之建立起连接）</li>
+</ol>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>由此可见2次握手不行，确认客户端数据接收的确认。4次握手又没必要，因为第三次<br>握手时已经确认客户端和服务端的接收和发送数据能力了。</p>
+<h5 id="图例"><a href="#图例" class="headerlink" title="图例"></a>图例</h5><p><img src="https://note.youdao.com/yws/public/resource/49482820b44d9ddccc2fc138aec0b527/xmlnote/DF289B2A343E47F2AB4A542D60B7F25A/39768" alt="三次握手"></p>
+<h4 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h4><h5 id="图例-1"><a href="#图例-1" class="headerlink" title="图例"></a>图例</h5><p><img src="https://note.youdao.com/yws/public/resource/49482820b44d9ddccc2fc138aec0b527/xmlnote/5899C3EDCE0F44328A18442D7C8D35FA/39782" alt="TCP数据传输"></p>
+<h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><ol>
+<li>客户端向服务端发送数据（data）</li>
+<li>服务端向客户端发送已经收到数据（ack），也就是给予反馈</li>
+<li>如果客户端没有收到服务端的反馈（ack），则认为是服务端没有收到数据，则会进行==重传==（有可能服务端收到了，发送反馈数据时丢失，也有可能真的是服务端没有收到，如果是第一种情况，那么服务端就会收到两条一样的数据，就需要对数据进行==去重==）</li>
+<li>==「重传」== 和 ==「去重」== 工作操作系统的网络内核模块都已经帮我们处理好了，用户层是不用关心的。</li>
+<li>当然，这里的数据发送和接收都是双向的，服务端也可以给客户端发送数据。也就是TCP链接是==双工==的。不过无论是哪方发送数据，都需要收到对方的确认才能认为对方收到了自己的数据。</li>
+<li>同理，客户端发送数据时，服务端不可能每接收一次就进行一次反馈，可以接收多次之后，批量反馈（ack）。当然，客户端和服务端需要协调好发送和接收的速率，这就是==TCP窗口大小。==</li>
+<li>数据的发送是顺序的，但是因为网络传输时延问题，数据到达服务端被接收时，不一定是发送数据的顺序，可能存在==乱序==的情况。操作系统的网络内核模块会负责对数据包进行排序，到用户层时顺序就已经完全一致了。</li>
+</ol>
+<h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><h5 id="图例-2"><a href="#图例-2" class="headerlink" title="图例"></a>图例</h5><p><img src="https://note.youdao.com/yws/public/resource/49482820b44d9ddccc2fc138aec0b527/xmlnote/EFBF6A308EFF44F7A9F9BE23ADAD7ED0/39845" alt="四次挥手"></p>
+<h5 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h5><ol>
+<li>第一次挥手(FIN=1，seq=u)<blockquote>
+<p>Client 想要关闭连接，Client 会发送一个FIN标志位置为1，当前序列号为u的包，表示需要关闭连接了。Client进入 FIN_WAIT_1 状态。</p>
+</blockquote>
 </li>
-<li>基本方法(primitive method)<ul>
-<li>抽象方法(Abstract Method)<ul>
-<li>一个抽象方法由抽象类声明，由具体子类实现。在Java语言里抽象方法以abstract关键字标示。</li>
-</ul>
+<li>第二次挥手(ACK=1，seq=v，ack=u+1)<blockquote>
+<p>Server收到Client的FIN包之后，会发送一个确认序号为收到的序列号u+1的包，表明自己接受到了Client关闭连接的请求，但还未准备好关闭连接。Server进入 CLOSE_WAIT 状态，Client进入 FIN_WAIT_2 状态。</p>
+</blockquote>
 </li>
-<li>具体方法(Concrete Method)<ul>
-<li>一个具体方法由抽象类声明并实现，而子类并不实现或置换。</li>
-</ul>
+<li>第三次挥手(FIN=1，ACK=1，seq=w，ack=u+1)<blockquote>
+<p>当Server将剩余数据发送完之后，会发送一个自己的FIN包，序列号为u+1。Server进入 LAST_ACK 状态，等待来自Client的最后一个ACK。</p>
+</blockquote>
 </li>
-<li>钩子方法(Hook Method)<ul>
-<li>一个钩子方法由抽象类声明并实现，而子类会加以扩展。通常抽象类给出的实现是一个空实现，作为方法的默认实现。(Do nothing hook)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<li>第四次挥手(ACK=1，seq=u+1，ack=w+1)<blockquote>
+<p>Client接收到来自Server端的关闭请求之后，发送最后一个ACK确认包，确认序号设置为收到序号加1。Client进入 TIME_WAIT状态，等待可能出现的要求重传的 ACK 包。Server接收到这个确认包之后，关闭连接，进入CLOSED状态。(Client会等待2MSL之后，没有收到Server的ACK ，就确认Server进入CLOSED状态，自己也关闭进入CLOSED状态。)</p>
+</blockquote>
 </li>
 </ol>
-<h4 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h4><ol>
-<li>抽象模板(Abstract Template)<ul>
-<li>定义了一个或多个抽象操作，以便让子类实现。这些抽象操作叫做基本操作，它们是一个顶级逻辑的组成步骤。(父抽象类里的抽象方法)</li>
-<li>定义并实现了一个模板方法。这个模板方法一般是一个具体方法，它给出了一个顶级逻辑的骨架，而逻辑的组成步骤在相应的抽象操作中，推迟到子类实现。顶级逻辑也有可能调用一些具体方法。（父抽象类里的模板方法）</li>
-</ul>
-</li>
-<li>具体模板(Concrete Template)<ul>
-<li>实现父类所定义的一个或多个抽象方法，它们是一个顶级逻辑的组成步骤。（子类实现的抽象方法）</li>
-<li>每一个抽象模板角色都可以有任意多个具体模板角色与之对应，而每一个具体模板角色都可以给出这些抽象方法（也就是顶级逻辑的组成步骤）的不同实现，从而使得顶级逻辑的实现各不相同。</li>
-</ul>
-</li>
-</ol>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
-<li>封装不变部分（提取到父类），扩展可变部分（子类实现）</li>
-<li>行为由父类控制，具体实现交给子类</li>
-</ol>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
-<li>功能/场景的增多，必然会带来抽象类的管理和扩展问题（基于继承的复用共性，e.g.策略模式）</li>
-</ol>
-<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><ol>
-<li>有多个子类共有的方法，且逻辑相同。</li>
-<li>方言：多个场景，整体的业务逻辑相同，但是针对不通的来源（场景），又有些微不同时，可以使用模板方法抽象整体的业务逻辑，具体的不同处，提取抽象方法，由各个来源子类来进行实现。</li>
-</ol>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><pre><code>为防止恶意操作，一般模板方法都加上 final 关键词。</code></pre><h4 id="实际使用"><a href="#实际使用" class="headerlink" title="实际使用"></a>实际使用</h4><ol>
-<li><p>JDK中使用</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">AbstractQueuedSynchronizer</span><br><span class="line"></span><br><span class="line">public final void acquire(int arg) &#123;</span><br><span class="line">    if (!tryAcquire(arg) &amp;&amp;</span><br><span class="line">        acquireQueued(addWaiter(Node.EXCLUSIVE), arg))</span><br><span class="line">        selfInterrupt();</span><br><span class="line">&#125;</span><br><span class="line">acquire()相当于模板方法，tryAcquire(arg)相当于基本方法。</span><br><span class="line">tryAcquire被多个子类实现</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JavaEE中使用</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">javax.servlet.http.HttpServlet</span><br><span class="line"></span><br><span class="line">protected void service(HttpServletRequest req, HttpServletResponse resp)</span><br><span class="line">throws ServletException, IOException</span><br><span class="line">&#123;</span><br><span class="line">    String method = req.getMethod();</span><br><span class="line"></span><br><span class="line">    if (method.equals(METHOD_GET)) &#123;</span><br><span class="line">        ...</span><br><span class="line">        doGet(req, resp);</span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">    &#125; else if (method.equals(METHOD_HEAD)) &#123;</span><br><span class="line">        ...</span><br><span class="line">        doHead(req, resp);</span><br><span class="line"></span><br><span class="line">    &#125; else if (method.equals(METHOD_POST)) &#123;</span><br><span class="line">        doPost(req, resp);</span><br><span class="line"></span><br><span class="line">    &#125; else if (method.equals(METHOD_PUT)) &#123;</span><br><span class="line">        doPut(req, resp);</span><br><span class="line"></span><br><span class="line">    &#125; else if (method.equals(METHOD_DELETE)) &#123;</span><br><span class="line">        doDelete(req, resp);</span><br><span class="line"></span><br><span class="line">    &#125; else if (method.equals(METHOD_OPTIONS)) &#123;</span><br><span class="line">        doOptions(req,resp);</span><br><span class="line"></span><br><span class="line">    &#125; else if (method.equals(METHOD_TRACE)) &#123;</span><br><span class="line">        doTrace(req,resp);</span><br><span class="line"></span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Spring中使用</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SpringWeb部分，还是遵循Servlet规范的，DispatcherServlet的父类FrameworkServlet就对doGet、doPost等模板方法进行了重写。</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h4 id="Talk-is-cheap-Show-my-hub"><a href="#Talk-is-cheap-Show-my-hub" class="headerlink" title="Talk is cheap, Show my hub"></a>Talk is cheap, Show my hub</h4><ol>
-<li><a href="https://github.com/moon-zhou/advanced-java/tree/master/src/main/java/org/moonzhou/designpatterns/behavioralmode/templatemethod/simpledemo" target="_blank" rel="noopener">基本模板</a></li>
-<li><a href="https://github.com/moon-zhou/advanced-java/tree/master/src/main/java/org/moonzhou/designpatterns/behavioralmode/templatemethod/elephantfridgeproblem" target="_blank" rel="noopener">把大象放进冰箱，拢共分几步</a></li>
-<li><a href="https://github.com/moon-zhou/advanced-java/tree/master/src/main/java/org/moonzhou/designpatterns/behavioralmode/templatemethod/programmingmaster" target="_blank" rel="noopener">How to be a programming master ?</a></li>
+<h4 id="为什么建立连接是三次握手，而关闭连接却是四次挥手呢？"><a href="#为什么建立连接是三次握手，而关闭连接却是四次挥手呢？" class="headerlink" title="为什么建立连接是三次握手，而关闭连接却是四次挥手呢？"></a>为什么建立连接是三次握手，而关闭连接却是四次挥手呢？</h4><p>这是因为服务端在LISTEN状态下，收到建立连接请求的SYN报文后，把ACK和SYN放在一个报文里发送给客户端。而关闭连接时，当收到对方的FIN报文时，==仅仅表示对方不再发送数据了但是还能接收数据，己方也未必全部数据都发送给对方了==，所以己方可以立即close，也可以发送一些数据给对方后，再发送FIN报文给对方来表示同意现在关闭连接，因此，己方ACK和FIN一般都会分开发送。</p>
+<p>核心</p>
+<ol>
+<li>需要确认双方都已经不能够发送和接收数据</li>
+<li>一方发起关闭，对另一方而言是被动关闭。</li>
 </ol>
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ol>
-<li><a href="https://github.com/get-set/get-designpatterns/tree/master/template-method" target="_blank" rel="noopener">https://github.com/get-set/get-designpatterns/tree/master/template-method</a></li>
-<li><a href="https://github.com/iluwatar/java-design-patterns/blob/master/template-method/src/main/java/com/iluwatar/templatemethod/SubtleMethod.java" target="_blank" rel="noopener">https://github.com/iluwatar/java-design-patterns/blob/master/template-method/src/main/java/com/iluwatar/templatemethod/SubtleMethod.java</a></li>
-<li><a href="https://www.cnblogs.com/betterboyz/p/9377881.htm" target="_blank" rel="noopener">https://www.cnblogs.com/betterboyz/p/9377881.htm</a></li>
-<li><a href="https://www.runoob.com/design-pattern/template-pattern.html" target="_blank" rel="noopener">https://www.runoob.com/design-pattern/template-pattern.html</a></li>
-<li><a href="https://blog.51cto.com/liukang/2048245" target="_blank" rel="noopener">https://blog.51cto.com/liukang/2048245</a></li>
+<li><a href="https://juejin.im/post/5b29d2c4e51d4558b80b1d8c" target="_blank" rel="noopener">https://juejin.im/post/5b29d2c4e51d4558b80b1d8c</a></li>
+<li><a href="https://juejin.im/post/5a0444d45188255ea95b66bc" target="_blank" rel="noopener">https://juejin.im/post/5a0444d45188255ea95b66bc</a></li>
+<li><a href="https://juejin.im/post/5d58dbfae51d4561ba48fdd8" target="_blank" rel="noopener">https://juejin.im/post/5d58dbfae51d4561ba48fdd8</a></li>
+<li><a href="https://juejin.im/post/5e4ca85ef265da572e4f2227" target="_blank" rel="noopener">https://juejin.im/post/5e4ca85ef265da572e4f2227</a></li>
 </ol>
 
     
@@ -360,7 +347,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://moon-zhou.github.io/2019/12/29/模板模式-Template Method/" title="模板模式-Template Method" target="_blank">https://moon-zhou.github.io/2019/12/29/模板模式-Template Method/</a>
+          <a href="https://moon-zhou.github.io/2020/02/22/TCP三次握手四次挥手/" title="TCP三次握手四次挥手" target="_blank">https://moon-zhou.github.io/2020/02/22/TCP三次握手四次挥手/</a>
         </li>
         <li>
           <strong>版权声明： </strong>
@@ -380,7 +367,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/设计模式//" class="article-tag-list-link color5">设计模式</a>
+        			<a href="/categories/分布式技术栈//" class="article-tag-list-link color2">分布式技术栈</a>
         		</li>
       		
 		</ul>
@@ -435,7 +422,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2019/12/29/模板模式-Template Method/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2020/02/22/TCP三次握手四次挥手/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -450,18 +437,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2020/01/04/创建者-Builder/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          创建者-Builder
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/12/26/IPV6支持改造记录/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">IPV6支持改造记录</div>
+    <a href="/2020/01/18/JDK升级/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JDK升级</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -488,7 +466,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#概念"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#特点"><span class="toc-number">3.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#角色"><span class="toc-number">4.</span> <span class="toc-text">角色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#优点"><span class="toc-number">5.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点"><span class="toc-number">6.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用场景"><span class="toc-number">7.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意事项"><span class="toc-number">8.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实际使用"><span class="toc-number">9.</span> <span class="toc-text">实际使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Talk-is-cheap-Show-my-hub"><span class="toc-number">10.</span> <span class="toc-text">Talk is cheap, Show my hub</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-number">11.</span> <span class="toc-text">参考</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三次握手"><span class="toc-number">2.</span> <span class="toc-text">三次握手</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#思考"><span class="toc-number">2.1.</span> <span class="toc-text">思考</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#步骤分解"><span class="toc-number">2.2.</span> <span class="toc-text">步骤分解</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#步骤解读"><span class="toc-number">2.3.</span> <span class="toc-text">步骤解读</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#总结"><span class="toc-number">2.4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#图例"><span class="toc-number">2.5.</span> <span class="toc-text">图例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据传输"><span class="toc-number">3.</span> <span class="toc-text">数据传输</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#图例-1"><span class="toc-number">3.1.</span> <span class="toc-text">图例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#步骤"><span class="toc-number">3.2.</span> <span class="toc-text">步骤</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四次挥手"><span class="toc-number">4.</span> <span class="toc-text">四次挥手</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#图例-2"><span class="toc-number">4.1.</span> <span class="toc-text">图例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#步骤-1"><span class="toc-number">4.2.</span> <span class="toc-text">步骤</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么建立连接是三次握手，而关闭连接却是四次挥手呢？"><span class="toc-number">5.</span> <span class="toc-text">为什么建立连接是三次握手，而关闭连接却是四次挥手呢？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
                     </div>
                 </span>
             </div>
