@@ -10,17 +10,17 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="2020年3月迭代回顾">
+  <meta name="description" content="迭代周期纵观整个3月，发布了两个版本，其中319是长周期版本，整体的开发任务都比较协调，即使临时任务也可以在长周期里面消化掉。 3月底的需求，周期短，中间并行的版本较多（fastjson升级，安全问题修复XSS），而且还夹杂着生产操作及相关验证。比如板桥机器迁移（Mysql），比如签到日活提高abTest，比如会员中心需求分析及评审等等。其中还包含核心功能的延期，如华为sdk加密算法优化，账户解冻">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【反思录】2020年3月底迭代回顾">
 <meta property="og:url" content="https://moon-zhou.github.io/2020/04/04/2020年3月底迭代回顾/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="2020年3月迭代回顾">
+<meta property="og:description" content="迭代周期纵观整个3月，发布了两个版本，其中319是长周期版本，整体的开发任务都比较协调，即使临时任务也可以在长周期里面消化掉。 3月底的需求，周期短，中间并行的版本较多（fastjson升级，安全问题修复XSS），而且还夹杂着生产操作及相关验证。比如板桥机器迁移（Mysql），比如签到日活提高abTest，比如会员中心需求分析及评审等等。其中还包含核心功能的延期，如华为sdk加密算法优化，账户解冻">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-04T13:35:02.930Z">
+<meta property="og:updated_time" content="2020-04-18T06:34:02.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【反思录】2020年3月底迭代回顾">
-<meta name="twitter:description" content="2020年3月迭代回顾">
+<meta name="twitter:description" content="迭代周期纵观整个3月，发布了两个版本，其中319是长周期版本，整体的开发任务都比较协调，即使临时任务也可以在长周期里面消化掉。 3月底的需求，周期短，中间并行的版本较多（fastjson升级，安全问题修复XSS），而且还夹杂着生产操作及相关验证。比如板桥机器迁移（Mysql），比如签到日活提高abTest，比如会员中心需求分析及评审等等。其中还包含核心功能的延期，如华为sdk加密算法优化，账户解冻">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -230,10 +230,10 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h3 id="2020年3月迭代回顾"><a href="#2020年3月迭代回顾" class="headerlink" title="2020年3月迭代回顾"></a>2020年3月迭代回顾</h3><a id="more"></a>
-
-<h4 id="迭代周期"><a href="#迭代周期" class="headerlink" title="迭代周期"></a>迭代周期</h4><p>纵观整个3月，发布了两个版本，其中319是长周期版本，整体的开发任务都比较协调，即使临时任务也可以在长周期里面消化掉。</p>
+    <h4 id="迭代周期"><a href="#迭代周期" class="headerlink" title="迭代周期"></a>迭代周期</h4><p>纵观整个3月，发布了两个版本，其中319是长周期版本，整体的开发任务都比较协调，即使临时任务也可以在长周期里面消化掉。</p>
 <p>3月底的需求，周期短，中间并行的版本较多（fastjson升级，安全问题修复XSS），而且还夹杂着生产操作及相关验证。比如板桥机器迁移（Mysql），比如签到日活提高abTest，比如会员中心需求分析及评审等等。其中还包含核心功能的延期，如华为sdk加密算法优化，账户解冻添加kba流程。</p>
+<a id="more"></a>
+
 <p>其中生产机器的迁移和维修，必然带来人员留守验证，意味着第二天无法投入开发，对短期迭代影响很大。因此需要借助大部门人员共同留守来消化掉这部分工作量。共同留人验证的前提条件是，小伙伴必须交代清楚需要验证的东西，留守人员必须清楚每一个验证的步骤，出现问题的解决方案等。但往往突发情况较多，还是需要小伙伴本身结合自身日常工作里的积累，临时变通来解决问题。从实际操作来看，效果并不好，要么出现问题无法解决，要么还搞出点问题。因此核心在于，小伙伴日常工作的总结，经验的积累，能力的提升。单纯的编码已经不能满足现阶段的工作完成，尤其是在团队人员客观/主观离开的情况下，每一个小伙伴都需要进化成编码之外，解决问题能力超强的多面手。日常版本里，结合小伙伴自身特点和医院，尽量让小伙伴尝试不同的角色，做更多不一样的事情，让小伙伴自身切身感受到自己的成长，才能促进正向推动力。除了能力上的引导和培养，另一个就是做事的责任心，敬畏心和细致。几次的生产问题也都体现出来了：</p>
 <ul>
 <li>机器迁移未做完全：完整的机器迁移列表清晰的列出（包含ip），还出现两台机器遗漏未迁移的情况</li>
@@ -386,6 +386,15 @@
 
 <nav id="article-nav">
   
+    <a href="/2020/04/18/签到礼品展示问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          签到礼品展示问题
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/02/22/TCP三次握手四次挥手/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">TCP三次握手四次挥手</div>
@@ -415,7 +424,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#2020年3月迭代回顾"><span class="toc-number">1.</span> <span class="toc-text">2020年3月迭代回顾</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代周期"><span class="toc-number">1.1.</span> <span class="toc-text">迭代周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发布过程"><span class="toc-number">1.2.</span> <span class="toc-text">发布过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发布之后"><span class="toc-number">1.3.</span> <span class="toc-text">发布之后</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代周期"><span class="toc-number">1.</span> <span class="toc-text">迭代周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发布过程"><span class="toc-number">2.</span> <span class="toc-text">发布过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发布之后"><span class="toc-number">3.</span> <span class="toc-text">发布之后</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
