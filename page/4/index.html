@@ -187,6 +187,98 @@
             
 
   
+    <article id="post-日常问题汇总-2019.09.25" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/25/日常问题汇总-2019.09.25/">日常问题汇总-2019.09.24</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/25/日常问题汇总-2019.09.25/" class="archive-article-date">
+        <time datetime="2019-09-25T12:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-25</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
+<li>有用户反馈签到提醒没有收到。</li>
+<li>异常治理时发现，有一个一类异常SQLException（扣个人分），引起关注，需要进行深入分析和治理掉。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2019-09-25 10:05:05,766 INFO  [stdout] (pool-4-thread-1) ; uncategorized SQLException; SQL state [null]; error code [0]; Transaction cannot proceed STATUS_ROLLEDBACK; nested exception is java.sql.SQLException: Transaction cannot proceed STATUS_ROLLEDBACK</span><br><span class="line"></span><br><span class="line">2019-09-25 10:05:05,766 INFO  [stdout] (pool-4-thread-1) ### Error querying database.  Cause: java.sql.SQLException: Transaction cannot proceed STATUS_ROLLEDBACK</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a" href="/2019/09/25/日常问题汇总-2019.09.25/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/问题记录//" class="article-tag-list-link color5">问题记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/25/日常问题汇总-2019.09.25/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-日常问题汇总-2019.09.24" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -989,96 +1081,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2019/08/22/SB日志打印/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【奇技淫巧】SB里数据层的拓展及小技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/">【奇技淫巧】SB里数据层的拓展及小技巧</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/" class="archive-article-date">
-        <time datetime="2019-08-13T08:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>JavaWeb里，基础的不复杂的业务系统，ORM框架通常都是直接使用。本文介绍数据层的扩展和小技巧。</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/">展开全文 >></a>
     </p>
     
 

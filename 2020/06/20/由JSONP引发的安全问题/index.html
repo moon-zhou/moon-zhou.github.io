@@ -6,23 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>弦 博客</title>
+  <title>由JSONP引发的安全问题 | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <meta name="keywords" content="never stop">
-  
-  <meta name="description" content="never stop">
-<meta property="og:type" content="website">
-<meta property="og:title" content="弦 博客">
-<meta property="og:url" content="https://moon-zhou.github.io/index.html">
+  <meta name="description" content="由JSONP引发的安全问题前言 跨域基本概念，什么是同源策略  由于html标签规范本身，以下标签加载资源时不受跨域限制，也就是下列标签是可以加载非同源的资源（get方式）。  1234567&amp;lt;script src=&amp;quot;...&amp;quot;&amp;gt;`//加载图片到本地执行&amp;lt;img src=&amp;quot;...&amp;quot;&amp;gt; //图片&amp;lt;link href=&amp;quot;..">
+<meta property="og:type" content="article">
+<meta property="og:title" content="由JSONP引发的安全问题">
+<meta property="og:url" content="https://moon-zhou.github.io/2020/06/20/由JSONP引发的安全问题/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="never stop">
+<meta property="og:description" content="由JSONP引发的安全问题前言 跨域基本概念，什么是同源策略  由于html标签规范本身，以下标签加载资源时不受跨域限制，也就是下列标签是可以加载非同源的资源（get方式）。  1234567&amp;lt;script src=&amp;quot;...&amp;quot;&amp;gt;`//加载图片到本地执行&amp;lt;img src=&amp;quot;...&amp;quot;&amp;gt; //图片&amp;lt;link href=&amp;quot;..">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/033eee2f3c1c0c90d15b33ff1baea0d2/xmlnote/81AEBBF4694C4651B486D77CE88B412C/40562">
+<meta property="og:updated_time" content="2020-06-20T13:12:36.422Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦 博客">
-<meta name="twitter:description" content="never stop">
+<meta name="twitter:title" content="由JSONP引发的安全问题">
+<meta name="twitter:description" content="由JSONP引发的安全问题前言 跨域基本概念，什么是同源策略  由于html标签规范本身，以下标签加载资源时不受跨域限制，也就是下列标签是可以加载非同源的资源（get方式）。  1234567&amp;lt;script src=&amp;quot;...&amp;quot;&amp;gt;`//加载图片到本地执行&amp;lt;img src=&amp;quot;...&amp;quot;&amp;gt; //图片&amp;lt;link href=&amp;quot;..">
+<meta name="twitter:image" content="https://note.youdao.com/yws/public/resource/033eee2f3c1c0c90d15b33ff1baea0d2/xmlnote/81AEBBF4694C4651B486D77CE88B412C/40562">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -184,19 +184,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-由JSONP引发的安全问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-由JSONP引发的安全问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/06/20/由JSONP引发的安全问题/">由JSONP引发的安全问题</a>
-	
+    <h1 class="article-title" itemprop="name">
+      由JSONP引发的安全问题
     </h1>
   
 
@@ -210,6 +205,27 @@
   
   
     
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.4k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">5分</span>
+    </span>
+  </span>
+</div>
+
 
   
   </header>
@@ -231,13 +247,90 @@
 </ol>
 </li>
 </ol>
-    
-    <a class="article-more-a" href="/2020/06/20/由JSONP引发的安全问题/#more">more >></a>
-    
-    
+<a id="more"></a>
+
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><blockquote>
+<p>什么是jsonp？为什么要用jsonp?</p>
+</blockquote>
+<p><img src="https://note.youdao.com/yws/public/resource/033eee2f3c1c0c90d15b33ff1baea0d2/xmlnote/81AEBBF4694C4651B486D77CE88B412C/40562" alt="JSONP结构"></p>
+<p>JSONP(JSON with Padding)是JSON的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题。利用 &lt;script&gt; 元素的这个开放策略，网页可以得到从其他来源动态产生的 JSON 资料，而这种使用模式就是所谓的 JSONP。用 JSONP 抓到的资料并不是 JSON，而是任意的JavaScript，用 JavaScript 直译器执行而不是用 JSON 解析器解析。</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><blockquote>
+<p>利用没有跨域限制的 script 标签加载预设的 callback 将内容传递给 js。一般来说我们约定通过一个参数来告诉服务器 JSONP 返回时应该调用的回调函数名，然后拼接出对应的 js。</p>
+</blockquote>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">// A网站提供了可支持跨域的请求</span><br><span class="line"></span><br><span class="line">// 任意X网站发起jsonp请求获取数据：</span><br><span class="line">// 静态加载请求，动态更灵活</span><br><span class="line">// &lt;script src=&quot;https://prepay.cnsuning.com/epp-epw/authStatus?callback=jsonpCallback&quot;&gt;&lt;\/script&gt;</span><br><span class="line"></span><br><span class="line">// 定义回调函数</span><br><span class="line">function jsonpCallback(json) &#123;</span><br><span class="line">	alert(JSON.stringify(json));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 动态构造jsonp请求，返回的数据为</span><br><span class="line">// jsonpCallback(&#123;&quot;authStatusResponse&quot;:true,&quot;hasLogin&quot;:true,&quot;userName&quot;:&quot;100******16&quot;,&quot;principal&quot;:&quot;0000000001312******&quot;&#125;);</span><br><span class="line">// 改数据直接调用上面定义的js方法，输出了相关数据</span><br><span class="line">var htmm =document.getElementsByTagName(&quot;html&quot;)[0];</span><br><span class="line">var scri = document.createElement(&quot;script&quot;);</span><br><span class="line">scri.src=&quot;https://prepay.cnsuning.com/epp-epw/authStatus?callback=jsonpCallback&quot;;</span><br><span class="line">htmm.appendChild(scri);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 简单的ajax封装提交</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url: &apos;https://prepay.cnsuning.com/epp-epw/authStatus&apos;,</span><br><span class="line">    type: &apos;post&apos;,</span><br><span class="line">    dataType:&apos;jsonp&apos;,</span><br><span class="line">    jsonp: &quot;callback&quot;,</span><br><span class="line"></span><br><span class="line">    success:function(data)&#123;</span><br><span class="line">        alert(JSON.stringify(data));</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    error:function(data)&#123;</span><br><span class="line">        $(&apos;#sname&apos;).html(&quot;获取验证码失败，请重试！&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><ol>
+<li>因为天然的csrf漏洞，因此需要进行相关校验：Referer校验，一次性token校验。</li>
+<li>jsonp接口返回数据时进行敏感数据脱敏，严格输出数据的json格式<code>application/json;charset=UTF-8</code>。</li>
+<li>严格过滤 callback 函数名及 JSON 里数据的输出（脱敏）。</li>
+<li>严格限制对 JSONP 输出 callback 函数名的长度(如防御上面 flash 输出的方法)</li>
+<li>其他一些比较“猥琐”的方法：如在 Callback 输出之前加入其他字符(如：/**/、回车换行)这样不影响 JSON 文件加载，又能一定程度预防其他文件格式的输出。还比如 Gmail 早起使用 AJAX 的方式获取 JSON，听过在输出 JSON 之前加入 <code>while(1) ;</code>这样的代码来防止 JS 远程调用。</li>
+<li>结合一次性token和函数名验证，可以将这两种方式合并，及函数名里包含上一次性token，如回调函数明文为<code>jsonpCallback + 一次性token值</code>。</li>
+<li>传输参数加密（aes、rsa），更严格的采用一次一密。</li>
+</ol>
+<h4 id="局限"><a href="#局限" class="headerlink" title="局限"></a>局限</h4><p>jsonp方式只支持get方式。</p>
+<h4 id="跨域的其他解决方案"><a href="#跨域的其他解决方案" class="headerlink" title="跨域的其他解决方案"></a>跨域的其他解决方案</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">以下是CORS协议规定的HTTP头，用来进行浏览器发起跨域资源请求时进行协商：</span><br><span class="line">1. Origin。HTTP请求头，任何涉及CORS的请求都必需携带。</span><br><span class="line">2. Access-Control-Request-Method。HTTP请求头，在带预检(Preflighted)的跨域请求中用来表示真实请求的方法。</span><br><span class="line">3. Access-Control-Request-Headers。HTTP请求头，在带预检(Preflighted)的跨域请求中用来表示真实请求的自定义Header列表。</span><br><span class="line">4. Access-Control-Allow-Origin。HTTP响应头，指定服务器端允许进行跨域资源访问的来源域。可以用通配符*表示允许任何域的JavaScript访问资源，但是在响应一个携带身份信息(Credential)的HTTP请求时，Access-Control-Allow-Origin必需指定具体的域，不能用通配符。</span><br><span class="line">5. Access-Control-Allow-Methods。HTTP响应头，指定服务器允许进行跨域资源访问的请求方法列表，一般用在响应预检请求上。</span><br><span class="line">6. Access-Control-Allow-Headers。HTTP响应头，指定服务器允许进行跨域资源访问的请求头列表，一般用在响应预检请求上。</span><br><span class="line">7. Access-Control-Max-Age。HTTP响应头，用在响应预检请求上，表示本次预检响应的有效时间。在此时间内，浏览器都可以根据此次协商结果决定是否有必要直接发送真实请求，而无需再次发送预检请求。</span><br><span class="line">8. Access-Control-Allow-Credentials。HTTP响应头，凡是浏览器请求中携带了身份信息，而响应头中没有返回Access-Control-Allow-Credentials: true的，浏览器都会忽略此次响应。</span><br></pre></td></tr></table></figure>
+
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ol>
+<li><a href="https://www.cnblogs.com/zhangruiqi/p/7880642.html" target="_blank" rel="noopener">jsonp和jsonpcallback的使用</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24390509" target="_blank" rel="noopener">jsonp跨域请求详解——从繁至简</a></li>
+<li><a href="https://www.jianshu.com/p/1cda296cf7d2" target="_blank" rel="noopener">JSONP绕过CSRF防护token
+</a></li>
+</ol>
 
     
 
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          moon zhou
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://moon-zhou.github.io/2020/06/20/由JSONP引发的安全问题/" title="由JSONP引发的安全问题" target="_blank">https://moon-zhou.github.io/2020/06/20/由JSONP引发的安全问题/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
     
 
   </div>
@@ -258,16 +351,76 @@
 
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/06/20/由JSONP引发的安全问题/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2020/06/20/由JSONP引发的安全问题/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/30/2020年4月底迭代回顾/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【反思录】2020年4月底迭代回顾</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -282,893 +435,33 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020年4月底迭代回顾" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/30/2020年4月底迭代回顾/">【反思录】2020年4月底迭代回顾</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/30/2020年4月底迭代回顾/" class="archive-article-date">
-        <time datetime="2020-04-30T09:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>会员中心相关业务的系统，也逐渐让我们会员门户开发组进行承担。原因无他，会员的业务相对独立，领域比较明确，因此本身的分工也比较明确。根据开发里的层次进行切分，有负责底层服务的服务端开发组，有数据分析的开发组，以及前置门户系统。因为人员流动，营销域的相关系统分配到了会员进行负责，而营销系统往往直面用户的，因此更适合我们门户开发组进行承接。</p>
-    
-    <a class="article-more-a" href="/2020/04/30/2020年4月底迭代回顾/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/总结反思录//" class="article-tag-list-link color1">总结反思录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/30/2020年4月底迭代回顾/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#由JSONP引发的安全问题"><span class="toc-number">1.</span> <span class="toc-text">由JSONP引发的安全问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本概念"><span class="toc-number">1.2.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原理"><span class="toc-number">1.3.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例"><span class="toc-number">1.4.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决问题"><span class="toc-number">1.5.</span> <span class="toc-text">解决问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#局限"><span class="toc-number">1.6.</span> <span class="toc-text">局限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#跨域的其他解决方案"><span class="toc-number">1.7.</span> <span class="toc-text">跨域的其他解决方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-number">1.8.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
 
-  
-    <article id="post-签到礼品展示问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/18/签到礼品展示问题/">签到礼品展示问题</a>
-	
-    </h1>
-  
 
 
-  
-  
-<a href="/2020/04/18/签到礼品展示问题/" class="archive-article-date">
-        <time datetime="2020-04-18T06:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
-</a>
 
-  
-  
-    
 
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="问题发现"><a href="#问题发现" class="headerlink" title="问题发现"></a>问题发现</h4><blockquote>
-<p>4.13早晨，因为4.12晚上客户端进行了发布，前端进行相关业务场景的确认时，发现签到完之后，仅仅展示了签到成功，并未明确展示奖品明细，遂和我们（服务端）反馈该问题。</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2020/04/18/签到礼品展示问题/#more">more >></a>
-    
-    
 
-    
 
-    
 
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/问题记录//" class="article-tag-list-link color5">问题记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/18/签到礼品展示问题/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020年3月底迭代回顾" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/04/2020年3月底迭代回顾/">【反思录】2020年3月底迭代回顾</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/04/2020年3月底迭代回顾/" class="archive-article-date">
-        <time datetime="2020-04-04T09:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="迭代周期"><a href="#迭代周期" class="headerlink" title="迭代周期"></a>迭代周期</h4><p>纵观整个3月，发布了两个版本，其中319是长周期版本，整体的开发任务都比较协调，即使临时任务也可以在长周期里面消化掉。</p>
-<p>3月底的需求，周期短，中间并行的版本较多（fastjson升级，安全问题修复XSS），而且还夹杂着生产操作及相关验证。比如板桥机器迁移（Mysql），比如签到日活提高abTest，比如会员中心需求分析及评审等等。其中还包含核心功能的延期，如华为sdk加密算法优化，账户解冻添加kba流程。</p>
-    
-    <a class="article-more-a" href="/2020/04/04/2020年3月底迭代回顾/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/总结反思录//" class="article-tag-list-link color1">总结反思录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/04/2020年3月底迭代回顾/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-TCP三次握手四次挥手" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/02/22/TCP三次握手四次挥手/">TCP三次握手四次挥手</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/02/22/TCP三次握手四次挥手/" class="archive-article-date">
-        <time datetime="2020-02-22T06:00:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>如果页面样式有缺，点击<a href="http://note.youdao.com/noteshare?id=b96e1713d50bed606a43fb4e1694cdd2&sub=452045B2A1CA41C88D9F76204FA4B4BF" target="_blank" rel="noopener">传送门</a></p>
-<hr>
-<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
-<li>基础技术栈知识</li>
-<li>网络编程需要了解</li>
-<li>rpc需要了解</li>
-</ol>
-<h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><h5 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h5><p>为什么是三次握手？</p>
-<ul>
-<li>次数上：2次太少？4次没必要？</li>
-<li>目的：确认客户端和服务端之间的通信能力没有问题（双方发送和接收消息）</li>
-</ul>
-    
-    <a class="article-more-a" href="/2020/02/22/TCP三次握手四次挥手/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式技术栈//" class="article-tag-list-link color2">分布式技术栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/02/22/TCP三次握手四次挥手/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JDK升级" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/01/18/JDK升级/">JDK升级</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/01/18/JDK升级/" class="archive-article-date">
-        <time datetime="2020-01-18T12:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-18</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>Oracle JDK即将收费，为了节约软件成本，公司将使用Open JDK代替Oracle JDK。</code></pre>
-    
-    <a class="article-more-a" href="/2020/01/18/JDK升级/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/代码考古//" class="article-tag-list-link color5">代码考古</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/01/18/JDK升级/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【反思录】20年的第一个版本（20200116版本总结）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/01/17/【反思录】20年的第一个版本（20200116版本总结）/">【反思录】20年的第一个版本（20200116版本总结）</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/01/17/【反思录】20年的第一个版本（20200116版本总结）/" class="archive-article-date">
-        <time datetime="2020-01-17T02:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-17</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="关于版本"><a href="#关于版本" class="headerlink" title="关于版本"></a>关于版本</h4><p>作为20年的第一个版本，开发的过程很是曲折，转测延期，功能无法上线，都发生了。作为版本迭代管理者，的确存在管理疏漏的地方。原因总结如下：</p>
-<ol>
-<li>参与的开发任务占比过大，分心较多</li>
-<li>临时插入很多其他任务，如TSL整改，IPV6整改配合等</li>
-<li>需求变更频繁</li>
-</ol>
-    
-    <a class="article-more-a" href="/2020/01/17/【反思录】20年的第一个版本（20200116版本总结）/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/总结反思录//" class="article-tag-list-link color1">总结反思录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/01/17/【反思录】20年的第一个版本（20200116版本总结）/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SPI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/01/11/SPI/">SPI</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/01/11/SPI/" class="archive-article-date">
-        <time datetime="2020-01-11T12:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-11</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>如果无法正确查看流程图， 点击<a href="http://note.youdao.com/noteshare?id=a9241fd31b47ec71c8657eef85e28121&sub=4F92886B780A4A7190C7029EE6E47372" target="_blank" rel="noopener">传送门</a></p>
-<hr>
-<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
-<li>框架源码阅读（JDBC,Springboot以及DUBBO使用到）</li>
-<li>博文推荐</li>
-</ol>
-<h4 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h4><ul>
-<li>全称Service Provider Interface</li>
-<li>Java提供的一套用来被第三方实现或者扩展的API</li>
-</ul>
-    
-    <a class="article-more-a" href="/2020/01/11/SPI/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/01/11/SPI/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-跨域那些事" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/01/10/跨域那些事/">跨域那些事</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/01/10/跨域那些事/" class="archive-article-date">
-        <time datetime="2020-01-10T12:29:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-10</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="跨域那些事"><a href="#跨域那些事" class="headerlink" title="跨域那些事"></a>跨域那些事</h4><ol>
-<li><p>概念</p>
-<blockquote>
-<p>浏览器同源策略，凡是发送请求url的协议、域名、端口三者之间任意一个与当前页面地址不同即为跨域。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>URL</th>
-<th>说明</th>
-<th>是否允许通信</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://www.a.com/b.js" target="_blank" rel="noopener">http://www.a.com/b.js</a></td>
-<td>同一域名下</td>
-<td>允许</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com/lab/a.js" target="_blank" rel="noopener">http://www.a.com/lab/a.js</a> <br> <a href="http://www.a.com/script/b.js" target="_blank" rel="noopener">http://www.a.com/script/b.js</a></td>
-<td>同一域名下不同文件夹</td>
-<td>允许</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com:8000/a.js" target="_blank" rel="noopener">http://www.a.com:8000/a.js</a> <br><a href="http://www.a.com/b.js" target="_blank" rel="noopener">http://www.a.com/b.js</a></td>
-<td>同一域名，不同端口</td>
-<td>不允许</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="https://www.a.com/b.js" target="_blank" rel="noopener">https://www.a.com/b.js</a></td>
-<td>同一域名，不同协议</td>
-<td>不允许</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://210.22.106.134/b.js" target="_blank" rel="noopener">http://210.22.106.134/b.js</a></td>
-<td>域名和域名对应ip</td>
-<td>不允许</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://script.a.com/b.js" target="_blank" rel="noopener">http://script.a.com/b.js</a></td>
-<td>主域名相同，子域名不同</td>
-<td>不允许</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://a.com/b.js" target="_blank" rel="noopener">http://a.com/b.js</a></td>
-<td>同一域名，不同二级域名</td>
-<td>不允许（此时cookie也不允许）</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://www.b.com/b.js" target="_blank" rel="noopener">http://www.b.com/b.js</a></td>
-<td>不同域名</td>
-<td>不允许</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-    
-    <a class="article-more-a" href="/2020/01/10/跨域那些事/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式//" class="article-tag-list-link color4">分布式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/01/10/跨域那些事/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-创建者-Builder" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/01/04/创建者-Builder/">创建者-Builder</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/01/04/创建者-Builder/" class="archive-article-date">
-        <time datetime="2020-01-04T06:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>刷设计模式</code></pre>
-    
-    <a class="article-more-a" href="/2020/01/04/创建者-Builder/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计模式//" class="article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/01/04/创建者-Builder/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -1196,8 +489,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
