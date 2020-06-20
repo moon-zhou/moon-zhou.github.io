@@ -6,23 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>弦 博客</title>
+  <title>给这个烦躁且不安的五月的总结 | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <meta name="keywords" content="never stop">
-  
-  <meta name="description" content="never stop">
-<meta property="og:type" content="website">
-<meta property="og:title" content="弦 博客">
-<meta property="og:url" content="https://moon-zhou.github.io/page/6/index.html">
+  <meta name="description" content="给这个烦躁且不安的五月的总结项目迭代5月的迭代，前期还是并行了会员中心的业务，新建了会员权益前台系统。正常的迭代整体还算稳定，其他生产问题有穿插操作，搞了个生产问题。老的机器扩容，公网域名解析，接入waf存在问题，删除重做时，waf因为提示误解，直接把域名移除，导致域名无法正常访问。其中门户这块单独的有小伙伴去处理，也为我空余了一些时间。后面会继续扩大小伙伴们的日常工作范围，不局限于编码及日常的系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给这个烦躁且不安的五月的总结">
+<meta property="og:url" content="https://moon-zhou.github.io/2020/05/31/给这个烦躁且不安的五月的总结/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="never stop">
+<meta property="og:description" content="给这个烦躁且不安的五月的总结项目迭代5月的迭代，前期还是并行了会员中心的业务，新建了会员权益前台系统。正常的迭代整体还算稳定，其他生产问题有穿插操作，搞了个生产问题。老的机器扩容，公网域名解析，接入waf存在问题，删除重做时，waf因为提示误解，直接把域名移除，导致域名无法正常访问。其中门户这块单独的有小伙伴去处理，也为我空余了一些时间。后面会继续扩大小伙伴们的日常工作范围，不局限于编码及日常的系">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-20T13:20:46.392Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦 博客">
-<meta name="twitter:description" content="never stop">
+<meta name="twitter:title" content="给这个烦躁且不安的五月的总结">
+<meta name="twitter:description" content="给这个烦躁且不安的五月的总结项目迭代5月的迭代，前期还是并行了会员中心的业务，新建了会员权益前台系统。正常的迭代整体还算稳定，其他生产问题有穿插操作，搞了个生产问题。老的机器扩容，公网域名解析，接入waf存在问题，删除重做时，waf因为提示误解，直接把域名移除，导致域名无法正常访问。其中门户这块单独的有小伙伴去处理，也为我空余了一些时间。后面会继续扩大小伙伴们的日常工作范围，不局限于编码及日常的系">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -184,48 +182,113 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-【朝花再拾】Maven知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-给这个烦躁且不安的五月的总结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/07/06/【朝花再拾】Maven知识点/">【朝花再拾】Maven知识点</a>
-	
+    <h1 class="article-title" itemprop="name">
+      给这个烦躁且不安的五月的总结
     </h1>
   
 
 
   
   
-<a href="/2019/07/06/【朝花再拾】Maven知识点/" class="archive-article-date">
-        <time datetime="2019-07-06T15:15:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
+<a href="/2020/05/31/给这个烦躁且不安的五月的总结/" class="archive-article-date">
+        <time datetime="2020-05-31T01:09:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
 </a>
 
   
   
     
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">461字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">1分</span>
+    </span>
+  </span>
+</div>
+
 
   
   </header>
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>最近搭建SB系统时，是基于maven的project，常年没有搭建，有些知识点已经遗忘，在这个过程中，把相关东西一点点拾起来。</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2019/07/06/【朝花再拾】Maven知识点/#more">more >></a>
-    
-    
+    <h3 id="给这个烦躁且不安的五月的总结"><a href="#给这个烦躁且不安的五月的总结" class="headerlink" title="给这个烦躁且不安的五月的总结"></a>给这个烦躁且不安的五月的总结</h3><h4 id="项目迭代"><a href="#项目迭代" class="headerlink" title="项目迭代"></a>项目迭代</h4><p>5月的迭代，前期还是并行了会员中心的业务，新建了会员权益前台系统。正常的迭代整体还算稳定，其他生产问题有穿插操作，搞了个生产问题。老的机器扩容，公网域名解析，接入waf存在问题，删除重做时，waf因为提示误解，直接把域名移除，导致域名无法正常访问。其中门户这块单独的有小伙伴去处理，也为我空余了一些时间。后面会继续扩大小伙伴们的日常工作范围，不局限于编码及日常的系统业务问题处理。小伙伴们需要更广大的事业及成长。</p>
+<h4 id="日常"><a href="#日常" class="headerlink" title="日常"></a>日常</h4><p>这个疫情，让原本的离职浪潮来的晚了一些，但是该来的终究还是会来的。从4月以来，已经走了不少人了。尤其是最近，人心浮动。论一个工作的最终目的，个人始终认为，总得有所图。工资，职位，前景，或多或少，总得占上。即使受疫情影响，经济不景气，也在最近跟随着炎热的天气，都在逐渐好转。起初的求稳，目前来看，也开始逐渐松动。我们小组也有小伙伴即将从这里毕业，踏入新的社会小学校。</p>
+<p>从整体来看，一直在优化外包小伙伴，同时部门组织结构的变更，有些东西，已经不是那么充满阳光了，终归还是笼罩了一些阴影。</p>
+<p>矛盾的日益凸显，加油，每一位小伙伴。</p>
+<p>祝愿每一个小伙伴都能有一个好的成长，收获。没有毕业的小伙伴，也好好学习。</p>
 
     
 
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          moon zhou
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://moon-zhou.github.io/2020/05/31/给这个烦躁且不安的五月的总结/" title="给这个烦躁且不安的五月的总结" target="_blank">https://moon-zhou.github.io/2020/05/31/给这个烦躁且不安的五月的总结/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
     
 
   </div>
@@ -238,7 +301,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Maven//" class="article-tag-list-link color1">Maven</a>
+        			<a href="/categories/总结反思录//" class="article-tag-list-link color1">总结反思录</a>
         		</li>
       		
 		</ul>
@@ -246,16 +309,85 @@
 
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/07/06/【朝花再拾】Maven知识点/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2020/05/31/给这个烦躁且不安的五月的总结/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2020/06/20/由JSONP引发的安全问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          由JSONP引发的安全问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/30/2020年4月底迭代回顾/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【反思录】2020年4月底迭代回顾</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -270,858 +402,33 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【小白踩坑】SpringBoot + VUE搭建过程发布问题整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/07/06/【小白踩坑】SpringBoot + VUE搭建过程发布问题整理/">【小白踩坑】SpringBoot + VUE搭建过程发布问题整理</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/07/06/【小白踩坑】SpringBoot + VUE搭建过程发布问题整理/" class="archive-article-date">
-        <time datetime="2019-07-06T15:15:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
-<p>从本场地环境搭建，启动，到发布服务器，时刻都可能存在着各种问题。雁过留痕，以此记录。</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2019/07/06/【小白踩坑】SpringBoot + VUE搭建过程发布问题整理/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X/Vue//" class="article-tag-list-link color4">Vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X/Vue/问题记录//" class="article-tag-list-link color5">问题记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/07/06/【小白踩坑】SpringBoot + VUE搭建过程发布问题整理/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#给这个烦躁且不安的五月的总结"><span class="toc-number">1.</span> <span class="toc-text">给这个烦躁且不安的五月的总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#项目迭代"><span class="toc-number">1.1.</span> <span class="toc-text">项目迭代</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#日常"><span class="toc-number">1.2.</span> <span class="toc-text">日常</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
 
-  
-    <article id="post-SpringBoot + VUE系统搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/06/30/SpringBoot + VUE系统搭建/">SpringBoot + VUE系统搭建</a>
-	
-    </h1>
-  
 
 
-  
-  
-<a href="/2019/06/30/SpringBoot + VUE系统搭建/" class="archive-article-date">
-        <time datetime="2019-06-30T11:43:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-30</time>
-</a>
 
-  
-  
-    
 
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="学前准备"><a href="#学前准备" class="headerlink" title="学前准备"></a>学前准备</h4><ol>
-<li>有java web开发经验，熟悉MVC开发</li>
-<li>了解前端页面编写</li>
-<li>了解前后端数据交互</li>
-</ol>
-    
-    <a class="article-more-a" href="/2019/06/30/SpringBoot + VUE系统搭建/#more">more >></a>
-    
-    
 
-    
 
-    
 
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X/Vue//" class="article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/30/SpringBoot + VUE系统搭建/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-github新增代码库实操" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/06/23/github新增代码库实操/">github新增代码库实操</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/06/23/github新增代码库实操/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="git创建新的代码库"><a href="#git创建新的代码库" class="headerlink" title="git创建新的代码库"></a>git创建新的代码库</h4><ol>
-<li>登录github</li>
-<li>找到”new repository”</li>
-</ol>
-    
-    <a class="article-more-a" href="/2019/06/23/github新增代码库实操/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/23/github新增代码库实操/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git学习-小白实操" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/06/23/Git学习-小白实操/">Git学习-小白实操</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/06/23/Git学习-小白实操/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="配置-Git"><a href="#配置-Git" class="headerlink" title="配置 Git"></a>配置 Git</h4><ol>
-<li>查看当前用户（global）配置信息：git config –global –list  </li>
-<li>修改配置信息：git config –global user.name moon-zhou<br>git config –global user.email “<a href="mailto:ayimin1989@163.com" target="_blank" rel="noopener">ayimin1989@163.com</a>“</li>
-<li>删除配置：git config –global –unset  XXX</li>
-</ol>
-    
-    <a class="article-more-a" href="/2019/06/23/Git学习-小白实操/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/23/Git学习-小白实操/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git学习-小白不能忍之三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/06/23/Git学习-小白不能忍之三/">Git学习-小白不能忍之三</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/06/23/Git学习-小白不能忍之三/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>使用git命令pull/push代码时，总是需要输入用户名密码</p>
-</blockquote>
-<h4 id="频繁输入–》不能忍"><a href="#频繁输入–》不能忍" class="headerlink" title="频繁输入–》不能忍"></a>频繁输入–》不能忍</h4><blockquote>
-<p>是否可以保存账密不需要每次都输入</p>
-</blockquote>
-<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ol>
-<li>git config –global credential.helper store</li>
-<li>执行上述命令后，第一次pull或push需要输入用户名和密码，之后就不用再输入了。</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/23/Git学习-小白不能忍之三/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git学习-小白不能忍之二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/06/23/Git学习-小白不能忍之二/">Git学习-小白不能忍之二</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/06/23/Git学习-小白不能忍之二/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>代码在idea里，会被自动编译，生成很多编译代码及IDE配置文件，在git目录下总是提示需要提交，<strong>不能忍</strong></p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2019/06/23/Git学习-小白不能忍之二/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/23/Git学习-小白不能忍之二/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git学习-小白不能忍之一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/06/23/Git学习-小白不能忍之一/">Git学习-小白不能忍之一</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/06/23/Git学习-小白不能忍之一/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>git 命令过长，记忆以及输入时不够快捷，<strong>不能忍</strong></p>
-</blockquote>
-<h4 id="Git-Log的进阶使用"><a href="#Git-Log的进阶使用" class="headerlink" title="Git Log的进阶使用"></a>Git Log的进阶使用</h4><ol>
-<li>Git查看日志，单独使用git log来操作，每一个commit信息太多，干扰信息又太多，而且各种分支的合并也看不到。优化如下：<blockquote>
-<p>git log –graph –pretty=format:’%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative</p>
-</blockquote>
-</li>
-</ol>
-    
-    <a class="article-more-a" href="/2019/06/23/Git学习-小白不能忍之一/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/23/Git学习-小白不能忍之一/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git学习-小白学理论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/06/23/Git学习-小白学理论/">Git学习-小白学理论</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/06/23/Git学习-小白学理论/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="文件状态（未进行commit操作之前，存在三种状态）"><a href="#文件状态（未进行commit操作之前，存在三种状态）" class="headerlink" title="文件状态（未进行commit操作之前，存在三种状态）"></a>文件状态（未进行commit操作之前，存在三种状态）</h4><ul>
-<li>Untracked files</li>
-<li>Changes not staged for commit</li>
-<li>Changes to be committed</li>
-</ul>
-    
-    <a class="article-more-a" href="/2019/06/23/Git学习-小白学理论/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/23/Git学习-小白学理论/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-序列化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/06/16/序列化/">序列化</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/06/16/序列化/" class="archive-article-date">
-        <time datetime="2019-06-16T09:46:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h4><blockquote>
-<p>个人会员wap系统，新增实名申诉降级流程，开发过程中，涉及选择已实名账号，上传证件等多步骤操作，后端一开始就要缓存实名用户的信息，缓存的地方为session。因为我们需要进行会话保持，从而我们使用了公司的snf-web-session组件，其底层实现是将缓存在session里的数据缓存在redis中，而不是web容器里。但是在我们实际的场景里，缓存塞值的时候是没有问题，但是在取值的时候，始终是null。</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2019/06/16/序列化/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/16/序列化/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -1149,8 +456,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
