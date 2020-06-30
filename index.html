@@ -187,6 +187,94 @@
             
 
   
+    <article id="post-生产问题：由CDN缓存引发的外网业务不可用问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2020/06/30/生产问题：由CDN缓存引发的外网业务不可用问题/">生产问题：由CDN缓存引发的外网业务不可用问题</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2020/06/30/生产问题：由CDN缓存引发的外网业务不可用问题/" class="archive-article-date">
+        <time datetime="2020-06-30T01:09:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-30</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="生产问题：由CDN缓存引发的外网业务不可用问题"><a href="#生产问题：由CDN缓存引发的外网业务不可用问题" class="headerlink" title="生产问题：由CDN缓存引发的外网业务不可用问题"></a>生产问题：由CDN缓存引发的外网业务不可用问题</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>623版本发布之后，因为前端代码出现问题进行回滚，修复后第二天重发，相关业务仍然不可用（5月版本前端代码未合并master，6月版本是基于4月版本进行的开发），回滚后，进行了第三次修复发布。修复发布后，产品确认相关业务都已经没有问题。</p>
+    
+    <a class="article-more-a" href="/2020/06/30/生产问题：由CDN缓存引发的外网业务不可用问题/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/问题记录//" class="article-tag-list-link color5">问题记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/06/30/生产问题：由CDN缓存引发的外网业务不可用问题/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-由JSONP引发的安全问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -994,149 +1082,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2020/01/11/SPI/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-跨域那些事" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/01/10/跨域那些事/">跨域那些事</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/01/10/跨域那些事/" class="archive-article-date">
-        <time datetime="2020-01-10T12:29:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-10</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="跨域那些事"><a href="#跨域那些事" class="headerlink" title="跨域那些事"></a>跨域那些事</h4><ol>
-<li><p>概念</p>
-<blockquote>
-<p>浏览器同源策略，凡是发送请求url的协议、域名、端口三者之间任意一个与当前页面地址不同即为跨域。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>URL</th>
-<th>说明</th>
-<th>是否允许通信</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://www.a.com/b.js" target="_blank" rel="noopener">http://www.a.com/b.js</a></td>
-<td>同一域名下</td>
-<td>允许</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com/lab/a.js" target="_blank" rel="noopener">http://www.a.com/lab/a.js</a> <br> <a href="http://www.a.com/script/b.js" target="_blank" rel="noopener">http://www.a.com/script/b.js</a></td>
-<td>同一域名下不同文件夹</td>
-<td>允许</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com:8000/a.js" target="_blank" rel="noopener">http://www.a.com:8000/a.js</a> <br><a href="http://www.a.com/b.js" target="_blank" rel="noopener">http://www.a.com/b.js</a></td>
-<td>同一域名，不同端口</td>
-<td>不允许</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="https://www.a.com/b.js" target="_blank" rel="noopener">https://www.a.com/b.js</a></td>
-<td>同一域名，不同协议</td>
-<td>不允许</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://210.22.106.134/b.js" target="_blank" rel="noopener">http://210.22.106.134/b.js</a></td>
-<td>域名和域名对应ip</td>
-<td>不允许</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://script.a.com/b.js" target="_blank" rel="noopener">http://script.a.com/b.js</a></td>
-<td>主域名相同，子域名不同</td>
-<td>不允许</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://a.com/b.js" target="_blank" rel="noopener">http://a.com/b.js</a></td>
-<td>同一域名，不同二级域名</td>
-<td>不允许（此时cookie也不允许）</td>
-</tr>
-<tr>
-<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://www.b.com/b.js" target="_blank" rel="noopener">http://www.b.com/b.js</a></td>
-<td>不同域名</td>
-<td>不允许</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-    
-    <a class="article-more-a" href="/2020/01/10/跨域那些事/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式//" class="article-tag-list-link color4">分布式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/01/10/跨域那些事/">展开全文 >></a>
     </p>
     
 

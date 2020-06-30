@@ -187,6 +187,149 @@
             
 
   
+    <article id="post-跨域那些事" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2020/01/10/跨域那些事/">跨域那些事</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2020/01/10/跨域那些事/" class="archive-article-date">
+        <time datetime="2020-01-10T12:29:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-10</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="跨域那些事"><a href="#跨域那些事" class="headerlink" title="跨域那些事"></a>跨域那些事</h4><ol>
+<li><p>概念</p>
+<blockquote>
+<p>浏览器同源策略，凡是发送请求url的协议、域名、端口三者之间任意一个与当前页面地址不同即为跨域。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>说明</th>
+<th>是否允许通信</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://www.a.com/b.js" target="_blank" rel="noopener">http://www.a.com/b.js</a></td>
+<td>同一域名下</td>
+<td>允许</td>
+</tr>
+<tr>
+<td><a href="http://www.a.com/lab/a.js" target="_blank" rel="noopener">http://www.a.com/lab/a.js</a> <br> <a href="http://www.a.com/script/b.js" target="_blank" rel="noopener">http://www.a.com/script/b.js</a></td>
+<td>同一域名下不同文件夹</td>
+<td>允许</td>
+</tr>
+<tr>
+<td><a href="http://www.a.com:8000/a.js" target="_blank" rel="noopener">http://www.a.com:8000/a.js</a> <br><a href="http://www.a.com/b.js" target="_blank" rel="noopener">http://www.a.com/b.js</a></td>
+<td>同一域名，不同端口</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="https://www.a.com/b.js" target="_blank" rel="noopener">https://www.a.com/b.js</a></td>
+<td>同一域名，不同协议</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://210.22.106.134/b.js" target="_blank" rel="noopener">http://210.22.106.134/b.js</a></td>
+<td>域名和域名对应ip</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://script.a.com/b.js" target="_blank" rel="noopener">http://script.a.com/b.js</a></td>
+<td>主域名相同，子域名不同</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://a.com/b.js" target="_blank" rel="noopener">http://a.com/b.js</a></td>
+<td>同一域名，不同二级域名</td>
+<td>不允许（此时cookie也不允许）</td>
+</tr>
+<tr>
+<td><a href="http://www.a.com/a.js" target="_blank" rel="noopener">http://www.a.com/a.js</a> <br> <a href="http://www.b.com/b.js" target="_blank" rel="noopener">http://www.b.com/b.js</a></td>
+<td>不同域名</td>
+<td>不允许</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+    
+    <a class="article-more-a" href="/2020/01/10/跨域那些事/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/分布式//" class="article-tag-list-link color4">分布式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/01/10/跨域那些事/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-创建者-Builder" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -979,98 +1122,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2019/11/21/日常问题汇总-2019.11.21/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-算法与数据结构-2019.11.16" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/11/16/算法与数据结构-2019.11.16/">算法与数据结构-2019.11.16</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/11/16/算法与数据结构-2019.11.16/" class="archive-article-date">
-        <time datetime="2019-11-16T12:30:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="力扣刷题"><a href="#力扣刷题" class="headerlink" title="力扣刷题"></a>力扣刷题</h4><ol>
-<li>链表<ul>
-<li><a href="https://github.com/moon-zhou/JavaAlgorithm/blob/master/src/main/java/com/moonzhou/leetcode/linklist/RemoveDuplicateNodeInOrderedLinkedList.java" target="_blank" rel="noopener">有序链表里删除重复的节点</a> </li>
-<li><a href="https://github.com/moon-zhou/JavaAlgorithm/blob/master/src/main/java/com/moonzhou/leetcode/linklist/RemoveNthNodeFromEndInLinkedList.java" target="_blank" rel="noopener">删除链表里倒数第n个数</a></li>
-</ul>
-</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法与数据结构//" class="article-tag-list-link color3">算法与数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/11/16/算法与数据结构-2019.11.16/">展开全文 >></a>
     </p>
     
 

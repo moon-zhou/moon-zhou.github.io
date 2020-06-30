@@ -187,6 +187,103 @@
             
 
   
+    <article id="post-Github回滚提交历史" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/10/19/Github回滚提交历史/">Github回滚提交历史</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/10/19/Github回滚提交历史/" class="archive-article-date">
+        <time datetime="2019-10-19T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-19</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
+<li>公司使用git上传代码时，用户名和email使用的是工号和公司邮箱</li>
+<li>周末使用公司电脑编写充电项目时，使用git提交代码到github上，未修改用户名和邮箱信息</li>
+<li>公司会根据工号和邮箱，爬github信息，防止内部代码上传</li>
+<li>因此错误上传代码后，需要及时回滚掉提交记录</li>
+</ol>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><h5 id="回滚到错误提交前的记录，重新提交错误的文件"><a href="#回滚到错误提交前的记录，重新提交错误的文件" class="headerlink" title="回滚到错误提交前的记录，重新提交错误的文件"></a>回滚到错误提交前的记录，重新提交错误的文件</h5><ol>
+<li>github找到需要回滚到某一次的hashcode，之后的提交文件需要备份</li>
+<li>使用git reset –hard hashCode回使本地仓库回滚到这次的提交</li>
+<li>git push origin HEAD –force，将这次的提交强制推到远程仓库，同步提交记录</li>
+<li>将备份的文件或者修改后的文件重新提交</li>
+</ol>
+<h5 id="删除整个远程仓库，重新创建，提交"><a href="#删除整个远程仓库，重新创建，提交" class="headerlink" title="删除整个远程仓库，重新创建，提交"></a>删除整个远程仓库，重新创建，提交</h5>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/10/19/Github回滚提交历史/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Git commit &amp; comment" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -997,98 +1094,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2019/09/07/日常问题汇总-一/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【朝花再拾】AOP-01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/25/【朝花再拾】AOP-01/">【朝花再拾】AOP-01</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/08/25/【朝花再拾】AOP-01/" class="archive-article-date">
-        <time datetime="2019-08-25T04:07:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-25</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>如果无法正确查看流程图， 点击<a href="http://note.youdao.com/noteshare?id=674742c3e3cdcccb64aef4a7b1838964&sub=BA3E38DF582B4838AB7ADB48EF813E97" target="_blank" rel="noopener">传送门</a></p>
-<hr>
-<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>最近在重新整理spring知识结构，从Springboot入手，在自定日志打印时，使用aop进行的处理。(详情见上一篇日志)
-同时最近项目组招聘小伙伴时，问到过spring aop的相关问题。
-因此觉得有必要由浅入深，把以前学习的落到文档上，方便自己的回顾，也便于传播。</code></pre>
-    
-    <a class="article-more-a" href="/2019/08/25/【朝花再拾】AOP-01/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/25/【朝花再拾】AOP-01/">展开全文 >></a>
     </p>
     
 
