@@ -6,23 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>弦 博客</title>
+  <title>生产问题：从setex异常看指令重排序问题 | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <meta name="keywords" content="never stop">
-  
-  <meta name="description" content="never stop">
-<meta property="og:type" content="website">
-<meta property="og:title" content="弦 博客">
-<meta property="og:url" content="https://moon-zhou.github.io/page/5/index.html">
+  <meta name="description" content="生产问题：从setex异常看指令重排序问题背景现在公司整体架构是基础/公共组件，以及各个业务线。业务线根据不同的领域，自建对应系统（前台-中台-后台），通过一些公共（技术）组件如rpc服务，redis服务等；一些公共（业务）组件，如短信系统，推送系统，单点登录系统等，进行关联。另外一部分是研发过程的工具组件，如持续集成，日志管理。而本次涉及的就是异常治理部分。 异常治理属于日志管理系统的下的所属业">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生产问题：从setex异常看指令重排序问题">
+<meta property="og:url" content="https://moon-zhou.github.io/2020/07/05/生产问题：从setex异常看指令重排序问题/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="never stop">
+<meta property="og:description" content="生产问题：从setex异常看指令重排序问题背景现在公司整体架构是基础/公共组件，以及各个业务线。业务线根据不同的领域，自建对应系统（前台-中台-后台），通过一些公共（技术）组件如rpc服务，redis服务等；一些公共（业务）组件，如短信系统，推送系统，单点登录系统等，进行关联。另外一部分是研发过程的工具组件，如持续集成，日志管理。而本次涉及的就是异常治理部分。 异常治理属于日志管理系统的下的所属业">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-05T12:15:54.577Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦 博客">
-<meta name="twitter:description" content="never stop">
+<meta name="twitter:title" content="生产问题：从setex异常看指令重排序问题">
+<meta name="twitter:description" content="生产问题：从setex异常看指令重排序问题背景现在公司整体架构是基础/公共组件，以及各个业务线。业务线根据不同的领域，自建对应系统（前台-中台-后台），通过一些公共（技术）组件如rpc服务，redis服务等；一些公共（业务）组件，如短信系统，推送系统，单点登录系统等，进行关联。另外一部分是研发过程的工具组件，如持续集成，日志管理。而本次涉及的就是异常治理部分。 异常治理属于日志管理系统的下的所属业">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -184,50 +182,138 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-日常问题汇总-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-生产问题：从setex异常看指令重排序问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/09/07/日常问题汇总-一/">日常问题汇总-一</a>
-	
+    <h1 class="article-title" itemprop="name">
+      生产问题：从setex异常看指令重排序问题
     </h1>
   
 
 
   
   
-<a href="/2019/09/07/日常问题汇总-一/" class="archive-article-date">
-        <time datetime="2019-09-07T12:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
+<a href="/2020/07/05/生产问题：从setex异常看指令重排序问题/" class="archive-article-date">
+        <time datetime="2020-07-05T01:09:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
 </a>
 
   
   
     
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.7k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">8分</span>
+    </span>
+  </span>
+</div>
+
 
   
   </header>
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>如果页面样式有缺，点击<a href="http://note.youdao.com/noteshare?id=c5512468dd24da275a819cedf4a4a091&sub=BDE2A4E19F6C4C4B974854F45C84CDDA" target="_blank" rel="noopener">传送门</a></p>
-<hr>
-<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>日常如何保证系统能够健康的运行，必不可少的就是实时的系统监控及告警。日常的服务接口成功率和耗时监控，还有一个就是系统异常数/种类，异常的影响级别等维度的监控。为此公司每月必须对系统产生的异常进行分析、治理。</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2019/09/07/日常问题汇总-一/#more">more >></a>
-    
-    
+    <h3 id="生产问题：从setex异常看指令重排序问题"><a href="#生产问题：从setex异常看指令重排序问题" class="headerlink" title="生产问题：从setex异常看指令重排序问题"></a>生产问题：从setex异常看指令重排序问题</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>现在公司整体架构是基础/公共组件，以及各个业务线。业务线根据不同的领域，自建对应系统（前台-中台-后台），通过一些公共（技术）组件如rpc服务，redis服务等；一些公共（业务）组件，如短信系统，推送系统，单点登录系统等，进行关联。另外一部分是研发过程的工具组件，如持续集成，日志管理。而本次涉及的就是异常治理部分。</p>
+<p>异常治理属于日志管理系统的下的所属业务，各个业务系统的日志，统一接入，使用ELK架构，告别终端直连机器查看日志（尤其是集群里机器贼多的情况尤为有利）。而异常治理就是将日志里的异常信息，统一进行收集，各业务系统需要按月进行异常的分析，处理。当然异常也是分等级的，分分钟跟kpi挂钩。</p>
+<a id="more"></a>
+
+<h4 id="问题发现"><a href="#问题发现" class="headerlink" title="问题发现"></a>问题发现</h4><p>在异常治理时，发现了redis操作的setex出现异常，异常信息如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">com.suning.framework.sedis.exception.RedisClientException: redis.clients.jedis.exceptions.JedisDataException: ERR invalid expire time in setex</span><br><span class="line">	at com.suning.framework.sedis.impl.ShardedJedisClientImpl.execute(ShardedJedisClientImpl.java:<span class="number">43</span>) ~[snf-redis-client-<span class="number">2.5</span>.3.jar:<span class="number">2.5</span>.3]</span><br><span class="line">	at com.suning.epps.fmsms.infrastructure.cache.GenericShardedRedisOperatorImpl.setex(GenericShardedRedisOperatorImpl.java:<span class="number">62</span>) ~[fmsms-server-infrastructure-<span class="number">1.0</span>.0.jar:na]</span><br><span class="line">	at com.suning.epps.fmsms.infrastructure.cache.GenericRedisPrefixOperator.setEx(GenericRedisPrefixOperator.java:<span class="number">577</span>) ~[fmsms-server-infrastructure-<span class="number">1.0</span>.0.jar:na]</span><br><span class="line">	at com.suning.epps.fmsms.infrastructure.cache.GenericRedisPrefixOperator$$FastClassBySpringCGLIB$$f49e6640.invoke(&lt;generated&gt;) ~[spring-core-<span class="number">4.1</span>.7.RELEASE.jar:na]</span><br><span class="line">	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:<span class="number">204</span>) [spring-core-<span class="number">4.1</span>.7.RELEASE.jar:<span class="number">4.1</span>.7.RELEASE]</span><br><span class="line">    at com.suning.epps.fmsms.infrastructure.cache.GenericRedisPrefixOperator$$EnhancerBySpringCGLIB$$<span class="number">92769</span>d90.setEx(&lt;generated&gt;) [spring-core-<span class="number">4.1</span>.7.RELEASE.jar:na]</span><br><span class="line">	at com.suning.epps.fmsms.application.subsequent.sign.SignPushRedisSubsequentImpl.subSequent(SignPushRedisSubsequentImpl.java:<span class="number">24</span>) [fmsms-server-application-<span class="number">1.0</span>.0.jar:na]</span><br><span class="line">	at com.suning.epps.fmsms.application.subsequent.sign.SignPushRedisSubsequentImpl$$FastClassBySpringCGLIB$$f4c52a72.invoke(&lt;generated&gt;) [spring-core-<span class="number">4.1</span>.7.RELEASE.jar:na]</span><br><span class="line">    at com.suning.epps.fmsms.application.subsequent.sign.SignPushRedisSubsequentImpl$$EnhancerBySpringCGLIB$$<span class="number">8</span>b851a5a.subSequent(&lt;generated&gt;) [spring-core-<span class="number">4.1</span>.7.RELEASE.jar:na]</span><br><span class="line">	at com.suning.epps.fmsms.facade.factory.SubsequentFactory.subsequent(SubsequentFactory.java:<span class="number">21</span>) [fmsms-server-facade-<span class="number">1.0</span>.0.jar:na]</span><br><span class="line">	at com.suning.epps.fmsms.facade.shared.ManagerFacadeHandle.execute(ManagerFacadeHandle.java:<span class="number">49</span>) [fmsms-server-facade-<span class="number">1.0</span>.0.jar:na]</span><br><span class="line">	at com.suning.epps.fmsms.facade.impl.manager.sign.SignFacadeImpl.execute(SignFacadeImpl.java:<span class="number">36</span>) [fmsms-server-facade-<span class="number">1.0</span>.0.jar:na]</span><br><span class="line">	at com.suning.epps.fmsms.facade.impl.manager.sign.SignFacadeImpl$$FastClassBySpringCGLIB$$c73c241c.invoke(&lt;generated&gt;) [spring-core-<span class="number">4.1</span>.7.RELEASE.jar:na]</span><br></pre></td></tr></table></figure>
+
+<p>查询此报错原因为，setex设置redis值时，带有的过期时间参数值&lt;=0，因此着重分析为什么会出现过期时间&lt;=0的情况。</p>
+<h4 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h4><p>一开始，直接看报错的代码部分，如何计算出过期时间为负值的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 获取当天剩余的时间并加十分钟缓冲之间，单位：秒</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getTodayRemainSecondNumAndPlus600Second</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     <span class="comment">//当前时间毫秒数</span></span><br><span class="line">     <span class="keyword">long</span> current = System.currentTimeMillis();</span><br><span class="line">     Calendar calendar = Calendar.getInstance();</span><br><span class="line">     calendar.add(Calendar.DAY_OF_MONTH, <span class="number">1</span>);</span><br><span class="line">     calendar.set(Calendar.HOUR_OF_DAY, <span class="number">0</span>);</span><br><span class="line">     calendar.set(Calendar.MINUTE, <span class="number">0</span>);</span><br><span class="line">     calendar.set(Calendar.SECOND, <span class="number">0</span>);</span><br><span class="line">     calendar.set(Calendar.MILLISECOND, <span class="number">0</span>);</span><br><span class="line">     <span class="keyword">long</span> tomorrowZero = calendar.getTimeInMillis();</span><br><span class="line">     </span><br><span class="line">     <span class="comment">// long current = System.currentTimeMillis(); 重排序到这里</span></span><br><span class="line">     </span><br><span class="line">     <span class="keyword">long</span> remainSecond = (tomorrowZero - current) / <span class="number">1000</span>;</span><br><span class="line">     Random random = <span class="keyword">new</span> Random();</span><br><span class="line">     <span class="keyword">int</span> cacheTime =random.nextInt(<span class="number">180</span>);</span><br><span class="line">     <span class="keyword">return</span> (<span class="keyword">int</span>) remainSecond + cacheTime;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>结合上述代码，认为只能是重排序才能出现计算为负值的情况，于是分析其字节码，验证是否是<code>as-if-serial</code>引起的重排序问题。</p>
+<p>分析字节码：<code>javap -c DateUtils</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getTodayRemainSecondNumAndPlus600Second</span><span class="params">()</span></span>;</span><br><span class="line">    Code:</span><br><span class="line">       0: invokestatic  #32                 // Method java/lang/System.currentTimeMillis:()J</span><br><span class="line">       <span class="number">3</span>: lstore_0</span><br><span class="line">       4: invokestatic  #8                  // Method java/util/Calendar.getInstance:()Ljava/util/Calendar;</span><br><span class="line">       <span class="number">7</span>: astore_2</span><br><span class="line">       <span class="number">8</span>: aload_2</span><br><span class="line">       <span class="number">9</span>: iconst_5</span><br><span class="line">      <span class="number">10</span>: iconst_1</span><br><span class="line">      11: invokevirtual #11                 // Method java/util/Calendar.add:(II)V</span><br><span class="line">      <span class="number">14</span>: aload_2</span><br><span class="line">      <span class="number">15</span>: bipush        <span class="number">11</span></span><br><span class="line">      <span class="number">17</span>: iconst_0</span><br><span class="line">      18: invokevirtual #15                 // Method java/util/Calendar.set:(II)V</span><br><span class="line">      <span class="number">21</span>: aload_2</span><br><span class="line">      <span class="number">22</span>: bipush        <span class="number">12</span></span><br><span class="line">      <span class="number">24</span>: iconst_0</span><br><span class="line">      25: invokevirtual #15                 // Method java/util/Calendar.set:(II)V</span><br><span class="line">      <span class="number">28</span>: aload_2</span><br><span class="line">      <span class="number">29</span>: bipush        <span class="number">13</span></span><br><span class="line">      <span class="number">31</span>: iconst_0</span><br><span class="line">      32: invokevirtual #15                 // Method java/util/Calendar.set:(II)V</span><br><span class="line">      <span class="number">35</span>: aload_2</span><br><span class="line">      <span class="number">36</span>: bipush        <span class="number">14</span></span><br><span class="line">      <span class="number">38</span>: iconst_0</span><br><span class="line">      39: invokevirtual #15                 // Method java/util/Calendar.set:(II)V</span><br><span class="line">      <span class="number">42</span>: aload_2</span><br><span class="line">      43: invokevirtual #33                 // Method java/util/Calendar.getTimeInMillis:()J</span><br><span class="line">      <span class="number">46</span>: lstore_3</span><br><span class="line">      <span class="number">47</span>: lload_3</span><br><span class="line">      <span class="number">48</span>: lload_0</span><br><span class="line">      <span class="number">49</span>: lsub</span><br><span class="line">      50: ldc2_w        #17                 // long 1000l</span><br><span class="line">      <span class="number">53</span>: ldiv</span><br><span class="line">      <span class="number">54</span>: lstore        <span class="number">5</span></span><br><span class="line">      56: new           #34                 // class java/util/Random</span><br><span class="line">      <span class="number">59</span>: dup</span><br><span class="line">      60: invokespecial #35                 // Method java/util/Random."&lt;init&gt;":()V</span><br><span class="line">      <span class="number">63</span>: astore        <span class="number">7</span></span><br><span class="line">      <span class="number">65</span>: aload         <span class="number">7</span></span><br><span class="line">      <span class="number">67</span>: sipush        <span class="number">180</span></span><br><span class="line">      70: invokevirtual #36                 // Method java/util/Random.nextInt:(I)I</span><br><span class="line">      <span class="number">73</span>: istore        <span class="number">8</span></span><br><span class="line">      <span class="number">75</span>: lload         <span class="number">5</span></span><br><span class="line">      <span class="number">77</span>: l2i</span><br><span class="line">      <span class="number">78</span>: iload         <span class="number">8</span></span><br><span class="line">      <span class="number">80</span>: iadd</span><br><span class="line">      <span class="number">81</span>: ireturn</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> &#123;&#125;;</span><br><span class="line">    Code:</span><br><span class="line">       0: ldc           #3                  // class com/suning/epps/fmsms/util/DateUtils</span><br><span class="line">       2: invokestatic  #37                 // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Lo</span><br><span class="line">gger;</span><br><span class="line">       5: putstatic     #28                 // Field LOGGER:Lorg/slf4j/Logger;</span><br><span class="line">       <span class="number">8</span>: <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+
+<p>从字节码看出，并没有进行重排序，于是从日志系统里拉取备份日志，发现过期时间是0引发的该异常，而非小于0引起：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2020</span>-<span class="number">06</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">59</span>:<span class="number">59</span>,<span class="number">507</span>|RequestTaskExecutor-thread-<span class="number">22561</span>|<span class="number">0</span>c95dfd68997481ca20568e64f48680d|INFO|GenericRedisPrefixOperator|enter key arg:<span class="number">0000000000220488786</span>,huiyuan,value arg:<span class="number">1</span>,<span class="number">2020</span>-<span class="number">06</span>-<span class="number">21</span>,expire arg:<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>因此结合现有情况，分析是否为精度问题导致。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取当天剩余的时间并加十分钟缓冲之间，单位：秒</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getTodayRemainSecondNumAndPlus600Second</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//当前时间毫秒数</span></span><br><span class="line">        <span class="keyword">long</span> current = System.currentTimeMillis();</span><br><span class="line">        Calendar calendar = Calendar.getInstance();</span><br><span class="line">        calendar.add(Calendar.DAY_OF_MONTH, <span class="number">1</span>);</span><br><span class="line">        calendar.set(Calendar.HOUR_OF_DAY, <span class="number">0</span>);</span><br><span class="line">        calendar.set(Calendar.MINUTE, <span class="number">0</span>);</span><br><span class="line">        calendar.set(Calendar.SECOND, <span class="number">0</span>);</span><br><span class="line">        calendar.set(Calendar.MILLISECOND, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">long</span> tomorrowZero = calendar.getTimeInMillis();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 此处如果是2020-07-05 23:59:59:333，那么距离2020-07-06 0:0:0:000，除以1000，取整数为0</span></span><br><span class="line">        <span class="keyword">long</span> remainSecond = (tomorrowZero - current) / <span class="number">1000</span>;</span><br><span class="line">        Random random = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> cacheTime =random.nextInt(<span class="number">180</span>);</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>) remainSecond + cacheTime;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>编写测试代码进行验证：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">simplifyProblem</span><span class="params">()</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">        <span class="comment">// 模拟临界值时间（签到时间）</span></span><br><span class="line">        SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss:SSS"</span>);</span><br><span class="line">        Date date = sdf.parse(<span class="string">"2020-07-05 23:59:59:333"</span>);</span><br><span class="line">        <span class="keyword">long</span> time = date.getTime();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 模拟到下一天的24点</span></span><br><span class="line">        Calendar calendar = Calendar.getInstance();</span><br><span class="line">        <span class="keyword">long</span> calendarInMills = calendar.getTimeInMillis();</span><br><span class="line">        calendar.add(Calendar.DAY_OF_MONTH, <span class="number">1</span>);</span><br><span class="line">        calendar.set(Calendar.HOUR_OF_DAY, <span class="number">0</span>);</span><br><span class="line">        calendar.set(Calendar.MINUTE, <span class="number">0</span>);</span><br><span class="line">        calendar.set(Calendar.SECOND, <span class="number">0</span>);</span><br><span class="line">        calendar.set(Calendar.MILLISECOND, <span class="number">0</span>);</span><br><span class="line">        calendar.set(Calendar.MILLISECOND, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">long</span> end = calendar.getTimeInMillis();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 模拟计算缓存时间，通过放大循环次数，看随机到0的情况</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2000</span>; i++) &#123;</span><br><span class="line">            <span class="comment">// 原意为当前时间到明天零点还有多少秒，此处存在的问题为，如果小于1秒，此处精度丢失，变为0</span></span><br><span class="line">            <span class="keyword">long</span> remainSecond = (end - time) / <span class="number">1000</span>;</span><br><span class="line">            Random random = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 如果随机的3分钟，也就是180秒，如果变成0，那么整体的缓存时间就为0，</span></span><br><span class="line">            <span class="keyword">int</span> cacheTime = random.nextInt(<span class="number">180</span>);</span><br><span class="line">            <span class="keyword">int</span> result = (<span class="keyword">int</span>) remainSecond + cacheTime;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (result &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">"less than 0"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (result == <span class="number">0</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">"equal 0"</span>);</span><br><span class="line">            &#125;<span class="comment">/* else &#123;</span></span><br><span class="line"><span class="comment">                System.out.println("more than 0");</span></span><br><span class="line"><span class="comment">            &#125;*/</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果也显而易见，因为放大了该时间段的请求量，<code>equal 0</code>的情况次数挺多。其实时间0点后签到的人数目比较多，23点59分的比较少，因此此类异常不多。</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>核心问题就是避免操作jedis的setEx方法里，过期时间设置为&lt;=0的情况，此处只需要考虑不为0的情况。也就是<code>remainSecond + cacheTime</code>有一个不为0的情况。</p>
+<ol>
+<li>修改计算算法，不要到0点，适时往后延几分钟。也就是<code>remainSecond</code>计算出来不可能为0。</li>
+<li>为避免出现随机出0的情况，适当加个常量值。</li>
+</ol>
 
     
 
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          moon zhou
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://moon-zhou.github.io/2020/07/05/生产问题：从setex异常看指令重排序问题/" title="生产问题：从setex异常看指令重排序问题" target="_blank">https://moon-zhou.github.io/2020/07/05/生产问题：从setex异常看指令重排序问题/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
     
 
   </div>
@@ -248,16 +334,76 @@
 
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/09/07/日常问题汇总-一/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2020/07/05/生产问题：从setex异常看指令重排序问题/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/30/生产问题：由CDN缓存引发的外网业务不可用问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">生产问题：由CDN缓存引发的外网业务不可用问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -272,836 +418,33 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【朝花再拾】AOP-01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/25/【朝花再拾】AOP-01/">【朝花再拾】AOP-01</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/08/25/【朝花再拾】AOP-01/" class="archive-article-date">
-        <time datetime="2019-08-25T04:07:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-25</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>如果无法正确查看流程图， 点击<a href="http://note.youdao.com/noteshare?id=674742c3e3cdcccb64aef4a7b1838964&sub=BA3E38DF582B4838AB7ADB48EF813E97" target="_blank" rel="noopener">传送门</a></p>
-<hr>
-<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>最近在重新整理spring知识结构，从Springboot入手，在自定日志打印时，使用aop进行的处理。(详情见上一篇日志)
-同时最近项目组招聘小伙伴时，问到过spring aop的相关问题。
-因此觉得有必要由浅入深，把以前学习的落到文档上，方便自己的回顾，也便于传播。</code></pre>
-    
-    <a class="article-more-a" href="/2019/08/25/【朝花再拾】AOP-01/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/25/【朝花再拾】AOP-01/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#生产问题：从setex异常看指令重排序问题"><span class="toc-number">1.</span> <span class="toc-text">生产问题：从setex异常看指令重排序问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题发现"><span class="toc-number">1.2.</span> <span class="toc-text">问题发现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题分析"><span class="toc-number">1.3.</span> <span class="toc-text">问题分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决方案"><span class="toc-number">1.4.</span> <span class="toc-text">解决方案</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
 
-  
-    <article id="post-SB日志打印" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/22/SB日志打印/">SB日志打印</a>
-	
-    </h1>
-  
 
 
-  
-  
-<a href="/2019/08/22/SB日志打印/" class="archive-article-date">
-        <time datetime="2019-08-22T15:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-22</time>
-</a>
 
-  
-  
-    
 
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>1. 为方便问题定位，每一次请求最好可以通过唯一的标识来串起每一个单独打印的日志
-2. 正常的业务需求在sb框架里进行各业务逻辑层的拆分，传统的mvc分层，以及义务自定义的一些分层处理。因此公共的各层出入参需要打印且脱敏。</code></pre>
-    
-    <a class="article-more-a" href="/2019/08/22/SB日志打印/#more">more >></a>
-    
-    
 
-    
 
-    
 
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/22/SB日志打印/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【奇技淫巧】SB里数据层的拓展及小技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/">【奇技淫巧】SB里数据层的拓展及小技巧</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/" class="archive-article-date">
-        <time datetime="2019-08-13T08:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
-<p>JavaWeb里，基础的不复杂的业务系统，ORM框架通常都是直接使用。本文介绍数据层的扩展和小技巧。</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/13/【奇技淫巧】SB里数据层的拓展及小技巧/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【反思录】19年7月的一点思考" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/13/【反思录】19年7月的一点思考/">【反思录】19年7月的一点思考</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/08/13/【反思录】19年7月的一点思考/" class="archive-article-date">
-        <time datetime="2019-08-13T08:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>从六月底开始，接到原始需求，要开发一个关于签到的项目。</p>
-<p>项目从零开始，主要从会员中台偏向门户的开发组和多活项目组各抽调2人，组成4人开发小组，加上领导作为架构的角色加入，总共4.5人的开发小组成立。</p>
-    
-    <a class="article-more-a" href="/2019/08/13/【反思录】19年7月的一点思考/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/总结反思录//" class="article-tag-list-link color1">总结反思录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/13/【反思录】19年7月的一点思考/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Maven中jar依赖冲突解决" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/13/Maven中jar依赖冲突解决/">Maven中jar依赖冲突解决</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/08/13/Maven中jar依赖冲突解决/" class="archive-article-date">
-        <time datetime="2019-08-13T08:43:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>最近开了一个新系统开发，其中需要有个定时推送的业务，调用推送系统给手机推送相关消息。再接入推送系统的时候始终无法成功。</code></pre>
-    
-    <a class="article-more-a" href="/2019/08/13/Maven中jar依赖冲突解决/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Maven//" class="article-tag-list-link color1">Maven</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Maven/问题记录//" class="article-tag-list-link color5">问题记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/13/Maven中jar依赖冲突解决/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-sb2.0统一错误页面" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/13/sb2.0统一错误页面/">sb2.0统一错误页面</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/08/13/sb2.0统一错误页面/" class="archive-article-date">
-        <time datetime="2019-08-13T08:43:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>调试mybatis-plus分页时，500错误，直接显示了原有的报错页。</code></pre>
-    
-    <a class="article-more-a" href="/2019/08/13/sb2.0统一错误页面/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/13/sb2.0统一错误页面/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-sb里正确使用logback的姿势" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/13/sb里正确使用logback的姿势/">sb里正确使用logback的姿势</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/08/13/sb里正确使用logback的姿势/" class="archive-article-date">
-        <time datetime="2019-08-13T06:06:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>springboot里查看测试代码逻辑时，需要打印日志信息进行分析。</code></pre>
-    
-    <a class="article-more-a" href="/2019/08/13/sb里正确使用logback的姿势/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot2-X//" class="article-tag-list-link color4">SpringBoot2.X</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/13/sb里正确使用logback的姿势/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-签到类需求的设计与思考" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/12/签到类需求的设计与思考/">签到类需求的设计与思考</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/08/12/签到类需求的设计与思考/" class="archive-article-date">
-        <time datetime="2019-08-12T15:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>6月底，所在会员研发中心接到原始需求，需要针对特定的频道开发签到功能。
-基本要求：
-    1. 各频道签到页面可以动态配置
-    2. 各频道签到规则可不一致
-    3. 签到有每日奖品及累计奖品发放
-    4. 周期内可以通过补签卡进行补签
-    5. 补签和签到效果一致，发放对应奖品</code></pre>
-    
-    <a class="article-more-a" href="/2019/08/12/签到类需求的设计与思考/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/架构设计//" class="article-tag-list-link color5">架构设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/12/签到类需求的设计与思考/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-一次全表扫描关于分布式id的总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/08/04/一次全表扫描关于分布式id的总结/">一次全表扫描关于分布式id的总结</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/08/04/一次全表扫描关于分布式id的总结/" class="archive-article-date">
-        <time datetime="2019-08-04T12:43:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>最近需要对某一个做了分表的数据，进行全表扫描做数据筛选后进行消息推送。</code></pre><h4 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h4><ol>
-<li>全表扫描时的筛选条件是什么</li>
-<li>如何保证全表批量扫描时，每一批的数据量大致相同</li>
-<li>确保可以全表扫描，没有数据的遗漏</li>
-</ol>
-    
-    <a class="article-more-a" href="/2019/08/04/一次全表扫描关于分布式id的总结/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式//" class="article-tag-list-link color4">分布式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式/方案设计//" class="article-tag-list-link color5">方案设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/08/04/一次全表扫描关于分布式id的总结/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -1129,8 +472,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
