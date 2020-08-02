@@ -6,20 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>Archives | 弦 博客</title>
+  <title>20200731生产问题记录-XSS | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="never stop">
-<meta property="og:type" content="website">
-<meta property="og:title" content="弦 博客">
-<meta property="og:url" content="https://moon-zhou.github.io/archives/page/7/index.html">
+  <meta name="description" content="20200731生产问题记录-XSS 由上传文件格式校验漏洞引起的XSS攻击  问题产生发现及处理过程问题发现微信公众号很多页面不可访问，被微信拦截，提示链接有风险，链接如下： 1https://paypassport.suning.com/ids/login?service=http://oss.suning.com/yunxin/yunxin_video/e98fd27a-6876-4eb1-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20200731生产问题记录-XSS">
+<meta property="og:url" content="https://moon-zhou.github.io/2020/07/31/20200731生产问题记录-XSS/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="never stop">
+<meta property="og:description" content="20200731生产问题记录-XSS 由上传文件格式校验漏洞引起的XSS攻击  问题产生发现及处理过程问题发现微信公众号很多页面不可访问，被微信拦截，提示链接有风险，链接如下： 1https://paypassport.suning.com/ids/login?service=http://oss.suning.com/yunxin/yunxin_video/e98fd27a-6876-4eb1-">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-08-02T14:11:05.332Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦 博客">
-<meta name="twitter:description" content="never stop">
+<meta name="twitter:title" content="20200731生产问题记录-XSS">
+<meta name="twitter:description" content="20200731生产问题记录-XSS 由上传文件格式校验漏洞引起的XSS攻击  问题产生发现及处理过程问题发现微信公众号很多页面不可访问，被微信拦截，提示链接有风险，链接如下： 1https://paypassport.suning.com/ids/login?service=http://oss.suning.com/yunxin/yunxin_video/e98fd27a-6876-4eb1-">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -181,456 +182,285 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-20200731生产问题记录-XSS" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/23/github新增代码库实操/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/23/github新增代码库实操/">github新增代码库实操</a>
-	
+    <h1 class="article-title" itemprop="name">
+      20200731生产问题记录-XSS
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
+  
+  
+<a href="/2020/07/31/20200731生产问题记录-XSS/" class="archive-article-date">
+        <time datetime="2020-07-31T01:09:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-31</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.5k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">6分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="20200731生产问题记录-XSS"><a href="#20200731生产问题记录-XSS" class="headerlink" title="20200731生产问题记录-XSS"></a>20200731生产问题记录-XSS</h3><blockquote>
+<p>由上传文件格式校验漏洞引起的XSS攻击</p>
+</blockquote>
+<h4 id="问题产生发现及处理过程"><a href="#问题产生发现及处理过程" class="headerlink" title="问题产生发现及处理过程"></a>问题产生发现及处理过程</h4><h5 id="问题发现"><a href="#问题发现" class="headerlink" title="问题发现"></a>问题发现</h5><p>微信公众号很多页面不可访问，被微信拦截，提示链接有风险，链接如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://paypassport.suning.com/ids/login?service=http://oss.suning.com/yunxin/yunxin_video/e98fd27a-6876-4eb1-acc7-ff7022b7276f1595575675930.jpg?zoozJMzQgBPdReEgkgEYavBxuQN4IzMweiEGcwJiOiUGNiR2YlVmMyETO4gaN4UaYyITMlhDZaIaNiVTM1IWYjRjIsIibh1WZiojIah2b3JCLiQXZtBHbhRXZJRkI6ICMiwiI0lHclJiOioWdtBnIsIyZfVXzkJiOaMaNygDMsIyZf5WYtVmI6IycoFmclJCLiQWY0FmI6Qnc1VWfQN4IzMItfkGYQhFTGcpvFLn&amp;loginTheme=wap_new&amp;gateway=true&amp;loginTheme=wap</span><br></pre></td></tr></table></figure>
+
+<p>将此域名生成二维码之后，直接用微信扫一扫，发现是跳转广告网站，充斥各种诈骗的信息。PC浏览器打开无跳转效果，可见是针对微信场景做的攻击。</p>
+<p>问题是由微信小程序和公众号的运营发现，因为很多页面，使用的链接是接入了我们的单点登录系统的，所以但凡涉及到这一点的功能，均被微信拦截提示有风险，无法访问。</p>
+<p>通过链接域名，发现是我们负责的单点登录系统的域名。</p>
+<a id="more"></a>
+
+<h5 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h5><ol>
+<li><p>分析链接本身，确认是否存在风险。发现链接里无非法字符，客观上无问题。</p>
+</li>
+<li><p>访问链接之后，是302到oss上的文件。即</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://oss.suning.com/yunxin/yunxin_video/e98fd27a-6876-4eb1-acc7-ff7022b7276f1595575675930.jpg</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分析该文件，发现该文件并不是一个jpg图片，而是一个js脚本。详细如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;&lt;html lang=en&gt;&lt;head&gt;&lt;meta charset=utf-8&gt;&lt;meta http-equiv=X-UA-Compatible content=&quot;IE=edge&quot;&gt;&lt;meta name=viewport content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;title&gt;&lt;/title&gt;&lt;link rel=icon href=https://cdn.w7.cc/favicon.ico type=image/x-icon&gt;&lt;meta name=keywords content=???????????????????&gt;&lt;meta name=description content=?????????????????????????????????????????????&gt;&lt;script src=//b-b-cn.oss-cn-beijing.aliyuncs.com/x&gt;&lt;/script&gt;&lt;script src=//cdn.w7.cc/ued/vue/vue.min.js&gt;&lt;/script&gt;&lt;script src=//cdn.w7.cc/ued/plugins/release/w7Plugins.umd.min.js&gt;&lt;/script&gt;&lt;script src=//cdn.w7.cc/ued/vue/element-ui.js&gt;&lt;/script&gt;&lt;script src=//cdn.w7.cc/ued/vue/vue-router.min.js&gt;&lt;/script&gt;&lt;script src=//cdn.w7.cc/ued/vue/vuex.min.js&gt;&lt;/script&gt;&lt;script src=//cdn.w7.cc/ued/vue/axios.min.js&gt;&lt;/script&gt;&lt;link href=/oauth/css/login.c31a599d.css rel=prefetch&gt;&lt;link href=/oauth/js/login.93f7725b.js rel=prefetch&gt;&lt;link href=/oauth/css/chunk-common.c103f795.css rel=preload as=style&gt;&lt;link href=/oauth/js/chunk-common.9f8f4bb7.js rel=preload as=script&gt;&lt;link href=/oauth/js/chunk-vendors.5330a510.js rel=preload as=script&gt;&lt;link href=/oauth/js/web.3669336d.js rel=preload as=script&gt;&lt;link href=/oauth/css/chunk-common.c103f795.css rel=stylesheet&gt;&lt;/head&gt;&lt;body/hidden&gt;&lt;noscript&gt;&lt;strong&gt;We&apos;re sorry but ued_oauth2 doesn&apos;t work properly without JavaScript enabled. Please enable it to continue.&lt;/strong&gt;&lt;/noscript&gt;&lt;div id=app&gt;&lt;/div&gt;&lt;script&gt;window.js_ticket=&quot;RLVhFivvF769Euil5P9F3y96l6FIYE56ffE5uk0A9VZZyYKipl9fL5u7LLaF0a0P6996iarEr9fLYhf6LuYVUyLZL6657H6P6ZAH&quot;;&lt;/script&gt;&lt;script src=/oauth/js/chunk-vendors.5330a510.js&gt;&lt;/script&gt;&lt;script src=/oauth/js/chunk-common.9f8f4bb7.js&gt;&lt;/script&gt;&lt;script src=/oauth/js/web.3669336d.js&gt;&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>至此，问题原因基本明了。</p>
+<ul>
+<li>修改脚本文件后缀（js-&gt;jpg），通过某些业务场景，利用文件校验漏洞，上传至公司的<code>分布式文件存储系统</code>。而在该场景，文件上传之后，把对外访问链接（http）返回到前端进行了展示（至此攻击者获取到了刚刚上传脚本的外网访问路径，且是使用的公司域名）。</li>
+<li>扫描我司公网可访问的域名，筛选会执行http链接请求的域名及对应请求（类似targetUrl，backUrl会被浏览器等执行进行跳转），然后将这个攻击脚本文件链接拼接到该请求后面进行攻击。</li>
+<li>最终，我们的单点登录系统，登录完302到目标地址被利用。</li>
+</ul>
+</li>
+</ol>
+<h4 id="问题修复"><a href="#问题修复" class="headerlink" title="问题修复"></a>问题修复</h4><ol>
+<li>联系<code>分布式文件存储系统</code>的系统负责人，排查该bucket属于哪个业务系统在使用</li>
+<li>联系该脚本被上传的业务系统负责人，明确该文件存在风险，进行文件删除</li>
+<li>联系运营人员，在微信平台进行申请恢复访问</li>
+<li>针对单点登录系统，对于目标地址的跳转虽然做了白名单跳转，但是都是公司的一些一级域名。所以单纯的分布式文件存储系统虽然在业务上没有接入我们的单点登录，所以依然是可以通过我们系统进行跳转的。所以临时修改代码，针对CAS做的单点登录系统的service和targetUrl做限制登录。临时修改，联系测试，当晚发版。<ul>
+<li>service做域名黑名单配置，有些明显没有接入单点登录系统的域名，是不能跳转的。</li>
+<li>targetUrl做配置域名白名单，配置的域名里，必须将该域名能够访问的url配置起来。</li>
+<li>针对的是微信的UA做上述校验。</li>
+</ul>
+</li>
+</ol>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ol>
+<li><p>业务系统后续还需要确认该文件上传的业务场景，严格文件的校验，不仅仅只根据文件后缀进行文校验，还需要根据文件头进行文件格式校验：<a href="https://www.cnblogs.com/mq0036/p/3912355.html" target="_blank" rel="noopener">详细参考</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">JPEG (jpg)，文件头：FFD8FF</span><br><span class="line">PNG (png)，文件头：89504E47</span><br><span class="line">GIF (gif)，文件头：47494638</span><br><span class="line">TIFF (tif)，文件头：49492A00</span><br><span class="line">Windows Bitmap (bmp)，文件头：424D</span><br><span class="line">CAD (dwg)，文件头：41433130</span><br><span class="line">Adobe Photoshop (psd)，文件头：38425053</span><br><span class="line">Rich Text Format (rtf)，文件头：7B5C727466</span><br><span class="line">XML (xml)，文件头：3C3F786D6C</span><br><span class="line">HTML (html)，文件头：68746D6C3E</span><br><span class="line">Email [thorough only] (eml)，文件头：44656C69766572792D646174653A</span><br><span class="line">Outlook Express (dbx)，文件头：CFAD12FEC5FD746F</span><br><span class="line">Outlook (pst)，文件头：2142444E</span><br><span class="line">MS Word/Excel (xls.or.doc)，文件头：D0CF11E0</span><br><span class="line">MS Access (mdb)，文件头：5374616E64617264204A</span><br><span class="line">WordPerfect (wpd)，文件头：FF575043</span><br><span class="line">Postscript (eps.or.ps)，文件头：252150532D41646F6265</span><br><span class="line">Adobe Acrobat (pdf)，文件头：255044462D312E</span><br><span class="line">Quicken (qdf)，文件头：AC9EBD8F</span><br><span class="line">Windows Password (pwl)，文件头：E3828596</span><br><span class="line">ZIP Archive (zip)，文件头：504B0304</span><br><span class="line">RAR Archive (rar)，文件头：52617221</span><br><span class="line">Wave (wav)，文件头：57415645</span><br><span class="line">AVI (avi)，文件头：41564920</span><br><span class="line">Real Audio (ram)，文件头：2E7261FD</span><br><span class="line">Real Media (rm)，文件头：2E524D46</span><br><span class="line">MPEG (mpg)，文件头：000001BA</span><br><span class="line">MPEG (mpg)，文件头：000001B3</span><br><span class="line">Quicktime (mov)，文件头：6D6F6F76</span><br><span class="line">Windows Media (asf)，文件头：3026B2758E66CF11</span><br><span class="line">MIDI (mid)，文件头：4D546864</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>由文件头校验，联想到.class的16进制文件头魔数<code>cafebebe</code>。</p>
+</li>
+</ol>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          moon zhou
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://moon-zhou.github.io/2020/07/31/20200731生产问题记录-XSS/" title="20200731生产问题记录-XSS" target="_blank">https://moon-zhou.github.io/2020/07/31/20200731生产问题记录-XSS/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        			<a href="/categories/问题记录//" class="article-tag-list-link color5">问题记录</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2020/07/31/20200731生产问题记录-XSS/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/23/Git学习-小白不能忍之二/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/05/生产问题：从setex异常看指令重排序问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">生产问题：从setex异常看指令重排序问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/23/Git学习-小白不能忍之二/">Git学习-小白不能忍之二</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#20200731生产问题记录-XSS"><span class="toc-number">1.</span> <span class="toc-text">20200731生产问题记录-XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题产生发现及处理过程"><span class="toc-number">1.1.</span> <span class="toc-text">问题产生发现及处理过程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#问题发现"><span class="toc-number">1.1.1.</span> <span class="toc-text">问题发现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#问题分析"><span class="toc-number">1.1.2.</span> <span class="toc-text">问题分析</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题修复"><span class="toc-number">1.2.</span> <span class="toc-text">问题修复</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他"><span class="toc-number">1.3.</span> <span class="toc-text">其他</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/23/Git学习-小白不能忍之一/" class="archive-article-date">
-        <time datetime="2019-06-23T09:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/23/Git学习-小白不能忍之一/">Git学习-小白不能忍之一</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/16/序列化/" class="archive-article-date">
-        <time datetime="2019-06-16T09:46:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/16/序列化/">序列化</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/02/傻瓜式学Vue-02一步一步小demo/" class="archive-article-date">
-        <time datetime="2019-06-02T14:25:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-02</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/02/傻瓜式学Vue-02一步一步小demo/">傻瓜式学Vue-02一步一步小demo</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Vue//" class="article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/06/02/傻瓜式学Vue-01搭建环境、初始化项目/" class="archive-article-date">
-        <time datetime="2019-06-02T14:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-02</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/06/02/傻瓜式学Vue-01搭建环境、初始化项目/">傻瓜式学Vue-01搭建环境、初始化项目</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Vue//" class="article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/05/18/web安全交流/" class="archive-article-date">
-        <time datetime="2019-05-18T14:59:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-18</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/05/18/web安全交流/">web安全交流</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/内部分享//" class="article-tag-list-link color5">内部分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/05/18/代码规范第二期 backup/" class="archive-article-date">
-        <time datetime="2019-05-18T14:58:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-18</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/05/18/代码规范第二期 backup/">代码规范第二期 backup</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/内部分享//" class="article-tag-list-link color5">内部分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/05/18/代码规范第二期分享/" class="archive-article-date">
-        <time datetime="2019-05-18T14:58:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-18</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/05/18/代码规范第二期分享/">代码规范第二期</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/内部分享//" class="article-tag-list-link color5">内部分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/05/18/使用hexo搭建个人博客--结合github/" class="archive-article-date">
-        <time datetime="2019-05-18T13:49:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-18</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/05/18/使用hexo搭建个人博客--结合github/">使用hexo搭建个人博客--结合github</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/HEXO//" class="article-tag-list-link color5">HEXO</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/6/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/8/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -659,8 +489,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
