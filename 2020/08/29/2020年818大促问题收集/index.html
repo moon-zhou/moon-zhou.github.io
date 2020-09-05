@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://moon-zhou.github.io/2020/08/29/2020年818大促问题收集/mfcs_cache_using.png">
 <meta property="og:image" content="https://moon-zhou.github.io/2020/08/29/2020年818大促问题收集/aps_yh_trending.png">
 <meta property="og:image" content="https://moon-zhou.github.io/2020/08/29/2020年818大促问题收集/aps_gx-yfb_trending.png">
-<meta property="og:updated_time" content="2020-09-05T12:41:10.157Z">
+<meta property="og:updated_time" content="2020-09-05T12:51:36.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2020年818大促问题收集">
 <meta name="twitter:description" content="2020年818大促问题收集会员问题一：EPPSMFCS系统（会员资金渠道服务系统） 问题描述  818之前，8.12号，mfcs系统redis内存使用超过50%告警   分析过程  从过期时间维度，分析redis缓存数据分布，其中38.78%的key是不设缓存过期时间，这部分数据无增长。  其余增长的部分比较平均，都是属于正常业务上的数据增加。结合818用户量增长情况，评估总量不会超过80%。">
@@ -250,6 +250,10 @@
 </li>
 </ol>
 </li>
+</ol>
+<a id="more"></a>
+
+<ol>
 <li><p>短期解决方案</p>
 <ol>
 <li>不做扩容处理</li>
