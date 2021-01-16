@@ -187,6 +187,198 @@
             
 
   
+    <article id="post-由JSONP引发的安全问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2020/06/20/由JSONP引发的安全问题/">由JSONP引发的安全问题</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2020/06/20/由JSONP引发的安全问题/" class="archive-article-date">
+        <time datetime="2020-06-20T01:09:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-20</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="由JSONP引发的安全问题"><a href="#由JSONP引发的安全问题" class="headerlink" title="由JSONP引发的安全问题"></a>由JSONP引发的安全问题</h3><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><ol>
+<li><p><a href="http://note.youdao.com/noteshare?id=24cf8f5d5c70a0fe81a8d7fdcaede0fd&sub=70727615C32C45C8BA73F3A6CA63419E" target="_blank" rel="noopener">跨域基本概念，什么是同源策略</a></p>
+</li>
+<li><p>由于html标签规范本身，以下标签加载资源时不受跨域限制，也就是下列标签是可以加载非同源的资源（get方式）。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;...&quot;&gt;`//加载图片到本地执行</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;...&quot;&gt; //图片</span><br><span class="line"></span><br><span class="line">&lt;link href=&quot;...&quot;&gt;//css</span><br><span class="line"></span><br><span class="line">&lt;iframe src=&quot;...&quot;&gt;//任意资源</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>由于不同系统使用不同域名，或者协议（不同端口造成不同源的情况很少，暂未遇到过），但是又经常需要通过http请求获取数据，因而都会遇到跨域问题。而获取数据，对获取的数据进行处理这个过程，结合跨越标签，与script的能力完美契合。因而使用script标签进行跨域的实现。</p>
+</li>
+<li><p>存在的问题：jsonp劫持</p>
+<ol>
+<li>分析网站请求/源码，找到jsonp请求。</li>
+<li>模拟jsonp，自定义回调，执行返回数据，如果请求返回里面包含敏感数据，就会出现数据泄露，即使不包含敏感数据，回调执行脚本时，依然存在xss问题。</li>
+</ol>
+</li>
+</ol>
+    
+    <a class="article-more-a" href="/2020/06/20/由JSONP引发的安全问题/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/问题记录//" class="article-tag-list-link color5">问题记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/06/20/由JSONP引发的安全问题/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-给这个烦躁且不安的五月的总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2020/05/31/给这个烦躁且不安的五月的总结/">给这个烦躁且不安的五月的总结</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2020/05/31/给这个烦躁且不安的五月的总结/" class="archive-article-date">
+        <time datetime="2020-05-31T01:09:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="给这个烦躁且不安的五月的总结"><a href="#给这个烦躁且不安的五月的总结" class="headerlink" title="给这个烦躁且不安的五月的总结"></a>给这个烦躁且不安的五月的总结</h3><h4 id="项目迭代"><a href="#项目迭代" class="headerlink" title="项目迭代"></a>项目迭代</h4><p>5月的迭代，前期还是并行了会员中心的业务，新建了会员权益前台系统。正常的迭代整体还算稳定，其他生产问题有穿插操作，搞了个生产问题。老的机器扩容，公网域名解析，接入waf存在问题，删除重做时，waf因为提示误解，直接把域名移除，导致域名无法正常访问。其中门户这块单独的有小伙伴去处理，也为我空余了一些时间。后面会继续扩大小伙伴们的日常工作范围，不局限于编码及日常的系统业务问题处理。小伙伴们需要更广大的事业及成长。</p>
+<h4 id="日常"><a href="#日常" class="headerlink" title="日常"></a>日常</h4><p>这个疫情，让原本的离职浪潮来的晚了一些，但是该来的终究还是会来的。从4月以来，已经走了不少人了。尤其是最近，人心浮动。论一个工作的最终目的，个人始终认为，总得有所图。工资，职位，前景，或多或少，总得占上。即使受疫情影响，经济不景气，也在最近跟随着炎热的天气，都在逐渐好转。起初的求稳，目前来看，也开始逐渐松动。我们小组也有小伙伴即将从这里毕业，踏入新的社会小学校。</p>
+<p>从整体来看，一直在优化外包小伙伴，同时部门组织结构的变更，有些东西，已经不是那么充满阳光了，终归还是笼罩了一些阴影。</p>
+<p>矛盾的日益凸显，加油，每一位小伙伴。</p>
+<p>祝愿每一个小伙伴都能有一个好的成长，收获。没有毕业的小伙伴，也好好学习。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/总结反思录//" class="article-tag-list-link color1">总结反思录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/05/31/给这个烦躁且不安的五月的总结/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2020年4月底迭代回顾" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -974,189 +1166,6 @@
 
 
   
-    <article id="post-创建者-Builder" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/01/04/创建者-Builder/">创建者-Builder</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/01/04/创建者-Builder/" class="archive-article-date">
-        <time datetime="2020-01-04T06:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><pre><code>刷设计模式</code></pre>
-    
-    <a class="article-more-a" href="/2020/01/04/创建者-Builder/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计模式//" class="article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/01/04/创建者-Builder/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-模板模式-Template Method" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/12/29/模板模式-Template Method/">模板模式-Template Method</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/12/29/模板模式-Template Method/" class="archive-article-date">
-        <time datetime="2019-12-29T13:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ol>
-<li>刷设计模式</li>
-<li>现有系统里多处使用到，特此总结</li>
-</ol>
-<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ol>
-<li>官方：模板模式（Template Method Pattern），又可叫模板方法，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。</li>
-<li>方言：模板方法里定义具体的操作流程或步骤，其中部分或者全部延迟到子类进行实现。</li>
-</ol>
-    
-    <a class="article-more-a" href="/2019/12/29/模板模式-Template Method/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计模式//" class="article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/12/29/模板模式-Template Method/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1171,7 +1180,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017-2020 moon zhou
+    		&copy; 2017-2021 moon zhou
     	</div>
       	<div class="footer-right">
 			
