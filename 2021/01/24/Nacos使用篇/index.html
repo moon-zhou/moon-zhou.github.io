@@ -6,20 +6,43 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://moon-zhou.github.io">
-  <title>Archives: 2019/5 | 弦 博客</title>
+  <title>nacos使用篇 | 弦 博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="never stop">
-<meta property="og:type" content="website">
-<meta property="og:title" content="弦 博客">
-<meta property="og:url" content="https://moon-zhou.github.io/archives/2019/05/index.html">
+  <meta name="description" content="nacos使用篇概览英文全称Dynamic Naming and Configuration Service，Na为naming/nameServer即注册中心,co为configuration即注册中心，service是指该注册/配置中心都是以服务为核心。服务在nacos是一等公民 Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nacos使用篇">
+<meta property="og:url" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/index.html">
 <meta property="og:site_name" content="弦 博客">
-<meta property="og:description" content="never stop">
+<meta property="og:description" content="nacos使用篇概览英文全称Dynamic Naming and Configuration Service，Na为naming/nameServer即注册中心,co为configuration即注册中心，service是指该注册/配置中心都是以服务为核心。服务在nacos是一等公民 Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosMap.jpg">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosRun.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosFunction.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosFunctionAdmin.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/normalConfiguration.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/normalConfOperation.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/acmConfOperation.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosAcmArchitecture.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosConfPrinciple.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosConfNotion.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosConfigServer1.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosConfigServer2.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosSpringConfigTomcatStart1.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosSpringConfigTomcatStart2.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosSpringConfigTomcatStart3.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosSpringConfigTomcatStart4.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosRegistrySketchMap.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosComponentVerionDependency.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosDiscoveryDemo.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosConsumerCodeDemo.png">
+<meta property="og:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosConsumerDemo.png">
+<meta property="og:updated_time" content="2021-01-24T13:27:32.641Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦 博客">
-<meta name="twitter:description" content="never stop">
+<meta name="twitter:title" content="nacos使用篇">
+<meta name="twitter:description" content="nacos使用篇概览英文全称Dynamic Naming and Configuration Service，Na为naming/nameServer即注册中心,co为configuration即注册中心，service是指该注册/配置中心都是以服务为核心。服务在nacos是一等公民 Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现">
+<meta name="twitter:image" content="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/nacosMap.jpg">
   
     <link rel="alternative" href="/atom.xml" title="弦 博客" type="application/atom+xml">
   
@@ -181,194 +204,541 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Nacos使用篇" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/05/18/web安全交流/" class="archive-article-date">
-        <time datetime="2019-05-18T14:59:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-18</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/05/18/web安全交流/">web安全交流</a>
-	
+    <h1 class="article-title" itemprop="name">
+      nacos使用篇
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
+  
+  
+<a href="/2021/01/24/Nacos使用篇/" class="archive-article-date">
+        <time datetime="2021-01-24T06:00:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">4.8k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">19分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="nacos使用篇"><a href="#nacos使用篇" class="headerlink" title="nacos使用篇"></a>nacos使用篇</h2><h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><p>英文全称Dynamic Naming and Configuration Service，Na为naming/nameServer即注册中心,co为configuration即注册中心，service是指该注册/配置中心都是以服务为核心。服务在nacos是一等公民</p>
+<p>Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。</p>
+<p>nacos脑图：<br><img src="/2021/01/24/Nacos使用篇/nacosMap.jpg" alt="nacosMap"></p>
+<a id="more"></a>
+
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><ol>
+<li><p>从 Github 上下载源码方式</p>
+ <figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/alibaba/nacos.git</span><br><span class="line">cd nacos/</span><br><span class="line">mvn -Prelease-nacos -Dmaven.test.skip=true clean install -U  </span><br><span class="line">ls -al distribution/target/</span><br><span class="line"></span><br><span class="line">// change the $version to your actual path</span><br><span class="line">cd distribution/target/nacos-server-$version/nacos/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载编译后压缩包方式</p>
+<p> 您可以从 <a href="https://github.com/alibaba/nacos/releases" target="_blank" rel="noopener">最新稳定版本</a> 下载 nacos-server-$version.zip 包。</p>
+ <figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unzip nacos-server-$version.zip 或者 tar -xvf nacos-server-$version.tar.gz</span><br><span class="line">cd nacos/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动服务器<br> Linux/Unix/Mac<br> 启动命令(standalone代表着单机模式运行，非集群模式):</p>
+<p> <code>sh startup.sh -m standalone</code></p>
+<p> 如果您使用的是ubuntu系统，或者运行脚本报错提示[[符号找不到，可尝试如下运行：</p>
+<p> bash startup.sh -m standalone</p>
+<p> Windows<br> 启动命令(standalone代表着单机模式运行，非集群模式):</p>
+<p> <code>cmd startup.cmd -m standalone</code></p>
+<p> 或者下载源码后，不编译，直接运行源码工程启动也可以：<code>com.alibaba.nacos.Nacos</code><br> <img src="/2021/01/24/Nacos使用篇/nacosRun.png" alt="nacos run"></p>
+</li>
+<li><p>启动过程注意点</p>
+<ol>
+<li><p>环境准备要严格，因为开发任务使用到的工具需要32位jdk，我修改了环境变量，所以导致启动后无法访问管理系统的情况。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Nacos 依赖 Java 环境来运行。如果您是从代码开始构建并运行Nacos，还需要为此配置 Maven环境，请确保是在以下版本环境中安装使用:</span><br><span class="line"></span><br><span class="line">64 bit OS，支持 Linux/Unix/Mac/Windows，推荐选用 Linux/Unix/Mac。</span><br><span class="line">64 bit JDK 1.8+；下载 &amp; 配置。</span><br><span class="line">Maven 3.2.x+；下载 &amp; 配置。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动过程比较慢，出现以下信息，表示完全启动成功，访问控制台的地址：<a href="http://192.168.1.6:8848/nacos/index.html" target="_blank" rel="noopener">http://192.168.1.6:8848/nacos/index.html</a></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2020-12-13 22:04:12,368 INFO Nacos started successfully in stand alone mode. use embedded storage</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>jdk环境变量设置问题</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">因为windows下，JDK8之后默认创建了一个相关命令的快捷方式文件夹：C:\Program Files (x86)\Common Files\Oracle\Java\javapath</span><br><span class="line">并且将该目录给设置了在了环境变量最前面，如果多JDK安装时，则需要注意了，该文件夹和环境变量里的配置都可以删除。</span><br><span class="line">直接使用最原始的%JAVA_HOME%配置，因为很多依赖JDK的程序都会默认找这个环境变量，最稳妥的环境变量设置方式。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="nacos功能"><a href="#nacos功能" class="headerlink" title="nacos功能"></a>nacos功能</h3><ol>
+<li>分布式配置中心：该功能对应ACM。严格意义上的ACM和nacos还是有区别的，本文不做区分，主要侧重分布式配置上的功能性上。</li>
+<li>服务注册与发现：该功能对应企业级分布式应用服务EDAS中的注册中心。</li>
+</ol>
+<h3 id="Nacos-Server功能拆分部署"><a href="#Nacos-Server功能拆分部署" class="headerlink" title="Nacos Server功能拆分部署"></a>Nacos Server功能拆分部署</h3><h4 id="为什么要拆分部署"><a href="#为什么要拆分部署" class="headerlink" title="为什么要拆分部署"></a>为什么要拆分部署</h4><p>一般公司随着业务规模的不断膨胀，我们建议业务对注册中心和配置中心进行拆分部署，在Nacos 0.9.0版本以后，支持注册中心模块和配置中心模块的拆分部署，在启动命令进行加入参数，来指定启动指定Nacos 功能模块，默认全部功能启用，目前支持指定配置中心模块和注册中心模块。</p>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>启动Nacos server时候，增加-f参数，意思是function mode，和对应模块标示来进行启动，如果不传，或者传入有误，都将启动全部功能。 配置中心参数对应config，注册中心参数对应naming。</p>
+<h4 id="启动命令"><a href="#启动命令" class="headerlink" title="启动命令"></a>启动命令</h4><p><code>startup.cmd -m standalone -f naming</code><br><img src="/2021/01/24/Nacos使用篇/nacosFunction.png" alt="nacos function"><br><img src="/2021/01/24/Nacos使用篇/nacosFunctionAdmin.png" alt="nacos function admin"></p>
+<h3 id="修改存储数据源"><a href="#修改存储数据源" class="headerlink" title="修改存储数据源"></a>修改存储数据源</h3><p>切换数据源，默认使用derby存储数据，修改为使用单独部署的Mysql存储数据</p>
+<ol>
+<li><p>创建数据库</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> nacos <span class="keyword">default</span> <span class="keyword">charset</span> utf8 <span class="keyword">collate</span> utf8_general_ci;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建表：执行自带的脚本，${nacos_install_dir}/conf/nacos-mysql.sql</p>
+</li>
+<li><p>运行时发现有版本要求，1.0.0RC3还是只能使用Mysql5，从源码里的mysql-connector-java依赖版本可以看出，Mysql8启动直接报错。</p>
+</li>
+<li><p>下载最新的开发分支代码，2.0.0，发现mysql-connector-java版本为8+，直接使用功能mvn打出使用包，修改相关配置，启动即可。需要注意的是时区不能写错<code>serverTimezone=GMT%2B8</code>，否则也连接不上，和不支持Mysql8的现象一样，易被误导，不容易找到原因。</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换独立Mysql数据库存储配置信息</span></span><br><span class="line">spring.datasource.platform=mysql</span><br><span class="line">db.num=1</span><br><span class="line">db.url.0=jdbc:mysql://127.0.0.1:3306/nacos?characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;useUnicode=true&amp;useSSL=false&amp;serverTimezone=GMT%2B8</span><br><span class="line">db.user=root</span><br><span class="line">db.password=root</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="服务集群配置"><a href="#服务集群配置" class="headerlink" title="服务集群配置"></a>服务集群配置</h3><p>TODO</p>
+<h3 id="配置中心-ACM-Application-Configuration-Management"><a href="#配置中心-ACM-Application-Configuration-Management" class="headerlink" title="配置中心(ACM-Application Configuration Management)"></a>配置中心(ACM-Application Configuration Management)</h3><p>分布式架构环境中对应用配置进行集中管理和推送的管理服务系统。<br>凭借配置变更、配置推送、历史版本管理、灰度发布、配置变更审计等配置管理工具，集中管理所有应用环境中的配置，降低分布式系统中管理配置的成本，并降低因错误的配置变更造成可用性下降甚至发生故障的风险。</p>
+<p>传统配置，以Spring体系为例，通常都配置到application.properties里，通过注解或者其他方式进行使用，一旦涉及配置变更，往往需要登录服务器，修改配置后重新启动服务刷新配置。<br>如果机器管理严格的话，往往无法直接访问服务器，需要联系运维操作，流程更是繁琐。如果是集群部署，则需要每一台配置都需要手动修改。或者借助发布平台重新修改代码提交发布包批量发布。<br><img src="/2021/01/24/Nacos使用篇/normalConfiguration.png" alt="normal configuration"><br><img src="/2021/01/24/Nacos使用篇/normalConfOperation.png" alt="normal conf operation"></p>
+<p>在ACM的配置管理场景下，只需要在ACM控制台上更改配置，配置信息就会自动被推送到各个服务器中，并在数秒内生效。<br><img src="/2021/01/24/Nacos使用篇/acmConfOperation.png" alt="acm conf operation"></p>
+<h4 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h4><p>ACM产品包括三个主要部分：客户端、后端服务器集群和用于配置管理的控制台。<br><img src="/2021/01/24/Nacos使用篇/nacosAcmArchitecture.png" alt="nacos architecture"></p>
+<p>原理：<br><img src="/2021/01/24/Nacos使用篇/nacosConfPrinciple.png" alt="nocos conf principle"></p>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><p>建议配置需要频繁变更或者需要动态修改的配置，与传统配置结合使用。当然传统配置和ACM配置有一个使用的大背景，就是有环境区分。<br>一般不区分环境的变更直接使用常量即可。</p>
+<table>
+<thead>
+<tr>
+<th>配置方式</th>
+<th>使用场景</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>传统配置</td>
+<td>固定配置，几乎不会变更的配置</td>
+<td>短信模板ID</td>
+</tr>
+<tr>
+<td>ACM配置</td>
+<td>动态修改，频繁变更</td>
+<td>降级开关(大促、上线重大功能)，非法字符，XSS规则-经常出现变种</td>
+</tr>
+</tbody></table>
+<h4 id="ACM价值-优点"><a href="#ACM价值-优点" class="headerlink" title="ACM价值/优点"></a>ACM价值/优点</h4><ol>
+<li>集中管理所有配置，在应用众多的情况下配置管理变得更加方便。</li>
+<li>所有配置不依赖版本发布，使配置更新变得更加灵活。</li>
+<li>更新的配置秒级自动下发到各客户端，降低配置手动分发的工作量。</li>
+<li>通过接入ACM配置监听接口，各应用中的客户端的配置可立即生效，无需重启应用。</li>
+<li>所有配置监听、更改和版本信息自动记录在案，增强了审计、版本管理和诊断等方面的能力。</li>
+<li>支持灰度发布和回滚，使得配置的变更发布在微服务架构下变得更加安全。</li>
+</ol>
+<h4 id="ACM实现的核心"><a href="#ACM实现的核心" class="headerlink" title="ACM实现的核心"></a>ACM实现的核心</h4><h5 id="配置监听"><a href="#配置监听" class="headerlink" title="配置监听"></a>配置监听</h5><p>实时变更：ACM允许系统通过使用SDK等方式向ACM系统注册监听器（Listener），从而监听并消费该配置的变更。</p>
+<h5 id="高可用"><a href="#高可用" class="headerlink" title="高可用"></a>高可用</h5><p>配置快照：客户端SDK会在本地生成配置的快照。当客户端无法连接到ACM Server时，可以利用快照提供系统的整体容灾能力。配置快照类似于Git中的本地commit的概念，也类似缓存，会在适当的时机更新，但是没有缓存过期（expire）的概念。</p>
+<h4 id="核心概念-关键词"><a href="#核心概念-关键词" class="headerlink" title="核心概念/关键词"></a>核心概念/关键词</h4><h5 id="命名空间（Namespace）"><a href="#命名空间（Namespace）" class="headerlink" title="命名空间（Namespace）"></a>命名空间（Namespace）</h5><p>用于进行租户粒度的配置隔离。不同的命名空间下，可以存在相同的Group，Data ID的配置。</p>
+<p>Namespace的常用场景之一是不同环境的配置的区分隔离，如开发测试环境和生产环境的配置隔离等。</p>
+<h5 id="配置分组（Group）"><a href="#配置分组（Group）" class="headerlink" title="配置分组（Group）"></a>配置分组（Group）</h5><p>使用一个有意义的字符串来分组配置集，例如Buy，Trade等，用以区分相同Data ID的配置集。ACM创建配置时，如果用户未填Group名字，则默认用DEFAULT_GROUP代替。</p>
+<p>Group的常用场景是同一个配置类型用于不同应用/系统/组件，如database_url配置，MQ_topic配置等。</p>
+<h5 id="配置集ID（Data-ID）"><a href="#配置集ID（Data-ID）" class="headerlink" title="配置集ID（Data ID）"></a>配置集ID（Data ID）</h5><p>通过Data ID来组织划分系统的配置集。一个系统或者应用可以包含多个配置集，每个配置集可以用有意义的名称来标识这个配置集。<strong>个人理解就是等同于配置文件。</strong></p>
+<p>使用场景一般是应用类具有相似属性或者维度的配置，比如日志的配置文件，redis的配置文件等，一般一个应用的配置文件有限，一目了然，不会配置成一样的，也不允许。当然也可以使用官方所说的配置规则，个人认为没必要，因为本身已经通过Group（系统/应用）进行区分了，那样反而不易读。</p>
+<blockquote>
+<p>Data ID通常采用类Java包命名方式（如com.taobao.tc.refund.log.level）的命名规则保证全局唯一性，此命名规则非强制。</p>
+</blockquote>
+<p>示例：<br><img src="/2021/01/24/Nacos使用篇/nacosConfNotion.png" alt="nocos conf notion"></p>
+<h4 id="学习关键点"><a href="#学习关键点" class="headerlink" title="学习关键点"></a>学习关键点</h4><ol>
+<li><p>必要软件下载，配置环境搭建</p>
+</li>
+<li><p>使用配置功能，了解核心概念</p>
+</li>
+<li><p>客户端代码学习</p>
+<ol>
+<li><p>简单客户单使用示例，读取配置内容。<code>org.moonzhou.alibaba.learning.nacos.NacosClient001</code></p>
+</li>
+<li><p>读取配置内容，同时添加监听服务端修改。<code>org.moonzhou.alibaba.learning.nacos.NacosClient002</code></p>
+</li>
+<li><p>添加监听读取配置内容，同时监听也可以被移除，移除后无法监听配置的修改。<code>org.moonzhou.alibaba.learning.nacos.NacosClient003</code></p>
+</li>
+<li><p>发布配置：通过程序自动发布 Nacos 配置，以便通过自动化手段降低运维成本。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 创建和修改配置时使用的同一个发布接口，当配置不存在时会创建配置，当配置已存在时会更新配置。</span><br><span class="line"># 注意指定类型在后台管理界面上，没有显示出指定的类型</span><br><span class="line"># 读取配置超时或网络异常，抛出 NacosException 异常。</span><br><span class="line">org.moonzhou.alibaba.learning.nacos.NacosClient004</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除配置：通过程序自动删除 Nacos 配置，以便通过自动化手段降低运维成本。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 当配置已存在时会删除该配置，当配置不存在时会直接返回成功消息。</span><br><span class="line">org.moonzhou.alibaba.learning.nacos.NacosClient005</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组合示例：<code>org.moonzhou.alibaba.learning.nacos.NacosExample</code></p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="spring-cloud-示例"><a href="#spring-cloud-示例" class="headerlink" title="spring cloud 示例"></a>spring cloud 示例</h4><ol>
+<li><p>添加依赖：注意点仍然是版本对应，<a href="https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E" target="_blank" rel="noopener">官方版本说明wiki</a></p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件bootstrap.yml，配置 Nacos server 的地址和应用名</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">8090</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  application:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">moon-nacos-spring-cloud-config-demo</span></span><br><span class="line"><span class="attr">  cloud:</span></span><br><span class="line"><span class="attr">    nacos:</span></span><br><span class="line"><span class="attr">      config:</span></span><br><span class="line"><span class="attr">        prefix:</span> <span class="string">moon-nacos-config</span></span><br><span class="line"><span class="attr">        server-addr:</span> <span class="number">192.168</span><span class="number">.85</span><span class="number">.1</span><span class="string">:8848</span> <span class="comment"># 配置中心地址</span></span><br><span class="line"><span class="attr">        file-extension:</span> <span class="string">yaml</span></span><br></pre></td></tr></table></figure>
+
+<p> 需要注意的是，dataId的规则格式：<code>${prefix}-${spring.profiles.active}.${file-extension}</code></p>
+<ul>
+<li>prefix 默认为 spring.application.name 的值，也可以通过配置项 spring.cloud.nacos.config.prefix来配置。</li>
+<li>spring.profiles.active 即为当前环境对应的 profile，详情可以参考 Spring Boot文档。 注意：当 spring.profiles.active 为空时，对应的连接符 - 也将不存在，dataId 的拼接格式变成 ${prefix}.${file-extension}</li>
+<li>file-exetension 为配置内容的数据格式，可以通过配置项 spring.cloud.nacos.config.file-extension 来配置。目前只支持 properties 和 yaml 类型。</li>
+</ul>
+</li>
+<li><p>通过 Spring Cloud 原生注解 @RefreshScope 实现配置自动更新</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/config"</span>)</span><br><span class="line"><span class="meta">@RefreshScope</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 对应nacos server里的配置内容，yml格式的</span></span><br><span class="line"><span class="comment">     * dataId： &lt;code&gt;$&#123;prefix&#125;-$&#123;spring.profiles.active&#125;.$&#123;file-extension&#125;&lt;/code&gt;</span></span><br><span class="line"><span class="comment">     *     prefix 默认为 spring.application.name 的值，也可以通过配置项 spring.cloud.nacos.config.prefix来配置。</span></span><br><span class="line"><span class="comment">     * group: DEFAULT_GROUP</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * RefreshScope自动刷新，监听服务端的配置修改</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;useLocalCache:false&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> useLocalCache;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * http://localhost:8090/config/get</span></span><br><span class="line"><span class="comment">     * http://192.168.1.6/:8090/config/get</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/get"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> useLocalCache;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <img src="/2021/01/24/Nacos使用篇/nacosConfigServer1.png" alt="nacos config"><br> <img src="/2021/01/24/Nacos使用篇/nacosConfigServer2.png" alt="nacos config"></p>
+</li>
+<li><p>其他配置：<a href="https://spring-cloud-alibaba-group.github.io/github-pages/hoxton/en-us/index.html#_support_custom_namespaces" target="_blank" rel="noopener">官网</a></p>
+<ul>
+<li>Support Custom Namespaces: <code>spring.cloud.nacos.config.namespace</code></li>
+<li>Support Custom Groups: <code>spring.cloud.nacos.config.group</code></li>
+<li>Support Custom Data Id  <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># config external configuration</span></span><br><span class="line"><span class="comment"># 1. Data Id is in the default group of DEFAULT_GROUP, and dynamic refresh of configurations is not supported.</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.ext-config[0].data-id</span>=<span class="string">ext-config-common01.properties</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Data Id is not in the default group, and dynamic refresh of configurations is not supported.</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.ext-config[1].data-id</span>=<span class="string">ext-config-common02.properties</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.ext-config[1].group</span>=<span class="string">GLOBALE_GROUP</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. Data Id is not in the default group and dynamic referesh of configurations is supported.</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.ext-config[2].data-id</span>=<span class="string">ext-config-common03.properties</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.ext-config[2].group</span>=<span class="string">REFRESH_GROUP</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.ext-config[2].refresh</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="spring-boot-示例"><a href="#spring-boot-示例" class="headerlink" title="spring boot 示例"></a>spring boot 示例</h4><p>总体步骤和spring cloud示例类似，参考<a href="https://nacos.io/zh-cn/docs/quick-start-spring-boot.html" target="_blank" rel="noopener">官方说明文档</a></p>
+<p>注意点：</p>
+<ol>
+<li><p>使用<code>@NacosPropertySource</code>关联服务端配置的dataId/group等</p>
+</li>
+<li><p>如果有多个配置文件，可以使用多个<code>@NacosPropertySource</code>进行配置，多个配置文件可以放在一个配置类上</p>
+</li>
+<li><p>最佳实践中，每个<code>@NacosPropertySource</code>对应独立的配置类，使用<code>@NacosValue</code>注入到封装类的属性值上，需要注意的是类注解只能使用<code>@Component</code>，使用<code>@Configuration</code>在其他类注入使用时，无法进行动态刷新。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最佳实践类：org.moonzhou.alibaba.learning.nacos.spring.boot.config.config.NacosServerUserConfig</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>服务注册和发现单独再springboot里使用不够优雅，还是需要结合springcloud的大生态进行集成。</p>
+</li>
+</ol>
+<h4 id="spring-示例"><a href="#spring-示例" class="headerlink" title="spring 示例"></a>spring 示例</h4><ol>
+<li><p>单独使用springMVC(详细代码可见最后)</p>
+<ol>
+<li><p>使用maven创建webapp</p>
+</li>
+<li><p>引入需要的依赖，此处只需要引入springMVC和nacos，因为是简单的小示例，只涉及web层。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.nacos&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;nacos-spring-context&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置简化的web.xml，只配置和springMVC相关的，不使用spring管理上下文，不需要配置<code>ContextLoaderListener</code></p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatcherServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatcherServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置监听：<code>@EnableNacosConfig</code>和<code>@NacosPropertySource</code></p>
+<blockquote>
+<p>需要注意的是需要指明nacos-server上配置文件的文件类型，默认是dataId里带上，如moon-nacos-config.yaml，或者使用单独的配置，readConfigTypeFromDataId=false后，使用ConfigType.YAML来进行配置</p>
+</blockquote>
+</li>
+<li><p>使用：<code>@NacosInjected</code>和<code>@NacosValue</code></p>
+</li>
+<li><p>启动测试，需要使用指定外部web容器，无法像springboot工程直接启动。如果在IDEA里出现编译报错的情况，执行<code>mvn idea:idea</code>后再进行下面的操作<br><img src="/2021/01/24/Nacos使用篇/nacosSpringConfigTomcatStart1.png" alt="nacos spring config start1"><br><img src="/2021/01/24/Nacos使用篇/nacosSpringConfigTomcatStart2.png" alt="nacos spring config start2"><br><img src="/2021/01/24/Nacos使用篇/nacosSpringConfigTomcatStart3.png" alt="nacos spring config start3"><br><img src="/2021/01/24/Nacos使用篇/nacosSpringConfigTomcatStart4.png" alt="nacos spring config start4"></p>
+</li>
+<li><p>注意点</p>
+<ol>
+<li><p>使用了springMVC而未使用ContextLoaderListener，只定义DispatcherServlet，没有显示配置contextConfigLocation参数的话，Spring会到该默认路径下加载配置文件”WEB-INF/dispatcherServlet-servlet.xml”, 如果不存在就报异常。</p>
+</li>
+<li><p>字段映射<code>@NacosProperty</code>和字段忽略监听<code>@NacosIgnore</code></p>
+</li>
+<li><p>优秀实践<code>NacosConfigurationProperties</code>进行封装</p>
+</li>
+<li><p>使用监听方式，<code>@NacosConfigListener</code>，更灵活，监听到nacos server配置变更后，根据自己需要进行一些额外操作。</p>
+<blockquote>
+<p>nacos-spring-context在升级过程中，也进行了去fastjson，改使用jackson</p>
+</blockquote>
+</li>
+<li><p>组件的典型使用等：数据源配置</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="注册中心"><a href="#注册中心" class="headerlink" title="注册中心"></a>注册中心</h3><h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>以Java nacos client v1.0.1 为例子，服务注册的策略的是每5秒向nacos server发送一次心跳，心跳带上了服务名，服务ip，服务端口等信息。同时 nacos server也会向client 主动发起健康检查，支持tcp/http检查。如果15秒内无心跳且健康检查失败则认为实例不健康，如果30秒内健康检查失败则剔除实例。</p>
+<p>原理示意图：<br><img src="/2021/01/24/Nacos使用篇/nacosRegistrySketchMap.png" alt="nacos registry"></p>
+<h4 id="实例操作步骤"><a href="#实例操作步骤" class="headerlink" title="实例操作步骤"></a>实例操作步骤</h4><ol>
+<li>启动nacos服务</li>
+<li>搭建服务提供方，将服务注册到nacos服务里<ul>
+<li>示例:<ul>
+<li>spring cloud: <code>nacos-spring-cloud/nacos-spring-cloud-discovery/nacos-spring-cloud-provider</code></li>
+</ul>
+</li>
+<li>注意点：springboot-springcloud-springcloud alibaba的版本需要按照规则引入，否则服务无法注册。<a href="https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E" target="_blank" rel="noopener">官方版本说明wiki</a><br>  <img src="/2021/01/24/Nacos使用篇/nacosComponentVerionDependency.png" alt="nacos springboot springcloud version"></li>
+</ul>
+</li>
+<li>搭建服务消费方，将消费方注册到nacos服务里<ul>
+<li>示例：<ul>
+<li>spring cloud: <code>nacos-spring-cloud/nacos-spring-cloud-discovery/nacos-spring-cloud-consumer</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>均在nacos服务配置中心注册成功后，可以直接调用消费方对外提供的http接口，消费方通过注册服务直接调用到服务提供方。   <ul>
+<li>注册成功<br>  <img src="/2021/01/24/Nacos使用篇/nacosDiscoveryDemo.png" alt="nacos discovery demo"></li>
+<li>调用示例<br>  <img src="/2021/01/24/Nacos使用篇/nacosConsumerCodeDemo.png" alt="nacos consumer code demo"></li>
+<li>调用成功<br>  <img src="/2021/01/24/Nacos使用篇/nacosConsumerDemo.png" alt="nacos consumer demo"></li>
+</ul>
+</li>
+<li>如果是使用springboot或者springMVC，需要单独写服务注册的逻辑(详见springboot/spring示例)<ul>
+<li>springboot通过<code>CommandLineRunner</code></li>
+<li>springMVC通过<code>ApplicationListener</code>或者<code>@PostConstruct</code></li>
+</ul>
+</li>
+<li>在cloud技术栈里使用，更加便捷</li>
+</ol>
+<h3 id="目录说明"><a href="#目录说明" class="headerlink" title="目录说明"></a>目录说明</h3><ol>
+<li><code>img文件夹</code>：存储markdown文件所使用的到的图片</li>
+<li><code>nacosConf</code>：nacos上配置的示例，配合代码使用。直接导入后，可直接运行各个示例代码。</li>
+<li><code>script文件夹</code>：存储使用到的一些脚本，方便开发过程使用<ol>
+<li><code>start nacos.bat</code>：启动nacos服务需要进入nacos的安装目录，执行对应的脚本，直接将这个过程脚本化，放在桌面，减少操作路径。可自行根据需要修改nacos服务安装目录。</li>
+<li><code>set jdk 1.8.bat</code>:windows下切换jdk脚本，因为同时使用到不同的jdk依赖，修改操作路径脚本化。</li>
+<li><code>mysql.bat</code>：windows下启动mysql服务以及对应的客户端连接工具批处理命令，因为为了提高windows运行性能，mysql服务通常设置为手动启动，而且手动开启时需要到服务里查找，步骤较多。因此通过脚本简化操作步骤。</li>
+</ol>
+</li>
+<li>src为正常nacos示例的java代码，使用功能maven构建。</li>
+</ol>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a href="http://nacos.io" target="_blank" rel="noopener">官方网址</a></li>
+<li><a href="https://help.aliyun.com/document_detail/59953.html?spm=a2c4g.11186623.6.542.7d4f24c7KLV05q" target="_blank" rel="noopener">应用配置管理 ACM
+</a></li>
+<li><a href="https://www.jianshu.com/p/39ade28c150d" target="_blank" rel="noopener">什么是Nacos？Nacos注册配置中心介绍</a></li>
+<li><a href="https://nacos.io/en-us/blog/nacos0.9.0.html" target="_blank" rel="noopener">Nacos 0.9.0 发布，稳定的快速迭代</a></li>
+<li><a href="https://github.com/nacos-group/nacos-examples.git" target="_blank" rel="noopener">nacos使用demo</a></li>
+<li><a href="https://www.cnblogs.com/xuweiweiwoaini/p/13858963.html" target="_blank" rel="noopener">服务注册和配置中心Nacos</a></li>
+<li><a href="https://www.cnblogs.com/stonefeng/p/5746857.html" target="_blank" rel="noopener">Spring contextConfigLocation默认加载文件的位置</a></li>
+</ol>
+<h3 id="问题待解决及计划"><a href="#问题待解决及计划" class="headerlink" title="问题待解决及计划"></a>问题待解决及计划</h3><ol>
+<li><p>完成配置中心功能。</p>
+<ol>
+<li>读取服务端配置（done）</li>
+<li>添加监听（done）</li>
+<li>发布和删除配置服务（done）</li>
+</ol>
+</li>
+<li><p>nacos源码部分依赖无法通过maven下载，初步分析和maven镜像有关，后续再分析解决。</p>
+<blockquote>
+<p>已解决，maven配置问题，因为settings.xml配置过多，未一一查找，直接使用公司maven仓库可以下载全量用到的jar包。</p>
+</blockquote>
+</li>
+<li><p>服务集群配置（伪集群）</p>
+</li>
+<li><p>不能使用dispatcherServlet-servlet.xml,必须使用dispatcher-servlet（TODO-分析spring启动过程）</p>
+</li>
+<li><p>配置中心里提取log配置，实现动态修改日志级别等示例的实现（TODO）</p>
+</li>
+<li><p>服务注册</p>
+<ol>
+<li>spring cloud 示例（done）</li>
+<li>spring boot 示例（done）</li>
+<li>spring 示例（done）</li>
+</ol>
+</li>
+<li><p>服务配置</p>
+<ol>
+<li>spring cloud 示例（done）</li>
+<li>spring boot 示例（done）</li>
+<li>spring 示例（done）</li>
+</ol>
+</li>
+</ol>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><ol>
+<li><a href="https://github.com/moon-zhou/alibaba/tree/main/nacos" target="_blank" rel="noopener">nacos Java示例</a></li>
+<li><a href="https://github.com/moon-zhou/alibaba/tree/main/nacos-spring" target="_blank" rel="noopener">nacos sring示例</a></li>
+<li><a href="https://github.com/moon-zhou/alibaba/tree/main/nacos-spring-boot" target="_blank" rel="noopener">nacos spring boot 示例</a></li>
+<li><a href="https://github.com/moon-zhou/alibaba/tree/main/nacos-spring-cloud" target="_blank" rel="noopener">nacos spring cloud 示例</a></li>
+</ol>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          moon zhou
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://moon-zhou.github.io/2021/01/24/Nacos使用篇/" title="nacos使用篇" target="_blank">https://moon-zhou.github.io/2021/01/24/Nacos使用篇/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/内部分享//" class="article-tag-list-link color5">内部分享</a>
+        			<a href="/categories/分布式技术栈//" class="article-tag-list-link color2">分布式技术栈</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://moon-zhou.github.io/2021/01/24/Nacos使用篇/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/05/18/代码规范第二期分享/" class="archive-article-date">
-        <time datetime="2019-05-18T14:58:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-18</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/16/Struts升级记录/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Struts升级记录</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/05/18/代码规范第二期分享/">代码规范第二期</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/内部分享//" class="article-tag-list-link color5">内部分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nacos使用篇"><span class="toc-number">1.</span> <span class="toc-text">nacos使用篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概览"><span class="toc-number">1.1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方式"><span class="toc-number">1.2.</span> <span class="toc-text">使用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nacos功能"><span class="toc-number">1.3.</span> <span class="toc-text">nacos功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nacos-Server功能拆分部署"><span class="toc-number">1.4.</span> <span class="toc-text">Nacos Server功能拆分部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么要拆分部署"><span class="toc-number">1.4.1.</span> <span class="toc-text">为什么要拆分部署</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用方法"><span class="toc-number">1.4.2.</span> <span class="toc-text">使用方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动命令"><span class="toc-number">1.4.3.</span> <span class="toc-text">启动命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改存储数据源"><span class="toc-number">1.5.</span> <span class="toc-text">修改存储数据源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务集群配置"><span class="toc-number">1.6.</span> <span class="toc-text">服务集群配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置中心-ACM-Application-Configuration-Management"><span class="toc-number">1.7.</span> <span class="toc-text">配置中心(ACM-Application Configuration Management)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#系统架构"><span class="toc-number">1.7.1.</span> <span class="toc-text">系统架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用场景"><span class="toc-number">1.7.2.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ACM价值-优点"><span class="toc-number">1.7.3.</span> <span class="toc-text">ACM价值/优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ACM实现的核心"><span class="toc-number">1.7.4.</span> <span class="toc-text">ACM实现的核心</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#配置监听"><span class="toc-number">1.7.4.1.</span> <span class="toc-text">配置监听</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#高可用"><span class="toc-number">1.7.4.2.</span> <span class="toc-text">高可用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#核心概念-关键词"><span class="toc-number">1.7.5.</span> <span class="toc-text">核心概念/关键词</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#命名空间（Namespace）"><span class="toc-number">1.7.5.1.</span> <span class="toc-text">命名空间（Namespace）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#配置分组（Group）"><span class="toc-number">1.7.5.2.</span> <span class="toc-text">配置分组（Group）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#配置集ID（Data-ID）"><span class="toc-number">1.7.5.3.</span> <span class="toc-text">配置集ID（Data ID）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#学习关键点"><span class="toc-number">1.7.6.</span> <span class="toc-text">学习关键点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-cloud-示例"><span class="toc-number">1.7.7.</span> <span class="toc-text">spring cloud 示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-示例"><span class="toc-number">1.7.8.</span> <span class="toc-text">spring boot 示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-示例"><span class="toc-number">1.7.9.</span> <span class="toc-text">spring 示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注册中心"><span class="toc-number">1.8.</span> <span class="toc-text">注册中心</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#说明"><span class="toc-number">1.8.1.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实例操作步骤"><span class="toc-number">1.8.2.</span> <span class="toc-text">实例操作步骤</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录说明"><span class="toc-number">1.9.</span> <span class="toc-text">目录说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">1.10.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题待解决及计划"><span class="toc-number">1.11.</span> <span class="toc-text">问题待解决及计划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例代码"><span class="toc-number">1.12.</span> <span class="toc-text">示例代码</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/05/18/代码规范第二期 backup/" class="archive-article-date">
-        <time datetime="2019-05-18T14:58:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-18</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/05/18/代码规范第二期 backup/">代码规范第二期 backup</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/内部分享//" class="article-tag-list-link color5">内部分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/05/18/使用hexo搭建个人博客--结合github/" class="archive-article-date">
-        <time datetime="2019-05-18T13:49:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-18</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/05/18/使用hexo搭建个人博客--结合github/">使用hexo搭建个人博客--结合github</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/HEXO//" class="article-tag-list-link color5">HEXO</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
 
 
           </div>
@@ -397,8 +767,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
